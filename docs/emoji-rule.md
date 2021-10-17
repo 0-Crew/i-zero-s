@@ -20,10 +20,6 @@
 |💩|poop|똥싼 코드|Write bad code that needs to be improved.|[poop]|
 |⏪|rewind|변경 내용 되돌리기|Revert changes.|[revert]|
 |🔀|twisted_rightwards_arrows|브랜치 합병|Merge branches.|[merge]|
-|📦|package|컴파일된 파일 추가/수정|Add or update compiled files or packages.|
-|👽|alien|외부 API 변화로 인한 수정|Update code due to external API changes.|
-|🚚|truck|리소스 이동, 이름 변경|Move or rename resources (e.g.: files paths routes).|
-|📄|page_facing_up|라이센스 추가/수정|Add or update license.|
 |💡|bulb|주석 추가/수정|Add or update comments in source code.|[comment]|
 |🍻|beers|술 취해서 쓴 코드|Write code drunkenly.|[beer]|
 |🗃|card_file_box|데이버베이스 관련 수정|Perform database related changes.|[database]|
