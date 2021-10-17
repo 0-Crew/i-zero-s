@@ -17,6 +17,10 @@
 		A2B7BDF22714214700F1DB1F /* Code_ZeroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDF12714214700F1DB1F /* Code_ZeroUITests.swift */; };
 		A2B7BDF42714214700F1DB1F /* Code_ZeroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDF32714214700F1DB1F /* Code_ZeroUITestsLaunchTests.swift */; };
 		A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2DC88C6271C05030099438A /* .swiftlint.yml */; };
+		A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88CE271C11D50099438A /* GenericResponse.swift */; };
+		A2DC88D1271C11EB0099438A /* Fonts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D0271C11EB0099438A /* Fonts+Extension.swift */; };
+		A2DC88D4271C122F0099438A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D3271C122F0099438A /* Home.swift */; };
+		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		A2B7BDF12714214700F1DB1F /* Code_ZeroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code_ZeroUITests.swift; sourceTree = "<group>"; };
 		A2B7BDF32714214700F1DB1F /* Code_ZeroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code_ZeroUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A2DC88C6271C05030099438A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A2DC88CE271C11D50099438A /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		A2DC88D0271C11EB0099438A /* Fonts+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Extension.swift"; sourceTree = "<group>"; };
+		A2DC88D3271C122F0099438A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,13 +110,10 @@
 		A2B7BDCF2714214300F1DB1F /* Code-Zero */ = {
 			isa = PBXGroup;
 			children = (
-				A2B7BDD02714214300F1DB1F /* AppDelegate.swift */,
-				A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */,
-				A2B7BDD42714214300F1DB1F /* ViewController.swift */,
-				A2B7BDD62714214300F1DB1F /* Main.storyboard */,
-				A2B7BDD92714214600F1DB1F /* Assets.xcassets */,
+				A2DC88C8271C112D0099438A /* Global */,
+				A2DC88C9271C113B0099438A /* Screen */,
+				A2DC88CA271C11470099438A /* Support */,
 				A2B7BDDB2714214600F1DB1F /* LaunchScreen.storyboard */,
-				A2B7BDDE2714214600F1DB1F /* Info.plist */,
 			);
 			path = "Code-Zero";
 			sourceTree = "<group>";
@@ -128,6 +133,77 @@
 				A2B7BDF32714214700F1DB1F /* Code_ZeroUITestsLaunchTests.swift */,
 			);
 			path = "Code-ZeroUITests";
+			sourceTree = "<group>";
+		};
+		A2DC88C8271C112D0099438A /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				A2DC88CC271C11970099438A /* Model */,
+				A2DC88CB271C117D0099438A /* Extension */,
+				A2DC88CD271C11B70099438A /* Service */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		A2DC88C9271C113B0099438A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				A2DC88D2271C12210099438A /* Home */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		A2DC88CA271C11470099438A /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7BDD92714214600F1DB1F /* Assets.xcassets */,
+				A2B7BDDE2714214600F1DB1F /* Info.plist */,
+				A2DC88D6271C12480099438A /* Delegate */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		A2DC88CB271C117D0099438A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A2DC88D0271C11EB0099438A /* Fonts+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A2DC88CC271C11970099438A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A2DC88CD271C11B70099438A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A2DC88D7271C12A90099438A /* NetworkResult.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A2DC88D2271C12210099438A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7BDD62714214300F1DB1F /* Main.storyboard */,
+				A2B7BDD42714214300F1DB1F /* ViewController.swift */,
+				A2DC88D3271C122F0099438A /* Home.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A2DC88D6271C12480099438A /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A2B7BDD02714214300F1DB1F /* AppDelegate.swift */,
+				A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,9 +359,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DC88D1271C11EB0099438A /* Fonts+Extension.swift in Sources */,
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
+				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
+				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
+				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +546,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HAWSBW2KW5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Code-Zero/Info.plist";
+				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -494,7 +574,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HAWSBW2KW5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Code-Zero/Info.plist";
+				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
