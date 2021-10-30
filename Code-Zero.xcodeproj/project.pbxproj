@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2696D6A272D60C1001A2C60 /* Color.xcassets */; };
+		A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */; };
 		A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD02714214300F1DB1F /* AppDelegate.swift */; };
 		A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */; };
 		A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD42714214300F1DB1F /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		A2696D6A272D60C1001A2C60 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A2B7BDCD2714214300F1DB1F /* Code-Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code-Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B7BDD02714214300F1DB1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A2DC88D0271C11EB0099438A /* Fonts+Extension.swift */,
+				A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
+				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
