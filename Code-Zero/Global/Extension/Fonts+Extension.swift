@@ -9,16 +9,17 @@ import UIKit
 
 extension UIFont {
     enum Family: String {
-        // swiftlint:disable identifier_name
-        case Heavy, Black, Bold, Light, Medium, Regular, Thin
-        // swiftlint:enable identifier_name
+        case heavy = "Heavy"
+        case bold = "Bold"
+        case medium = "Medium"
+        case regular = "Regular"
     }
 
-    static func futuraStd(size: CGFloat = 10, family: Family = .Regular) -> UIFont {
+    static func futuraStd(size: CGFloat = 10, family: Family = .regular) -> UIFont {
         return UIFont(name: "FuturaStd-\(family)", size: size)!
     }
 
-    static func spoqaHanSansNeo(size: CGFloat = 10, family: Family = .Regular) -> UIFont {
+    static func spoqaHanSansNeo(size: CGFloat = 10, family: Family = .regular) -> UIFont {
         return UIFont(name: "SpoqaHanSansNeo-\(family)", size: size)!
     }
 }
