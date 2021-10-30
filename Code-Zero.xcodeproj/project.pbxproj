@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */; };
+		A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */; };
+		A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */; };
+		A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D61272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf */; };
+		A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D62272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf */; };
+		A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D63272D163D001A2C60 /* FuturaStd-Bold.otf */; };
 		A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD02714214300F1DB1F /* AppDelegate.swift */; };
 		A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */; };
 		A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD42714214300F1DB1F /* ViewController.swift */; };
@@ -41,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Medium.otf"; sourceTree = "<group>"; };
+		A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
+		A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Heavy.otf"; sourceTree = "<group>"; };
+		A2696D61272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Medium.otf"; sourceTree = "<group>"; };
+		A2696D62272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Regular.otf"; sourceTree = "<group>"; };
+		A2696D63272D163D001A2C60 /* FuturaStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Bold.otf"; sourceTree = "<group>"; };
 		A2B7BDCD2714214300F1DB1F /* Code-Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code-Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B7BDD02714214300F1DB1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +98,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A2696D5D272D1569001A2C60 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A2696D63272D163D001A2C60 /* FuturaStd-Bold.otf */,
+				A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */,
+				A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */,
+				A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */,
+				A2696D61272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf */,
+				A2696D62272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		A2B7BDC42714214300F1DB1F = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +184,7 @@
 				A2B7BDD92714214600F1DB1F /* Assets.xcassets */,
 				A2B7BDDE2714214600F1DB1F /* Info.plist */,
 				A2DC88D6271C12480099438A /* Delegate */,
+				A2696D5D272D1569001A2C60 /* Font */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -312,9 +338,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
+				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
+				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
+				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
 				A2B7BDD82714214300F1DB1F /* Main.storyboard in Resources */,
+				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
+				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
+				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
