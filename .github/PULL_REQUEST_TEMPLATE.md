@@ -13,7 +13,7 @@ iphoneSE2 | iphone13| iphone13ProMax  |
 
 ## ✅ Test Checklist
 
-- 체크리스트 확인(issue 와 비슷하거나 개발하면서 추가된 것이 있을듯.. 생각못해봤던거)
+- [ ] 체크리스트 확인(issue 와 비슷하거나 개발하면서 추가된 것이 있을듯.. 생각못해봤던거)
 
 ## 💬 Comment
 
