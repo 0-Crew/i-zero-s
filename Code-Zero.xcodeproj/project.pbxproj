@@ -10,6 +10,8 @@
 		A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */; };
 		A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */; };
 		A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */; };
+		A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF5272E9F9C00D2BA78 /* Date+Extension.swift */; };
+		A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF7272E9FCB00D2BA78 /* String+Extension.swift */; };
 		A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */; };
 		A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */; };
 		A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */; };
@@ -55,6 +57,8 @@
 		A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		A25C8BF5272E9F9C00D2BA78 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		A25C8BF7272E9FCB00D2BA78 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Medium.otf"; sourceTree = "<group>"; };
 		A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
 		A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Heavy.otf"; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 		A2DC88CB271C117D0099438A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A25C8BF5272E9F9C00D2BA78 /* Date+Extension.swift */,
+				A25C8BF7272E9FCB00D2BA78 /* String+Extension.swift */,
 				A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */,
 				A2DC88D0271C11EB0099438A /* UIFont+Extension.swift */,
 				A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */,
@@ -412,6 +418,8 @@
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
 				A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */,
+				A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */,
+				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
