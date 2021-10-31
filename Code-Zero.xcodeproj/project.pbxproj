@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2696D6A272D60C1001A2C60 /* Color.xcassets */; };
+		A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */; };
 		A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */; };
 		A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */; };
 		A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2696D6A272D60C1001A2C60 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Medium.otf"; sourceTree = "<group>"; };
 		A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Neo Bold.otf"; sourceTree = "<group>"; };
 		A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Heavy.otf"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				A2B7BDD92714214600F1DB1F /* Assets.xcassets */,
+				A2696D6A272D60C1001A2C60 /* Color.xcassets */,
 				A2B7BDDE2714214600F1DB1F /* Info.plist */,
 				A2DC88D6271C12480099438A /* Delegate */,
 				A2696D5D272D1569001A2C60 /* Font */,
@@ -192,6 +197,8 @@
 		A2DC88CB271C117D0099438A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A2DC88D0271C11EB0099438A /* Fonts+Extension.swift */,
+				A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */,
 				A2DC88D0271C11EB0099438A /* UIFont+Extension.swift */,
 			);
 			path = Extension;
@@ -340,6 +347,7 @@
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
+				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
@@ -398,6 +406,7 @@
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
+				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +513,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -559,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -589,11 +598,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tistory.hereismyblog.Code-Zero";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -617,11 +626,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tistory.hereismyblog.Code-Zero";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

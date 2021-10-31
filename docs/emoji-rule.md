@@ -15,7 +15,7 @@
 |🔖|bookmark|릴리즈/버전 태그|Release / Version tags.|[release]|
 |📈|chart_with_upwards_trend|분석, 추적 코드 추가/수정|Add or update analytics or track code.|[analytics]|
 |♻️|recycle|코드 리팩토링|Refactor code.|[refactor]|
-|🔧|wrench|구성 파일 추가/삭제|Add or update configuration files.|[add]|
+|🔧|wrench|구성 파일 추가/삭제|Add or update configuration files.|[configure]|
 |🌐|globe_with_meridians|국제화/현지화|Internationalization and localization.|[localize]|
 |💩|poop|똥싼 코드|Write bad code that needs to be improved.|[poop]|
 |⏪|rewind|변경 내용 되돌리기|Revert changes.|[revert]|
