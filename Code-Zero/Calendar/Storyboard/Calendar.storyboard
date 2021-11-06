@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="-506" y="-244"/>
         </scene>
-        <!--View Controller-->
+        <!--CalendarVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="CalendarVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                                        <integer key="value" value="0"/>
+                                                        <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -90,6 +90,10 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="414" height="700"/>
+                    <connections>
+                        <outlet property="calendar" destination="VSj-lJ-XrU" id="pJM-fX-ypA"/>
+                        <outlet property="scrollView" destination="B8s-IH-aCC" id="jQS-JB-xMJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
