@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */; };
+		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
 		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
 		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCalendarCell.swift; sourceTree = "<group>"; };
+		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
 		9B9927D92733DED200A180CB /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		9BFA84EB2731499800E09C20 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Medium.otf"; sourceTree = "<group>"; };
@@ -112,9 +116,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19DE921D273FC8C6001B0C30 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */,
+				19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		9BFA84E82731496300E09C20 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				19DE921D273FC8C6001B0C30 /* Cell */,
 				9BFA84EA2731498B00E09C20 /* VC */,
 				9BFA84E92731498000E09C20 /* Storyboard */,
 			);
@@ -449,11 +463,13 @@
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
+				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
+				19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
