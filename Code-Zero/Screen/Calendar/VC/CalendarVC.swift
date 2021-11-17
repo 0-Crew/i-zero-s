@@ -16,7 +16,7 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FS
         return formatter
     }()
 
-    let borderDefaultColors = ["2021/11/13": UIColor.white]
+    let borderDefaultColors = [Date().datePickerToString(format: "yyyy/MM/dd"): UIColor.white]
 
     // MARK: - @IBOutlet
 
@@ -88,6 +88,19 @@ extension CalendarVC {
         if let color = self.borderDefaultColors[dateColorKey] {
             return color
         }
+
         return .clear
+    }
+
+    func calendar(_ calendar: FSCalendar,
+                  appearance: FSCalendarAppearance,
+                  titleSelectionColorFor date: Date) -> UIColor? {
+
+        let today = Date().datePickerToString(format: "yyyy/MM/dd")
+        if self.dateFormatter1.string(from: date) == today {
+            return .darkGray2
+        }
+
+        return nil
     }
 }
