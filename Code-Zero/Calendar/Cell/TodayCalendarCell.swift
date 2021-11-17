@@ -9,22 +9,22 @@ import UIKit
 import FSCalendar
 
 class TodayCalendarCell: FSCalendarCell {
-    
+
     weak var underLine: UIView!
-    
+
     required init!(coder aDecoder: NSCoder!) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override init(frame: CGRect) {
-        
+
         super.init(frame: frame)
         let underLine: UIView = UIView()
         self.contentView.insertSubview(underLine, at: 0)
         self.underLine = underLine
         self.underLine.backgroundColor = .white
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.underLine.frame = self.contentView.bounds
@@ -32,6 +32,6 @@ class TodayCalendarCell: FSCalendarCell {
                                       y: self.contentView.frame.height/2 + 5,
                                       width: 10,
                                       height: 2)
-        
+
     }
 }
