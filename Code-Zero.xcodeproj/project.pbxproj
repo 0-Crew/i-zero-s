@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
+		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
+		9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6F272E8BD20008A5C3 /* SnapKit */; };
 		A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */; };
 		A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */; };
 		A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */; };
@@ -14,9 +17,6 @@
 		A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF7272E9FCB00D2BA78 /* String+Extension.swift */; };
 		A25C8BFA2731417800D2BA78 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF92731417800D2BA78 /* UILable+Extension.swift */; };
 		A25C8BFC2731423000D2BA78 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BFB2731423000D2BA78 /* UIButton+Extension.swift */; };
-		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
-		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
-		9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6F272E8BD20008A5C3 /* SnapKit */; };
 		A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5E272D163D001A2C60 /* FuturaStd-Medium.otf */; };
 		A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D5F272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf */; };
 		A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D60272D163D001A2C60 /* FuturaStd-Heavy.otf */; };
@@ -25,6 +25,7 @@
 		A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A2696D63272D163D001A2C60 /* FuturaStd-Bold.otf */; };
 		A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2696D6A272D60C1001A2C60 /* Color.xcassets */; };
 		A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */; };
+		A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29574DD273AB2570056CC93 /* ChallengeVC.swift */; };
 		A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD02714214300F1DB1F /* AppDelegate.swift */; };
 		A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */; };
 		A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B7BDD42714214300F1DB1F /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D0271C11EB0099438A /* UIFont+Extension.swift */; };
 		A2DC88D4271C122F0099438A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D3271C122F0099438A /* Home.swift */; };
 		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
+		A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FC304D273695ED00B29296 /* Challenge.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,7 @@
 		A2696D63272D163D001A2C60 /* FuturaStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FuturaStd-Bold.otf"; sourceTree = "<group>"; };
 		A2696D6A272D60C1001A2C60 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		A2696D6E272D6141001A2C60 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A29574DD273AB2570056CC93 /* ChallengeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
 		A2B7BDCD2714214300F1DB1F /* Code-Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code-Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B7BDD02714214300F1DB1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		A2DC88D0271C11EB0099438A /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		A2DC88D3271C122F0099438A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		A2FC304D273695ED00B29296 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				A2FC30492736957300B29296 /* Challenge */,
 				A2DC88D2271C12210099438A /* Home */,
 			);
 			path = Screen;
@@ -263,6 +268,31 @@
 				A2B7BDD22714214300F1DB1F /* SceneDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		A2FC30492736957300B29296 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				A2FC304C273695CE00B29296 /* Storyboards */,
+				A2FC304B273695C400B29296 /* VC */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
+		A2FC304B273695C400B29296 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				A29574DD273AB2570056CC93 /* ChallengeVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		A2FC304C273695CE00B29296 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A2FC304D273695ED00B29296 /* Challenge.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +416,7 @@
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
+				A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */,
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
 				A2B7BDD82714214300F1DB1F /* Main.storyboard in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
@@ -443,6 +474,7 @@
 				A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */,
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
+				A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */,
 				A25C8BFC2731423000D2BA78 /* UIButton+Extension.swift in Sources */,
 				A25C8BFA2731417800D2BA78 /* UILable+Extension.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
