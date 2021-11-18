@@ -58,10 +58,12 @@ extension CalendarVC {
         // weekday: 요일
         calendar.appearance.weekdayTextColor = .gray2
         calendar.appearance.weekdayFont = .futuraStd(size: 13, family: .heavy)
+        calendar.appearance.selectionColor = .white
+        calendar.appearance.titleSelectionColor = .darkGray
 
         calendar.appearance.todayColor = .clear
-        calendar.appearance.todaySelectionColor = .white
-        calendar.select(Date()) // 처음 view open 시 오늘 날짜 선택
+        calendar.appearance.todaySelectionColor = .none
+//        calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
 
     }
 
@@ -69,13 +71,13 @@ extension CalendarVC {
                   cellFor date: Date,
                   at position: FSCalendarMonthPosition) -> FSCalendarCell {
 
-        let todayDate = self.dateFormatter1.string(from: date)
-
-        if todayDate == self.dateFormatter1.string(from: Date()) {
-            let cell = calendar.dequeueReusableCell(withIdentifier: "todayCell", for: date, at: position)
-            return cell
+        if date == calendar.today {
+            if let cell = calendar.dequeueReusableCell(withIdentifier: "todayCell",
+                                                    for: date,
+                                                    at: position) as? TodayCalendarCell {
+                return cell
+            }
         }
-
         let cell = calendar.dequeueReusableCell(withIdentifier: "challengeCell", for: date, at: position)
         return cell
     }
@@ -84,23 +86,11 @@ extension CalendarVC {
                   appearance: FSCalendarAppearance,
                   borderDefaultColorFor date: Date) -> UIColor? {
 
-        let dateColorKey = self.dateFormatter1.string(from: date)
-        if let color = self.borderDefaultColors[dateColorKey] {
-            return color
+        if date == calendar.today {
+            return .white
         }
 
         return .clear
     }
 
-    func calendar(_ calendar: FSCalendar,
-                  appearance: FSCalendarAppearance,
-                  titleSelectionColorFor date: Date) -> UIColor? {
-
-        let today = Date().datePickerToString(format: "yyyy/MM/dd")
-        if self.dateFormatter1.string(from: date) == today {
-            return .darkGray2
-        }
-
-        return nil
-    }
 }
