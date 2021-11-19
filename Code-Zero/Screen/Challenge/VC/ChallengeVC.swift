@@ -39,7 +39,9 @@ class ChallengeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItems()
+        fetchFollowingPeopleFirstNameList()
         setFollowingListStackView()
+        highlightingFollowingListButton(offset: selectedPersonIndex)
     }
 
     // MARK: - IBAction Method
@@ -66,7 +68,6 @@ extension ChallengeVC {
             .reversed()
             .forEach {
                 followingListStackView.insertArrangedSubview($0, at: 0)
-                highlightingFollowingListButton(offset: selectedPersonIndex)
             }
     }
     private func provideFollowingListButton(text: String) -> UIButton {
@@ -86,7 +87,7 @@ extension ChallengeVC {
     }
 
     private func highlightingFollowingListButton(offset: Int) {
-        followingListStackView.arrangedSubviews.enumerated().forEach { (offset, view) in
+        followingListStackView.arrangedSubviews[0..<3].enumerated().forEach { (offset, view) in
             guard let button = view as? UIButton else { return }
             let color: UIColor = offset == selectedPersonIndex ? .darkGray2 : .gray3
             button.setTitleColor(color, for: .normal)
