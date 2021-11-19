@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DDE27473E9D00776E1A /* SelectedType.swift */; };
+		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
+		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
 		19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */; };
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
@@ -65,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		19BF8DDE27473E9D00776E1A /* SelectedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedType.swift; sourceTree = "<group>"; };
+		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
+		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
 		19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCalendarCell.swift; sourceTree = "<group>"; };
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
 		9B9927D92733DED200A180CB /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				9BFA84EB2731499800E09C20 /* Calendar.storyboard */,
+				19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9927D92733DED200A180CB /* CalendarVC.swift */,
+				19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
+				19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */,
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
@@ -495,6 +502,7 @@
 				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,
 				A25C8BFC2731423000D2BA78 /* UIButton+Extension.swift in Sources */,
 				A25C8BFA2731417800D2BA78 /* UILable+Extension.swift in Sources */,
+				19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,

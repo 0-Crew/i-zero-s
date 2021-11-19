@@ -27,6 +27,7 @@ class CalendarVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        setChallengeView()
         // Do any additional setup after loading the view.
     }
 
@@ -68,12 +69,20 @@ extension CalendarVC {
 
     }
 
+    func setChallengeView() {
+        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
+                                                                     y: 0,
+                                                                     width: view.frame.width-40,
+                                                                     height: 167))
+        self.challengeView.addSubview(todayJoinChallengeView)
+    }
+
     override func updateViewConstraints() {
 
         var height: CGFloat = 0.0
         height += calendar.frame.height
-        self.view.frame.size.height = 646 // 추상적인 숫자 변경 필요
-        self.view.frame.origin.y = UIScreen.main.bounds.height - height - 360
+        self.view.frame.size.height = 700 // 추상적인 숫자 변경 필요
+        self.view.frame.origin.y = UIScreen.main.bounds.height - height - 300
 
         super.updateViewConstraints()
     }
