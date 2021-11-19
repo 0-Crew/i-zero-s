@@ -27,6 +27,7 @@ class JoinChallengeView: UIView { // 새로운 챌린지 참여하기 View
                                                   options: nil)?.first as? UIView else { return }
 
         view.frame = bounds
+        view.backgroundColor = .none
         addSubview(view)
     }
 
