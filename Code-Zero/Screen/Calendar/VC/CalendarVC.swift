@@ -48,6 +48,9 @@ extension CalendarVC {
 
         calendar.backgroundColor = .darkGray2
 
+        calendar.headerHeight = 50
+        calendar.placeholderType = .fillHeadTail
+
         // title: Day
         calendar.appearance.titleDefaultColor = .gray2
         calendar.appearance.titleWeekendColor = .gray2
@@ -62,6 +65,7 @@ extension CalendarVC {
         calendar.appearance.weekdayFont = .futuraStd(size: 13, family: .heavy)
         calendar.appearance.selectionColor = .white
         calendar.appearance.titleSelectionColor = .darkGray
+        calendar.appearance.caseOptions = [.weekdayUsesUpperCase]
 
         calendar.appearance.todayColor = .clear
         calendar.appearance.todaySelectionColor = .none
