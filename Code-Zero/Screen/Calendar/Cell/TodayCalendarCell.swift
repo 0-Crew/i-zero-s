@@ -12,6 +12,12 @@ class TodayCalendarCell: FSCalendarCell {
 
     weak var underLine: UIView!
 
+    var selectionType: SelectedType = .none {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
     required init!(coder aDecoder: NSCoder!) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -20,7 +26,7 @@ class TodayCalendarCell: FSCalendarCell {
 
         super.init(frame: frame)
         let underLine: UIView = UIView()
-        self.contentView.insertSubview(underLine, at: 0)
+        self.contentView.insertSubview(underLine, at: 1) // 지정한 인덱스의 view 삽입
         self.underLine = underLine
         self.underLine.backgroundColor = .white
     }
@@ -32,6 +38,14 @@ class TodayCalendarCell: FSCalendarCell {
                                       y: self.contentView.frame.height/2 + 5,
                                       width: 10,
                                       height: 2)
+
+        if selectionType == .none {
+            self.underLine.backgroundColor = .white
+        }
+
+        if selectionType == .select {
+            self.underLine.backgroundColor = .darkGray2
+        }
 
     }
 }
