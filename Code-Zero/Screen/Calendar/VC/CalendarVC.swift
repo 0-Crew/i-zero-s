@@ -10,14 +10,6 @@ import FSCalendar
 
 class CalendarVC: UIViewController {
 
-    fileprivate lazy var dateFormatter1: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        return formatter
-    }()
-
-    let borderDefaultColors = [Date().datePickerToString(format: "yyyy/MM/dd"): UIColor.white]
-
     // MARK: - @IBOutlet
 
     @IBOutlet weak var scrollView: UIView!
@@ -33,7 +25,11 @@ class CalendarVC: UIViewController {
 
 }
 
+// MARK: - Extensions
+
 extension CalendarVC {
+
+    // MARK: - View Style
 
     func setView() {
 
@@ -59,6 +55,7 @@ extension CalendarVC {
         // headerTitle: 달력 이름
         calendar.appearance.headerTitleColor = .white
         calendar.appearance.headerTitleFont = .futuraStd(size: 20, family: .heavy)
+        calendar.appearance.headerMinimumDissolvedAlpha = 0 // 이전, 다음 달 text hide
 
         // weekday: 요일
         calendar.appearance.weekdayTextColor = .gray2
@@ -73,14 +70,6 @@ extension CalendarVC {
 
     }
 
-    func setChallengeView() {
-        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
-                                                                     y: 0,
-                                                                     width: view.frame.width-40,
-                                                                     height: 167))
-        self.challengeView.addSubview(todayJoinChallengeView)
-    }
-
     override func updateViewConstraints() {
 
         var height: CGFloat = 0.0
@@ -91,7 +80,19 @@ extension CalendarVC {
         super.updateViewConstraints()
     }
 
+    // MARK: - ChildView Setting
+
+    func setChallengeView() {
+        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
+                                                                     y: 0,
+                                                                     width: view.frame.width-40,
+                                                                     height: 167))
+        self.challengeView.addSubview(todayJoinChallengeView)
+    }
+
 }
+
+// MARK: - FSCalendar Delegate
 
 extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
 
