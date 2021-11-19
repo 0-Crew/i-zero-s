@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cJb-iZ-6Zg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cJb-iZ-6Zg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,12 +61,20 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cJ-DX-Byx">
+                                                <rect key="frame" x="20" y="406.5" width="374" height="167.5"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="4cJ-DX-Byx" firstAttribute="top" secondItem="VSj-lJ-XrU" secondAttribute="bottom" constant="39" id="82J-cy-rJ5"/>
                                             <constraint firstAttribute="trailing" secondItem="VSj-lJ-XrU" secondAttribute="trailing" constant="26" id="Vxx-To-GE6"/>
                                             <constraint firstItem="VSj-lJ-XrU" firstAttribute="leading" secondItem="B8s-IH-aCC" secondAttribute="leading" constant="26" id="XNU-1P-KiM"/>
+                                            <constraint firstItem="4cJ-DX-Byx" firstAttribute="leading" secondItem="B8s-IH-aCC" secondAttribute="leading" constant="20" id="ZXP-49-NUK"/>
+                                            <constraint firstAttribute="bottom" secondItem="4cJ-DX-Byx" secondAttribute="bottom" constant="72" id="beq-Wn-2M0"/>
                                             <constraint firstItem="VSj-lJ-XrU" firstAttribute="top" secondItem="B8s-IH-aCC" secondAttribute="top" constant="30" id="vut-4u-mM6"/>
+                                            <constraint firstAttribute="trailing" secondItem="4cJ-DX-Byx" secondAttribute="trailing" constant="20" id="zk3-Mt-919"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -103,6 +111,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

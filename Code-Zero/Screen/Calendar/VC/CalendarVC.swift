@@ -67,6 +67,16 @@ extension CalendarVC {
 
     }
 
+    override func updateViewConstraints() {
+
+        var height: CGFloat = 0.0
+        height += calendar.frame.height
+        self.view.frame.size.height = 646 // 추상적인 숫자 변경 필요
+        self.view.frame.origin.y = UIScreen.main.bounds.height - height - 360
+
+        super.updateViewConstraints()
+    }
+
 }
 
 extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
