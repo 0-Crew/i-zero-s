@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DDE27473E9D00776E1A /* SelectedType.swift */; };
 		19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */; };
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19BF8DDE27473E9D00776E1A /* SelectedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedType.swift; sourceTree = "<group>"; };
 		19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCalendarCell.swift; sourceTree = "<group>"; };
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
 		9B9927D92733DED200A180CB /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
+				19BF8DDE27473E9D00776E1A /* SelectedType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
+				19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */,
 				A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */,
 				A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */,
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
