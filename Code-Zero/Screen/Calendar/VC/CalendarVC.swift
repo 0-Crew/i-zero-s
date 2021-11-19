@@ -22,6 +22,7 @@ class CalendarVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var challengeView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
