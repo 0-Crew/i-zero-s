@@ -126,6 +126,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E5B24A42747CF0F0071C9F2 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		A2696D5D272D1569001A2C60 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +280,7 @@
 		A2FC30492736957300B29296 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				6E5B24A42747CF0F0071C9F2 /* Xibs */,
 				A2FC304C273695CE00B29296 /* Storyboards */,
 				A2FC304B273695C400B29296 /* VC */,
 			);

@@ -8,6 +8,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FuturaStd-Heavy.otf">
+            <string>FuturaStd-Heavy</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--ChallengeVC-->
         <scene sceneID="s0d-6b-0kx">
@@ -17,26 +25,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r4-f4-ZN1">
-                                <rect key="frame" x="136" y="421" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="희영룰룰루" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r4-f4-ZN1">
+                                <rect key="frame" x="20" y="44" width="138" height="36"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="’s Bottle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6On-4d-nRj">
+                                <rect key="frame" x="159" y="44" width="98.666666666666686" height="30"/>
+                                <fontDescription key="fontDescription" name="FuturaStd-Heavy" family="Futura Std" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ab9-3r-yJD">
+                                <rect key="frame" x="20" y="90" width="24" height="24"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hY-Us-3e2">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="icPlus"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Ocf-6M-zRe"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="white"/>
+                        <constraints>
+                            <constraint firstItem="6On-4d-nRj" firstAttribute="leading" secondItem="9r4-f4-ZN1" secondAttribute="trailing" constant="1" id="7fb-2F-AMj"/>
+                            <constraint firstItem="Ab9-3r-yJD" firstAttribute="top" secondItem="9r4-f4-ZN1" secondAttribute="bottom" constant="10" id="9lD-rL-RkE"/>
+                            <constraint firstItem="9r4-f4-ZN1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Ppp-X8-cPN"/>
+                            <constraint firstItem="Ab9-3r-yJD" firstAttribute="leading" secondItem="9r4-f4-ZN1" secondAttribute="leading" id="XFr-ZS-NdD"/>
+                            <constraint firstItem="6On-4d-nRj" firstAttribute="top" secondItem="9r4-f4-ZN1" secondAttribute="top" id="eUp-82-bND"/>
+                            <constraint firstItem="9r4-f4-ZN1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hDp-yg-n3h"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="followingListStackView" destination="Ab9-3r-yJD" id="XYc-Gf-tJn"/>
+                        <outlet property="nickNameLabel" destination="9r4-f4-ZN1" id="Yzl-sD-36x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="98"/>
+            <point key="canvasLocation" x="20" y="97.536945812807886"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icPlus" width="24" height="24"/>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
