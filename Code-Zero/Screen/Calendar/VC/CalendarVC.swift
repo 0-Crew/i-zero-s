@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+class CalendarVC: UIViewController {
 
     fileprivate lazy var dateFormatter1: DateFormatter = {
         let formatter = DateFormatter()
@@ -63,8 +63,33 @@ extension CalendarVC {
 
         calendar.appearance.todayColor = .clear
         calendar.appearance.todaySelectionColor = .none
-//        calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
+        calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
 
+    }
+
+}
+
+extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+
+    func calendar(_ calendar: FSCalendar,
+                  willDisplay cell: FSCalendarCell,
+                  for date: Date,
+                  at position: FSCalendarMonthPosition) {
+        // willDisplay: cell 이 화면에 처음 표시될 때 call (달이 바뀔 때 마다도 호출)
+
+        self.configure(cell: cell, for: date, at: position)
+    }
+
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // didSelect : cell 미선택 -> 선택 시 호출
+
+        self.configureVisibleCells()
+    }
+
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date) {
+        // didDeselect : cell 선택 -> 미선택 시 호출
+
+        self.configureVisibleCells()
     }
 
     func calendar(_ calendar: FSCalendar,
@@ -91,6 +116,31 @@ extension CalendarVC {
         }
 
         return .clear
+    }
+
+    private func configureVisibleCells() {
+        calendar.visibleCells().forEach { (cell) in
+            let date = calendar.date(for: cell)
+            let position = calendar.monthPosition(for: cell)
+            self.configure(cell: cell, for: date!, at: position)
+        }
+    }
+
+    private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+
+        let todayCell = (cell as? TodayCalendarCell)
+        if position == .current { // 현재 달
+
+            var selectionType = SelectedType.none
+            if calendar.selectedDates.contains(date) { // 선택 그룹 안에 존재한다면
+                selectionType = .select
+            } else { // 선택 그룹 안에 존재하지 않는다면
+                selectionType = .none
+            }
+
+            todayCell?.selectionType = selectionType
+        }
+
     }
 
 }

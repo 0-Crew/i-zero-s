@@ -28,7 +28,6 @@ class TodayCalendarCell: FSCalendarCell {
         let underLine: UIView = UIView()
         self.contentView.insertSubview(underLine, at: 1) // 지정한 인덱스의 view 삽입
         self.underLine = underLine
-        self.underLine.backgroundColor = .white
     }
 
     override func layoutSubviews() {
