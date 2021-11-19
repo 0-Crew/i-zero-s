@@ -133,7 +133,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
             var selectionType = SelectedType.none
             if calendar.selectedDates.contains(date) { // 선택 그룹 안에 존재한다면
-                selectionType = .select
+                selectionType = .selected
             } else { // 선택 그룹 안에 존재하지 않는다면
                 selectionType = .none
             }

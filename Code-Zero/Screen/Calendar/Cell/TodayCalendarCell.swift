@@ -43,7 +43,7 @@ class TodayCalendarCell: FSCalendarCell {
             self.underLine.backgroundColor = .white
         }
 
-        if selectionType == .select {
+        if selectionType == .selected {
             self.titleLabel.textColor = .darkGray2
             self.underLine.backgroundColor = .darkGray2
         }
