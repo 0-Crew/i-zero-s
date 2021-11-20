@@ -5,7 +5,7 @@
 //  Created by 이주혁 on 2021/10/31.
 //
 
-import UIKit.UIView
+import UIKit
 
 extension UIView {
     // Set Rounded View
@@ -50,5 +50,20 @@ extension UIView {
         layer.shadowRadius = radius
         // 구글링 해보세요!
         layer.masksToBounds = false
+    }
+
+    /// Add Gradient
+    func setGradient(startColor: UIColor, endColor: UIColor) {
+        let gradient: CAGradientLayer = {
+            let gradient = CAGradientLayer()
+            gradient.colors = [
+                startColor.cgColor,
+                endColor.cgColor
+            ]
+            gradient.frame = bounds
+
+            return gradient
+        }()
+        layer.addSublayer(gradient)
     }
 }
