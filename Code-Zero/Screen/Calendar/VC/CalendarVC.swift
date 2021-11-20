@@ -11,11 +11,11 @@ import FSCalendar
 class CalendarVC: UIViewController {
 
     // MARK: - @IBOutlet
-
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var challengeView: UIView!
 
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -26,11 +26,9 @@ class CalendarVC: UIViewController {
 }
 
 // MARK: - Extensions
-
 extension CalendarVC {
 
     // MARK: - View Style
-
     func setView() {
 
         self.view.backgroundColor = .darkGray2
@@ -81,7 +79,6 @@ extension CalendarVC {
     }
 
     // MARK: - ChildView Setting
-
     func setChallengeView() {
         let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
                                                                      y: 0,
@@ -93,7 +90,6 @@ extension CalendarVC {
 }
 
 // MARK: - FSCalendar Delegate
-
 extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
 
     func calendar(_ calendar: FSCalendar,
