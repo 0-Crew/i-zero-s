@@ -108,6 +108,10 @@ extension CalendarVC {
         self.view.frame.size.height = 700 // 추상적인 숫자 변경 필요
         self.view.frame.origin.y = UIScreen.main.bounds.height - height - 300
 
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 25
+        view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+
         super.updateViewConstraints()
     }
 
