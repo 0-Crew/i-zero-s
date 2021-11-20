@@ -149,6 +149,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     func calendar(_ calendar: FSCalendar,
                   cellFor date: Date,
                   at position: FSCalendarMonthPosition) -> FSCalendarCell {
+        // cellFor : 각 cell 에 대해 설정
 
         if date == calendar.today {
             if let cell = calendar.dequeueReusableCell(withIdentifier: "todayCell",
@@ -164,6 +165,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     func calendar(_ calendar: FSCalendar,
                   appearance: FSCalendarAppearance,
                   borderDefaultColorFor date: Date) -> UIColor? {
+        // borderDefaultColorFor : default 상태일 때(not 선택) 테두리 설정
 
         if date == calendar.today {
             return .white
