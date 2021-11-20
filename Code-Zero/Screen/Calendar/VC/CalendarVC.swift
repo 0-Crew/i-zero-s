@@ -7,8 +7,21 @@
 
 import UIKit
 import FSCalendar
+import SnapKit
 
 class CalendarVC: UIViewController {
+
+    lazy var leftMonthButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icArrowLeft"), for: .normal)
+        return button
+    }()
+
+    lazy var rightMonthButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icArrowRight"), for: .normal)
+        return button
+    }()
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -20,6 +33,7 @@ class CalendarVC: UIViewController {
         super.viewDidLoad()
         setView()
         setChallengeView()
+        makeButton()
         // Do any additional setup after loading the view.
     }
 
@@ -65,6 +79,25 @@ extension CalendarVC {
         calendar.appearance.todayColor = .clear
         calendar.appearance.todaySelectionColor = .none
         calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
+
+    }
+
+    private func makeButton() {
+
+        self.view.addSubview(leftMonthButton)
+        self.view.addSubview(rightMonthButton)
+
+        leftMonthButton.snp.makeConstraints {
+            $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
+            $0.left.equalTo(calendar.snp.left).offset(5)
+            $0.width.height.equalTo(24)
+        }
+
+        rightMonthButton.snp.makeConstraints {
+            $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
+            $0.right.equalTo(calendar.snp.right).offset(-5)
+            $0.width.height.equalTo(24)
+        }
 
     }
 
