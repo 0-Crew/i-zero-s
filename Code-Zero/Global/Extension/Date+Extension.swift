@@ -8,13 +8,14 @@
 import Foundation
 
 extension Date {
-    func datePickerToString() -> String {
+    func datePickerToString(format: String) -> String {
         // date 타입을 string으로 바꾸기
+
         let formatter = DateFormatter()
-        let format = "MM/dd"
         formatter.locale = Locale(identifier: "ko")
         formatter.dateFormat = format
         let dateString = formatter.string(from: self)
+
         return dateString
     }
 }
