@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */; };
+		6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */; };
+		6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */; };
+		6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24B02748C8460071C9F2 /* UICollectionView+Extension.swift */; };
 		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
 		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
 		9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6F272E8BD20008A5C3 /* SnapKit */; };
@@ -61,6 +65,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListCell.swift; sourceTree = "<group>"; };
+		6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListCell.xib; sourceTree = "<group>"; };
+		6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeView.xib; sourceTree = "<group>"; };
+		6E5B24B02748C8460071C9F2 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -129,8 +137,18 @@
 		6E5B24A42747CF0F0071C9F2 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */,
+				6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */,
 			);
 			path = Xibs;
+			sourceTree = "<group>";
+		};
+		6E5B24A727480D930071C9F2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A2696D5D272D1569001A2C60 /* Font */ = {
@@ -236,6 +254,7 @@
 				A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */,
 				A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */,
 				A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */,
+				6E5B24B02748C8460071C9F2 /* UICollectionView+Extension.swift */,
 				A25C8BF92731417800D2BA78 /* UILable+Extension.swift */,
 				A25C8BFB2731423000D2BA78 /* UIButton+Extension.swift */,
 			);
@@ -280,6 +299,7 @@
 		A2FC30492736957300B29296 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				6E5B24A727480D930071C9F2 /* Cell */,
 				6E5B24A42747CF0F0071C9F2 /* Xibs */,
 				A2FC304C273695CE00B29296 /* Storyboards */,
 				A2FC304B273695C400B29296 /* VC */,
@@ -420,6 +440,7 @@
 			files = (
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
+				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
@@ -429,6 +450,7 @@
 				A2B7BDD82714214300F1DB1F /* Main.storyboard in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
+				6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */,
 				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
@@ -488,6 +511,7 @@
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
+				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
 				A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */,
 				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
 			);
