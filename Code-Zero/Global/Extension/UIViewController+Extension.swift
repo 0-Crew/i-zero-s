@@ -8,6 +8,18 @@
 import UIKit
 
 extension UIViewController {
+    /// Device Height ratio via zeplin view
+    var deviceHeightRatio: CGFloat {
+        return UIScreen.main.bounds.height / 812.0
+    }
+
+    /// Device Width ratio via zeplin view
+    var deviceWidthRatio: CGFloat {
+        return UIScreen.main.bounds.width / 812.0
+    }
+}
+
+extension UIViewController {
     // UIAlertController without handler
     func simpleAlert(title: String, message: String) {
 
