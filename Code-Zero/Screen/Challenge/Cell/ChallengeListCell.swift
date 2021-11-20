@@ -42,10 +42,8 @@ class ChallengeListCell: UICollectionViewCell {
 }
 
 extension ChallengeListCell: ChallengeViewDelegate {
-    func didEditButtonTap(tag: Int) {
-        print("\(tag)")
+    func didEditButtonTap(buttonTag: Int) {
     }
-
 
 }
 
@@ -54,53 +52,3 @@ extension ChallengeListCell: UIScrollViewDelegate {
         self.initialLineView.isHidden = scrollView.contentOffset.y > 4.0
     }
 }
-
-// MARK: - ChallengeView
-
-protocol ChallengeViewDelegate {
-    func didEditButtonTap(tag: Int)
-}
-
-class ChallengeView: UIView {
-    @IBOutlet weak var dropWaterImageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var challengeTextLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-
-    internal var delegate: ChallengeViewDelegate!
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadView()
-        initView()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        loadView()
-        initView()
-    }
-
-    private func loadView() {
-        let nibs = Bundle.main.loadNibNamed("ChallengeView", owner: self, options: nil)
-
-        guard let xibView = nibs?.first as? UIView else { return }
-        xibView.frame = self.bounds
-        addSubview(xibView)
-        xibView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-
-    private func initView() {
-        backgroundColor = .clear
-    }
-    
-
-    @IBAction func editButtonDidTap(sender: UIButton) {
-        delegate.didEditButtonTap(tag: sender.tag)
-    }
-}
-
-
-
