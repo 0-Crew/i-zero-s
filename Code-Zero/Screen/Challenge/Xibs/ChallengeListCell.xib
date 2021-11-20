@@ -52,7 +52,7 @@
                         <state key="normal" image="icCalendar"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWI-m0-MNk">
-                        <rect key="frame" x="41.5" y="89" width="1" height="277"/>
+                        <rect key="frame" x="41.5" y="89" width="1" height="180"/>
                         <viewLayoutGuide key="safeArea" id="cfu-qq-3im"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
@@ -209,15 +209,16 @@
                 <constraint firstItem="uWI-m0-MNk" firstAttribute="top" secondItem="k4f-mp-vON" secondAttribute="bottom" id="U6K-f0-H2z"/>
                 <constraint firstItem="m2s-iT-NH8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vca-YO-Z0E"/>
                 <constraint firstItem="jdG-l8-er1" firstAttribute="leading" secondItem="DdL-bl-AdL" secondAttribute="trailing" constant="6" id="h7J-G8-VEd"/>
+                <constraint firstItem="uWI-m0-MNk" firstAttribute="height" secondItem="m2s-iT-NH8" secondAttribute="height" multiplier="0.5" id="hTE-AF-52l"/>
                 <constraint firstItem="k4f-mp-vON" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jgf-Qb-mS5"/>
                 <constraint firstItem="jdG-l8-er1" firstAttribute="centerY" secondItem="DdL-bl-AdL" secondAttribute="centerY" id="qJY-Fz-xxc"/>
                 <constraint firstAttribute="trailing" secondItem="m2s-iT-NH8" secondAttribute="trailing" id="shg-Ts-b1s"/>
                 <constraint firstAttribute="trailing" secondItem="0k2-3u-BwF" secondAttribute="trailing" constant="85" id="tQJ-i2-LVB"/>
                 <constraint firstItem="0k2-3u-BwF" firstAttribute="top" secondItem="DdL-bl-AdL" secondAttribute="bottom" constant="8" symbolic="YES" id="ufK-Bt-BG7"/>
-                <constraint firstItem="uWI-m0-MNk" firstAttribute="bottom" secondItem="m2s-iT-NH8" secondAttribute="bottom" constant="-100" id="xe9-RQ-vFw"/>
             </constraints>
             <size key="customSize" width="235" height="194"/>
             <connections>
+                <outlet property="challengeListStackView" destination="1N9-7v-Slo" id="Jzw-BT-aDT"/>
                 <outlet property="initialLineView" destination="uWI-m0-MNk" id="0dA-dc-R4I"/>
                 <outlet property="lineView" destination="Jo4-Hb-Out" id="Oa4-D9-9bI"/>
                 <outlet property="scrollView" destination="m2s-iT-NH8" id="C2e-6E-xOx"/>

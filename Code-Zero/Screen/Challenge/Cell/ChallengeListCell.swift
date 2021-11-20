@@ -16,12 +16,13 @@ class ChallengeListCell: UICollectionViewCell {
     //MARK: - IBOutlet
     @IBOutlet weak var initialLineView: UIView!
     @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var challengeListStackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             scrollView.delegate = self
         }
     }
-    @IBOutlet weak var challengeListStackView: UIStackView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
@@ -32,12 +33,24 @@ class ChallengeListCell: UICollectionViewCell {
             startColor: .orangeMain,
             endColor: UIColor(red: 70, green: 65, blue: 57)
         )
+        challengeListStackView.arrangedSubviews.enumerated().forEach {
+            let challengView = $0.element as? ChallengeView
+            challengView?.delegate = self
+            challengView?.editButton.tag = $0.offset
+        }
     }
+}
+
+extension ChallengeListCell: ChallengeViewDelegate {
+    func didEditButtonTap(tag: Int) {
+        print("\(tag)")
+    }
+
+
 }
 
 extension ChallengeListCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("🥰\(scrollView.contentOffset.y)")
         self.initialLineView.isHidden = scrollView.contentOffset.y > 4.0
     }
 }
@@ -45,7 +58,7 @@ extension ChallengeListCell: UIScrollViewDelegate {
 // MARK: - ChallengeView
 
 protocol ChallengeViewDelegate {
-    func didEditButtonTap()
+    func didEditButtonTap(tag: Int)
 }
 
 class ChallengeView: UIView {
@@ -81,12 +94,11 @@ class ChallengeView: UIView {
 
     private func initView() {
         backgroundColor = .clear
-        editButton.isHidden = true
     }
     
 
     @IBAction func editButtonDidTap(sender: UIButton) {
-        delegate.didEditButtonTap()
+        delegate.didEditButtonTap(tag: sender.tag)
     }
 }
 
