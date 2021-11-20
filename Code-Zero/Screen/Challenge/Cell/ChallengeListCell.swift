@@ -5,15 +5,13 @@
 //  Created by 주혁 on 2021/11/20.
 //
 
-
 import UIKit
-
 import SnapKit
 
 class ChallengeListCell: UICollectionViewCell {
     static let identifier = "ChallengeListCell"
 
-    //MARK: - IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var initialLineView: UIView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var challengeListStackView: UIStackView!

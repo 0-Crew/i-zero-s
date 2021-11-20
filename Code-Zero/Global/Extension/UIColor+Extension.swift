@@ -9,6 +9,8 @@ import UIKit.UIColor
 
 // MARK: - Method
 extension UIColor {
+
+    // swiftlint:disable identifier_name
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
         self.init(
             red: CGFloat(red) / 255.0,
@@ -17,6 +19,7 @@ extension UIColor {
             alpha: alpha
         )
     }
+    // swiftlint:enable identifier_name
 }
 
 // MARK: - Color Constants

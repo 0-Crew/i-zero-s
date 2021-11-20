@@ -30,7 +30,7 @@ class ChallengeVC: UIViewController {
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
     }()
-    
+
     // MARK: IBOutlet
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var followingListStackView: UIStackView!
@@ -81,8 +81,6 @@ extension ChallengeVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
 }
-
-
 
 // MARK: - UI Setting
 extension ChallengeVC {

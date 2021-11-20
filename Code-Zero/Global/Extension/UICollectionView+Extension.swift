@@ -16,7 +16,7 @@ extension UICollectionView {
 
     func registerCell(nibName: String, resuseIdentifier: String? = nil) {
         let identifier = resuseIdentifier ?? nibName
-        let nib = UINib(nibName: nibName, bundle: nil)
-        self.register(nib, forCellWithReuseIdentifier: identifier)
+        let nibInstance = UINib(nibName: nibName, bundle: nil)
+        self.register(nibInstance, forCellWithReuseIdentifier: identifier)
     }
 }
