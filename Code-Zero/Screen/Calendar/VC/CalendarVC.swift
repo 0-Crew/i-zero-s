@@ -14,12 +14,16 @@ class CalendarVC: UIViewController {
     lazy var leftMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icArrowLeft"), for: .normal)
+        button.addTarget(self, action: #selector(moveMonthButtonDidTap), for: .touchUpInside)
+        button.tag = -1
         return button
     }()
 
     lazy var rightMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icArrowRight"), for: .normal)
+        button.addTarget(self, action: #selector(moveMonthButtonDidTap), for: .touchUpInside)
+        button.tag = 1
         return button
     }()
 
@@ -106,7 +110,7 @@ extension CalendarVC {
         var height: CGFloat = 0.0
         height += calendar.frame.height
         self.view.frame.size.height = 700 // 추상적인 숫자 변경 필요
-        self.view.frame.origin.y = UIScreen.main.bounds.height - height - 300
+        self.view.frame.origin.y = UIScreen.main.bounds.height - height - 350
 
         view.clipsToBounds = true
         view.layer.cornerRadius = 25
@@ -122,6 +126,11 @@ extension CalendarVC {
                                                                      width: view.frame.width-40,
                                                                      height: 167))
         self.challengeView.addSubview(todayJoinChallengeView)
+    }
+
+    // MARK: - Action
+    @objc func moveMonthButtonDidTap(sender: UIButton) {
+        calendar.setCurrentPage(moveMonth(date: calendar.currentPage, value: sender.tag), animated: true)
     }
 
 }
@@ -167,6 +176,12 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         // borderDefaultColorFor : default 상태일 때(not 선택) 테두리 설정
 
         return date == calendar.today ? .white : .clear
+    }
+
+    func moveMonth(date: Date, value: Int) -> Date {
+        // 현재 달(기준: 0)에서 특정 달(value)만큼 이동
+
+        return Calendar.current.date(byAdding: .month, value: value, to: date)!
     }
 
     private func configureVisibleCells() {
