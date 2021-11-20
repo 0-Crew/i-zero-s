@@ -34,6 +34,7 @@ class ChallengeVC: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var followingListStackView: UIStackView!
+    @IBOutlet weak var challengeListCollectionView: UICollectionView!
 
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class ChallengeVC: UIViewController {
         setNavigationItems()
         fetchFollowingPeopleFirstNameList()
         setFollowingListStackView()
+        setCollectionView()
         highlightingFollowingListButton(offset: selectedPersonIndex)
     }
 
@@ -52,8 +54,39 @@ class ChallengeVC: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+extension ChallengeVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ChallengeListCell.identifier,
+            for: indexPath
+        ) as? ChallengeListCell else { return UICollectionViewCell() }
+
+        return cell
+    }
+}
+
+extension ChallengeVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+    }
+}
+
+
+
 // MARK: - UI Setting
 extension ChallengeVC {
+
     private func setNavigationItems() {
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         space.width = 8
@@ -62,6 +95,7 @@ extension ChallengeVC {
             animated: false
         )
     }
+
     private func setFollowingListStackView() {
         followingPeopleFirstNameArray[0..<3]
             .map(provideFollowingListButton)
@@ -70,6 +104,15 @@ extension ChallengeVC {
                 followingListStackView.insertArrangedSubview($0, at: 0)
             }
     }
+
+    private func setCollectionView() {
+        challengeListCollectionView.registerCell(nibName: "ChallengeListCell")
+        challengeListCollectionView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(self.followingListStackView.snp.bottom).offset(97 * deviceHeightRatio)
+        }
+    }
+
     private func provideFollowingListButton(text: String) -> UIButton {
         let followingPersonButton: UIButton = {
             let button = UIButton(type: .custom)
