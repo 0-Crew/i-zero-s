@@ -155,14 +155,9 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   at position: FSCalendarMonthPosition) -> FSCalendarCell {
         // cellFor : 각 cell 에 대해 설정
 
-        if date == calendar.today {
-            if let cell = calendar.dequeueReusableCell(withIdentifier: "todayCell",
-                                                    for: date,
-                                                    at: position) as? TodayCalendarCell {
-                return cell
-            }
-        }
-        let cell = calendar.dequeueReusableCell(withIdentifier: "challengeCell", for: date, at: position)
+        let identifier = date == calendar.today ? "todayCell" : "challengeCell"
+        let cell = calendar.dequeueReusableCell(withIdentifier: identifier, for: date, at: position)
+
         return cell
     }
 
@@ -171,36 +166,31 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   borderDefaultColorFor date: Date) -> UIColor? {
         // borderDefaultColorFor : default 상태일 때(not 선택) 테두리 설정
 
-        if date == calendar.today {
-            return .white
-        }
-
-        return .clear
+        return date == calendar.today ? .white : .clear
     }
 
     private func configureVisibleCells() {
+
         calendar.visibleCells().forEach { (cell) in
-            let date = calendar.date(for: cell)
-            let position = calendar.monthPosition(for: cell)
-            self.configure(cell: cell, for: date!, at: position)
+            if let date = calendar.date(for: cell) {
+                let position = calendar.monthPosition(for: cell)
+                self.configure(cell: cell, for: date, at: position)
+            }
         }
     }
 
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
 
+        guard position == .current else { return }
         let todayCell = (cell as? TodayCalendarCell)
-        if position == .current { // 현재 달
 
-            var selectionType = SelectedType.none
-            if calendar.selectedDates.contains(date) { // 선택 그룹 안에 존재한다면
-                selectionType = .selected
-            } else { // 선택 그룹 안에 존재하지 않는다면
-                selectionType = .none
+        todayCell?.selectionType = {
+            if calendar.selectedDates.contains($0) {
+                return .selected
+            } else {
+                return .none
             }
-
-            todayCell?.selectionType = selectionType
-        }
-
+        }(date)
     }
 
 }
