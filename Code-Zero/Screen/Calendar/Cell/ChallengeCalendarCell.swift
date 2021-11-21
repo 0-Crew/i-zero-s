@@ -8,9 +8,18 @@
 import Foundation
 import FSCalendar
 
+enum SelectionBoarderType: Int {
+    case none
+    case leftBorder
+    case middle
+    case rightBorder
+}
+
 class ChallengeCalendarCell: FSCalendarCell {
 
-    var selectionType: SelectedType = .none {
+    weak var selectionLayer: CAShapeLayer!
+
+    var selectionBoarderType: SelectionBoarderType = .none {
         didSet {
             setNeedsLayout()
         }
@@ -24,8 +33,46 @@ class ChallengeCalendarCell: FSCalendarCell {
 
         super.init(frame: frame)
 
+        let selectionLayer = CAShapeLayer()
+        selectionLayer.fillColor = UIColor.orange.cgColor
+        selectionLayer.actions = ["hidden": NSNull()]
+        self.contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel!.layer)
+        self.selectionLayer = selectionLayer
+
+        self.shapeLayer.isHidden = true
+
         let view = UIView(frame: self.bounds)
         self.backgroundView = view
+
+    }
+
+    override func layoutSubviews() {
+
+        super.layoutSubviews()
+        self.selectionLayer.frame = self.contentView.bounds
+
+        switch selectionBoarderType {
+
+        case .middle:
+            self.selectionLayer.path = UIBezierPath(rect: self.selectionLayer.bounds).cgPath
+
+        case .leftBorder:
+            let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
+                                             height: self.selectionLayer.frame.width / 2)
+            self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
+                                                    byRoundingCorners: [.topLeft, .bottomLeft],
+                                                    cornerRadii: cornerRadii).cgPath
+
+        case .rightBorder:
+            let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
+                                             height: self.selectionLayer.frame.width / 2)
+            self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
+                                                    byRoundingCorners: [.topRight, .bottomRight],
+                                                    cornerRadii: cornerRadii).cgPath
+
+        default: break
+
+        }
 
     }
 
