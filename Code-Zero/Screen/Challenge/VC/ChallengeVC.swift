@@ -13,7 +13,11 @@ class ChallengeVC: UIViewController {
 
     // MARK: - Property
     private var followingPeopleFirstNameArray: [String] = ["김", "이", "박"]
-    private var selectedPersonIndex: Int = 0
+    private var selectedPersonIndex: Int = 0 {
+        didSet {
+            highlightingFollowingListButton(offset: selectedPersonIndex)
+        }
+    }
 
     // MARK: - UI Components
     private let menuButton: UIBarButtonItem = {
@@ -47,7 +51,6 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - IBAction Method
-
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
         followingPeopleFirstNameArray = ["김", "이", "박"]
@@ -57,21 +60,20 @@ class ChallengeVC: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension ChallengeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     func collectionView(
         _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ChallengeListCell.identifier,
-            for: indexPath
-        ) as? ChallengeListCell else { return UICollectionViewCell() }
-
+        let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
+        cell.delegate = self
         return cell
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ChallengeVC: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
@@ -79,6 +81,21 @@ extension ChallengeVC: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension ChallengeVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        selectedPersonIndex = Int(scrollView.contentOffset.x / view.bounds.width)
+    }
+}
+
+// MARK: - ChallengeListCellDelegate
+extension ChallengeVC: ChallengeListCellDelegate {
+    func didCalendarButtonTap() {
+        // TODO: - 캘린더 뷰 연결할 곳
+        print("Calendar Button Presents")
     }
 }
 
@@ -96,9 +113,17 @@ extension ChallengeVC {
 
     private func setFollowingListStackView() {
         followingPeopleFirstNameArray[0..<3]
-            .map(provideFollowingListButton)
+            .enumerated()
+            .map { (offset, element) -> UIButton in
+                let button = provideFollowingListButton(text: element)
+                button.tag = offset
+                return button
+            }
             .reversed()
             .forEach {
+                $0.addTarget(
+                    self, action: #selector(followingListButtonsDidTab(sender:)), for: .touchUpInside
+                )
                 followingListStackView.insertArrangedSubview($0, at: 0)
             }
     }
@@ -125,6 +150,12 @@ extension ChallengeVC {
             return button
         }()
         return followingPersonButton
+    }
+
+    @objc private func followingListButtonsDidTab(sender: UIButton) {
+        let indexPath = IndexPath(item: sender.tag, section: 0)
+        selectedPersonIndex = sender.tag
+        challengeListCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
 
     private func highlightingFollowingListButton(offset: Int) {

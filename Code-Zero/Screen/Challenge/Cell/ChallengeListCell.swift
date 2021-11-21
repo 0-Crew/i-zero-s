@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 
+protocol ChallengeListCellDelegate: AnyObject {
+    func didCalendarButtonTap()
+}
 class ChallengeListCell: UICollectionViewCell {
     static let identifier = "ChallengeListCell"
 
@@ -20,6 +23,9 @@ class ChallengeListCell: UICollectionViewCell {
             scrollView.delegate = self
         }
     }
+
+    // MARK: - Property
+    weak var delegate: ChallengeListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,12 +43,16 @@ class ChallengeListCell: UICollectionViewCell {
             challengView?.editButton.tag = $0.offset
         }
     }
+
+    @IBAction func calendarButtonDidTap(sender: UIButton) {
+        delegate?.didCalendarButtonTap()
+    }
 }
 
 extension ChallengeListCell: ChallengeViewDelegate {
     func didEditButtonTap(buttonTag: Int) {
-    }
 
+    }
 }
 
 extension ChallengeListCell: UIScrollViewDelegate {
