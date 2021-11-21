@@ -27,6 +27,10 @@ class CalendarVC: UIViewController {
         return button
     }()
 
+    fileprivate let gregorian = Calendar(identifier: .gregorian)
+
+    var challengeDates: [String] = ["2021-11-13","2021-11-14","2021-11-15","2021-11-16"]
+
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
@@ -196,8 +200,12 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
 
-        guard position == .current else { return }
         let todayCell = (cell as? TodayCalendarCell)
+        let challengeCell = (cell as? ChallengeCalendarCell)
+
+        guard position == .current else {
+            challengeCell?.selectionBoarderType = .none
+            return }
 
         todayCell?.selectionType = {
             if calendar.selectedDates.contains($0) {
@@ -206,6 +214,70 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                 return .none
             }
         }(date)
+
+        challengeCell?.selectionBoarderType = {
+
+            let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
+            if challengeDates.contains(stringToDate) {
+
+                let previousDate = self.gregorian.date(
+                    byAdding: .day, value: -1, to: date
+                )!.datePickerToString(format: "yyyy-MM-dd")
+
+                let nextDate = self.gregorian.date(
+                    byAdding: .day, value: 1, to: date
+                )!.datePickerToString(format: "yyyy-MM-dd")
+
+                if date.dayNumberOfWeek() == 7 { // 토요일이라면
+                    if !challengeDates.contains(previousDate) {
+                        return .bothBorder
+                    }
+                    return .rightBorder
+                } else if date.dayNumberOfWeek() == 1 { // 일요일이라면
+                    if !challengeDates.contains(nextDate) {
+                        return .bothBorder
+                    }
+                    return .leftBorder
+                }
+
+                if challengeDates.contains(previousDate) &&
+                    challengeDates.contains(nextDate) { // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
+                    return .middle // 중간 취급
+                } else if challengeDates.contains(previousDate) { // 이전날만 존재한다면
+                    return .rightBorder // 오른쪽 라운드 담당
+                } else { // 다음날만 존재한다면
+                    return .leftBorder // 왼쪽 라운드 담당
+                }
+
+            } else {
+                return .none
+            }
+
+        }()
+
     }
 
+}
+
+extension String {
+    func toDate() -> Date? { //"yyyy-MM-dd
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        if let date = dateFormatter.date(from: self) {
+            return date
+
+        } else {
+            return nil
+
+        }
+
+    }
+
+}
+
+extension Date {
+    func dayNumberOfWeek() -> Int? {
+        return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
 }
