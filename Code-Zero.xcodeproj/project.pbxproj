@@ -17,6 +17,7 @@
 		6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */; };
 		6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24B02748C8460071C9F2 /* UICollectionView+Extension.swift */; };
 		6E5B24B52749402B0071C9F2 /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24B42749402B0071C9F2 /* ChallengeView.swift */; };
+		6E5B24B6274A20210071C9F2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA84EB2731499800E09C20 /* Calendar.storyboard */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
 		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
 		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
@@ -497,6 +498,7 @@
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
+				6E5B24B6274A20210071C9F2 /* Calendar.storyboard in Resources */,
 				19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */,
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
