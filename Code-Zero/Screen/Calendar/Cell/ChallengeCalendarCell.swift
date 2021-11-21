@@ -13,6 +13,7 @@ enum SelectionBoarderType: Int {
     case leftBorder
     case middle
     case rightBorder
+    case bothBorder
 }
 
 class ChallengeCalendarCell: FSCalendarCell {
@@ -34,7 +35,7 @@ class ChallengeCalendarCell: FSCalendarCell {
         super.init(frame: frame)
 
         let selectionLayer = CAShapeLayer()
-        selectionLayer.fillColor = UIColor.orange.cgColor
+        selectionLayer.fillColor = UIColor.redCalendar.cgColor
         selectionLayer.actions = ["hidden": NSNull()]
         self.contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel!.layer)
         self.selectionLayer = selectionLayer
@@ -55,6 +56,8 @@ class ChallengeCalendarCell: FSCalendarCell {
 
         case .middle:
             self.selectionLayer.path = UIBezierPath(rect: self.selectionLayer.bounds).cgPath
+            self.selectionLayer.isHidden = false
+            self.titleLabel.textColor = .white
 
         case .leftBorder:
             let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
@@ -62,6 +65,8 @@ class ChallengeCalendarCell: FSCalendarCell {
             self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
                                                     byRoundingCorners: [.topLeft, .bottomLeft],
                                                     cornerRadii: cornerRadii).cgPath
+            self.selectionLayer.isHidden = false
+            self.titleLabel.textColor = .white
 
         case .rightBorder:
             let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
@@ -69,8 +74,20 @@ class ChallengeCalendarCell: FSCalendarCell {
             self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
                                                     byRoundingCorners: [.topRight, .bottomRight],
                                                     cornerRadii: cornerRadii).cgPath
+            self.selectionLayer.isHidden = false
+            self.titleLabel.textColor = .white
 
-        default: break
+        case .bothBorder:
+            let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
+                                             height: self.selectionLayer.frame.width / 2)
+            self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
+                                                    byRoundingCorners: [.topRight, .bottomRight, .topLeft, .bottomLeft],
+                                                    cornerRadii: cornerRadii).cgPath
+            self.selectionLayer.isHidden = false
+            self.titleLabel.textColor = .white
+
+        default:
+            self.selectionLayer.isHidden = true
 
         }
 
