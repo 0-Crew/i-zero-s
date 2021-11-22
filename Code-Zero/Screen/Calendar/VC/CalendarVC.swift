@@ -29,7 +29,7 @@ class CalendarVC: UIViewController {
 
     fileprivate let gregorian = Calendar(identifier: .gregorian)
 
-    var challengeDates: [String] = ["2021-11-13","2021-11-14","2021-11-15","2021-11-16"]
+    var challengeDates: [String] = ["2021-11-13", "2021-11-14", "2021-11-15", "2021-11-16"]
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -260,7 +260,8 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 }
 
 extension String {
-    func toDate() -> Date? { //"yyyy-MM-dd
+    func toDate() -> Date? {
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
@@ -269,7 +270,6 @@ extension String {
 
         } else {
             return nil
-
         }
 
     }

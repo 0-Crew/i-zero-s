@@ -50,16 +50,24 @@ class ChallengeCalendarCell: FSCalendarCell {
     override func layoutSubviews() {
 
         super.layoutSubviews()
-        self.selectionLayer.frame = self.contentView.bounds
+
 
         switch selectionBoarderType {
 
         case .middle:
+            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX,
+                                               y: contentView.bounds.minY,
+                                               width: contentView.bounds.width,
+                                               height: contentView.bounds.height-3)
             self.selectionLayer.path = UIBezierPath(rect: self.selectionLayer.bounds).cgPath
             self.selectionLayer.isHidden = false
             self.titleLabel.textColor = .white
 
         case .leftBorder:
+            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX+5,
+                                               y: contentView.bounds.minY,
+                                               width: contentView.bounds.width,
+                                               height: contentView.bounds.height-3)
             let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
                                              height: self.selectionLayer.frame.width / 2)
             self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
@@ -69,6 +77,10 @@ class ChallengeCalendarCell: FSCalendarCell {
             self.titleLabel.textColor = .white
 
         case .rightBorder:
+            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX-5,
+                                               y: contentView.bounds.minY,
+                                               width: contentView.bounds.width,
+                                               height: contentView.bounds.height-3)
             let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
                                              height: self.selectionLayer.frame.width / 2)
             self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
@@ -78,10 +90,15 @@ class ChallengeCalendarCell: FSCalendarCell {
             self.titleLabel.textColor = .white
 
         case .bothBorder:
+            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX+4,
+                                               y: contentView.bounds.minY,
+                                               width: contentView.bounds.width-8,
+                                               height: contentView.bounds.height-3)
             let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
                                              height: self.selectionLayer.frame.width / 2)
             self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
-                                                    byRoundingCorners: [.topRight, .bottomRight, .topLeft, .bottomLeft],
+                                                    byRoundingCorners: [.topRight, .bottomRight,
+                                                                        .topLeft, .bottomLeft],
                                                     cornerRadii: cornerRadii).cgPath
             self.selectionLayer.isHidden = false
             self.titleLabel.textColor = .white
