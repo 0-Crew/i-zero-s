@@ -12,6 +12,7 @@ import SnapKit
 class ChallengeVC: UIViewController {
 
     // MARK: - Property
+    private var isChallengingLists: [Bool] = [true, true, false]
     private var followingPeopleFirstNameArray: [String] = ["김", "이", "박"]
     private var selectedPersonIndex: Int = 0 {
         didSet {
@@ -60,14 +61,21 @@ class ChallengeVC: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension ChallengeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return followingPeopleFirstNameArray.count <= 3 ? 3 : followingPeopleFirstNameArray.count
     }
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        if isChallengingLists[indexPath.item] {
+            let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
+            cell.setChallengeListCell(isMine: indexPath.item == 0)
+            cell.delegate = self
+            return cell
+        }
 
-        let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
+        let cell: EmptyChallengeCell = collectionView.dequeueCell(indexPath: indexPath)
+        cell.setEmptyChallengeView(isMine: indexPath.item == 0)
         cell.delegate = self
         return cell
     }
@@ -96,6 +104,12 @@ extension ChallengeVC: ChallengeListCellDelegate {
     func didCalendarButtonTap() {
         // TODO: - 캘린더 뷰 연결할 곳
         print("Calendar Button Presents")
+    }
+}
+
+extension ChallengeVC: EmptyChallengeCellDelegate {
+    func didStartChallengeViewTap() {
+        print(#function)
     }
 }
 

@@ -14,6 +14,11 @@ protocol ChallengeListCellDelegate: AnyObject {
 class ChallengeListCell: UICollectionViewCell {
     static let identifier = "ChallengeListCell"
 
+    // MARK: - Property
+    private var bottleImageLists: [UIImage?] = (0...7).map { "icBottleMain\($0)" }
+    .map { UIImage(named: $0)}
+    internal var isMine: Bool!
+
     // MARK: - IBOutlet
     @IBOutlet weak var bottleImageView: UIImageView!
     @IBOutlet weak var initialLineView: UIView!
@@ -24,10 +29,6 @@ class ChallengeListCell: UICollectionViewCell {
             scrollView.delegate = self
         }
     }
-
-    // MARK: - Property
-    private var bottleImageLists: [UIImage?] = (0...7).map { "icBottleMain\($0)" }
-    .map { UIImage(named: $0)}
 
     var challengeStateList: [ChallengeState] = [
         .didChallengeCompleted,
@@ -54,12 +55,7 @@ class ChallengeListCell: UICollectionViewCell {
             startColor: .orangeMain,
             endColor: UIColor(red: 70, green: 65, blue: 57)
         )
-        challengeListStackView.arrangedSubviews.enumerated().forEach {
-            let challengView = $0.element as? ChallengeView
-            challengView?.delegate = self
-            challengView?.setChallengeState(state: challengeStateList[$0.offset])
-            challengView?.challengeOffset = $0.offset
-        }
+        setChallengeListCell(isMine: true)
         updateBottleImageView(stateList: challengeStateList)
     }
 
@@ -71,6 +67,16 @@ class ChallengeListCell: UICollectionViewCell {
             .count
 
         bottleImageView.image = bottleImageLists[remainCount]
+    }
+
+    internal func setChallengeListCell(isMine: Bool) {
+        self.isMine = isMine
+        challengeListStackView.arrangedSubviews.enumerated().forEach {
+            let challengView = $0.element as? ChallengeView
+            challengView?.delegate = isMine ? self : nil
+            challengView?.setChallengeState(state: challengeStateList[$0.offset], isMine: isMine)
+            challengView?.challengeOffset = $0.offset
+        }
     }
 
     @IBAction func calendarButtonDidTap(sender: UIButton) {

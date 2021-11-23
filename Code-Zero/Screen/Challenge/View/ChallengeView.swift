@@ -29,10 +29,10 @@ class ChallengeView: UIView {
 
     internal var challengeOffset: Int!
     internal var challengeState: ChallengeState = .willChallenge
+    internal var isMine: Bool!
     internal weak var delegate: ChallengeViewDelegate!
     private var tapGestureRecognizer: UITapGestureRecognizer?
-    private var toggleChallengeStateHandler: (() -> Void)? = nil
-
+    private var toggleChallengeStateHandler: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,15 +60,16 @@ class ChallengeView: UIView {
     private func initView() {
         backgroundColor = .clear
         highlightingView.setBorder(borderColor: .orangeMain, borderWidth: 1.0)
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(didToggleChallengeStateTap))
         dropWaterImageView.isUserInteractionEnabled = true
         dropWaterImageView.addGestureRecognizer(tapGestureRecognizer)
     }
-
-    internal func setChallengeState(state: ChallengeState) {
+    // swiftlint:disable function_body_length
+    internal func setChallengeState(state: ChallengeState, isMine: Bool) {
         challengeState = state
+        self.isMine = isMine
         switch state {
         case .willChallenge:
             highlightingView.isHidden = true
@@ -94,39 +95,39 @@ class ChallengeView: UIView {
 
             challengeTextField.textColor = .orangeMain
 
-            editButton.isHidden = false
+            editButton.isHidden = isMine ? false : true
             editButton.tintColor = .gray1
         case .challengingCompleted:
             highlightingView.isHidden = false
             highlightingView.backgroundColor = .orangeMain
 
             dropWaterImageView.image = UIImage(named: "icWaterSuccess")
-            toggleChallengeStateHandler = nonCompleteChallengeHandlerProvider
+            toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandlerProvider : nil
 
             dateLabel.isHidden = true
 
             challengeTextField.textColor = .white
 
-            editButton.isHidden = false
+            editButton.isHidden = isMine ? false : true
             editButton.tintColor = .white
         case .didChallengeNotCompleted:
             highlightingView.isHidden = true
 
             dropWaterImageView.image = UIImage(named: "icWaterToday")
-            toggleChallengeStateHandler = completeChallengeHandlerProvider
+            toggleChallengeStateHandler = isMine ? completeChallengeHandlerProvider : nil
 
             dateLabel.isHidden = false
             dateLabel.textColor = .gray1
 
             challengeTextField.textColor = .gray4
 
-            editButton.isHidden = false
+            editButton.isHidden = isMine ? false : true
             editButton.tintColor = .gray1
         case .didChallengeCompleted:
             highlightingView.isHidden = true
 
             dropWaterImageView.image = UIImage(named: "icWaterSuccess")
-            toggleChallengeStateHandler = nonCompleteChallengeHandlerProvider
+            toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandlerProvider : nil
 
             dateLabel.isHidden = true
 
@@ -136,6 +137,7 @@ class ChallengeView: UIView {
             editButton.tintColor = .gray1
         }
     }
+    // swiftlint:enable function_body_length
 
     @objc func didToggleChallengeStateTap() {
         toggleChallengeStateHandler?()
@@ -159,17 +161,17 @@ class ChallengeView: UIView {
 
     private func setChallengeStateComplete() {
         if challengeState == .challengingNotCompleted {
-            setChallengeState(state: .challengingCompleted)
+            setChallengeState(state: .challengingCompleted, isMine: isMine)
         } else if challengeState == .didChallengeNotCompleted {
-            setChallengeState(state: .didChallengeCompleted)
+            setChallengeState(state: .didChallengeCompleted, isMine: isMine)
         }
     }
 
     private func setChallengeStateNonComplete() {
         if challengeState == .challengingCompleted {
-            setChallengeState(state: .challengingNotCompleted)
+            setChallengeState(state: .challengingNotCompleted, isMine: isMine)
         } else if challengeState == .didChallengeCompleted {
-            setChallengeState(state: .didChallengeNotCompleted)
+            setChallengeState(state: .didChallengeNotCompleted, isMine: isMine)
         }
     }
 
