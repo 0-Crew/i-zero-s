@@ -55,6 +55,9 @@ class ChallengeListCell: UICollectionViewCell {
             startColor: .orangeMain,
             endColor: UIColor(red: 70, green: 65, blue: 57)
         )
+        if UIScreen.main.bounds.height <= 667 {
+            scrollView.contentInset = .init(top: 0, left: 0, bottom: 83, right: 0)
+        }
         setChallengeListCell(isMine: true)
         updateBottleImageView(stateList: challengeStateList)
     }
