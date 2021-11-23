@@ -15,6 +15,7 @@ class ChallengeListCell: UICollectionViewCell {
     static let identifier = "ChallengeListCell"
 
     // MARK: - IBOutlet
+    @IBOutlet weak var bottleImageView: UIImageView!
     @IBOutlet weak var initialLineView: UIView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var challengeListStackView: UIStackView!
@@ -25,6 +26,22 @@ class ChallengeListCell: UICollectionViewCell {
     }
 
     // MARK: - Property
+    private var bottleImageLists: [UIImage?] = (0...7).map { "icBottleMain\($0)" }
+    .map { UIImage(named: $0)}
+
+    var challengeStateList: [ChallengeState] = [
+        .didChallengeCompleted,
+        .didChallengeCompleted,
+        .didChallengeNotCompleted,
+        .didChallengeCompleted,
+        .didChallengeNotCompleted,
+        .didChallengeNotCompleted,
+        .challengingNotCompleted
+    ] {
+        didSet {
+            updateBottleImageView(stateList: challengeStateList)
+        }
+    }
     weak var delegate: ChallengeListCellDelegate?
 
     override func awakeFromNib() {
@@ -40,8 +57,20 @@ class ChallengeListCell: UICollectionViewCell {
         challengeListStackView.arrangedSubviews.enumerated().forEach {
             let challengView = $0.element as? ChallengeView
             challengView?.delegate = self
-            challengView?.editButton.tag = $0.offset
+            challengView?.setChallengeState(state: challengeStateList[$0.offset])
+            challengView?.challengeOffset = $0.offset
         }
+        updateBottleImageView(stateList: challengeStateList)
+    }
+
+    private func updateBottleImageView(stateList: [ChallengeState]) {
+        let remainCount = 7 - stateList
+            .filter {
+                $0 == .willChallenge || $0 == .challengingNotCompleted || $0 == .didChallengeNotCompleted
+            }
+            .count
+
+        bottleImageView.image = bottleImageLists[remainCount]
     }
 
     @IBAction func calendarButtonDidTap(sender: UIButton) {
@@ -50,8 +79,12 @@ class ChallengeListCell: UICollectionViewCell {
 }
 
 extension ChallengeListCell: ChallengeViewDelegate {
-    func didEditButtonTap(buttonTag: Int) {
+    func didEditButtonTap(challengeOffset: Int) {
 
+    }
+
+    func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
+        challengeStateList[challengeOffset] = currentState
     }
 }
 

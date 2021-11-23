@@ -221,6 +221,7 @@
             </constraints>
             <size key="customSize" width="235" height="194"/>
             <connections>
+                <outlet property="bottleImageView" destination="k4f-mp-vON" id="jqR-Ir-RIV"/>
                 <outlet property="challengeListStackView" destination="1N9-7v-Slo" id="Jzw-BT-aDT"/>
                 <outlet property="initialLineView" destination="uWI-m0-MNk" id="0dA-dc-R4I"/>
                 <outlet property="lineView" destination="Jo4-Hb-Out" id="Oa4-D9-9bI"/>
