@@ -12,6 +12,7 @@ import SnapKit
 class ChallengeVC: UIViewController {
 
     // MARK: - Property
+    // isChallengingLists[0] 값을 false 로 바꾸면 Empty View 보입니다.
     private var isChallengingLists: [Bool] = [true, true, false]
     private var followingPeopleFirstNameArray: [String] = ["김", "이", "박"]
     private var selectedPersonIndex: Int = 0 {
