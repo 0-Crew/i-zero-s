@@ -134,22 +134,59 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="jxC-yX-Ty3"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD2-kI-bZf">
+                                <rect key="frame" x="302" y="90" width="53" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9J8-8U-kC3"/>
+                                    <constraint firstAttribute="width" constant="53" id="DBt-02-1aE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="팔로잉">
+                                    <color key="titleColor" name="orangeMain"/>
+                                </state>
+                                <connections>
+                                    <action selector="followingButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6vu-Oq-bHQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q89-Ae-y0z">
+                                <rect key="frame" x="231" y="90" width="63" height="30"/>
+                                <color key="backgroundColor" name="orangeMain"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ftq-eT-7Sc"/>
+                                    <constraint firstAttribute="width" constant="63" id="IXK-Ee-ijH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="응원하기">
+                                    <color key="titleColor" name="white"/>
+                                </state>
+                                <connections>
+                                    <action selector="cheerUpButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Sb2-CE-M5c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="6On-4d-nRj" firstAttribute="leading" secondItem="9r4-f4-ZN1" secondAttribute="trailing" constant="1" id="7fb-2F-AMj"/>
                             <constraint firstItem="Ab9-3r-yJD" firstAttribute="top" secondItem="9r4-f4-ZN1" secondAttribute="bottom" constant="10" id="9lD-rL-RkE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cD2-kI-bZf" secondAttribute="trailing" constant="20" id="Fp1-Xl-6Ks"/>
+                            <constraint firstItem="cD2-kI-bZf" firstAttribute="top" secondItem="Q89-Ae-y0z" secondAttribute="top" id="J6Z-zS-CJS"/>
                             <constraint firstItem="9r4-f4-ZN1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Ppp-X8-cPN"/>
                             <constraint firstItem="Ab9-3r-yJD" firstAttribute="leading" secondItem="9r4-f4-ZN1" secondAttribute="leading" id="XFr-ZS-NdD"/>
                             <constraint firstItem="6On-4d-nRj" firstAttribute="top" secondItem="9r4-f4-ZN1" secondAttribute="top" id="eUp-82-bND"/>
+                            <constraint firstItem="cD2-kI-bZf" firstAttribute="leading" secondItem="Q89-Ae-y0z" secondAttribute="trailing" constant="8" id="gjU-Wv-KUY"/>
                             <constraint firstItem="9r4-f4-ZN1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hDp-yg-n3h"/>
+                            <constraint firstItem="Q89-Ae-y0z" firstAttribute="top" secondItem="Ab9-3r-yJD" secondAttribute="top" id="vYa-a6-ijr"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="challengeListCollectionView" destination="pbC-4l-Dm7" id="UFP-w5-VR7"/>
+                        <outlet property="cheerUpButton" destination="Q89-Ae-y0z" id="9c3-xd-hLH"/>
+                        <outlet property="followingButton" destination="cD2-kI-bZf" id="Ttf-XZ-V4W"/>
                         <outlet property="followingListStackView" destination="Ab9-3r-yJD" id="XYc-Gf-tJn"/>
                         <outlet property="nickNameLabel" destination="9r4-f4-ZN1" id="Yzl-sD-36x"/>
                     </connections>

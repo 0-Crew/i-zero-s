@@ -17,6 +17,7 @@ class ChallengeVC: UIViewController {
     private var selectedPersonIndex: Int = 0 {
         didSet {
             highlightingFollowingListButton(offset: selectedPersonIndex)
+            updateSocialButtons(offset: selectedPersonIndex)
         }
     }
 
@@ -39,6 +40,8 @@ class ChallengeVC: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var followingListStackView: UIStackView!
+    @IBOutlet weak var cheerUpButton: UIButton!
+    @IBOutlet weak var followingButton: UIButton!
     @IBOutlet weak var challengeListCollectionView: UICollectionView!
 
     // MARK: - Lifecycle Method
@@ -46,15 +49,45 @@ class ChallengeVC: UIViewController {
         super.viewDidLoad()
         setNavigationItems()
         fetchFollowingPeopleFirstNameList()
+        followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         setFollowingListStackView()
         setCollectionView()
         highlightingFollowingListButton(offset: selectedPersonIndex)
+        updateSocialButtons(offset: selectedPersonIndex)
     }
 
     // MARK: - IBAction Method
+
+    @IBAction func cheerUpButtonDidTap(_ sender: Any) {
+
+    }
+
+    @IBAction func followingButtonDidTap(_ sender: Any) {
+
+    }
+
+    @objc private func followingListButtonsDidTab(sender: UIButton) {
+        let indexPath = IndexPath(item: sender.tag, section: 0)
+        selectedPersonIndex = sender.tag
+        challengeListCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
         followingPeopleFirstNameArray = ["김", "이", "박"]
+    }
+    private func highlightingFollowingListButton(offset: Int) {
+        followingListStackView.arrangedSubviews[0..<3].enumerated().forEach { (offset, view) in
+            guard let button = view as? UIButton else { return }
+            let color: UIColor = offset == selectedPersonIndex ? .darkGray2 : .gray3
+            button.setTitleColor(color, for: .normal)
+            button.setBorder(borderColor: color, borderWidth: 1)
+        }
+    }
+    private func updateSocialButtons(offset: Int) {
+        let isMine = offset == 0
+        let isChallenging = isChallengingLists[offset]
+        cheerUpButton.isHidden = (isChallenging == false) || isMine
+        followingButton.isHidden = isMine
     }
 }
 
@@ -166,20 +199,6 @@ extension ChallengeVC {
         return followingPersonButton
     }
 
-    @objc private func followingListButtonsDidTab(sender: UIButton) {
-        let indexPath = IndexPath(item: sender.tag, section: 0)
-        selectedPersonIndex = sender.tag
-        challengeListCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-    }
-
-    private func highlightingFollowingListButton(offset: Int) {
-        followingListStackView.arrangedSubviews[0..<3].enumerated().forEach { (offset, view) in
-            guard let button = view as? UIButton else { return }
-            let color: UIColor = offset == selectedPersonIndex ? .darkGray2 : .gray3
-            button.setTitleColor(color, for: .normal)
-            button.setBorder(borderColor: color, borderWidth: 1)
-        }
-    }
     private func changeFollowingListFirstNames(names: [String]) {
         followingListStackView.arrangedSubviews.enumerated().forEach { (offset, view) in
             let button = view as? UIButton
