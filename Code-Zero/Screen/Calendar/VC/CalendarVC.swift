@@ -214,36 +214,37 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         }(date)
 
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
-        let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first
+        let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first ?? -1
         let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
         let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
 
         challengeCell?.cellBoarderType = {
+            print(date, challengeColor)
             if challengeDates.contains(where: { $0.0 == stringToDate }) {
 
                 if date.dayNumberOfWeek() == 7 { // 토요일이라면
                     if !challengeDates.contains(where: { $0.0 == previousDate }) {
-                        return .bothBorder
+                        return .bothBorder(color: challengeColor)
                     }
-                    return .rightBorder
+                    return .rightBorder(color: challengeColor)
                 } else if date.dayNumberOfWeek() == 1 { // 일요일이라면
                     if !challengeDates.contains(where: { $0.0 == nextDate }) {
-                        return .bothBorder
+                        return .bothBorder(color: challengeColor)
                     }
-                    return .leftBorder
+                    return .leftBorder(color: challengeColor)
                 }
 
                 if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) &&
                     challengeDates.contains(where: { $0.0 == nextDate && $0.1 == challengeColor }) {
                     // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
-                    return .middle // 중간 취급
+                    return .middle(color: challengeColor) // 중간 취급
                 } else if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) {
                     // 이전날만 존재한다면
-                    return .rightBorder // 오른쪽 라운드 담당
+                    return .rightBorder(color: challengeColor) // 오른쪽 라운드 담당
                 } else { // 다음날만 존재한다면
-                    return .leftBorder // 왼쪽 라운드 담당
+                    return .leftBorder(color: challengeColor) // 왼쪽 라운드 담당
                 }
 
             } else {
