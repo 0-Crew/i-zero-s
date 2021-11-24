@@ -29,11 +29,10 @@ class CalendarVC: UIViewController {
     }()
 
     fileprivate let gregorian = Calendar(identifier: .gregorian)
-    private var challengeDates: [String] = ["2021-11-13",
-                                            "2021-11-14",
-                                            "2021-11-15",
-                                            "2021-11-16",
-                                            "2021-11-17"]
+    private var challengeDates: [(String, Int)] = [("2021-11-22", 1), ("2021-11-23", 1), ("2021-11-24", 1),
+                                                   ("2021-11-01", 2), ("2021-11-02", 2), ("2021-11-03", 2),
+                                                   ("2021-11-04", 2), ("2021-11-05", 3), ("2021-11-06", 3),
+                                                   ("2021-11-07", 3)]
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -214,35 +213,34 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             }
         }(date)
 
+        let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
+        let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first
+        let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
+            .datePickerToString(format: "yyyy-MM-dd")
+        let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
+            .datePickerToString(format: "yyyy-MM-dd")
+
         challengeCell?.cellBoarderType = {
-
-            let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
-            if challengeDates.contains(stringToDate) {
-
-                let previousDate = self.gregorian.date(
-                    byAdding: .day, value: -1, to: date
-                )!.datePickerToString(format: "yyyy-MM-dd")
-
-                let nextDate = self.gregorian.date(
-                    byAdding: .day, value: 1, to: date
-                )!.datePickerToString(format: "yyyy-MM-dd")
+            if challengeDates.contains(where: { $0.0 == stringToDate }) {
 
                 if date.dayNumberOfWeek() == 7 { // 토요일이라면
-                    if !challengeDates.contains(previousDate) {
+                    if !challengeDates.contains(where: { $0.0 == previousDate }) {
                         return .bothBorder
                     }
                     return .rightBorder
                 } else if date.dayNumberOfWeek() == 1 { // 일요일이라면
-                    if !challengeDates.contains(nextDate) {
+                    if !challengeDates.contains(where: { $0.0 == nextDate }) {
                         return .bothBorder
                     }
                     return .leftBorder
                 }
 
-                if challengeDates.contains(previousDate) &&
-                    challengeDates.contains(nextDate) { // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
+                if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) &&
+                    challengeDates.contains(where: { $0.0 == nextDate && $0.1 == challengeColor }) {
+                    // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
                     return .middle // 중간 취급
-                } else if challengeDates.contains(previousDate) { // 이전날만 존재한다면
+                } else if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) {
+                    // 이전날만 존재한다면
                     return .rightBorder // 오른쪽 라운드 담당
                 } else { // 다음날만 존재한다면
                     return .leftBorder // 왼쪽 라운드 담당
