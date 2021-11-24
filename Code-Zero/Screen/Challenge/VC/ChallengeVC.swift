@@ -10,10 +10,13 @@ import SnapKit
 
 class ChallengeVC: UIViewController {
 
+    typealias FollowingPepleChallengeTuple = (firstName: String, isChallenging: Bool)
+
     // MARK: - Property
     // isChallengingLists[0] 값을 false 로 바꾸면 Empty View 보입니다.
-    private var isChallengingLists: [Bool] = [true, true, false]
-    private var followingPeopleFirstNameArray: [String] = ["김", "이", "박"]
+    private var followingPeopleChallengingLists: [FollowingPepleChallengeTuple] = [
+        ("김", true), ("이", false), ("박", false)
+    ]
     private var selectedPersonIndex: Int = 0 {
         didSet {
             highlightingFollowingListButton(offset: selectedPersonIndex)
@@ -73,7 +76,11 @@ class ChallengeVC: UIViewController {
     }
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
-        followingPeopleFirstNameArray = ["김", "이", "박"]
+        followingPeopleChallengingLists = [
+            ("김", true),
+            ("이", false),
+            ("박", false)
+        ]
     }
     private func highlightingFollowingListButton(offset: Int) {
         followingListStackView.arrangedSubviews[0..<3].enumerated().forEach { (offset, view) in
@@ -85,7 +92,7 @@ class ChallengeVC: UIViewController {
     }
     private func updateSocialButtons(offset: Int) {
         let isMine = offset == 0
-        let isChallenging = isChallengingLists[offset]
+        let isChallenging = followingPeopleChallengingLists[offset].isChallenging
         cheerUpButton.isHidden = (isChallenging == false) || isMine
         followingButton.isHidden = isMine
     }
@@ -94,13 +101,13 @@ class ChallengeVC: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension ChallengeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return followingPeopleFirstNameArray.count <= 3 ? 3 : followingPeopleFirstNameArray.count
+        return followingPeopleChallengingLists.count <= 3 ? 3 : followingPeopleChallengingLists.count
     }
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        if isChallengingLists[indexPath.item] {
+        if followingPeopleChallengingLists[indexPath.item].isChallenging {
             let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
             cell.setChallengeListCell(isMine: indexPath.item == 0)
             cell.delegate = self
@@ -159,10 +166,10 @@ extension ChallengeVC {
     }
 
     private func setFollowingListStackView() {
-        followingPeopleFirstNameArray[0..<3]
+        followingPeopleChallengingLists[0..<3]
             .enumerated()
             .map { (offset, element) -> UIButton in
-                let button = provideFollowingListButton(text: element)
+                let button = provideFollowingListButton(text: element.firstName)
                 button.tag = offset
                 return button
             }
