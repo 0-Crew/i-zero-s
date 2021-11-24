@@ -12,25 +12,13 @@ protocol ChallengeListCellDelegate: AnyObject {
     func didCalendarButtonTap()
 }
 class ChallengeListCell: UICollectionViewCell {
-    static let identifier = "ChallengeListCell"
 
     // MARK: - Property
-    private var bottleImageLists: [UIImage?] = (0...7).map { "icBottleMain\($0)" }
-    .map { UIImage(named: $0)}
-    internal var isMine: Bool!
+    private var bottleImageLists: [UIImage?] = (0...7)
+        .map { "icBottleMain\($0)" }
+        .map { UIImage(named: $0) }
 
-    // MARK: - IBOutlet
-    @IBOutlet weak var bottleImageView: UIImageView!
-    @IBOutlet weak var initialLineView: UIView!
-    @IBOutlet weak var lineView: UIView!
-    @IBOutlet weak var challengeListStackView: UIStackView!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet {
-            scrollView.delegate = self
-        }
-    }
-
-    var challengeStateList: [ChallengeState] = [
+    internal var challengeStateList: [ChallengeState] = [
         .didChallengeCompleted,
         .didChallengeCompleted,
         .didChallengeNotCompleted,
@@ -43,7 +31,19 @@ class ChallengeListCell: UICollectionViewCell {
             updateBottleImageView(stateList: challengeStateList)
         }
     }
-    weak var delegate: ChallengeListCellDelegate?
+    internal weak var delegate: ChallengeListCellDelegate?
+    internal var isMine: Bool!
+
+    // MARK: - IBOutlet
+    @IBOutlet weak var bottleImageView: UIImageView!
+    @IBOutlet weak var initialLineView: UIView!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var challengeListStackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.delegate = self
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
