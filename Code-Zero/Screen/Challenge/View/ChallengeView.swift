@@ -20,6 +20,90 @@ enum ChallengeState {
     case didChallengeCompleted
 }
 
+extension ChallengeState {
+
+    var highlightViewIsHidden: Bool {
+        switch self {
+        case .willChallenge, .didChallengeNotCompleted, .didChallengeCompleted:
+            return true
+        case .challengingNotCompleted, .challengingCompleted:
+            return false
+        }
+    }
+    var highlightViewBackgroundColor: UIColor? {
+        switch self {
+        case .willChallenge, .challengingNotCompleted, .didChallengeNotCompleted, .didChallengeCompleted:
+            return nil
+        case .challengingCompleted:
+            return .orangeMain
+        }
+    }
+
+    var dropWaterImage: UIImage? {
+        switch self {
+        case .willChallenge:
+            return UIImage(named: "icWaterNone")
+        case .challengingNotCompleted, .didChallengeNotCompleted:
+            return UIImage(named: "icWaterToday")
+        case .challengingCompleted, .didChallengeCompleted:
+            return UIImage(named: "icWaterSuccess")
+        }
+    }
+
+    var dateLabelIsHidden: Bool {
+        switch self {
+        case .willChallenge, .challengingNotCompleted, .didChallengeNotCompleted:
+            return false
+        case .challengingCompleted, .didChallengeCompleted:
+            return true
+        }
+    }
+
+    var dateLabelTextColor: UIColor? {
+        switch self {
+        case .willChallenge, .didChallengeNotCompleted:
+            return .gray3
+        case .challengingNotCompleted:
+            return .orangeMain
+        case .challengingCompleted, .didChallengeCompleted:
+            return nil
+        }
+    }
+
+    var challengeTextFieldTextColor: UIColor? {
+        switch self {
+        case .willChallenge:
+            return .gray2
+        case .challengingNotCompleted:
+            return .orangeMain
+        case .challengingCompleted:
+            return .white
+        case .didChallengeNotCompleted, .didChallengeCompleted:
+            return .gray4
+        }
+    }
+
+    var editButtonIsHidden: Bool {
+        switch self {
+        case .willChallenge, .challengingCompleted, .didChallengeCompleted:
+            return true
+        case .challengingNotCompleted, .didChallengeNotCompleted:
+            return false
+        }
+    }
+
+    var editButtonTintColor: UIColor? {
+        switch self {
+        case .willChallenge, .didChallengeCompleted:
+            return nil
+        case .challengingNotCompleted, .didChallengeNotCompleted:
+            return .gray1
+        case .challengingCompleted:
+            return .white
+        }
+    }
+}
+
 class ChallengeView: UIView {
     @IBOutlet weak var highlightingView: UIView!
     @IBOutlet weak var dropWaterImageView: UIImageView!
@@ -66,78 +150,33 @@ class ChallengeView: UIView {
         dropWaterImageView.isUserInteractionEnabled = true
         dropWaterImageView.addGestureRecognizer(tapGestureRecognizer)
     }
-    // swiftlint:disable function_body_length
+    
     internal func setChallengeState(state: ChallengeState, isMine: Bool) {
         challengeState = state
         self.isMine = isMine
+
+        highlightingView.isHidden = state.highlightViewIsHidden
+        highlightingView.backgroundColor = state.highlightViewBackgroundColor
+
+        dropWaterImageView.image = state.dropWaterImage
+
+        dateLabel.isHidden = state.dateLabelIsHidden
+        dateLabel.textColor = state.dateLabelTextColor
+
+        challengeTextField.textColor = state.challengeTextFieldTextColor
+
+        editButton.isHidden = isMine ? state.editButtonIsHidden : true
+        editButton.tintColor = state.editButtonTintColor
+
         switch state {
         case .willChallenge:
-            highlightingView.isHidden = true
-
-            dropWaterImageView.image = UIImage(named: "icWaterNone")
             toggleChallengeStateHandler = nil
-
-            dateLabel.isHidden = false
-            dateLabel.textColor = .gray3
-
-            challengeTextField.textColor = .gray2
-
-            editButton.isHidden = true
-        case .challengingNotCompleted:
-            highlightingView.isHidden = false
-            highlightingView.backgroundColor = .clear
-
-            dropWaterImageView.image = UIImage(named: "icWaterToday")
-            toggleChallengeStateHandler = completeChallengeHandlerProvider
-
-            dateLabel.isHidden = false
-            dateLabel.textColor = .orangeMain
-
-            challengeTextField.textColor = .orangeMain
-
-            editButton.isHidden = isMine ? false : true
-            editButton.tintColor = .gray1
-        case .challengingCompleted:
-            highlightingView.isHidden = false
-            highlightingView.backgroundColor = .orangeMain
-
-            dropWaterImageView.image = UIImage(named: "icWaterSuccess")
-            toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandlerProvider : nil
-
-            dateLabel.isHidden = true
-
-            challengeTextField.textColor = .white
-
-            editButton.isHidden = isMine ? false : true
-            editButton.tintColor = .white
-        case .didChallengeNotCompleted:
-            highlightingView.isHidden = true
-
-            dropWaterImageView.image = UIImage(named: "icWaterToday")
+        case .challengingNotCompleted, .didChallengeNotCompleted:
             toggleChallengeStateHandler = isMine ? completeChallengeHandlerProvider : nil
-
-            dateLabel.isHidden = false
-            dateLabel.textColor = .gray1
-
-            challengeTextField.textColor = .gray4
-
-            editButton.isHidden = isMine ? false : true
-            editButton.tintColor = .gray1
-        case .didChallengeCompleted:
-            highlightingView.isHidden = true
-
-            dropWaterImageView.image = UIImage(named: "icWaterSuccess")
+        case .challengingCompleted, .didChallengeCompleted:
             toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandlerProvider : nil
-
-            dateLabel.isHidden = true
-
-            challengeTextField.textColor = .gray4
-
-            editButton.isHidden = true
-            editButton.tintColor = .gray1
         }
     }
-    // swiftlint:enable function_body_length
 
     @objc func didToggleChallengeStateTap() {
         toggleChallengeStateHandler?()
