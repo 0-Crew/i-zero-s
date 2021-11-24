@@ -15,7 +15,7 @@ extension UIViewController {
 
     /// Device Width ratio via zeplin view
     var deviceWidthRatio: CGFloat {
-        return UIScreen.main.bounds.width / 812.0
+        return UIScreen.main.bounds.width / 375.0
     }
 }
 
