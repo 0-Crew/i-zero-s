@@ -169,7 +169,7 @@ extension ChallengeVC {
         followingPeopleChallengingLists[0..<3]
             .enumerated()
             .map { (offset, element) -> UIButton in
-                let button = provideFollowingListButton(text: element.firstName)
+                let button = makeFollowingListButton(text: element.firstName)
                 button.tag = offset
                 return button
             }
@@ -190,7 +190,7 @@ extension ChallengeVC {
         }
     }
 
-    private func provideFollowingListButton(text: String) -> UIButton {
+    private func makeFollowingListButton(text: String) -> UIButton {
         let followingPersonButton: UIButton = {
             let button = UIButton(type: .custom)
             button.snp.makeConstraints {
