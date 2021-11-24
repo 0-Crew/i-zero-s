@@ -11,7 +11,8 @@ import SnapKit
 
 class CalendarVC: UIViewController {
 
-    lazy var leftMonthButton: UIButton = {
+    // MARK: - Property
+    private lazy var leftMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icArrowLeft"), for: .normal)
         button.addTarget(self, action: #selector(moveMonthButtonDidTap), for: .touchUpInside)
@@ -19,7 +20,7 @@ class CalendarVC: UIViewController {
         return button
     }()
 
-    lazy var rightMonthButton: UIButton = {
+    private lazy var rightMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icArrowRight"), for: .normal)
         button.addTarget(self, action: #selector(moveMonthButtonDidTap), for: .touchUpInside)
@@ -28,8 +29,11 @@ class CalendarVC: UIViewController {
     }()
 
     fileprivate let gregorian = Calendar(identifier: .gregorian)
-
-    var challengeDates: [String] = ["2021-11-13", "2021-11-14", "2021-11-15", "2021-11-16"]
+    private var challengeDates: [String] = ["2021-11-13",
+                                            "2021-11-14",
+                                            "2021-11-15",
+                                            "2021-11-16",
+                                            "2021-11-17"]
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -52,8 +56,7 @@ extension CalendarVC {
 
     // MARK: - View Style
     func setView() {
-
-        self.view.backgroundColor = .darkGray2
+        view.backgroundColor = .darkGray2
         scrollView.backgroundColor = .darkGray2
 
         calendar.dataSource = self
@@ -87,13 +90,11 @@ extension CalendarVC {
         calendar.appearance.todayColor = .clear
         calendar.appearance.todaySelectionColor = .none
         calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
-
     }
 
     private func makeButton() {
-
-        self.view.addSubview(leftMonthButton)
-        self.view.addSubview(rightMonthButton)
+        view.addSubview(leftMonthButton)
+        view.addSubview(rightMonthButton)
 
         leftMonthButton.snp.makeConstraints {
             $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
@@ -106,15 +107,13 @@ extension CalendarVC {
             $0.right.equalTo(calendar.snp.right).offset(-5)
             $0.width.height.equalTo(24)
         }
-
     }
 
     override func updateViewConstraints() {
-
         var height: CGFloat = 0.0
         height += calendar.frame.height
-        self.view.frame.size.height = 700 // 추상적인 숫자 변경 필요
-        self.view.frame.origin.y = UIScreen.main.bounds.height - height - 350
+        view.frame.size.height = 700 // 추상적인 숫자 변경 필요
+        view.frame.origin.y = UIScreen.main.bounds.height - height - 350
 
         view.clipsToBounds = true
         view.layer.cornerRadius = 25
@@ -204,7 +203,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         let challengeCell = (cell as? ChallengeCalendarCell)
 
         guard position == .current else {
-            challengeCell?.selectionBoarderType = .none
+            challengeCell?.cellBoarderType = .none
             return }
 
         todayCell?.selectionType = {
@@ -215,7 +214,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             }
         }(date)
 
-        challengeCell?.selectionBoarderType = {
+        challengeCell?.cellBoarderType = {
 
             let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
             if challengeDates.contains(stringToDate) {
