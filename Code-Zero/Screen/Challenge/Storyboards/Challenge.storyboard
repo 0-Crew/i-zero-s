@@ -90,13 +90,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8oK-8B-GAh">
-                                                    <rect key="frame" x="79.5" y="193.33333333333334" width="194" height="36"/>
+                                                    <rect key="frame" x="77" y="193.33333333333334" width="199.5" height="36"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icStarWhite" translatesAutoresizingMaskIntoConstraints="NO" id="ysB-vX-Bkd">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icStarWhite" translatesAutoresizingMaskIntoConstraints="NO" id="ysB-vX-Bkd">
                                                             <rect key="frame" x="10" y="8" width="20" height="20"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 챌린지 참여하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-Nt-YeW">
-                                                            <rect key="frame" x="35" y="9.5" width="154.5" height="19.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="새로운 챌린지 참여하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-Nt-YeW">
+                                                            <rect key="frame" x="35" y="10.5" width="154.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                                                             <color key="textColor" name="white"/>
                                                             <nil key="highlightedColor"/>
@@ -104,13 +104,12 @@
                                                     </subviews>
                                                     <color key="backgroundColor" name="orangeMain"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="ysB-vX-Bkd" secondAttribute="bottom" constant="8" id="4jC-vt-oLG"/>
+                                                        <constraint firstItem="ysB-vX-Bkd" firstAttribute="centerY" secondItem="8oK-8B-GAh" secondAttribute="centerY" id="3me-bZ-qmo"/>
                                                         <constraint firstItem="bSL-Nt-YeW" firstAttribute="leading" secondItem="ysB-vX-Bkd" secondAttribute="trailing" constant="5" id="8mC-vC-87g"/>
                                                         <constraint firstAttribute="height" constant="36" id="Fbc-8V-YGk"/>
-                                                        <constraint firstItem="bSL-Nt-YeW" firstAttribute="centerY" secondItem="8oK-8B-GAh" secondAttribute="centerY" constant="1" id="KHh-8B-4fG"/>
+                                                        <constraint firstItem="bSL-Nt-YeW" firstAttribute="centerY" secondItem="8oK-8B-GAh" secondAttribute="centerY" constant="2" id="KHh-8B-4fG"/>
                                                         <constraint firstItem="ysB-vX-Bkd" firstAttribute="leading" secondItem="8oK-8B-GAh" secondAttribute="leading" constant="10" id="SUa-pZ-N6m"/>
-                                                        <constraint firstItem="ysB-vX-Bkd" firstAttribute="top" secondItem="8oK-8B-GAh" secondAttribute="top" constant="8" id="cGz-Vp-YO2"/>
-                                                        <constraint firstAttribute="width" constant="194" id="rTQ-d9-QLH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bSL-Nt-YeW" secondAttribute="trailing" constant="10" id="xTr-Mf-t4D"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
