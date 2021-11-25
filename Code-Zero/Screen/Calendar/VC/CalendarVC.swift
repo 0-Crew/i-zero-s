@@ -19,7 +19,6 @@ class CalendarVC: UIViewController {
         button.tag = -1
         return button
     }()
-
     private lazy var rightMonthButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "icArrowRight"), for: .normal)
@@ -27,12 +26,16 @@ class CalendarVC: UIViewController {
         button.tag = 1
         return button
     }()
-
-    fileprivate let gregorian = Calendar(identifier: .gregorian)
+    private let gregorian = Calendar(identifier: .gregorian)
     private var challengeDates: [(String, Int)] = [("2021-11-22", 1), ("2021-11-23", 1), ("2021-11-24", 1),
                                                    ("2021-11-01", 2), ("2021-11-02", 2), ("2021-11-03", 2),
                                                    ("2021-11-04", 2), ("2021-11-05", 3), ("2021-11-06", 3),
                                                    ("2021-11-07", 3)]
+    private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
+        didSet {
+            // TODO: - 챌린지가 바뀔 때 마다 하위 뷰 변경해주는 코드 작성 예정
+        }
+    }
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -151,7 +154,15 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
+
+        let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
+        if let challengeColor = challengeDates.filter({ $0.0 == stringToDate }).map({ $0.1 }).first {
+            selectedChallege = challengeDates.filter { $0.1 == challengeColor }.map { $0.0 }
+        }
+
+        selectedChallege = date == calendar.today ? [] : selectedChallege
         calendar.appearance.selectionColor = date == calendar.today ? .white : .none
+
         self.configureVisibleCells()
     }
 
@@ -219,7 +230,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             .datePickerToString(format: "yyyy-MM-dd")
         let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
-        challengeCell?.isClick = calendar.selectedDates.contains { $0 == date }
+        challengeCell?.isClick = selectedChallege.contains { $0 == stringToDate }
         challengeCell?.cellBoarderType = {
             if challengeDates.contains(where: { $0.0 == stringToDate }) {
 
