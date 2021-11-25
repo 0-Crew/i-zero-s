@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengingListView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="challengeLabel" destination="1r0-83-tbh" id="Fba-ze-qwY"/>
+                <outlet property="completedImageView" destination="UbZ-oQ-Oqk" id="6Wm-lI-sXK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="20"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icMiniWaterNone" translatesAutoresizingMaskIntoConstraints="NO" id="UbZ-oQ-Oqk">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="UbZ-oQ-Oqk" secondAttribute="height" multiplier="1:1" id="3Ti-Dg-cvn"/>
+                        <constraint firstAttribute="width" constant="20" id="rVj-Bf-dkb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종이 컵홀더 안 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1r0-83-tbh">
+                    <rect key="frame" x="59" y="3" width="279" height="14.5"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                    <color key="textColor" name="lightGray3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="1r0-83-tbh" firstAttribute="centerY" secondItem="UbZ-oQ-Oqk" secondAttribute="centerY" id="0ak-Hk-7pb"/>
+                <constraint firstItem="UbZ-oQ-Oqk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="140-U9-xg3"/>
+                <constraint firstItem="UbZ-oQ-Oqk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="O4w-Fg-6GM"/>
+                <constraint firstAttribute="trailing" secondItem="1r0-83-tbh" secondAttribute="trailing" constant="10" id="Us9-67-Qqd"/>
+                <constraint firstItem="1r0-83-tbh" firstAttribute="leading" secondItem="UbZ-oQ-Oqk" secondAttribute="trailing" constant="39" id="W5g-LR-dx5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UbZ-oQ-Oqk" secondAttribute="bottom" id="fRl-BK-4a3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="117.39130434782609" y="-208.92857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icMiniWaterNone" width="20" height="22"/>
+        <namedColor name="lightGray3">
+            <color red="0.87800002098083496" green="0.85900002717971802" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

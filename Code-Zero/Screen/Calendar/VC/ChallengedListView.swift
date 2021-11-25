@@ -32,12 +32,12 @@ class ChallengedListView: UIView {
 
     internal func setChallengeList(completed: Bool, challengeText: String) {
         if completed {
-            completedImageView.image = UIImage(named: "checkbox")
+            completedImageView.image = UIImage(named: "icCheckbox")
             challengeLabel.font = .spoqaHanSansNeo(size: 12, family: .medium)
             challengeLabel.textColor = .lightGray3
             challengeLabel.text = challengeText
         } else {
-            completedImageView.image = UIImage(named: "nonCheckbox")
+            completedImageView.image = UIImage(named: "icNonCheckbox")
             challengeLabel.font = .spoqaHanSansNeo(size: 12, family: .regular)
             challengeLabel.textColor = .gray2
             challengeLabel.attributedText = challengeText.strikeThrough()
