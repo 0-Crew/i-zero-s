@@ -50,7 +50,6 @@ class CalendarVC: UIViewController {
         makeButton()
         // Do any additional setup after loading the view.
     }
-
 }
 
 // MARK: - Extensions
