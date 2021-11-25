@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
+		1998752B274F9D76004CD747 /* ChallengeTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1998752A274F9D76004CD747 /* ChallengeTitleView.xib */; };
 		19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DDE27473E9D00776E1A /* SelectedType.swift */; };
 		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
 		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		1998752A274F9D76004CD747 /* ChallengeTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTitleView.xib; sourceTree = "<group>"; };
 		19BF8DDE27473E9D00776E1A /* SelectedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedType.swift; sourceTree = "<group>"; };
 		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
 		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				9BFA84EB2731499800E09C20 /* Calendar.storyboard */,
 				19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */,
+				1998752A274F9D76004CD747 /* ChallengeTitleView.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
 				19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */,
+				1998752B274F9D76004CD747 /* ChallengeTitleView.xib in Resources */,
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
