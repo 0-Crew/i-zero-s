@@ -115,7 +115,6 @@ class ChallengeView: UIView {
     internal var challengeState: ChallengeState = .willChallenge
     internal var isMine: Bool!
     internal weak var delegate: ChallengeViewDelegate!
-    private var tapGestureRecognizer: UITapGestureRecognizer?
     private var toggleChallengeStateHandler: (() -> Void)?
 
     override init(frame: CGRect) {
