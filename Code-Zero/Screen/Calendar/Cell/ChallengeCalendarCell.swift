@@ -7,24 +7,59 @@
 
 import Foundation
 import FSCalendar
+import UIKit
 
-enum SelectionBoarderType: Int {
+enum CalendarBoarderType {
     case none
-    case leftBorder
-    case middle
-    case rightBorder
-    case bothBorder
+    case leftBorder(color: Int)
+    case middle(color: Int)
+    case rightBorder(color: Int)
+    case bothBorder(color: Int)
 }
 
 class ChallengeCalendarCell: FSCalendarCell {
 
-    weak var selectionLayer: CAShapeLayer!
-
-    var selectionBoarderType: SelectionBoarderType = .none {
+    // MARK: - Property
+    var cellBoarderType: CalendarBoarderType = .none {
         didSet {
             setNeedsLayout()
         }
     }
+    var isClick: Bool = false {
+        didSet {
+            selectionFillLayer.isHidden = !isClick
+        }
+    }
+    private lazy var selectionFillLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.redCalendar.cgColor
+        layer.actions = ["hidden": NSNull()]
+        layer.isHidden = true
+        contentView.layer.insertSublayer(layer, below: self.titleLabel!.layer)
+        return layer
+    }()
+    private lazy var topBorderLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.clear.cgColor
+        layer.actions = ["hidden": NSNull()]
+        layer.lineWidth = 1
+        layer.strokeColor = UIColor.yellowCalendar.cgColor
+        contentView.layer.insertSublayer(layer, below: self.titleLabel!.layer)
+        layer.isHidden = true
+        return layer
+    }()
+    private lazy var bottomBorderLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.clear.cgColor
+        layer.actions = ["hidden": NSNull()]
+        layer.lineWidth = 1
+        layer.strokeColor = UIColor.yellowCalendar.cgColor
+        contentView.layer.insertSublayer(layer, below: self.titleLabel!.layer)
+        layer.isHidden = true
+        return layer
+    }()
+    private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
+                                        .blueCalendar, .purpleCalendar, .pinkCalender]
 
     required init!(coder aDecoder: NSCoder!) {
         fatalError("init(coder:) has not been implemented")
@@ -34,78 +69,123 @@ class ChallengeCalendarCell: FSCalendarCell {
 
         super.init(frame: frame)
 
-        let selectionLayer = CAShapeLayer()
-        selectionLayer.fillColor = UIColor.redCalendar.cgColor
-        selectionLayer.actions = ["hidden": NSNull()]
-        self.contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel!.layer)
-        self.selectionLayer = selectionLayer
-
-        self.shapeLayer.isHidden = true
-
         let view = UIView(frame: self.bounds)
-        self.backgroundView = view
-
+        backgroundView = view
     }
 
-    override func layoutSubviews() {
+    private func setStrokeLayerFrame(xPoint: CGFloat, yPoint: CGFloat, width: CGFloat, height: CGFloat,
+                                     path: CGPath) {
 
+        topBorderLayer.frame = CGRect(x: contentView.bounds.minX + xPoint,
+                                                    y: contentView.bounds.minY + yPoint,
+                                                    width: contentView.bounds.width + width,
+                                                    height: contentView.bounds.height + height)
+        topBorderLayer.path = path
+    }
+
+    private func setStrokeStyle(layer: CAShapeLayer,
+                                startPoint: CGFloat,
+                                endPoint: CGFloat,
+                                strokeColor: UIColor) {
+        layer.strokeColor = strokeColor.cgColor
+        layer.strokeStart = startPoint
+        layer.strokeEnd = endPoint
+    }
+
+    private func setFillLayerStyle(fillColor: UIColor, textColor: UIColor) {
+        selectionFillLayer.fillColor = fillColor.cgColor
+        titleLabel.textColor = textColor
+    }
+
+    // Lint issue: Function Body Length Violation: Function body should span 40 lines or less excluding comments and whitespace: currently spans 76 lines (function_body_length)
+    override func layoutSubviews() {
         super.layoutSubviews()
 
+        topBorderLayer.isHidden = false
+        bottomBorderLayer.isHidden = true
 
-        switch selectionBoarderType {
+        switch cellBoarderType {
+        case .middle(let colorNumber):
+            let layerFrame = CGRect(x: contentView.bounds.minX + 0,
+                                    y: contentView.bounds.minY + 0,
+                                    width: contentView.bounds.width + 0,
+                                    height: contentView.bounds.height - 3)
+            [topBorderLayer, bottomBorderLayer, selectionFillLayer].forEach {
+                $0.frame = layerFrame
+                $0.path = UIBezierPath(rect: $0.bounds).cgPath
+            }
 
-        case .middle:
-            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX,
-                                               y: contentView.bounds.minY,
-                                               width: contentView.bounds.width,
-                                               height: contentView.bounds.height-3)
-            self.selectionLayer.path = UIBezierPath(rect: self.selectionLayer.bounds).cgPath
-            self.selectionLayer.isHidden = false
-            self.titleLabel.textColor = .white
+            setStrokeStyle(layer: topBorderLayer,
+                           startPoint: 0,
+                           endPoint: 0.29,
+                           strokeColor: colorChip[colorNumber])
+            setStrokeStyle(layer: bottomBorderLayer,
+                           startPoint: 0.5,
+                           endPoint: 0.79,
+                           strokeColor: colorChip[colorNumber])
+            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
 
-        case .leftBorder:
-            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX+5,
-                                               y: contentView.bounds.minY,
-                                               width: contentView.bounds.width,
-                                               height: contentView.bounds.height-3)
-            let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
-                                             height: self.selectionLayer.frame.width / 2)
-            self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
-                                                    byRoundingCorners: [.topLeft, .bottomLeft],
-                                                    cornerRadii: cornerRadii).cgPath
-            self.selectionLayer.isHidden = false
-            self.titleLabel.textColor = .white
+            bottomBorderLayer.isHidden = false
+        case .leftBorder(let colorNumber):
+            let layerFrame = CGRect(x: contentView.bounds.minX+3,
+                                      y: contentView.bounds.minY,
+                                      width: contentView.bounds.width+13,
+                                      height: contentView.bounds.height-3)
+            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
+                                             height: layerFrame.width / 2)
+            [topBorderLayer, selectionFillLayer].forEach {
+                $0.frame = layerFrame
+                $0.path = UIBezierPath(roundedRect: $0.bounds,
+                                       byRoundingCorners: [.topLeft, .bottomLeft],
+                                       cornerRadii: cornerRadii).cgPath
+            }
+            setStrokeStyle(layer: topBorderLayer,
+                           startPoint: 0.3,
+                           endPoint: 1,
+                           strokeColor: colorChip[colorNumber])
+            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
+        case .rightBorder(let colorNumber):
+            let layerFrame = CGRect(x: contentView.bounds.minX-5,
+                                    y: contentView.bounds.minY,
+                                    width: contentView.bounds.width,
+                                    height: contentView.bounds.height-3)
+            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
+                                             height: layerFrame.width / 2)
 
-        case .rightBorder:
-            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX-5,
-                                               y: contentView.bounds.minY,
-                                               width: contentView.bounds.width,
-                                               height: contentView.bounds.height-3)
-            let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
-                                             height: self.selectionLayer.frame.width / 2)
-            self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
-                                                    byRoundingCorners: [.topRight, .bottomRight],
-                                                    cornerRadii: cornerRadii).cgPath
-            self.selectionLayer.isHidden = false
-            self.titleLabel.textColor = .white
+            [topBorderLayer, selectionFillLayer].forEach {
+                $0.frame = layerFrame
+                $0.path = UIBezierPath(roundedRect: $0.bounds,
+                                       byRoundingCorners: [.topRight, .bottomRight],
+                                       cornerRadii: cornerRadii).cgPath
+            }
 
-        case .bothBorder:
-            self.selectionLayer.frame = CGRect(x: contentView.bounds.minX+4,
-                                               y: contentView.bounds.minY,
-                                               width: contentView.bounds.width-8,
-                                               height: contentView.bounds.height-3)
-            let cornerRadii: CGSize = CGSize(width: self.selectionLayer.frame.width / 2,
-                                             height: self.selectionLayer.frame.width / 2)
-            self.selectionLayer.path = UIBezierPath(roundedRect: self.selectionLayer.bounds,
-                                                    byRoundingCorners: [.topRight, .bottomRight,
-                                                                        .topLeft, .bottomLeft],
-                                                    cornerRadii: cornerRadii).cgPath
-            self.selectionLayer.isHidden = false
-            self.titleLabel.textColor = .white
+            setStrokeStyle(layer: topBorderLayer,
+                           startPoint: 0,
+                           endPoint: 0.77,
+                           strokeColor: colorChip[colorNumber])
+            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
+        case .bothBorder(let colorNumber):
+            let layerFrame = CGRect(x: contentView.bounds.minX+4,
+                                    y: contentView.bounds.minY,
+                                    width: contentView.bounds.width-8,
+                                    height: contentView.bounds.height-3)
+            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
+                                             height: layerFrame.width / 2)
 
-        default:
-            self.selectionLayer.isHidden = true
-
+            [topBorderLayer, selectionFillLayer].forEach {
+                $0.frame = layerFrame
+                $0.path = UIBezierPath(roundedRect: $0.bounds,
+                                       byRoundingCorners: [.topRight, .bottomRight,
+                                                           .topLeft, .bottomLeft],
+                                       cornerRadii: cornerRadii).cgPath
+            }
+            setStrokeStyle(layer: topBorderLayer,
+                           startPoint: 0,
+                           endPoint: 1,
+                           strokeColor: colorChip[colorNumber])
+            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
+        case .none:
+            topBorderLayer.isHidden = true
         }
 
     }
