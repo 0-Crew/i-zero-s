@@ -61,6 +61,7 @@ class ChallengeCalendarCell: FSCalendarCell {
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
                                         .blueCalendar, .purpleCalendar, .pinkCalender]
 
+    // MARK: - Override Function
     required init!(coder aDecoder: NSCoder!) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -71,30 +72,6 @@ class ChallengeCalendarCell: FSCalendarCell {
 
         let view = UIView(frame: self.bounds)
         backgroundView = view
-    }
-
-    private func setStrokeLayerFrame(xPoint: CGFloat, yPoint: CGFloat, width: CGFloat, height: CGFloat,
-                                     path: CGPath) {
-
-        topBorderLayer.frame = CGRect(x: contentView.bounds.minX + xPoint,
-                                                    y: contentView.bounds.minY + yPoint,
-                                                    width: contentView.bounds.width + width,
-                                                    height: contentView.bounds.height + height)
-        topBorderLayer.path = path
-    }
-
-    private func setStrokeStyle(layer: CAShapeLayer,
-                                startPoint: CGFloat,
-                                endPoint: CGFloat,
-                                strokeColor: UIColor) {
-        layer.strokeColor = strokeColor.cgColor
-        layer.strokeStart = startPoint
-        layer.strokeEnd = endPoint
-    }
-
-    private func setFillLayerStyle(fillColor: UIColor, textColor: UIColor) {
-        selectionFillLayer.fillColor = fillColor.cgColor
-        titleLabel.textColor = textColor
     }
 
     // Lint issue: Function Body Length Violation: Function body should span 40 lines or less excluding comments and whitespace: currently spans 76 lines (function_body_length)
@@ -187,16 +164,39 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .none:
             topBorderLayer.isHidden = true
         }
-
     }
 
     override func configureAppearance() {
         super.configureAppearance()
-
         if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
             self.titleLabel.textColor = .gray4
         } else { // 이번달 날짜들
             self.titleLabel.textColor = .gray3
         }
+    }
+
+    // MARK: - Style Setting Function
+    private func setStrokeLayerFrame(xPoint: CGFloat, yPoint: CGFloat, width: CGFloat, height: CGFloat,
+                                     path: CGPath) {
+
+        topBorderLayer.frame = CGRect(x: contentView.bounds.minX + xPoint,
+                                                    y: contentView.bounds.minY + yPoint,
+                                                    width: contentView.bounds.width + width,
+                                                    height: contentView.bounds.height + height)
+        topBorderLayer.path = path
+    }
+
+    private func setStrokeStyle(layer: CAShapeLayer,
+                                startPoint: CGFloat,
+                                endPoint: CGFloat,
+                                strokeColor: UIColor) {
+        layer.strokeColor = strokeColor.cgColor
+        layer.strokeStart = startPoint
+        layer.strokeEnd = endPoint
+    }
+
+    private func setFillLayerStyle(fillColor: UIColor, textColor: UIColor) {
+        selectionFillLayer.fillColor = fillColor.cgColor
+        titleLabel.textColor = textColor
     }
 }
