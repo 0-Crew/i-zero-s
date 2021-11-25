@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EndChallengeListView: UIView {
+class ChallengedListView: UIView {
 
     @IBOutlet weak var completedImageView: UIImageView!
     @IBOutlet weak var challengeLabel: UILabel!
@@ -22,7 +22,7 @@ class EndChallengeListView: UIView {
     }
 
     private func loadView() {
-        guard let view = Bundle.main.loadNibNamed("EndChallengeListView",
+        guard let view = Bundle.main.loadNibNamed("ChallengedListView",
                                                   owner: self,
                                                   options: nil)?.first as? UIView else { return }
         view.frame = bounds

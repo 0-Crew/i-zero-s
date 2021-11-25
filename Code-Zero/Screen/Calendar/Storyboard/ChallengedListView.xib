@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EndChallengeListView" customModule="Code_Zero" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengedListView" customModule="Code_Zero" customModuleProvider="target">
             <connections>
                 <outlet property="challengeLabel" destination="PcJ-4T-qCE" id="RPC-7o-rjd"/>
                 <outlet property="completedImageView" destination="uPG-A7-vmO" id="yxo-zu-uTH"/>
