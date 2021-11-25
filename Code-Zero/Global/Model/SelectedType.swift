@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum SelectedType: Int {
+enum SelectedType {
     case none // 아무것도 아닐 때
     case selected // 선택 됐을 때
-    case challenge // 챌린지한 날짜일 때
+    case challenge(position: CalendarBoarderType) // 챌린지한 날짜일 때
 }
