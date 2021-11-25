@@ -77,8 +77,8 @@ class ChallengeVC: UIViewController {
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
         followingPeopleChallengingLists = [
-            ("김", true),
-            ("이", false),
+            ("김", false),
+            ("이", true),
             ("박", false)
         ]
     }

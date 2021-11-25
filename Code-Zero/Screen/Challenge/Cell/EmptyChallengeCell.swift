@@ -24,6 +24,7 @@ class EmptyChallengeCell: UICollectionViewCell {
     override func awakeFromNib() {
         startChallengeView.isUserInteractionEnabled = true
 
+
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(startChallengeViewDidTap))
         startChallengeView.addGestureRecognizer(tapGesture)
@@ -44,6 +45,7 @@ class EmptyChallengeCell: UICollectionViewCell {
             startChallengeView.isHidden = false
 
             emptyDescriptionLabel.text = "현재 진행 중인 챌린지가 없어요\n보틀을 씻고 새 챌린지를 시작해보세요!"
+            emptyDescriptionLabel.setLineSpacing(lineSpacing: 3)
             emptyDescriptionLabel.font = .spoqaHanSansNeo(size: 13, family: .medium)
             emptyDescriptionLabel.textColor = .gray2
             emptyDescriptionLabelTopConstraints?.update(offset: 12)

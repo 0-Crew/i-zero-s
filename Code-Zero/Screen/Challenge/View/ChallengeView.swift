@@ -150,7 +150,7 @@ class ChallengeView: UIView {
         dropWaterImageView.isUserInteractionEnabled = true
         dropWaterImageView.addGestureRecognizer(tapGestureRecognizer)
     }
-    
+
     internal func setChallengeState(state: ChallengeState, isMine: Bool) {
         challengeState = state
         self.isMine = isMine
