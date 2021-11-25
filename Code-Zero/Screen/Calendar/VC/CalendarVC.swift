@@ -151,7 +151,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
-
+        calendar.appearance.selectionColor = date == calendar.today ? .white : .none
         self.configureVisibleCells()
     }
 
