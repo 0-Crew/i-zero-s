@@ -130,7 +130,7 @@ extension CalendarVC {
                                                                      y: 0,
                                                                      width: view.frame.width-40,
                                                                      height: 167))
-        self.challengeView.addSubview(todayJoinChallengeView)
+        challengeView.addSubview(todayJoinChallengeView)
     }
 
     // MARK: - Action
@@ -149,9 +149,8 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   at position: FSCalendarMonthPosition) {
         // willDisplay: cell 이 화면에 처음 표시될 때 call (달이 바뀔 때 마다도 호출)
 
-        self.configure(cell: cell, for: date, at: position)
+        configure(cell: cell, for: date, at: position)
     }
-
     func calendar(_ calendar: FSCalendar,
                   shouldSelect date: Date,
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -159,62 +158,46 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         return (challengeDate.contains(stringToDate) || date == calendar.today) ? true : false
     }
-
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
-
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         if let challengeColor = challengeDates.filter({ $0.0 == stringToDate }).map({ $0.1 }).first {
             selectedChallege = challengeDates.filter { $0.1 == challengeColor }.map { $0.0 }
         }
-
         selectedChallege = date == calendar.today ? [] : selectedChallege
         calendar.appearance.selectionColor = date == calendar.today ? .white : .none
-
-        self.configureVisibleCells()
+        configureVisibleCells()
     }
-
     func calendar(_ calendar: FSCalendar, didDeselect date: Date) {
         // didDeselect : cell 선택 -> 미선택 시 호출
-
-        self.configureVisibleCells()
+        configureVisibleCells()
     }
-
     func calendar(_ calendar: FSCalendar,
                   cellFor date: Date,
                   at position: FSCalendarMonthPosition) -> FSCalendarCell {
         // cellFor : 각 cell 에 대해 설정
-
         let identifier = date == calendar.today ? "todayCell" : "challengeCell"
         let cell = calendar.dequeueReusableCell(withIdentifier: identifier, for: date, at: position)
-
         return cell
     }
-
     func calendar(_ calendar: FSCalendar,
                   appearance: FSCalendarAppearance,
                   borderDefaultColorFor date: Date) -> UIColor? {
         // borderDefaultColorFor : default 상태일 때(not 선택) 테두리 설정
-
         return date == calendar.today ? .white : .clear
     }
-
     func moveMonth(date: Date, value: Int) -> Date {
         // 현재 달(기준: 0)에서 특정 달(value)만큼 이동
-
         return Calendar.current.date(byAdding: .month, value: value, to: date)!
     }
-
     private func configureVisibleCells() {
-
         calendar.visibleCells().forEach { (cell) in
             if let date = calendar.date(for: cell) {
                 let position = calendar.monthPosition(for: cell)
-                self.configure(cell: cell, for: date, at: position)
+                configure(cell: cell, for: date, at: position)
             }
         }
     }
-
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
 
         let todayCell = (cell as? TodayCalendarCell)
@@ -234,9 +217,9 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first ?? -1
-        let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
+        let previousDate = gregorian.date(byAdding: .day, value: -1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
-        let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
+        let nextDate = gregorian.date(byAdding: .day, value: 1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
         challengeCell?.isClick = selectedChallege.contains { $0 == stringToDate }
         challengeCell?.cellBoarderType = {
@@ -253,7 +236,6 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                     }
                     return .leftBorder(color: challengeColor)
                 }
-
                 if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) &&
                     challengeDates.contains(where: { $0.0 == nextDate && $0.1 == challengeColor }) {
                     // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
@@ -264,20 +246,15 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                 } else { // 다음날만 존재한다면
                     return .leftBorder(color: challengeColor) // 왼쪽 라운드 담당
                 }
-
             } else {
                 return .none
             }
-
         }()
-
     }
-
 }
 
 extension String {
     func toDate() -> Date? {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
@@ -287,9 +264,7 @@ extension String {
         } else {
             return nil
         }
-
     }
-
 }
 
 extension Date {
