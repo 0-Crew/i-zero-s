@@ -152,6 +152,14 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         self.configure(cell: cell, for: date, at: position)
     }
 
+    func calendar(_ calendar: FSCalendar,
+                  shouldSelect date: Date,
+                  at monthPosition: FSCalendarMonthPosition) -> Bool {
+        let challengeDate = challengeDates.map { $0.0 }
+        let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
+        return (challengeDate.contains(stringToDate) || date == calendar.today) ? true : false
+    }
+
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
 
