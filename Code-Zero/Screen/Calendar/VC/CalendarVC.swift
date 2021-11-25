@@ -219,9 +219,8 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             .datePickerToString(format: "yyyy-MM-dd")
         let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
-
+        challengeCell?.isClick = calendar.selectedDates.contains { $0 == date }
         challengeCell?.cellBoarderType = {
-            print(date, challengeColor)
             if challengeDates.contains(where: { $0.0 == stringToDate }) {
 
                 if date.dayNumberOfWeek() == 7 { // 토요일이라면
