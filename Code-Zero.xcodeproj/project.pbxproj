@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		1998752B274F9D76004CD747 /* ChallengeTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1998752A274F9D76004CD747 /* ChallengeTitleView.xib */; };
+		1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998752C274FA852004CD747 /* ChallengeTitleView.swift */; };
 		19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DDE27473E9D00776E1A /* SelectedType.swift */; };
 		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
 		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		1998752A274F9D76004CD747 /* ChallengeTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTitleView.xib; sourceTree = "<group>"; };
+		1998752C274FA852004CD747 /* ChallengeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTitleView.swift; sourceTree = "<group>"; };
 		19BF8DDE27473E9D00776E1A /* SelectedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedType.swift; sourceTree = "<group>"; };
 		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
 		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				9B9927D92733DED200A180CB /* CalendarVC.swift */,
 				19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */,
+				1998752C274FA852004CD747 /* ChallengeTitleView.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */,
+				1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */,
 				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
 				19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */,
 			);

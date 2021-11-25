@@ -21,7 +21,14 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeTitleView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="challengeDateLabel" destination="z50-vS-OEM" id="9Dd-5g-b1N"/>
+                <outlet property="challengeStateLabel" destination="Nfp-lb-82w" id="jrK-BW-JAq"/>
+                <outlet property="challengeSubjectLabel" destination="KqJ-q0-TmL" id="uc4-yd-FaO"/>
+                <outlet property="subjectView" destination="sut-sa-J8z" id="dA9-Ch-JXb"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="265" height="61"/>
