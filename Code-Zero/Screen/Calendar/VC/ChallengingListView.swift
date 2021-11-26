@@ -22,7 +22,7 @@ class ChallengingListView: UIView {
     }
 
     private func loadView() {
-        guard let view = Bundle.main.loadNibNamed("ChallengedListView",
+        guard let view = Bundle.main.loadNibNamed("ChallengingListView",
                                                   owner: self,
                                                   options: nil)?.first as? UIView else { return }
         view.frame = bounds
