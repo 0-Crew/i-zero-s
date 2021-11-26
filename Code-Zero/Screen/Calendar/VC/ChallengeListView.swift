@@ -10,16 +10,19 @@ import SnapKit
 
 class ChallengeListView: UIView {
 
+    private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
+                                        .blueCalendar, .purpleCalendar, .pinkCalender]
+
     // MARK: - IBOutlet
     @IBOutlet weak var bottleImageView: UIImageView!
     @IBOutlet weak var challengeTitleView: UIView!
     @IBOutlet weak var challengeListStackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
 
-    required init(frame: CGRect, color: UIColor, date: String, subject: String) {
+    required init(frame: CGRect, color: Int, date: String, subject: String, list: [String]) {
         super.init(frame: frame)
         loadView()
-        setTitleView(date: date, subject: subject, color: color)
+        setTitleView(date: date, subject: subject, color: colorChip[color])
     }
 
     required init?(coder: NSCoder) {

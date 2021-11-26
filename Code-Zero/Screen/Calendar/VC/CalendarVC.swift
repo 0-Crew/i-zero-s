@@ -31,9 +31,36 @@ class CalendarVC: UIViewController {
                                                    ("2021-11-01", 2), ("2021-11-02", 2), ("2021-11-03", 2),
                                                    ("2021-11-04", 2), ("2021-11-05", 3), ("2021-11-06", 3),
                                                    ("2021-11-07", 3)]
+    private var challengeContext: [(String, [String], Int)] = [
+        ("오늘도 화이팅", ["종이 컵홀더 안 쓰기", "종이 컵홀더 안 쓰기종이 컵", "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기",
+          "종이 컵홀더", "종이 컵홀더 안 쓰기 종이", "민희", "종이 쇼핑백 사용하기"], 1),
+        ("민희는 종이 컵홀더 안써", ["종이 컵홀더 안 쓰기", "종이 컵홀더 안 쓰기종이 컵", "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기",
+          "종이 컵홀더", "종이 컵홀더 안 쓰기 종이", "민희", "종이 쇼핑백 사용하기"], 2),
+        ("거북이야 죽지마", ["종이 컵홀더 안 쓰기", "종이 컵홀더 안 쓰기종이 컵", "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기",
+          "종이 컵홀더", "종이 컵홀더 안 쓰기 종이", "민희", "종이 쇼핑백 사용하기"], 3)]
     private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
         didSet {
-            // TODO: - 챌린지가 바뀔 때 마다 하위 뷰 변경해주는 코드 작성 예정
+            if selectedChallege != [] {
+                let challengeNumber = challengeDates.filter { $0.0 == selectedChallege[0] }[0].1
+                let challengeData = challengeContext.filter { $0.2 == challengeNumber }[0]
+                let challengeListView = ChallengeListView(frame: CGRect(x: 0,
+                                                                        y: 0,
+                                                                        width: view.frame.width-40,
+                                                                        height: 273),
+                                                          color: challengeData.2,
+                                                          date: "11.26 - 30",
+                                                          subject: challengeData.0,
+                                                          list: challengeData.1)
+                challengeView.subviews[0].removeFromSuperview()
+                challengeView.addSubview(challengeListView)
+            } else {
+                let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
+                                                                             y: 0,
+                                                                             width: view.frame.width-40,
+                                                                             height: 167))
+                challengeView.subviews[0].removeFromSuperview()
+                challengeView.addSubview(todayJoinChallengeView)
+            }
         }
     }
 
@@ -125,19 +152,11 @@ extension CalendarVC {
 
     // MARK: - ChildView Setting
     func setChallengeView() {
-//        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
-//                                                                     y: 0,
-//                                                                     width: view.frame.width-40,
-//                                                                     height: 167))
-//        challengeView.addSubview(todayJoinChallengeView)
-        let challengeListView = ChallengeListView(frame: CGRect(x: 0,
-                                                                y: 0,
-                                                                width: view.frame.width-40,
-                                                                height: 273),
-                                                  color: .pinkCalender,
-                                                  date: "11.26 - 30",
-                                                  subject: "플라스틱 빨대 사용")
-        challengeView.addSubview(challengeListView)
+        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
+                                                                     y: 0,
+                                                                     width: view.frame.width-40,
+                                                                     height: 167))
+        challengeView.addSubview(todayJoinChallengeView)
     }
 
     // MARK: - Action
