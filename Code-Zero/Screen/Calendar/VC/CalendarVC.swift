@@ -9,6 +9,17 @@ import UIKit
 import FSCalendar
 import SnapKit
 
+struct ChallengeData {
+    let subject: String
+    let list: [DayChallengeState]
+    let colorNumber: Int
+}
+
+struct DayChallengeState {
+    let title: String
+    let sucess: Bool
+}
+
 class CalendarVC: UIViewController {
 
     // MARK: - Property
@@ -31,26 +42,20 @@ class CalendarVC: UIViewController {
                                                    ("2021-11-01", 2), ("2021-11-02", 2), ("2021-11-03", 2),
                                                    ("2021-11-04", 2), ("2021-11-05", 3), ("2021-11-06", 3),
                                                    ("2021-11-07", 3)]
-    private var challengeContext: [(String, [String], Int)] = [
-        ("오늘도 화이팅", ["종이 컵홀더 안 쓰기", "종이 컵홀더 안 쓰기종이 컵", "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기",
-          "종이 컵홀더", "종이 컵홀더 안 쓰기 종이", "민희", "종이 쇼핑백 사용하기"], 1),
-        ("민희는 종이 컵홀더 안써", ["종이 컵홀더 안 쓰기", "종이 컵홀더 안 쓰기종이 컵", "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기",
-          "종이 컵홀더", "종이 컵홀더 안 쓰기 종이", "민희", "종이 쇼핑백 사용하기"], 2),
-        ("거북이야 죽지마", ["종이 컵홀더 안 쓰기", "종이 컵홀더 안 쓰기종이 컵", "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기",
-          "종이 컵홀더", "종이 컵홀더 안 쓰기 종이", "민희", "종이 쇼핑백 사용하기"], 3)]
+    private var challengeContext: [ChallengeData] = []
     private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
         didSet {
             if selectedChallege != [] {
                 let challengeNumber = challengeDates.filter { $0.0 == selectedChallege[0] }[0].1
-                let challengeData = challengeContext.filter { $0.2 == challengeNumber }[0]
+                let challengeData = challengeContext.filter { $0.colorNumber == challengeNumber }[0]
                 let challengeListView = ChallengeListView(frame: CGRect(x: 0,
                                                                         y: 0,
                                                                         width: view.frame.width-40,
                                                                         height: 273),
-                                                          color: challengeData.2,
+                                                          color: challengeData.colorNumber,
                                                           date: "11.26 - 30",
-                                                          subject: challengeData.0,
-                                                          list: challengeData.1)
+                                                          subject: challengeData.subject,
+                                                          list: challengeData.list)
                 challengeView.subviews[0].removeFromSuperview()
                 challengeView.addSubview(challengeListView)
             } else {
@@ -75,6 +80,7 @@ class CalendarVC: UIViewController {
         setView()
         setChallengeView()
         makeButton()
+        makeDumyData()
         // Do any additional setup after loading the view.
     }
 }
@@ -276,6 +282,46 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                 return .none
             }
         }()
+    }
+}
+
+// MARK: - Server
+extension CalendarVC {
+
+    // 서버 연결 전 더미데이터 생성
+    private func makeDumyData() {
+        let data1 = DayChallengeState(title: "종이 컵홀더 안 쓰기", sucess: true)
+        let data2 = DayChallengeState(title: "종이 컵홀더 안 쓰기종이 컵", sucess: true)
+        let data3 = DayChallengeState(title: "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기", sucess: false)
+        let data4 = DayChallengeState(title: "종이 컵홀더", sucess: true)
+        let data5 = DayChallengeState(title: "종이 컵홀더 안 쓰기 종이", sucess: true)
+        let data6 = DayChallengeState(title: "민희", sucess: true)
+        let data7 = DayChallengeState(title: "종이 쇼핑백 사용하기", sucess: false)
+        let firstChallenge: [DayChallengeState] = [data1, data2, data3, data4, data5, data6, data7]
+
+        let data8 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅅ'", sucess: true)
+        let data9 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅇ'", sucess: true)
+        let data10 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅁ'", sucess: true)
+        let data11 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅋ'", sucess: true)
+        let data12 = DayChallengeState(title: "휴지대신 손수건 사용하기", sucess: true)
+        let data13 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅆ'", sucess: true)
+        let data14 = DayChallengeState(title: "텀블러 가져가서 사용하기 'w '", sucess: true)
+        let secondeChallenge: [DayChallengeState] = [data8, data9, data10, data11, data12, data13, data14]
+
+        let data15 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
+        let data16 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
+        let data17 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
+        let data18 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
+        let data19 = DayChallengeState(title: "😏 빨대 안받기", sucess: true)
+        let data20 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: false)
+        let data21 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
+        let thirdChallenge: [DayChallengeState] = [data15, data16, data17, data18, data19, data20, data21]
+
+        let challenge1 = ChallengeData(subject: "오늘도 화이팅", list: firstChallenge, colorNumber: 1)
+        let challenge2 = ChallengeData(subject: "빨대는 포기 못해", list: secondeChallenge, colorNumber: 2)
+        let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 3)
+
+        challengeContext = [challenge1, challenge2, challenge3]
     }
 }
 
