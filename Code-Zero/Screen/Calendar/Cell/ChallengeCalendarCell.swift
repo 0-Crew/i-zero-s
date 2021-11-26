@@ -163,6 +163,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
         case .none:
             topBorderLayer.isHidden = true
+            selectionFillLayer.isHidden = true
         }
     }
 
