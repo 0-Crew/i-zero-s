@@ -51,11 +51,14 @@ class ChallengeListView: UIView {
         if color != .orangeMain { // 현재 진행중인 챌린지가 아닐 때
             challengeTitleView.snp.remakeConstraints {
                 $0.leading.equalTo(self.snp.leading)
+                $0.trailing.equalTo(self.snp.trailing)
                 $0.height.equalTo(58)
             }
+
             bottleImageView.removeFromSuperview()
             lineView.removeFromSuperview()
         } else {
+
         }
     }
 }

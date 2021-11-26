@@ -90,7 +90,7 @@
                 <constraint firstItem="7pv-D0-uTd" firstAttribute="centerX" secondItem="jQw-24-M4V" secondAttribute="centerX" id="nMc-Kq-n1i"/>
                 <constraint firstItem="xFN-Sh-X2L" firstAttribute="leading" secondItem="jQw-24-M4V" secondAttribute="trailing" constant="26" id="tFT-Ct-AT0"/>
                 <constraint firstAttribute="trailing" secondItem="xFN-Sh-X2L" secondAttribute="trailing" id="x8Y-42-3h7"/>
-                <constraint firstItem="mDV-Zk-non" firstAttribute="top" secondItem="xFN-Sh-X2L" secondAttribute="bottom" constant="12" id="yn7-62-Oav"/>
+                <constraint firstItem="mDV-Zk-non" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="70" id="yn7-62-Oav"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="38.405797101449281" y="-117.1875"/>
