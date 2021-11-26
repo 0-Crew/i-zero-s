@@ -59,6 +59,10 @@ class ChallengeVC: UIViewController {
         updateSocialButtons(offset: selectedPersonIndex)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+
+    }
+
     // MARK: - IBAction Method
 
     @IBAction func cheerUpButtonDidTap(_ sender: Any) {
@@ -77,7 +81,7 @@ class ChallengeVC: UIViewController {
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
         followingPeopleChallengingLists = [
-            ("김", false),
+            ("김", true),
             ("이", true),
             ("박", false)
         ]
@@ -149,7 +153,7 @@ extension ChallengeVC: ChallengeListCellDelegate {
 
 extension ChallengeVC: EmptyChallengeCellDelegate {
     func didStartChallengeViewTap() {
-        print(#function)
+        // TODO: - 챌린지 오픈 뷰 연결할 곳
     }
 }
 
@@ -185,7 +189,8 @@ extension ChallengeVC {
     private func setCollectionView() {
         challengeListCollectionView.registerCell(nibName: "ChallengeListCell")
         challengeListCollectionView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.top.equalTo(self.followingListStackView.snp.bottom).offset(97 * deviceHeightRatio)
         }
     }

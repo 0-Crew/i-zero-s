@@ -59,11 +59,15 @@
                         <action selector="editButtonDidTapWithSender:" destination="-1" eventType="touchUpInside" id="8Vc-6m-d9G"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="종이 컵홀더 안 쓰기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-iM-vtc">
+                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="종이 컵홀더 안 쓰기" placeholder="참을 수 있는 불편함을 적어주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-iM-vtc">
                     <rect key="frame" x="91" y="0.0" width="259" height="43"/>
                     <color key="textColor" name="gray2"/>
                     <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
+                    <connections>
+                        <action selector="challengeTextFieldEditingChanged:" destination="-1" eventType="editingChanged" id="Xw2-73-8xb"/>
+                        <outlet property="delegate" destination="-1" id="pwa-dc-wf6"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

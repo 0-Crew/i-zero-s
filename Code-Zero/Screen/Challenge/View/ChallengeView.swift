@@ -8,8 +8,9 @@
 import UIKit
 
 protocol ChallengeViewDelegate: AnyObject {
-    func didEditButtonTap(challengeOffset: Int)
+    func didEditButtonTap(challengeOffset: Int, yPosition: CGFloat)
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState)
+    func didChallengeTextFieldEdit(challengeOffset: Int, text: String)
 }
 
 enum ChallengeState {
@@ -114,7 +115,9 @@ class ChallengeView: UIView {
     internal var challengeOffset: Int!
     internal var challengeState: ChallengeState = .willChallenge
     internal var isMine: Bool!
-    internal weak var delegate: ChallengeViewDelegate!
+    internal weak var delegate: ChallengeViewDelegate?
+
+    private var cachedChallengeText: String?
     private var toggleChallengeStateHandler: (() -> Void)?
 
     override init(frame: CGRect) {
@@ -166,6 +169,7 @@ class ChallengeView: UIView {
 
         editButton.isHidden = isMine ? state.editButtonIsHidden : true
         editButton.tintColor = state.editButtonTintColor
+        editButton.setImage(UIImage(named: "icEdit"), for: .normal)
 
         switch state {
         case .willChallenge:
@@ -177,13 +181,49 @@ class ChallengeView: UIView {
         }
     }
 
-    @objc func didToggleChallengeStateTap() {
+    internal func setChallengeText(text: String) {
+        challengeTextField.text = text
+        cachedChallengeText = text
+    }
+
+    internal func toggleIsChangingState(to isChanging: Bool) {
+        if isChanging {
+            let isChallenging = challengeState == .challengingCompleted ||
+            challengeState == .challengingNotCompleted
+            let highlightViewColor: UIColor = isChallenging ? .orangeMain : .gray4
+            let editButtonTintColor: UIColor = isChallenging ? .orangeMain : .gray4
+
+            toggleChallengeStateHandler = nil
+
+            highlightingView.isHidden = false
+            highlightingView.setBorder(borderColor: highlightViewColor, borderWidth: 1.0)
+
+            editButton.tintColor = editButtonTintColor
+            editButton.setImage(UIImage(named: "icXBlack"), for: .normal)
+        } else {
+            setChallengeState(state: challengeState, isMine: true)
+        }
+    }
+
+    internal func toggleTextEditingState(to isEditing: Bool) {
+        if isEditing {
+            challengeTextField.isEnabled = true
+            challengeTextField.text = ""
+            challengeTextField.becomeFirstResponder()
+            toggleChallengeStateHandler = nil
+        } else {
+            challengeTextField.text = cachedChallengeText
+            setChallengeState(state: challengeState, isMine: true)
+        }
+    }
+
+    @objc private func didToggleChallengeStateTap() {
         toggleChallengeStateHandler?()
     }
 
     private func completeChallengeHandlerProvider() {
         setChallengeStateComplete()
-        delegate.didToggleChallengeStateAction(
+        delegate?.didToggleChallengeStateAction(
             challengeOffset: challengeOffset,
             currentState: challengeState
         )
@@ -191,7 +231,7 @@ class ChallengeView: UIView {
 
     private func nonCompleteChallengeHandlerProvider() {
         setChallengeStateNonComplete()
-        delegate.didToggleChallengeStateAction(
+        delegate?.didToggleChallengeStateAction(
             challengeOffset: challengeOffset,
             currentState: challengeState
         )
@@ -214,6 +254,30 @@ class ChallengeView: UIView {
     }
 
     @IBAction func editButtonDidTap(sender: UIButton) {
-        delegate?.didEditButtonTap(challengeOffset: challengeOffset)
+        if challengeTextField.isEditing {
+            challengeTextField.isEnabled = false
+            challengeTextField.endEditing(false)
+            return
+        }
+        delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
+    }
+
+    @IBAction func challengeTextFieldEditingChanged(_ sender: UITextField) {
+        guard let text = sender.text, !text.isEmpty else {
+            editButton.setImage(UIImage(named: "icXBlack"), for: .normal)
+            return
+        }
+
+        editButton.setImage(UIImage(named: "icCheckBlack"), for: .normal)
+    }
+}
+
+extension ChallengeView: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text, text.count != 0 else {
+            toggleTextEditingState(to: false)
+            return
+        }
+        delegate?.didChallengeTextFieldEdit(challengeOffset: challengeOffset, text: text)
     }
 }
