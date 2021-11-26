@@ -84,7 +84,7 @@
                 <constraint firstItem="jQw-24-M4V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="O65-pd-b1Y"/>
                 <constraint firstAttribute="bottom" secondItem="mDV-Zk-non" secondAttribute="bottom" id="UcH-eg-au2"/>
                 <constraint firstItem="7pv-D0-uTd" firstAttribute="top" secondItem="jQw-24-M4V" secondAttribute="bottom" constant="-1" id="VOc-Ik-V9o"/>
-                <constraint firstItem="xFN-Sh-X2L" firstAttribute="bottom" secondItem="jQw-24-M4V" secondAttribute="bottom" id="kAc-i7-oPZ"/>
+                <constraint firstItem="xFN-Sh-X2L" firstAttribute="height" secondItem="jQw-24-M4V" secondAttribute="height" id="X1s-a5-k7a"/>
                 <constraint firstItem="jQw-24-M4V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ley-zk-qZg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mDV-Zk-non" secondAttribute="trailing" id="mms-k7-kPt"/>
                 <constraint firstItem="7pv-D0-uTd" firstAttribute="centerX" secondItem="jQw-24-M4V" secondAttribute="centerX" id="nMc-Kq-n1i"/>
