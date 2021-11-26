@@ -113,8 +113,8 @@ extension CalendarVC {
     override func updateViewConstraints() {
         var height: CGFloat = 0.0
         height += calendar.frame.height
-        view.frame.size.height = 700 // 추상적인 숫자 변경 필요
-        view.frame.origin.y = UIScreen.main.bounds.height - height - 350
+        view.frame.size.height = 800 // 추상적인 숫자 변경 필요
+        view.frame.origin.y = UIScreen.main.bounds.height - height - 450
 
         view.clipsToBounds = true
         view.layer.cornerRadius = 25
@@ -125,11 +125,19 @@ extension CalendarVC {
 
     // MARK: - ChildView Setting
     func setChallengeView() {
-        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
-                                                                     y: 0,
-                                                                     width: view.frame.width-40,
-                                                                     height: 167))
-        challengeView.addSubview(todayJoinChallengeView)
+//        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
+//                                                                     y: 0,
+//                                                                     width: view.frame.width-40,
+//                                                                     height: 167))
+//        challengeView.addSubview(todayJoinChallengeView)
+        let challengeListView = ChallengeListView(frame: CGRect(x: 0,
+                                                                y: 0,
+                                                                width: view.frame.width-40,
+                                                                height: 273),
+                                                  color: .pinkCalender,
+                                                  date: "11.26 - 30",
+                                                  subject: "플라스틱 빨대 사용")
+        challengeView.addSubview(challengeListView)
     }
 
     // MARK: - Action

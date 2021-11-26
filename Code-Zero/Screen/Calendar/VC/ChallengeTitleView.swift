@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ChallengeTitleView: UIView {
 
@@ -37,7 +38,7 @@ class ChallengeTitleView: UIView {
         challengeDateLabel.textColor = color
         challengeStateLabel.text = state ? "진행 중인 챌린지" : "종료된 챌린지"
         challengeStateLabel.textColor = color.withAlphaComponent(0.5)
-        challengeSubjectLabel.text = subject
+        challengeSubjectLabel.text = "편리함 | \(subject)"
         subjectView.backgroundColor = color
 
         if let text = challengeSubjectLabel.text {

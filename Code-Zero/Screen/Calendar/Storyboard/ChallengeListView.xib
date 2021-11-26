@@ -4,29 +4,103 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeListView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="bottleImageView" destination="jQw-24-M4V" id="aVm-ZB-V7q"/>
+                <outlet property="challengeListStackView" destination="mDV-Zk-non" id="Hol-Tm-4Wf"/>
+                <outlet property="challengeTitleView" destination="xFN-Sh-X2L" id="vR7-CS-bxk"/>
+                <outlet property="lineView" destination="7pv-D0-uTd" id="DAn-JB-pYg"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="392" height="365"/>
+            <rect key="frame" x="0.0" y="0.0" width="277" height="294"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQw-24-M4V">
-                    <rect key="frame" x="20" y="13" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icBottleMainClear" translatesAutoresizingMaskIntoConstraints="NO" id="jQw-24-M4V">
+                    <rect key="frame" x="0.0" y="0.0" width="26" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jQw-24-M4V" secondAttribute="height" multiplier="26:58" id="AzR-Ec-T2J"/>
+                        <constraint firstAttribute="width" constant="26" id="nyR-Qr-evV"/>
+                    </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFN-Sh-X2L">
+                    <rect key="frame" x="52" y="0.0" width="225" height="58"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pv-D0-uTd">
+                    <rect key="frame" x="12.5" y="57" width="1" height="204"/>
+                    <color key="backgroundColor" name="orangeMain"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="204" id="9qg-eb-vPQ"/>
+                        <constraint firstAttribute="width" constant="1" id="a9S-fl-K1M"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mDV-Zk-non">
+                    <rect key="frame" x="0.0" y="70" width="277" height="224"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xem-Rw-DTu">
+                            <rect key="frame" x="0.0" y="0.0" width="277" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVR-16-8wD">
+                            <rect key="frame" x="0.0" y="33" width="277" height="25.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jjv-ON-9hx">
+                            <rect key="frame" x="0.0" y="66.5" width="277" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9M-gf-AoV">
+                            <rect key="frame" x="0.0" y="99.5" width="277" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-eD-bl2">
+                            <rect key="frame" x="0.0" y="132.5" width="277" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okQ-OQ-mgO">
+                            <rect key="frame" x="0.0" y="165.5" width="277" height="25.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFf-or-4KP">
+                            <rect key="frame" x="0.0" y="199" width="277" height="25"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="xFN-Sh-X2L" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Jp-1k-wL3"/>
+                <constraint firstItem="mDV-Zk-non" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7wd-JA-wl3"/>
+                <constraint firstItem="jQw-24-M4V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="O65-pd-b1Y"/>
+                <constraint firstAttribute="bottom" secondItem="mDV-Zk-non" secondAttribute="bottom" id="UcH-eg-au2"/>
+                <constraint firstItem="7pv-D0-uTd" firstAttribute="top" secondItem="jQw-24-M4V" secondAttribute="bottom" constant="-1" id="VOc-Ik-V9o"/>
+                <constraint firstItem="xFN-Sh-X2L" firstAttribute="bottom" secondItem="jQw-24-M4V" secondAttribute="bottom" id="kAc-i7-oPZ"/>
+                <constraint firstItem="jQw-24-M4V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ley-zk-qZg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mDV-Zk-non" secondAttribute="trailing" id="mms-k7-kPt"/>
+                <constraint firstItem="7pv-D0-uTd" firstAttribute="centerX" secondItem="jQw-24-M4V" secondAttribute="centerX" id="nMc-Kq-n1i"/>
+                <constraint firstItem="xFN-Sh-X2L" firstAttribute="leading" secondItem="jQw-24-M4V" secondAttribute="trailing" constant="26" id="tFT-Ct-AT0"/>
+                <constraint firstAttribute="trailing" secondItem="xFN-Sh-X2L" secondAttribute="trailing" id="x8Y-42-3h7"/>
+                <constraint firstItem="mDV-Zk-non" firstAttribute="top" secondItem="xFN-Sh-X2L" secondAttribute="bottom" constant="12" id="yn7-62-Oav"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="121.73913043478262" y="-93.415178571428569"/>
+            <point key="canvasLocation" x="38.405797101449281" y="-117.1875"/>
         </view>
     </objects>
     <resources>
+        <image name="icBottleMainClear" width="27" height="59"/>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

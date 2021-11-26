@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
 		1998752B274F9D76004CD747 /* ChallengeTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1998752A274F9D76004CD747 /* ChallengeTitleView.xib */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
 		1998752A274F9D76004CD747 /* ChallengeTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTitleView.xib; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				1998752C274FA852004CD747 /* ChallengeTitleView.swift */,
 				19A142C3274FBA4F00E8DC45 /* ChallengedListView.swift */,
 				19A142C5274FC0E100E8DC45 /* ChallengingListView.swift */,
+				1933C68A274FD0D500E0842D /* ChallengeListView.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -522,7 +525,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
-				9BFA84EC2731499800E09C20 /* Calendar.storyboard in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
@@ -586,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */,
 				6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
