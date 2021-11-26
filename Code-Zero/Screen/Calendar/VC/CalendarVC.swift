@@ -38,10 +38,7 @@ class CalendarVC: UIViewController {
         return button
     }()
     private let gregorian = Calendar(identifier: .gregorian)
-    private var challengeDates: [(String, Int)] = [("2021-11-22", 1), ("2021-11-23", 1), ("2021-11-24", 1),
-                                                   ("2021-11-01", 2), ("2021-11-02", 2), ("2021-11-03", 2),
-                                                   ("2021-11-04", 2), ("2021-11-05", 3), ("2021-11-06", 3),
-                                                   ("2021-11-07", 3)]
+    private var challengeDates: [(String, Int)] = []
     private var challengeContext: [ChallengeData] = []
     private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
         didSet {
@@ -209,7 +206,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   at position: FSCalendarMonthPosition) -> FSCalendarCell {
         // cellFor : 각 cell 에 대해 설정
         let identifier = date == calendar.today ? "todayCell" : "challengeCell"
-        let cell = calendar.dequeueReusableCell(withIdentifier: identifier, for: date, at: position)
+        let cell = calendar.dequeueReusableCell(withIdentifier: "challengeCell", for: date, at: position)
         return cell
     }
     func calendar(_ calendar: FSCalendar,
@@ -322,6 +319,13 @@ extension CalendarVC {
         let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 3)
 
         challengeContext = [challenge1, challenge2, challenge3]
+
+        challengeDates
+        = [("2021-11-01", 1), ("2021-11-02", 1), ("2021-11-03", 1), ("2021-11-04", 1), ("2021-11-05", 1),
+           ("2021-11-06", 1), ("2021-11-07", 1), ("2021-11-11", 2), ("2021-11-12", 2), ("2021-11-13", 2),
+           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-20", 3),
+           ("2021-11-21", 3), ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3),
+           ("2021-11-26", 3)]
     }
 }
 
