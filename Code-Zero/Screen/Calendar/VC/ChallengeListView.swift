@@ -19,10 +19,10 @@ class ChallengeListView: UIView {
     @IBOutlet weak var challengeListStackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
 
-    required init(frame: CGRect, color: Int, date: String, subject: String, list: [String]) {
+    required init(frame: CGRect, color: Int, date: String, subject: String, list: [DayChallengeState]) {
         super.init(frame: frame)
         loadView()
-        setTitleView(date: date, subject: subject, color: colorChip[color])
+        setTitleView(date: date, subject: subject, color: colorChip[color], list: list)
     }
 
     required init?(coder: NSCoder) {
@@ -38,14 +38,14 @@ class ChallengeListView: UIView {
         addSubview(view)
     }
 
-    private func setTitleView(date: String, subject: String, color: UIColor) {
+    private func setTitleView(date: String, subject: String, color: UIColor, list: [DayChallengeState]) {
         let challengeTitleView = ChallengeTitleView(frame: .zero)
         self.challengeTitleView.addSubview(challengeTitleView)
         challengeTitleView.setLabel(date: date,
                                     state: color == .orangeMain,
                                     subject: subject,
                                     color: color)
-        challengeTitleView.snp.makeConstraints {
+        challengeTitleView.snp.remakeConstraints {
             $0.width.equalTo(self.challengeTitleView.snp.width)
             $0.height.equalTo(self.challengeTitleView.snp.height)
         }
@@ -60,6 +60,24 @@ class ChallengeListView: UIView {
 
             bottleImageView.removeFromSuperview()
             lineView.removeFromSuperview()
+
+            challengeListStackView.snp.remakeConstraints {
+                $0.leading.equalTo(self.snp.leading).offset(10)
+                $0.trailing.equalTo(self.snp.trailing).offset(-10)
+            }
+
+            challengeListStackView.arrangedSubviews.enumerated().forEach {
+                let challengedListView = ChallengedListView(frame: .zero)
+                $0.element.backgroundColor = .none
+                $0.element.addSubview(challengedListView)
+                challengedListView.setChallengeList(completed: list[$0.offset].sucess,
+                                                    challengeText: list[$0.offset].title)
+                challengedListView.snp.remakeConstraints {
+                    $0.width.equalTo(self.challengeListStackView.snp.width)
+                    $0.height.equalTo(self.challengeListStackView.arrangedSubviews[0].frame.height)
+                }
+            }
+
         } else {
 
         }
