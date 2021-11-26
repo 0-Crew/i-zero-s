@@ -31,4 +31,16 @@ extension UICollectionView {
         }
         return cell
     }
+    func dequeueOptionalCell<T: UICollectionViewCell>(
+        reuseIdentifier: String? = nil,
+        indexPath: IndexPath
+    ) -> T? {
+        let reuseIdentifier = reuseIdentifier ?? String(describing: T.self)
+        guard
+            let cell = self.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? T
+        else {
+            return nil
+        }
+        return cell
+    }
 }
