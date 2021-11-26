@@ -31,15 +31,15 @@ class TodayCalendarCell: FSCalendarCell {
                                  width: 10,
                                  height: 2)
 
-        switch selectionType {
-        case .none:
-            titleLabel.textColor = .gray1
-            underLine.backgroundColor = .white
-        case .selected:
-            titleLabel.textColor = .darkGray2
-            underLine.backgroundColor = .darkGray2
-        case .challenge(_):
-            break
-        }
+//        switch selectionType {
+//        case .none:
+//            titleLabel.textColor = .gray1
+//            underLine.backgroundColor = .white
+//        case .selected:
+//            titleLabel.textColor = .darkGray2
+//            underLine.backgroundColor = .darkGray2
+//        case .challenge(_):
+//            break
+//        }
     }
 }

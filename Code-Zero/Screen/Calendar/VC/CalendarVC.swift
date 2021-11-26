@@ -236,13 +236,13 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             challengeCell?.cellBoarderType = .none
             return }
 
-        todayCell?.selectionType = {
-            if calendar.selectedDates.contains($0) {
-                return .selected
-            } else {
-                return .none
-            }
-        }(date)
+//        todayCell?.selectionType = {
+//            if calendar.selectedDates.contains($0) {
+//                return .selected
+//            } else {
+//                return .none
+//            }
+//        }(date)
 
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first ?? -1
@@ -323,9 +323,9 @@ extension CalendarVC {
         challengeDates
         = [("2021-11-01", 1), ("2021-11-02", 1), ("2021-11-03", 1), ("2021-11-04", 1), ("2021-11-05", 1),
            ("2021-11-06", 1), ("2021-11-07", 1), ("2021-11-11", 2), ("2021-11-12", 2), ("2021-11-13", 2),
-           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-20", 3),
-           ("2021-11-21", 3), ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3),
-           ("2021-11-26", 3)]
+           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 3),
+           ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3), ("2021-11-26", 3),
+           ("2021-11-27", 3)]
     }
 }
 

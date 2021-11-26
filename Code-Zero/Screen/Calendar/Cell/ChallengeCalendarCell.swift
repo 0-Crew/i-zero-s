@@ -18,7 +18,7 @@ enum CalendarBoarderType {
 }
 
 enum SelectedType {
-    case day
+    case days
     case today
 }
 
@@ -28,6 +28,12 @@ class ChallengeCalendarCell: FSCalendarCell {
     var cellBoarderType: CalendarBoarderType = .none {
         didSet {
             setNeedsLayout()
+        }
+    }
+    var cellDayType: SelectedType = .days {
+        didSet {
+            setNeedsLayout()
+            underLine.isHidden = cellDayType == .days ? true : false
         }
     }
     var isClick: Bool = false {
@@ -63,6 +69,13 @@ class ChallengeCalendarCell: FSCalendarCell {
         layer.isHidden = true
         return layer
     }()
+    private lazy var underLine: UIView = {
+        let view = UIView()
+//        contentView.insertSubview(view, at: 1)
+        view.backgroundColor = .red
+        underLine.isHidden = true
+        return view
+    }()
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
                                         .blueCalendar, .purpleCalendar, .pinkCalender]
 
@@ -85,6 +98,13 @@ class ChallengeCalendarCell: FSCalendarCell {
 
         topBorderLayer.isHidden = false
         bottomBorderLayer.isHidden = true
+        contentView.insertSubview(underLine, at: 2)
+
+        underLine.frame = contentView.bounds
+        underLine.frame = CGRect(x: contentView.frame.width/2-5,
+                                 y: contentView.frame.height/2 + 5,
+                                 width: 10,
+                                 height: 2)
 
         switch cellBoarderType {
         case .middle(let colorNumber):
