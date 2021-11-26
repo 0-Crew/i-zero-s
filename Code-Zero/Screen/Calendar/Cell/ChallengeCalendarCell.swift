@@ -17,6 +17,11 @@ enum CalendarBoarderType {
     case bothBorder(color: Int)
 }
 
+enum SelectedType {
+    case day
+    case today
+}
+
 class ChallengeCalendarCell: FSCalendarCell {
 
     // MARK: - Property

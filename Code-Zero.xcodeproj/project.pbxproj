@@ -16,7 +16,6 @@
 		19A142C4274FBA4F00E8DC45 /* ChallengedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A142C3274FBA4F00E8DC45 /* ChallengedListView.swift */; };
 		19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A142C5274FC0E100E8DC45 /* ChallengingListView.swift */; };
 		19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A142C7274FC0EA00E8DC45 /* ChallengingListView.xib */; };
-		19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DDE27473E9D00776E1A /* SelectedType.swift */; };
 		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
 		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
 		19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */; };
@@ -92,7 +91,6 @@
 		19A142C3274FBA4F00E8DC45 /* ChallengedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengedListView.swift; sourceTree = "<group>"; };
 		19A142C5274FC0E100E8DC45 /* ChallengingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengingListView.swift; path = "Code-Zero/Screen/Calendar/VC/ChallengingListView.swift"; sourceTree = SOURCE_ROOT; };
 		19A142C7274FC0EA00E8DC45 /* ChallengingListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengingListView.xib; sourceTree = "<group>"; };
-		19BF8DDE27473E9D00776E1A /* SelectedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedType.swift; sourceTree = "<group>"; };
 		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
 		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
 		19DE921E273FC8D8001B0C30 /* TodayCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCalendarCell.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 			isa = PBXGroup;
 			children = (
 				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
-				19BF8DDE27473E9D00776E1A /* SelectedType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -594,7 +591,6 @@
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
-				19BF8DDF27473E9D00776E1A /* SelectedType.swift in Sources */,
 				A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */,
 				A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */,
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
