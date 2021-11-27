@@ -307,14 +307,14 @@ extension CalendarVC {
 
         let challenge1 = ChallengeData(subject: "오늘도 화이팅", list: firstChallenge, colorNumber: 1)
         let challenge2 = ChallengeData(subject: "빨대는 포기 못해", list: secondeChallenge, colorNumber: 2)
-        let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 3)
+        let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 6)
 
         challengeContext = [challenge1, challenge2, challenge3]
         challengeDates
         = [("2021-11-01", 1), ("2021-11-02", 1), ("2021-11-03", 1), ("2021-11-04", 1), ("2021-11-05", 1),
            ("2021-11-06", 1), ("2021-11-07", 1), ("2021-11-11", 2), ("2021-11-12", 2), ("2021-11-13", 2),
-           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 3),
-           ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3), ("2021-11-26", 3),
-           ("2021-11-27", 3)]
+           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 6),
+           ("2021-11-22", 6), ("2021-11-23", 6), ("2021-11-24", 6), ("2021-11-25", 6), ("2021-11-26", 6),
+           ("2021-11-27", 6)]
     }
 }

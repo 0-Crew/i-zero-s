@@ -11,7 +11,7 @@ import SnapKit
 class ChallengeListView: UIView {
 
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
-                                        .blueCalendar, .purpleCalendar, .pinkCalender]
+                                        .blueCalendar, .purpleCalendar, .pinkCalender, .orangeMain]
 
     // MARK: - IBOutlet
     @IBOutlet weak var bottleImageView: UIImageView!
@@ -36,6 +36,10 @@ class ChallengeListView: UIView {
         view.frame = bounds
         view.backgroundColor = .none
         addSubview(view)
+        lineView.setGradient(
+            startColor: .orangeMain,
+            endColor: .gray1
+        )
     }
 
     private func setTitleView(date: String, subject: String, color: UIColor, list: [DayChallengeState]) {
@@ -76,8 +80,26 @@ class ChallengeListView: UIView {
                 }
             }
 
-        } else {
+        } else { // 현재 진행중인 챌린지일 때
+            challengeTitleView.snp.remakeConstraints {
+                $0.leading.equalTo(self.bottleImageView.snp.trailing).offset(26)
+                $0.trailing.equalTo(self.snp.trailing)
+                $0.height.equalTo(58)
+            }
 
+            challengeListStackView.arrangedSubviews.enumerated().forEach {
+                let challengingListView = ChallengingListView(frame: .zero)
+                $0.element.backgroundColor = .none
+                $0.element.addSubview(challengingListView)
+                challengingListView.setChallengeList(completed: list[$0.offset].sucess,
+                                                     challengeText: list[$0.offset].title)
+                challengingListView.snp.remakeConstraints {
+                    $0.width.equalTo(self.challengeListStackView.snp.width)
+                    $0.height.equalTo(self.challengeListStackView.arrangedSubviews[0].frame.height)
+                    $0.leading.equalTo(self.snp.leading).offset(3)
+
+                }
+            }
         }
     }
 }

@@ -77,7 +77,7 @@ class ChallengeCalendarCell: FSCalendarCell {
     }()
     weak var underLine: UIView!
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
-                                        .blueCalendar, .purpleCalendar, .pinkCalender]
+                                        .blueCalendar, .purpleCalendar, .pinkCalender, .orangeMain]
 
     // MARK: - Override Function
     required init!(coder aDecoder: NSCoder!) {
