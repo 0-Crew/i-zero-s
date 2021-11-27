@@ -158,7 +158,7 @@
                                 <rect key="frame" x="10" y="8" width="20" height="20"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbG-Bj-HjE">
-                                <rect key="frame" x="35" y="8" width="39" height="20"/>
+                                <rect key="frame" x="35" y="9" width="39" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="8zS-L4-TnD"/>
                                 </constraints>
@@ -176,7 +176,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라스틱 빨대 사용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOU-2f-GiT">
-                                <rect key="frame" x="92" y="8" width="109.5" height="20"/>
+                                <rect key="frame" x="92" y="9" width="109.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ZSc-7a-XRt"/>
                                 </constraints>
@@ -193,9 +193,9 @@
                             <constraint firstAttribute="height" constant="36" id="bzc-rX-q6t"/>
                             <constraint firstItem="bUS-7a-rjl" firstAttribute="centerY" secondItem="0k2-3u-BwF" secondAttribute="centerY" id="i3G-g6-tMR"/>
                             <constraint firstItem="qzK-W2-Ymz" firstAttribute="leading" secondItem="dbG-Bj-HjE" secondAttribute="trailing" id="nTC-Rn-8fZ"/>
-                            <constraint firstItem="vOU-2f-GiT" firstAttribute="centerY" secondItem="0k2-3u-BwF" secondAttribute="centerY" id="rXD-lZ-Uhn"/>
+                            <constraint firstItem="vOU-2f-GiT" firstAttribute="centerY" secondItem="0k2-3u-BwF" secondAttribute="centerY" constant="1" id="rXD-lZ-Uhn"/>
                             <constraint firstItem="bUS-7a-rjl" firstAttribute="leading" secondItem="0k2-3u-BwF" secondAttribute="leading" constant="10" id="rpr-Rl-rGg"/>
-                            <constraint firstItem="dbG-Bj-HjE" firstAttribute="centerY" secondItem="0k2-3u-BwF" secondAttribute="centerY" id="wgU-nU-peW"/>
+                            <constraint firstItem="dbG-Bj-HjE" firstAttribute="centerY" secondItem="0k2-3u-BwF" secondAttribute="centerY" constant="1" id="wgU-nU-peW"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -24,7 +24,6 @@ class EmptyChallengeCell: UICollectionViewCell {
     override func awakeFromNib() {
         startChallengeView.isUserInteractionEnabled = true
 
-
         let tapGesture = UITapGestureRecognizer()
         tapGesture.addTarget(self, action: #selector(startChallengeViewDidTap))
         startChallengeView.addGestureRecognizer(tapGesture)
