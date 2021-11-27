@@ -82,78 +82,10 @@ class CalendarVC: UIViewController {
     }
 }
 
-// MARK: - Extensions
+// MARK: - View Function
+
 extension CalendarVC {
 
-    // MARK: - View Style
-    func setView() {
-        view.backgroundColor = .darkGray2
-        scrollView.backgroundColor = .darkGray2
-
-        calendar.dataSource = self
-        calendar.delegate = self
-
-        calendar.register(TodayCalendarCell.self, forCellReuseIdentifier: "todayCell")
-        calendar.register(ChallengeCalendarCell.self, forCellReuseIdentifier: "challengeCell")
-
-        calendar.backgroundColor = .darkGray2
-
-        calendar.headerHeight = 50
-        calendar.placeholderType = .fillHeadTail
-
-        // title: Day
-        calendar.appearance.titleDefaultColor = .gray2
-        calendar.appearance.titleWeekendColor = .gray2
-        calendar.appearance.titleFont = .spoqaHanSansNeo(size: 14, family: .medium)
-
-        // headerTitle: 달력 이름
-        calendar.appearance.headerTitleColor = .white
-        calendar.appearance.headerTitleFont = .futuraStd(size: 20, family: .heavy)
-        calendar.appearance.headerMinimumDissolvedAlpha = 0 // 이전, 다음 달 text hide
-
-        // weekday: 요일
-        calendar.appearance.weekdayTextColor = .gray2
-        calendar.appearance.weekdayFont = .futuraStd(size: 13, family: .heavy)
-        calendar.appearance.selectionColor = .white
-        calendar.appearance.titleSelectionColor = .darkGray
-        calendar.appearance.caseOptions = [.weekdayUsesUpperCase]
-
-        calendar.appearance.todayColor = .clear
-        calendar.appearance.todaySelectionColor = .none
-        calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
-    }
-
-    private func makeButton() {
-        view.addSubview(leftMonthButton)
-        view.addSubview(rightMonthButton)
-
-        leftMonthButton.snp.makeConstraints {
-            $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
-            $0.left.equalTo(calendar.snp.left).offset(5)
-            $0.width.height.equalTo(24)
-        }
-
-        rightMonthButton.snp.makeConstraints {
-            $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
-            $0.right.equalTo(calendar.snp.right).offset(-5)
-            $0.width.height.equalTo(24)
-        }
-    }
-
-    override func updateViewConstraints() {
-        var height: CGFloat = 0.0
-        height += calendar.frame.height
-        view.frame.size.height = 800 // 추상적인 숫자 변경 필요
-        view.frame.origin.y = UIScreen.main.bounds.height - height - 450
-
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 25
-        view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
-
-        super.updateViewConstraints()
-    }
-
-    // MARK: - ChildView Setting
     func setChallengeView() {
         let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
                                                                      y: 0,
@@ -161,8 +93,6 @@ extension CalendarVC {
                                                                      height: 167))
         challengeView.addSubview(todayJoinChallengeView)
     }
-
-    // MARK: - Action
     @objc func moveMonthButtonDidTap(sender: UIButton) {
         calendar.setCurrentPage(moveMonth(date: calendar.currentPage, value: sender.tag), animated: true)
     }
@@ -276,9 +206,67 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
 }
 
+// MARK: - View Style
+extension CalendarVC {
+    private func setView() {
+        view.backgroundColor = .darkGray2
+        scrollView.backgroundColor = .darkGray2
+
+        calendar.dataSource = self
+        calendar.delegate = self
+        calendar.register(ChallengeCalendarCell.self, forCellReuseIdentifier: "challengeCell")
+        calendar.backgroundColor = .darkGray2
+        calendar.headerHeight = 50
+        calendar.placeholderType = .fillHeadTail
+        // title: Day
+        calendar.appearance.titleDefaultColor = .gray2
+        calendar.appearance.titleWeekendColor = .gray2
+        calendar.appearance.titleFont = .spoqaHanSansNeo(size: 14, family: .medium)
+        // headerTitle: 달력 이름
+        calendar.appearance.headerTitleColor = .white
+        calendar.appearance.headerTitleFont = .futuraStd(size: 20, family: .heavy)
+        calendar.appearance.headerMinimumDissolvedAlpha = 0 // 이전, 다음 달 text hide
+        // weekday: 요일
+        calendar.appearance.weekdayTextColor = .gray2
+        calendar.appearance.weekdayFont = .futuraStd(size: 13, family: .heavy)
+        calendar.appearance.selectionColor = .white
+        calendar.appearance.titleSelectionColor = .darkGray
+        calendar.appearance.caseOptions = [.weekdayUsesUpperCase]
+
+        calendar.appearance.todayColor = .clear
+        calendar.appearance.todaySelectionColor = .none
+        calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
+    }
+    private func makeButton() {
+        view.addSubview(leftMonthButton)
+        view.addSubview(rightMonthButton)
+        leftMonthButton.snp.makeConstraints {
+            $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
+            $0.left.equalTo(calendar.snp.left).offset(5)
+            $0.width.height.equalTo(24)
+        }
+        rightMonthButton.snp.makeConstraints {
+            $0.centerY.equalTo(calendar.calendarHeaderView.snp.centerY)
+            $0.right.equalTo(calendar.snp.right).offset(-5)
+            $0.width.height.equalTo(24)
+        }
+    }
+    override func updateViewConstraints() {
+        var height: CGFloat = 0.0
+        height += calendar.frame.height
+        view.frame.size.height = 800 // 추상적인 숫자 변경 필요
+        view.frame.origin.y = UIScreen.main.bounds.height - height - 450
+
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 25
+        view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+
+        super.updateViewConstraints()
+    }
+}
+
 // MARK: - Server
 extension CalendarVC {
-
     // 서버 연결 전 더미데이터 생성
     private func makeDumyData() {
         let data1 = DayChallengeState(title: "종이 컵홀더 안 쓰기", sucess: true)
@@ -313,7 +301,6 @@ extension CalendarVC {
         let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 3)
 
         challengeContext = [challenge1, challenge2, challenge3]
-
         challengeDates
         = [("2021-11-01", 1), ("2021-11-02", 1), ("2021-11-03", 1), ("2021-11-04", 1), ("2021-11-05", 1),
            ("2021-11-06", 1), ("2021-11-07", 1), ("2021-11-11", 2), ("2021-11-12", 2), ("2021-11-13", 2),
