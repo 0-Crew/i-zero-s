@@ -164,22 +164,22 @@ extension ChallengeListCell: ChallengeViewDelegate {
     }
     // 편집, 취소, 완료 버튼 이벤트 delegate
     func didEditButtonTap(challengeOffset: Int, yPosition: CGFloat) {
+        // 편집 중인 챌린지가 없을 경우
+        guard editingChallengeOffset != nil else {
+            editingChallengeOffset = challengeOffset
+            setChallengeViewChaingingState(offset: challengeOffset)
+            presentOptionTableView(yPosition: yPosition)
+            return
+        }
+        // 편집을 취소 하거나 완료한 경우
         if challengeOffset == editingChallengeOffset {
             editingChallengeOffset = nil
             optionsTableView.isHidden = true
             setChallengeViewChaingingState(offset: challengeOffset)
-        } else {
-            if let previousOffset = editingChallengeOffset {
-                editingChallengeOffset = challengeOffset
-                setChallengeViewChaingingState(offset: previousOffset)
-                setChallengeViewChaingingState(offset: challengeOffset)
-            } else {
-                editingChallengeOffset = challengeOffset
-                setChallengeViewChaingingState(offset: challengeOffset)
-            }
-
-            presentOptionTableView(yPosition: yPosition)
+            return
         }
+        // 현재 편집중인 경우
+        return
     }
     // 챌린지 완료 상태 toggle 이벤트 delegate
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
