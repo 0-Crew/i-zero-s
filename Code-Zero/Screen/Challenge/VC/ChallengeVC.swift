@@ -111,6 +111,7 @@ extension ChallengeVC: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+
         if followingPeopleChallengingLists[indexPath.item].isChallenging {
             let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
             cell.setChallengeListCell(isMine: indexPath.item == 0)

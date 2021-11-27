@@ -73,7 +73,8 @@ class ChallengeListCell: UICollectionViewCell {
     }
 
     lazy var optionsTableView: UITableView = {
-        let tableView = UITableView(frame: .init(x: 0, y: 0, width: 274, height: 134))
+        let width = bounds.width - 81 - 20
+        let tableView = UITableView(frame: .init(x: 81, y: 0, width: width, height: 134))
         tableView.backgroundColor = .white
         tableView.setBorder(borderColor: .orangeMain, borderWidth: 1)
         tableView.separatorStyle = .none
@@ -148,10 +149,11 @@ class ChallengeListCell: UICollectionViewCell {
 
     private func presentOptionTableView(yPosition: CGFloat) {
         var mutableYPosition = yPosition + 43 + 8
-
         let isOver = mutableYPosition + 134 > challengeListStackView.bounds.maxY
+        let width = bounds.width - 81 - 20
+
         mutableYPosition = isOver ? yPosition - 8 - 134 : mutableYPosition
-        optionsTableView.frame = .init(x: 81, y: mutableYPosition, width: 274, height: 134)
+        optionsTableView.frame = .init(x: 81, y: mutableYPosition, width: width, height: 134)
         optionsTableView.isHidden = false
     }
 
