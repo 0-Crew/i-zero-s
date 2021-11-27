@@ -9,7 +9,7 @@ import Foundation
 import FSCalendar
 import UIKit
 
-enum CalendarBoarderType {
+enum CalendarBoarderType: Equatable {
     case none
     case leftBorder(color: Int)
     case middle(color: Int)
@@ -34,6 +34,10 @@ class ChallengeCalendarCell: FSCalendarCell {
     var cellBoarderType: CalendarBoarderType = .none {
         didSet {
             setNeedsLayout()
+            if cellDayType == .today && cellBoarderType != .none {
+                titleLabel.font = .spoqaHanSansNeo(size: 14, family: .bold)
+                titleLabel.textColor = .white
+            }
         }
     }
     var cellDayType: SelectedType = .days {
@@ -45,6 +49,7 @@ class ChallengeCalendarCell: FSCalendarCell {
     var isClick: Bool = false {
         didSet {
             selectionFillLayer.isHidden = !isClick
+            underLine.backgroundColor = isClick ? .darkGray2 : .white
         }
     }
     private lazy var selectionFillLayer: CAShapeLayer = {
@@ -94,13 +99,16 @@ class ChallengeCalendarCell: FSCalendarCell {
         let underLine: UIView = UIView()
         contentView.insertSubview(underLine, at: 2) // 지정한 인덱스의 view 삽입
         self.underLine = underLine
-        self.underLine.backgroundColor = .red
     }
 
     // Lint issue: Function Body Length Violation: Function body should span 40 lines or less excluding comments and whitespace: currently spans 76 lines (function_body_length)
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel.textColor = !isClick ? cellBoarderType.cellTextColor : .white
+        if cellDayType == .today && cellBoarderType != .none {
+            titleLabel.textColor = .white
+        } else {
+            titleLabel.textColor = !isClick ? cellBoarderType.cellTextColor : .white
+        }
         topBorderLayer.isHidden = false
         bottomBorderLayer.isHidden = true
         underLine.frame = CGRect(x: contentView.frame.width/2-5,
@@ -190,15 +198,15 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .none:
             topBorderLayer.isHidden = true
             selectionFillLayer.isHidden = true
+            if cellDayType == .today && isClick {
+                titleLabel.textColor = .darkGray2
+            } else if cellDayType == .today && !isClick {
+                titleLabel.textColor = .gray1
+            }
         }
-    }
 
-    override func configureAppearance() {
-        super.configureAppearance()
         if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
             self.titleLabel.textColor = .gray4
-        } else { // 이번달 날짜들
-            self.titleLabel.textColor = .gray3
         }
     }
 
