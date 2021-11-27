@@ -78,6 +78,7 @@ class CalendarVC: UIViewController {
         setChallengeView()
         makeButton()
         makeDumyData()
+        findTodayIsChallenge()
         // Do any additional setup after loading the view.
     }
 }
@@ -95,6 +96,14 @@ extension CalendarVC {
     }
     @objc func moveMonthButtonDidTap(sender: UIButton) {
         calendar.setCurrentPage(moveMonth(date: calendar.currentPage, value: sender.tag), animated: true)
+    }
+    func findTodayIsChallenge() {
+        let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd")
+        if challengeDates.contains(where: { $0.0 == stringToDate }) {
+            if let challengeColor = challengeDates.filter({ $0.0 == stringToDate }).map({ $0.1 }).first {
+                selectedChallege = challengeDates.filter { $0.1 == challengeColor }.map { $0.0 }
+            }
+        }
     }
 
 }
