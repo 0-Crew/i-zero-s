@@ -32,7 +32,7 @@ class ChallengingListView: UIView {
 
     internal func setChallengeList(completed: Bool, challengeText: String) {
         completedImageView.image = completed ?
-        UIImage(named: "icMiniWaterNone") : UIImage(named: "icMiniWaterSuccess")
+        UIImage(named: "icMiniWaterSuccess") : UIImage(named: "icMiniWaterNone")
         challengeLabel.text = challengeText
     }
 }

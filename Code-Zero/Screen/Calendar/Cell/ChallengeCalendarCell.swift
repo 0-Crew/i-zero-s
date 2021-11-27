@@ -37,6 +37,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             if cellDayType == .today && cellBoarderType != .none {
                 titleLabel.font = .spoqaHanSansNeo(size: 14, family: .bold)
                 titleLabel.textColor = .white
+                underLine.backgroundColor = .white
             }
         }
     }
@@ -82,7 +83,7 @@ class ChallengeCalendarCell: FSCalendarCell {
     }()
     weak var underLine: UIView!
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
-                                        .blueCalendar, .purpleCalendar, .pinkCalender, .orangeMain]
+                                        .blueCalendar, .purpleCalendar, .pinkCalender]
 
     // MARK: - Override Function
     required init!(coder aDecoder: NSCoder!) {
@@ -125,16 +126,16 @@ class ChallengeCalendarCell: FSCalendarCell {
                 $0.frame = layerFrame
                 $0.path = UIBezierPath(rect: $0.bounds).cgPath
             }
-
+            let fillColor: UIColor = colorNumber == -1 ? UIColor.orangeMain : colorChip[colorNumber]
             setStrokeStyle(layer: topBorderLayer,
                            startPoint: 0,
                            endPoint: 0.29,
-                           strokeColor: colorChip[colorNumber])
+                           strokeColor: fillColor)
             setStrokeStyle(layer: bottomBorderLayer,
                            startPoint: 0.5,
                            endPoint: 0.79,
-                           strokeColor: colorChip[colorNumber])
-            selectionFillLayer.fillColor = colorChip[colorNumber].cgColor
+                           strokeColor: fillColor)
+            selectionFillLayer.fillColor = fillColor.cgColor
             bottomBorderLayer.isHidden = false
         case .leftBorder(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX+3,
@@ -149,11 +150,12 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        byRoundingCorners: [.topLeft, .bottomLeft],
                                        cornerRadii: cornerRadii).cgPath
             }
+            let fillColor: UIColor = colorNumber == -1 ? UIColor.orangeMain : colorChip[colorNumber]
             setStrokeStyle(layer: topBorderLayer,
                            startPoint: 0.3,
                            endPoint: 1,
-                           strokeColor: colorChip[colorNumber])
-            selectionFillLayer.fillColor = colorChip[colorNumber].cgColor
+                           strokeColor: fillColor)
+            selectionFillLayer.fillColor = fillColor.cgColor
         case .rightBorder(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX-5,
                                     y: contentView.bounds.minY,
@@ -168,12 +170,12 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        byRoundingCorners: [.topRight, .bottomRight],
                                        cornerRadii: cornerRadii).cgPath
             }
-
+            let fillColor: UIColor = colorNumber == -1 ? UIColor.orangeMain : colorChip[colorNumber]
             setStrokeStyle(layer: topBorderLayer,
                            startPoint: 0,
                            endPoint: 0.77,
-                           strokeColor: colorChip[colorNumber])
-            selectionFillLayer.fillColor = colorChip[colorNumber].cgColor
+                           strokeColor: fillColor)
+            selectionFillLayer.fillColor = fillColor.cgColor
         case .bothBorder(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX+4,
                                     y: contentView.bounds.minY,
@@ -189,12 +191,12 @@ class ChallengeCalendarCell: FSCalendarCell {
                                                            .topLeft, .bottomLeft],
                                        cornerRadii: cornerRadii).cgPath
             }
+            let fillColor: UIColor = colorNumber == -1 ? UIColor.orangeMain : colorChip[colorNumber]
             setStrokeStyle(layer: topBorderLayer,
                            startPoint: 0,
                            endPoint: 1,
-                           strokeColor: colorChip[colorNumber])
-            selectionFillLayer.fillColor =
-            colorChip[colorNumber].cgColor
+                           strokeColor: fillColor)
+            selectionFillLayer.fillColor = fillColor.cgColor
         case .none:
             topBorderLayer.isHidden = true
             selectionFillLayer.isHidden = true

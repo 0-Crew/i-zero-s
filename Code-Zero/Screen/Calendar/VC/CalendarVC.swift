@@ -46,11 +46,14 @@ class CalendarVC: UIViewController {
                 let challengeNumber = challengeDates.filter { $0.0 == selectedChallege[0] }[0].1
                 let challengeData = challengeContext.filter { $0.colorNumber == challengeNumber }[0]
                 let challengeWeek = challengeDates.filter { $0.1 == challengeNumber }.map { $0.0 }.map { $0.components(separatedBy: "-")[2] }.sorted()
+                let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd")
+                let challengeColor = challengeDates.filter { $0.1 == challengeNumber }.map { $0.0 }.contains
+                { $0 == stringToDate } ? -1 : challengeData.colorNumber
                 let challengeListView = ChallengeListView(frame: CGRect(x: 0,
                                                                         y: 0,
                                                                         width: view.frame.width-40,
                                                                         height: 273),
-                                                          color: challengeData.colorNumber,
+                                                          color: challengeColor,
                                                           date: "11.\(challengeWeek.first!) - \(challengeWeek.last!)",
                                                           subject: challengeData.subject,
                                                           list: challengeData.list)
@@ -196,6 +199,9 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first ?? -1
+        let todayChallengeColor = challengeDates.filter {
+            $0.0 == calendar.today?.datePickerToString(format: "yyyy-MM-dd")
+        }.first?.1
         let previousDate = gregorian.date(byAdding: .day, value: -1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd")
         let nextDate = gregorian.date(byAdding: .day, value: 1, to: date)!
@@ -207,24 +213,31 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
 
                 if date.dayNumberOfWeek() == 7 { // 토요일이라면
                     if !challengeDates.contains(where: { $0.0 == previousDate }) {
-                        return .bothBorder(color: challengeColor)
+                        return challengeColor == todayChallengeColor ?
+                            .bothBorder(color: -1) : .bothBorder(color: challengeColor)
                     }
-                    return .rightBorder(color: challengeColor)
+                    return challengeColor == todayChallengeColor ?
+                        .rightBorder(color: -1) : .rightBorder(color: challengeColor)
                 } else if date.dayNumberOfWeek() == 1 { // 일요일이라면
                     if !challengeDates.contains(where: { $0.0 == nextDate }) {
-                        return .bothBorder(color: challengeColor)
+                        return challengeColor == todayChallengeColor ?
+                            .bothBorder(color: -1) : .bothBorder(color: challengeColor)
                     }
-                    return .leftBorder(color: challengeColor)
+                    return challengeColor == todayChallengeColor ?
+                        .leftBorder(color: -1) : .leftBorder(color: challengeColor)
                 }
                 if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) &&
                     challengeDates.contains(where: { $0.0 == nextDate && $0.1 == challengeColor }) {
                     // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
-                    return .middle(color: challengeColor) // 중간 취급
+                    return challengeColor == todayChallengeColor ?
+                        .middle(color: -1) : .middle(color: challengeColor) // 중간 취급
                 } else if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) {
                     // 이전날만 존재한다면
-                    return .rightBorder(color: challengeColor) // 오른쪽 라운드 담당
+                    return challengeColor == todayChallengeColor ?
+                        .rightBorder(color: -1) : .rightBorder(color: challengeColor) // 오른쪽 라운드 담당
                 } else { // 다음날만 존재한다면
-                    return .leftBorder(color: challengeColor) // 왼쪽 라운드 담당
+                    return challengeColor == todayChallengeColor ?
+                        .leftBorder(color: -1) : .leftBorder(color: challengeColor) // 왼쪽 라운드 담당
                 }
             } else {
                 return .none
@@ -325,14 +338,14 @@ extension CalendarVC {
 
         let challenge1 = ChallengeData(subject: "오늘도 화이팅", list: firstChallenge, colorNumber: 1)
         let challenge2 = ChallengeData(subject: "빨대는 포기 못해", list: secondeChallenge, colorNumber: 2)
-        let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 6)
+        let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, colorNumber: 3)
 
         challengeContext = [challenge1, challenge2, challenge3]
         challengeDates
         = [("2021-11-01", 1), ("2021-11-02", 1), ("2021-11-03", 1), ("2021-11-04", 1), ("2021-11-05", 1),
            ("2021-11-06", 1), ("2021-11-07", 1), ("2021-11-11", 2), ("2021-11-12", 2), ("2021-11-13", 2),
-           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 6),
-           ("2021-11-22", 6), ("2021-11-23", 6), ("2021-11-24", 6), ("2021-11-25", 6), ("2021-11-26", 6),
-           ("2021-11-20", 6)]
+           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 3),
+           ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3), ("2021-11-26", 3),
+           ("2021-11-27", 3)]
     }
 }
