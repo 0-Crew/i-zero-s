@@ -120,7 +120,7 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .middle(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX + 0,
                                     y: contentView.bounds.minY + 0,
-                                    width: contentView.bounds.width + 0,
+                                    width: contentView.bounds.width + 2,
                                     height: contentView.bounds.height - 3)
             [topBorderLayer, bottomBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame

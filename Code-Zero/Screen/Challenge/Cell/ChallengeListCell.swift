@@ -32,23 +32,24 @@ class ChallengeListCell: UICollectionViewCell {
         }
     }
     internal var challengeTextList: [String] = [
-        "음식 남기지 않기1",
-        "음식 남기지 않기2",
-        "음식 남기지 않기3",
-        "음식 남기지 않기4",
-        "음식 남기지 않기5",
-        "음식 남기지 않기6",
-        "음식 남기지 않기7"
+        "☁️ 영수증 안받기(전자 영수증)",
+        "☁️ 영수증 안받기(전자 영수증)",
+        "☁️ 영수증 안받기(전자 영수증)",
+        "☁️ 영수증 안받기(전자 영수증)",
+        "☁️ 영수증 안받기(전자 영수증)",
+        "☁️ 영수증 안받기(전자 영수증)",
+        "☁️ 영수증 안받기(전자 영수증)"
     ]
     internal var optionsList: [String] = [
-        "선택지1",
-        "선택지2",
-        "선택지3",
-        "선택지4",
-        "선택지5",
-        "선택지6",
+        "😏 빨대 안받기",
+        "🤑 텀플러 사용하기",
+        "🥴 비닐봉투 대신 장바구니 사용하기",
+        "🤪 플라스틱 빨대 가지고 다니기",
+        "🥳 포장 시 다회용기 가져가기",
+        "😶‍🌫️ 종이 포장지 사용해보기",
         "직접입력"
     ]
+
     // MARK: Business Logic Data Property
     private var editingChallengeOffset: Int?
     internal weak var delegate: ChallengeListCellDelegate?
