@@ -13,12 +13,11 @@ protocol ChallengeListCellDelegate: AnyObject {
 }
 
 class ChallengeListCell: UICollectionViewCell {
-
     // MARK: - Property
     private var bottleImageLists: [UIImage?] = (0...7)
         .map { "icBottleMain\($0)" }
         .map { UIImage(named: $0) }
-
+    // MARK: UI Data Property
     internal var challengeStateList: [ChallengeState] = [
         .didChallengeCompleted,
         .didChallengeCompleted,
@@ -40,7 +39,6 @@ class ChallengeListCell: UICollectionViewCell {
         "음식 남기지 않기5",
         "음식 남기지 않기6",
         "음식 남기지 않기7"
-
     ]
     internal var optionsList: [String] = [
         "선택지1",
@@ -51,11 +49,10 @@ class ChallengeListCell: UICollectionViewCell {
         "선택지6",
         "직접입력"
     ]
+    // MARK: Business Logic Data Property
     private var editingChallengeOffset: Int?
-
     internal weak var delegate: ChallengeListCellDelegate?
     internal var isMine: Bool!
-
     // MARK: - IBOutlet
     @IBOutlet weak var bottleImageView: UIImageView!
     @IBOutlet weak var initialLineView: UIView!
@@ -66,15 +63,14 @@ class ChallengeListCell: UICollectionViewCell {
             scrollView.delegate = self
         }
     }
-
     // MARK: - UI Property
     private var challengeViewList: [ChallengeView?] {
         return challengeListStackView.arrangedSubviews.map { $0 as? ChallengeView }
     }
-
     lazy var optionsTableView: UITableView = {
         let width = bounds.width - 81 - 20
         let tableView = UITableView(frame: .init(x: 81, y: 0, width: width, height: 134))
+        // tableView setting
         tableView.backgroundColor = .white
         tableView.setBorder(borderColor: .orangeMain, borderWidth: 1)
         tableView.separatorStyle = .none
@@ -86,17 +82,24 @@ class ChallengeListCell: UICollectionViewCell {
 
         return tableView
     }()
-
+    // MARK: - Lifecycle Method
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
         registerForKeyboardNotifications()
     }
-
     deinit {
         unregisterForKeyboardNotifications()
     }
 
+    // MARK: - IBAction Method
+    @IBAction func calendarButtonDidTap(sender: UIButton) {
+        delegate?.didCalendarButtonTap()
+    }
+}
+
+// MARK: - UI Setting
+extension ChallengeListCell {
     private func initView() {
         scrollView.addSubview(optionsTableView)
         lineView.setGradient(
@@ -109,30 +112,23 @@ class ChallengeListCell: UICollectionViewCell {
         setChallengeListCell(isMine: true)
         updateBottleImageView(stateList: challengeStateList)
     }
-
     private func updateBottleImageView(stateList: [ChallengeState]) {
-        let remainCount = 7 - stateList
-            .filter {
+        let remainCount = 7 - stateList.filter {
                 $0 == .willChallenge || $0 == .challengingNotCompleted || $0 == .didChallengeNotCompleted
-            }
-            .count
+            }.count
 
         bottleImageView.image = bottleImageLists[remainCount]
     }
-
     internal func setChallengeListCell(isMine: Bool) {
         self.isMine = isMine
         challengeViewList.enumerated().forEach {
             let challengView = $0.element
             challengView?.delegate = isMine ? self : nil
-            setChallengeText(offset: $0.offset, text: challengeTextList[$0.offset])
-            challengView?.setChallengeText(text: challengeTextList[$0.offset])
-            challengView?.challengeTextField.text = challengeTextList[$0.offset]
-            challengView?.setChallengeState(state: challengeStateList[$0.offset], isMine: isMine)
             challengView?.challengeOffset = $0.offset
+            challengView?.setChallengeText(text: challengeTextList[$0.offset])
+            challengView?.setChallengeState(state: challengeStateList[$0.offset], isMine: isMine)
         }
     }
-
     private func setChallengeText(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
@@ -141,12 +137,10 @@ class ChallengeListCell: UICollectionViewCell {
         let challengeView = challengeViewList[offset]
         challengeView?.toggleIsChangingState(to: offset == editingChallengeOffset)
     }
-
     private func setChallengeTextFieldState(offset: Int) {
         let challengeView = challengeViewList[offset]
         challengeView?.toggleTextEditingState(to: offset == editingChallengeOffset)
     }
-
     private func presentOptionTableView(yPosition: CGFloat) {
         var mutableYPosition = yPosition + 43 + 8
         let isOver = mutableYPosition + 134 > challengeListStackView.bounds.maxY
@@ -156,13 +150,11 @@ class ChallengeListCell: UICollectionViewCell {
         optionsTableView.frame = .init(x: 81, y: mutableYPosition, width: width, height: 134)
         optionsTableView.isHidden = false
     }
-
-    @IBAction func calendarButtonDidTap(sender: UIButton) {
-        delegate?.didCalendarButtonTap()
-    }
 }
 
+// MARK: - ChallengeViewDelegate
 extension ChallengeListCell: ChallengeViewDelegate {
+    // 텍스트 필드 편집 완료 이벤트 delegate
     func didChallengeTextFieldEdit(challengeOffset: Int, text: String) {
         editingChallengeOffset = nil
         optionsTableView.isHidden = true
@@ -170,7 +162,7 @@ extension ChallengeListCell: ChallengeViewDelegate {
         setChallengeTextFieldState(offset: challengeOffset)
         setChallengeText(offset: challengeOffset, text: text)
     }
-
+    // 편집, 취소, 완료 버튼 이벤트 delegate
     func didEditButtonTap(challengeOffset: Int, yPosition: CGFloat) {
         if challengeOffset == editingChallengeOffset {
             editingChallengeOffset = nil
@@ -189,18 +181,20 @@ extension ChallengeListCell: ChallengeViewDelegate {
             presentOptionTableView(yPosition: yPosition)
         }
     }
-
+    // 챌린지 완료 상태 toggle 이벤트 delegate
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
         challengeStateList[challengeOffset] = currentState
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension ChallengeListCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.initialLineView.isHidden = scrollView.contentOffset.y > 4.0
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ChallengeListCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -220,6 +214,7 @@ extension ChallengeListCell: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ChallengeListCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return optionsList.count
@@ -232,6 +227,7 @@ extension ChallengeListCell: UITableViewDataSource {
     }
 }
 
+// MARK: - Keyboard Notification Setting
 extension ChallengeListCell {
 
     // keyboard가 보여질 때 어떤 동작을 수행

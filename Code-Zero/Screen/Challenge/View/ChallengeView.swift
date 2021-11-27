@@ -106,32 +106,76 @@ extension ChallengeState {
 }
 
 class ChallengeView: UIView {
+    // MARK: - IBOutlet
     @IBOutlet weak var highlightingView: UIView!
     @IBOutlet weak var dropWaterImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var challengeTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
 
+    // MARK: - Property
+    // MARK: Data Property
     internal var challengeOffset: Int!
     internal var challengeState: ChallengeState = .willChallenge
     internal var isMine: Bool!
-    internal weak var delegate: ChallengeViewDelegate?
 
+    // MARK: Event Property
+    internal weak var delegate: ChallengeViewDelegate?
     private var cachedChallengeText: String?
     private var toggleChallengeStateHandler: (() -> Void)?
 
+    // MARK: - Lifecycle Method
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
         initView()
     }
-
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadView()
         initView()
     }
 
+    @objc private func didToggleChallengeStateTap() {
+        toggleChallengeStateHandler?()
+    }
+
+    private func completeChallengeHandler() {
+        setChallengeStateComplete()
+        delegate?.didToggleChallengeStateAction(
+            challengeOffset: challengeOffset,
+            currentState: challengeState
+        )
+    }
+
+    private func nonCompleteChallengeHandler() {
+        setChallengeStateNonComplete()
+        delegate?.didToggleChallengeStateAction(
+            challengeOffset: challengeOffset,
+            currentState: challengeState
+        )
+    }
+    // MARK: - IBAction Method
+    @IBAction func editButtonDidTap(sender: UIButton) {
+        if challengeTextField.isEditing {
+            challengeTextField.isEnabled = false
+            challengeTextField.endEditing(false)
+            return
+        }
+        delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
+    }
+    @IBAction func challengeTextFieldEditingChanged(_ sender: UITextField) {
+        guard let text = sender.text, !text.isEmpty else {
+            editButton.setImage(UIImage(named: "icXBlack"), for: .normal)
+            return
+        }
+
+        editButton.setImage(UIImage(named: "icCheckBlack"), for: .normal)
+    }
+}
+
+// MARK: - UI Setting
+extension ChallengeView {
     private func loadView() {
         let nibs = Bundle.main.loadNibNamed("ChallengeView", owner: self, options: nil)
 
@@ -142,7 +186,6 @@ class ChallengeView: UIView {
             $0.edges.equalToSuperview()
         }
     }
-
     private func initView() {
         backgroundColor = .clear
         highlightingView.setBorder(borderColor: .orangeMain, borderWidth: 1.0)
@@ -152,21 +195,20 @@ class ChallengeView: UIView {
         dropWaterImageView.isUserInteractionEnabled = true
         dropWaterImageView.addGestureRecognizer(tapGestureRecognizer)
     }
-
     internal func setChallengeState(state: ChallengeState, isMine: Bool) {
         challengeState = state
         self.isMine = isMine
-
+        // highlightView
         highlightingView.isHidden = state.highlightViewIsHidden
         highlightingView.backgroundColor = state.highlightViewBackgroundColor
-
+        // dropWaterImageView
         dropWaterImageView.image = state.dropWaterImage
-
+        // dateLabel
         dateLabel.isHidden = state.dateLabelIsHidden
         dateLabel.textColor = state.dateLabelTextColor
-
+        // challengeTextField
         challengeTextField.textColor = state.challengeTextFieldTextColor
-
+        // editButton
         editButton.isHidden = isMine ? state.editButtonIsHidden : true
         editButton.tintColor = state.editButtonTintColor
         editButton.setImage(UIImage(named: "icEdit"), for: .normal)
@@ -175,17 +217,15 @@ class ChallengeView: UIView {
         case .willChallenge:
             toggleChallengeStateHandler = nil
         case .challengingNotCompleted, .didChallengeNotCompleted:
-            toggleChallengeStateHandler = isMine ? completeChallengeHandlerProvider : nil
+            toggleChallengeStateHandler = isMine ? completeChallengeHandler : nil
         case .challengingCompleted, .didChallengeCompleted:
-            toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandlerProvider : nil
+            toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandler : nil
         }
     }
-
     internal func setChallengeText(text: String) {
         challengeTextField.text = text
         cachedChallengeText = text
     }
-
     internal func toggleIsChangingState(to isChanging: Bool) {
         if isChanging {
             let isChallenging = challengeState == .challengingCompleted ||
@@ -204,7 +244,6 @@ class ChallengeView: UIView {
             setChallengeState(state: challengeState, isMine: true)
         }
     }
-
     internal func toggleTextEditingState(to isEditing: Bool) {
         if isEditing {
             challengeTextField.isEnabled = true
@@ -216,27 +255,6 @@ class ChallengeView: UIView {
             setChallengeState(state: challengeState, isMine: true)
         }
     }
-
-    @objc private func didToggleChallengeStateTap() {
-        toggleChallengeStateHandler?()
-    }
-
-    private func completeChallengeHandlerProvider() {
-        setChallengeStateComplete()
-        delegate?.didToggleChallengeStateAction(
-            challengeOffset: challengeOffset,
-            currentState: challengeState
-        )
-    }
-
-    private func nonCompleteChallengeHandlerProvider() {
-        setChallengeStateNonComplete()
-        delegate?.didToggleChallengeStateAction(
-            challengeOffset: challengeOffset,
-            currentState: challengeState
-        )
-    }
-
     private func setChallengeStateComplete() {
         if challengeState == .challengingNotCompleted {
             setChallengeState(state: .challengingCompleted, isMine: isMine)
@@ -244,7 +262,6 @@ class ChallengeView: UIView {
             setChallengeState(state: .didChallengeCompleted, isMine: isMine)
         }
     }
-
     private func setChallengeStateNonComplete() {
         if challengeState == .challengingCompleted {
             setChallengeState(state: .challengingNotCompleted, isMine: isMine)
@@ -252,26 +269,9 @@ class ChallengeView: UIView {
             setChallengeState(state: .didChallengeNotCompleted, isMine: isMine)
         }
     }
-
-    @IBAction func editButtonDidTap(sender: UIButton) {
-        if challengeTextField.isEditing {
-            challengeTextField.isEnabled = false
-            challengeTextField.endEditing(false)
-            return
-        }
-        delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
-    }
-
-    @IBAction func challengeTextFieldEditingChanged(_ sender: UITextField) {
-        guard let text = sender.text, !text.isEmpty else {
-            editButton.setImage(UIImage(named: "icXBlack"), for: .normal)
-            return
-        }
-
-        editButton.setImage(UIImage(named: "icCheckBlack"), for: .normal)
-    }
 }
 
+// MARK: - UITextFieldDelegate
 extension ChallengeView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text, text.count != 0 else {
