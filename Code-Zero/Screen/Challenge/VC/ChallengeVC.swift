@@ -13,7 +13,7 @@ class ChallengeVC: UIViewController {
     typealias FollowingPepleChallengeTuple = (firstName: String, isChallenging: Bool)
 
     // MARK: - Property
-    // isChallengingLists[0] 값을 false 로 바꾸면 Empty View 보입니다.
+    // followingPeopleChallengingLists[0] bool 값을 false 로 바꾸면 Empty View 보입니다.
     private var followingPeopleChallengingLists: [FollowingPepleChallengeTuple] = [
         ("김", true), ("이", false), ("박", false)
     ]
@@ -58,7 +58,6 @@ class ChallengeVC: UIViewController {
         highlightingFollowingListButton(offset: selectedPersonIndex)
         updateSocialButtons(offset: selectedPersonIndex)
     }
-
     // MARK: - IBAction Method
 
     @IBAction func cheerUpButtonDidTap(_ sender: Any) {
@@ -77,25 +76,12 @@ class ChallengeVC: UIViewController {
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
         followingPeopleChallengingLists = [
-            ("김", false),
+            ("김", true),
             ("이", true),
             ("박", false)
         ]
     }
-    private func highlightingFollowingListButton(offset: Int) {
-        followingListStackView.arrangedSubviews[0..<3].enumerated().forEach { (offset, view) in
-            guard let button = view as? UIButton else { return }
-            let color: UIColor = offset == selectedPersonIndex ? .darkGray2 : .gray3
-            button.setTitleColor(color, for: .normal)
-            button.setBorder(borderColor: color, borderWidth: 1)
-        }
-    }
-    private func updateSocialButtons(offset: Int) {
-        let isMine = offset == 0
-        let isChallenging = followingPeopleChallengingLists[offset].isChallenging
-        cheerUpButton.isHidden = (isChallenging == false) || isMine
-        followingButton.isHidden = isMine
-    }
+
 }
 
 // MARK: - UICollectionViewDataSource
@@ -107,6 +93,7 @@ extension ChallengeVC: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+
         if followingPeopleChallengingLists[indexPath.item].isChallenging {
             let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
             cell.setChallengeListCell(isMine: indexPath.item == 0)
@@ -149,13 +136,12 @@ extension ChallengeVC: ChallengeListCellDelegate {
 
 extension ChallengeVC: EmptyChallengeCellDelegate {
     func didStartChallengeViewTap() {
-        print(#function)
+        // TODO: - 챌린지 오픈 뷰 연결할 곳
     }
 }
 
 // MARK: - UI Setting
 extension ChallengeVC {
-
     private func setNavigationItems() {
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         space.width = 8
@@ -164,7 +150,6 @@ extension ChallengeVC {
             animated: false
         )
     }
-
     private func setFollowingListStackView() {
         followingPeopleChallengingLists[0..<3]
             .enumerated()
@@ -181,15 +166,14 @@ extension ChallengeVC {
                 followingListStackView.insertArrangedSubview($0, at: 0)
             }
     }
-
     private func setCollectionView() {
         challengeListCollectionView.registerCell(nibName: "ChallengeListCell")
         challengeListCollectionView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.top.equalTo(self.followingListStackView.snp.bottom).offset(97 * deviceHeightRatio)
         }
     }
-
     private func makeFollowingListButton(text: String) -> UIButton {
         let followingPersonButton: UIButton = {
             let button = UIButton(type: .custom)
@@ -205,11 +189,24 @@ extension ChallengeVC {
         }()
         return followingPersonButton
     }
-
     private func changeFollowingListFirstNames(names: [String]) {
         followingListStackView.arrangedSubviews.enumerated().forEach { (offset, view) in
             let button = view as? UIButton
             button?.setTitle(names[offset], for: .normal)
         }
+    }
+    private func highlightingFollowingListButton(offset: Int) {
+        followingListStackView.arrangedSubviews[0..<3].enumerated().forEach { (offset, view) in
+            guard let button = view as? UIButton else { return }
+            let color: UIColor = offset == selectedPersonIndex ? .darkGray2 : .gray3
+            button.setTitleColor(color, for: .normal)
+            button.setBorder(borderColor: color, borderWidth: 1)
+        }
+    }
+    private func updateSocialButtons(offset: Int) {
+        let isMine = offset == 0
+        let isChallenging = followingPeopleChallengingLists[offset].isChallenging
+        cheerUpButton.isHidden = (isChallenging == false) || isMine
+        followingButton.isHidden = isMine
     }
 }
