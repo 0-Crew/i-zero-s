@@ -205,7 +205,6 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   cellFor date: Date,
                   at position: FSCalendarMonthPosition) -> FSCalendarCell {
         // cellFor : 각 cell 에 대해 설정
-        let identifier = date == calendar.today ? "todayCell" : "challengeCell"
         let cell = calendar.dequeueReusableCell(withIdentifier: "challengeCell", for: date, at: position)
         return cell
     }
@@ -229,20 +228,15 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
 
-        let todayCell = (cell as? TodayCalendarCell)
         let challengeCell = (cell as? ChallengeCalendarCell)
 
         guard position == .current else {
             challengeCell?.cellBoarderType = .none
-            return }
+            challengeCell?.cellDayType = .days
+            return
+        }
 
-//        todayCell?.selectionType = {
-//            if calendar.selectedDates.contains($0) {
-//                return .selected
-//            } else {
-//                return .none
-//            }
-//        }(date)
+        challengeCell?.cellDayType = date == calendar.today ? .today : .days
 
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first ?? -1

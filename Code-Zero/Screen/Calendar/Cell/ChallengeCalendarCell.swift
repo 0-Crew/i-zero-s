@@ -15,8 +15,14 @@ enum CalendarBoarderType {
     case middle(color: Int)
     case rightBorder(color: Int)
     case bothBorder(color: Int)
-}
 
+    var cellTextColor: UIColor {
+        switch self {
+        case .none: return .gray3
+        default: return .gray1
+        }
+    }
+}
 enum SelectedType {
     case days
     case today
@@ -69,13 +75,7 @@ class ChallengeCalendarCell: FSCalendarCell {
         layer.isHidden = true
         return layer
     }()
-    private lazy var underLine: UIView = {
-        let view = UIView()
-//        contentView.insertSubview(view, at: 1)
-        view.backgroundColor = .red
-        underLine.isHidden = true
-        return view
-    }()
+    weak var underLine: UIView!
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
                                         .blueCalendar, .purpleCalendar, .pinkCalender]
 
@@ -90,22 +90,23 @@ class ChallengeCalendarCell: FSCalendarCell {
 
         let view = UIView(frame: self.bounds)
         backgroundView = view
+
+        let underLine: UIView = UIView()
+        contentView.insertSubview(underLine, at: 2) // 지정한 인덱스의 view 삽입
+        self.underLine = underLine
+        self.underLine.backgroundColor = .red
     }
 
     // Lint issue: Function Body Length Violation: Function body should span 40 lines or less excluding comments and whitespace: currently spans 76 lines (function_body_length)
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        titleLabel.textColor = !isClick ? cellBoarderType.cellTextColor : .white
         topBorderLayer.isHidden = false
         bottomBorderLayer.isHidden = true
-        contentView.insertSubview(underLine, at: 2)
-
-        underLine.frame = contentView.bounds
         underLine.frame = CGRect(x: contentView.frame.width/2-5,
                                  y: contentView.frame.height/2 + 5,
                                  width: 10,
                                  height: 2)
-
         switch cellBoarderType {
         case .middle(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX + 0,
@@ -125,8 +126,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                            startPoint: 0.5,
                            endPoint: 0.79,
                            strokeColor: colorChip[colorNumber])
-            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
-
+            selectionFillLayer.fillColor = colorChip[colorNumber].cgColor
             bottomBorderLayer.isHidden = false
         case .leftBorder(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX+3,
@@ -145,7 +145,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                            startPoint: 0.3,
                            endPoint: 1,
                            strokeColor: colorChip[colorNumber])
-            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
+            selectionFillLayer.fillColor = colorChip[colorNumber].cgColor
         case .rightBorder(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX-5,
                                     y: contentView.bounds.minY,
@@ -165,7 +165,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                            startPoint: 0,
                            endPoint: 0.77,
                            strokeColor: colorChip[colorNumber])
-            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
+            selectionFillLayer.fillColor = colorChip[colorNumber].cgColor
         case .bothBorder(let colorNumber):
             let layerFrame = CGRect(x: contentView.bounds.minX+4,
                                     y: contentView.bounds.minY,
@@ -185,7 +185,8 @@ class ChallengeCalendarCell: FSCalendarCell {
                            startPoint: 0,
                            endPoint: 1,
                            strokeColor: colorChip[colorNumber])
-            setFillLayerStyle(fillColor: colorChip[colorNumber], textColor: .white)
+            selectionFillLayer.fillColor =
+            colorChip[colorNumber].cgColor
         case .none:
             topBorderLayer.isHidden = true
             selectionFillLayer.isHidden = true
@@ -219,10 +220,5 @@ class ChallengeCalendarCell: FSCalendarCell {
         layer.strokeColor = strokeColor.cgColor
         layer.strokeStart = startPoint
         layer.strokeEnd = endPoint
-    }
-
-    private func setFillLayerStyle(fillColor: UIColor, textColor: UIColor) {
-        selectionFillLayer.fillColor = fillColor.cgColor
-        titleLabel.textColor = textColor
     }
 }
