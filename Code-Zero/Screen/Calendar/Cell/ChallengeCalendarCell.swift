@@ -118,10 +118,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                                  height: 2)
         switch cellBoarderType {
         case .middle(let colorNumber):
-            let layerFrame = CGRect(x: contentView.bounds.minX + 0,
-                                    y: contentView.bounds.minY + 0,
-                                    width: contentView.bounds.width + 0,
-                                    height: contentView.bounds.height - 3)
+            let layerFrame = getLayerFrame(xPoint: 0, yPoint: 0, width: 2, height: -3)
             [topBorderLayer, bottomBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
                 $0.path = UIBezierPath(rect: $0.bounds).cgPath
@@ -138,10 +135,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             selectionFillLayer.fillColor = fillColor.cgColor
             bottomBorderLayer.isHidden = false
         case .leftBorder(let colorNumber):
-            let layerFrame = CGRect(x: contentView.bounds.minX+3,
-                                      y: contentView.bounds.minY,
-                                      width: contentView.bounds.width+13,
-                                      height: contentView.bounds.height-3)
+            let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -3)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
                                              height: layerFrame.width / 2)
             [topBorderLayer, selectionFillLayer].forEach {
@@ -157,10 +151,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                            strokeColor: fillColor)
             selectionFillLayer.fillColor = fillColor.cgColor
         case .rightBorder(let colorNumber):
-            let layerFrame = CGRect(x: contentView.bounds.minX-5,
-                                    y: contentView.bounds.minY,
-                                    width: contentView.bounds.width,
-                                    height: contentView.bounds.height-3)
+            let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -3)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
                                              height: layerFrame.width / 2)
 
@@ -177,10 +168,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                            strokeColor: fillColor)
             selectionFillLayer.fillColor = fillColor.cgColor
         case .bothBorder(let colorNumber):
-            let layerFrame = CGRect(x: contentView.bounds.minX+4,
-                                    y: contentView.bounds.minY,
-                                    width: contentView.bounds.width-8,
-                                    height: contentView.bounds.height-3)
+            let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -3)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
                                              height: layerFrame.width / 2)
 
@@ -213,14 +201,11 @@ class ChallengeCalendarCell: FSCalendarCell {
     }
 
     // MARK: - Style Setting Function
-    private func setStrokeLayerFrame(xPoint: CGFloat, yPoint: CGFloat, width: CGFloat, height: CGFloat,
-                                     path: CGPath) {
-
-        topBorderLayer.frame = CGRect(x: contentView.bounds.minX + xPoint,
-                                                    y: contentView.bounds.minY + yPoint,
-                                                    width: contentView.bounds.width + width,
-                                                    height: contentView.bounds.height + height)
-        topBorderLayer.path = path
+    private func getLayerFrame(xPoint: CGFloat, yPoint: CGFloat, width: CGFloat, height: CGFloat) -> CGRect {
+        return  CGRect(x: contentView.bounds.minX + xPoint,
+                       y: contentView.bounds.minY + yPoint,
+                       width: contentView.bounds.width + width,
+                       height: contentView.bounds.height + height)
     }
 
     private func setStrokeStyle(layer: CAShapeLayer,
