@@ -29,19 +29,20 @@ class BottleWorldVC: UIViewController {
 // MARK: - View Layout Style
 extension BottleWorldVC {
     func setPageCollectionViewLayout() {
-//        pageCollectionView.register(UINib(nibName: 셀이름.reusableIdentifier, bundle: nil), forCellWithReuseIdentifier: PageCell.reusableIdentifier)
         view.addSubview(pageCollectionView)
         pageCollectionView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        pageCollectionView.registerCell(nibName: "BottleWorldListCell")
 //        pageCollectionView.topAnchor.constraint(equalTo: self.customMenuBar.bottomAnchor).isActive = true
     }
 }
 
-//MARK:- UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,10 +50,10 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-//MARK:- UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: pageCollectionView.frame.width, height: pageCollectionView.frame.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
