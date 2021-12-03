@@ -55,6 +55,7 @@
 		A2DC88D4271C122F0099438A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D3271C122F0099438A /* Home.swift */; };
 		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
 		A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FC304D273695ED00B29296 /* Challenge.storyboard */; };
+		D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		A2DC88D3271C122F0099438A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A2FC304D273695ED00B29296 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
+		D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				D256B8E52759E70B006D3CFD /* BottleWorld */,
 				A2FC30492736957300B29296 /* Challenge */,
 				9BFA84E82731496300E09C20 /* Calendar */,
 				A2DC88D2271C12210099438A /* Home */,
@@ -383,6 +386,22 @@
 				A2FC304D273695ED00B29296 /* Challenge.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D256B8E52759E70B006D3CFD /* BottleWorld */ = {
+			isa = PBXGroup;
+			children = (
+				D256B8E62759E9BF006D3CFD /* VC */,
+			);
+			path = BottleWorld;
+			sourceTree = "<group>";
+		};
+		D256B8E62759E9BF006D3CFD /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -581,6 +600,7 @@
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
+				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
 				6E5B24B52749402B0071C9F2 /* ChallengeView.swift in Sources */,
 				A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */,
