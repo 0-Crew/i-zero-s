@@ -6,6 +6,7 @@
 //
 
 import UIKit
+<<<<<<< HEAD
 import SnapKit
 
 class BottleWorldVC: UIViewController {
@@ -21,10 +22,16 @@ class BottleWorldVC: UIViewController {
         return collectionView
     }()
     
+=======
+
+class BottleWorldVC: UIViewController {
+
+>>>>>>> 778d48e ([:wrench: configure] BottleWorld View 만들 VC 생성)
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
+<<<<<<< HEAD
 
 // MARK: - View Layout Style
 extension BottleWorldVC {
@@ -59,3 +66,5 @@ extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+=======
+>>>>>>> 778d48e ([:wrench: configure] BottleWorld View 만들 VC 생성)
