@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenSecondStepView" customModule="Code_Zero" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="NnD-Ya-tAA">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 일주일 동안" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-hi-sEx">
+                    <rect key="frame" x="30" y="40" width="207" height="36"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ol5-l9-1ci">
+                    <rect key="frame" x="30" y="188" width="354" height="54"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편함" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iem-L9-A4a">
+                            <rect key="frame" x="10" y="8" width="28" height="12"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
+                            <color key="textColor" name="gray3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="서브웨이에서 비닐봉투 받기봉투 받기우" placeholder="플라스틱 빨대 사용 안 하기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-7d-dxO">
+                            <rect key="frame" x="10" y="25" width="344" height="21"/>
+                            <color key="textColor" name="orangeMain"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="L0b-7d-dxO" secondAttribute="trailing" id="45g-LY-T7I"/>
+                        <constraint firstItem="iem-L9-A4a" firstAttribute="top" secondItem="ol5-l9-1ci" secondAttribute="top" constant="8" id="Evu-nN-vmr"/>
+                        <constraint firstItem="L0b-7d-dxO" firstAttribute="leading" secondItem="iem-L9-A4a" secondAttribute="leading" id="Flz-8e-mdW"/>
+                        <constraint firstItem="L0b-7d-dxO" firstAttribute="top" secondItem="iem-L9-A4a" secondAttribute="bottom" constant="5" id="OS6-Is-rQT"/>
+                        <constraint firstAttribute="height" constant="54" id="bXF-K2-1QH"/>
+                        <constraint firstItem="iem-L9-A4a" firstAttribute="leading" secondItem="ol5-l9-1ci" secondAttribute="leading" constant="10" id="fc7-Ha-fLe"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tB-NX-Oco">
+                    <rect key="frame" x="30" y="76" width="384" height="72"/>
+                    <string key="text">포기하기 어려운 편리함은 
+무엇인가요?</string>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ed3-ta-mdZ">
+                    <rect key="frame" x="30" y="248" width="354" height="158"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="158" id="Isc-wf-kuW"/>
+                    </constraints>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챌린지 기간 동안 언제든 변경할 수 있어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmq-kj-Nce">
+                    <rect key="frame" x="30" y="416" width="354" height="17"/>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.5099999905" blue="0.054999999700000003" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ol5-l9-1ci" firstAttribute="leading" secondItem="NnD-Ya-tAA" secondAttribute="leading" constant="30" id="46b-KJ-cr3"/>
+                <constraint firstItem="TqG-hi-sEx" firstAttribute="top" secondItem="NnD-Ya-tAA" secondAttribute="top" constant="40" id="BKy-WD-qLO"/>
+                <constraint firstItem="ol5-l9-1ci" firstAttribute="top" secondItem="0tB-NX-Oco" secondAttribute="bottom" constant="40" id="HpH-3C-o1Y"/>
+                <constraint firstAttribute="trailing" secondItem="ol5-l9-1ci" secondAttribute="trailing" constant="30" id="NlO-RP-Lea"/>
+                <constraint firstItem="Ed3-ta-mdZ" firstAttribute="top" secondItem="ol5-l9-1ci" secondAttribute="bottom" constant="6" id="QZ0-En-LEf"/>
+                <constraint firstItem="zmq-kj-Nce" firstAttribute="leading" secondItem="Ed3-ta-mdZ" secondAttribute="leading" id="T30-rE-rE5"/>
+                <constraint firstItem="Ed3-ta-mdZ" firstAttribute="leading" secondItem="ol5-l9-1ci" secondAttribute="leading" id="Zzy-jz-fsM"/>
+                <constraint firstItem="zmq-kj-Nce" firstAttribute="top" secondItem="Ed3-ta-mdZ" secondAttribute="bottom" constant="10" id="awt-14-zPp"/>
+                <constraint firstAttribute="trailing" secondItem="0tB-NX-Oco" secondAttribute="trailing" id="daG-Jy-hGo"/>
+                <constraint firstItem="0tB-NX-Oco" firstAttribute="leading" secondItem="NnD-Ya-tAA" secondAttribute="leading" constant="30" id="fsO-74-XwV"/>
+                <constraint firstItem="Ed3-ta-mdZ" firstAttribute="trailing" secondItem="ol5-l9-1ci" secondAttribute="trailing" id="kCW-Oa-QmP"/>
+                <constraint firstItem="TqG-hi-sEx" firstAttribute="leading" secondItem="NnD-Ya-tAA" secondAttribute="leading" constant="30" id="txa-Zo-uIb"/>
+                <constraint firstItem="zmq-kj-Nce" firstAttribute="trailing" secondItem="Ed3-ta-mdZ" secondAttribute="trailing" id="uKd-8o-lE2"/>
+                <constraint firstItem="0tB-NX-Oco" firstAttribute="top" secondItem="TqG-hi-sEx" secondAttribute="bottom" id="zCH-tS-LTG"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="175" y="30"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="gray3">
+            <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

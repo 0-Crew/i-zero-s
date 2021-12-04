@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenFirstStepView" customModule="Code_Zero" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DPr-y6-hrD">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ln4-8r-KY4">
+                    <rect key="frame" x="30" y="40" width="384" height="108"/>
+                    <string key="text">대신 일주일 동안
+7번 참아볼 수 있는 
+불편함은 무엇인가요?</string>
+                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0b-Aw-TUg">
+                    <rect key="frame" x="30" y="188" width="354" height="54"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7M6-Cw-br4">
+                            <rect key="frame" x="10" y="8" width="28" height="12"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
+                            <color key="textColor" name="gray3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="서브웨이에서 비닐봉투 받기봉투 받기우" placeholder="플라스틱 빨대 사용 안 하기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-Qv-BGQ">
+                            <rect key="frame" x="10" y="25" width="344" height="22"/>
+                            <color key="textColor" name="orangeMain"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaU-3W-I6o">
+                            <rect key="frame" x="324" y="25" width="20" height="22"/>
+                            <color key="tintColor" name="orangeMain"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="icEdit"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Ylf-Qv-BGQ" firstAttribute="leading" secondItem="7M6-Cw-br4" secondAttribute="leading" id="Ef0-ll-Dmd"/>
+                        <constraint firstAttribute="height" constant="54" id="FER-o8-0RX"/>
+                        <constraint firstAttribute="trailing" secondItem="yaU-3W-I6o" secondAttribute="trailing" constant="10" id="Ha9-xz-MoY"/>
+                        <constraint firstItem="yaU-3W-I6o" firstAttribute="bottom" secondItem="Ylf-Qv-BGQ" secondAttribute="bottom" id="Nt9-zW-cze"/>
+                        <constraint firstItem="7M6-Cw-br4" firstAttribute="top" secondItem="l0b-Aw-TUg" secondAttribute="top" constant="8" id="SYW-9Y-Ogg"/>
+                        <constraint firstItem="7M6-Cw-br4" firstAttribute="leading" secondItem="l0b-Aw-TUg" secondAttribute="leading" constant="10" id="VuD-S1-boy"/>
+                        <constraint firstItem="Ylf-Qv-BGQ" firstAttribute="top" secondItem="7M6-Cw-br4" secondAttribute="bottom" constant="5" id="W5H-OD-tH5"/>
+                        <constraint firstItem="yaU-3W-I6o" firstAttribute="top" secondItem="Ylf-Qv-BGQ" secondAttribute="top" id="ha9-px-se1"/>
+                        <constraint firstAttribute="trailing" secondItem="Ylf-Qv-BGQ" secondAttribute="trailing" id="j1w-Vh-wIk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="l0b-Aw-TUg" firstAttribute="leading" secondItem="DPr-y6-hrD" secondAttribute="leading" constant="30" id="39h-Ns-q9y"/>
+                <constraint firstAttribute="trailing" secondItem="l0b-Aw-TUg" secondAttribute="trailing" constant="30" id="7DM-HL-gel"/>
+                <constraint firstItem="l0b-Aw-TUg" firstAttribute="top" secondItem="Ln4-8r-KY4" secondAttribute="bottom" constant="40" id="Brn-ob-M2B"/>
+                <constraint firstAttribute="trailing" secondItem="Ln4-8r-KY4" secondAttribute="trailing" id="Y6X-oZ-Hvk"/>
+                <constraint firstItem="Ln4-8r-KY4" firstAttribute="top" secondItem="DPr-y6-hrD" secondAttribute="top" constant="40" id="sNL-4X-Cyb"/>
+                <constraint firstItem="Ln4-8r-KY4" firstAttribute="leading" secondItem="DPr-y6-hrD" secondAttribute="leading" constant="30" id="tVE-l2-8BI"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="71" y="84"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icEdit" width="20" height="20"/>
+        <namedColor name="gray3">
+            <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
