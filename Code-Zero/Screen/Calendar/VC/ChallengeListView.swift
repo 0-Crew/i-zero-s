@@ -10,6 +10,7 @@ import SnapKit
 
 class ChallengeListView: UIView {
 
+    // MARK: - Property
     private let colorChip: [UIColor] = [.yellowCalendar, .greenCalendar, .redCalendar,
                                         .blueCalendar, .purpleCalendar, .pinkCalender]
 
@@ -19,6 +20,7 @@ class ChallengeListView: UIView {
     @IBOutlet weak var challengeListStackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
 
+    // MARK: - Function
     required init(frame: CGRect, color: Int, date: String, subject: String, list: [DayChallengeState]) {
         super.init(frame: frame)
         loadView()
@@ -26,11 +28,9 @@ class ChallengeListView: UIView {
         setTitleView(date: date, subject: subject, color: challengeColor, list: list)
 
     }
-
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
     private func loadView() {
         guard let view = Bundle.main.loadNibNamed("ChallengeListView",
                                                   owner: self,
@@ -43,7 +43,6 @@ class ChallengeListView: UIView {
             endColor: .gray1
         )
     }
-
     private func setTitleView(date: String, subject: String, color: UIColor, list: [DayChallengeState]) {
         let challengeTitleView = ChallengeTitleView(frame: .zero)
         self.challengeTitleView.addSubview(challengeTitleView)
@@ -54,22 +53,7 @@ class ChallengeListView: UIView {
         self.challengeTitleView.backgroundColor = .none
 
         if color != .orangeMain { // 현재 진행중인 챌린지가 아닐 때
-            challengeTitleView.snp.remakeConstraints {
-                bottleImageView.snp.removeConstraints()
-                lineView.snp.removeConstraints()
-                $0.leading.equalTo(self.snp.leading)
-                $0.trailing.equalTo(self.snp.trailing)
-                $0.height.equalTo(58)
-            }
-
-            bottleImageView.removeFromSuperview()
-            lineView.removeFromSuperview()
-
-            challengeListStackView.snp.remakeConstraints {
-                $0.leading.equalTo(self.snp.leading).offset(10)
-                $0.trailing.equalTo(self.snp.trailing).offset(-10)
-            }
-
+            setChallengedViewLayout()
             challengeListStackView.arrangedSubviews.enumerated().forEach {
                 let challengedListView = ChallengedListView(frame: .zero)
                 $0.element.backgroundColor = .none
@@ -81,14 +65,8 @@ class ChallengeListView: UIView {
                     $0.height.equalTo(self.challengeListStackView.arrangedSubviews[0].frame.height)
                 }
             }
-
         } else { // 현재 진행중인 챌린지일 때
-            challengeTitleView.snp.remakeConstraints {
-                $0.leading.equalTo(self.bottleImageView.snp.trailing).offset(26)
-                $0.trailing.equalTo(self.snp.trailing)
-                $0.height.equalTo(58)
-            }
-
+            setChallengingViewLayout()
             challengeListStackView.arrangedSubviews.enumerated().forEach {
                 let challengingListView = ChallengingListView(frame: .zero)
                 $0.element.backgroundColor = .none
@@ -102,6 +80,28 @@ class ChallengeListView: UIView {
 
                 }
             }
+        }
+    }
+    private func setChallengedViewLayout() {
+        challengeTitleView.snp.remakeConstraints {
+            bottleImageView.snp.removeConstraints()
+            lineView.snp.removeConstraints()
+            $0.leading.equalTo(self.snp.leading)
+            $0.trailing.equalTo(self.snp.trailing)
+            $0.height.equalTo(58)
+        }
+        bottleImageView.removeFromSuperview()
+        lineView.removeFromSuperview()
+        challengeListStackView.snp.remakeConstraints {
+            $0.leading.equalTo(self.snp.leading).offset(10)
+            $0.trailing.equalTo(self.snp.trailing).offset(-10)
+        }
+    }
+    private func setChallengingViewLayout() {
+        challengeTitleView.snp.remakeConstraints {
+            $0.leading.equalTo(self.bottleImageView.snp.trailing).offset(26)
+            $0.trailing.equalTo(self.snp.trailing)
+            $0.height.equalTo(58)
         }
     }
 }

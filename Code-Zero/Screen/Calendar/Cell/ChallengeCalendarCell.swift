@@ -34,7 +34,7 @@ class ChallengeCalendarCell: FSCalendarCell {
     var cellDayType: SelectedType = .days(.none) {
         didSet {
             setNeedsLayout()
-            if case .days(_) = cellDayType {
+            if case .days = cellDayType {
                 underLine.isHidden = true
             } else {
                 underLine.isHidden = false
