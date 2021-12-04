@@ -129,8 +129,9 @@ extension ChallengeVC: UIScrollViewDelegate {
 // MARK: - ChallengeListCellDelegate
 extension ChallengeVC: ChallengeListCellDelegate {
     func didCalendarButtonTap() {
-        // TODO: - 캘린더 뷰 연결할 곳
-        print("Calendar Button Presents")
+        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
+        let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+        present(calendarVC, animated: true, completion: nil)
     }
 }
 
