@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import SnapKit
+
+protocol SwipeBarDelgate: AnyObject {
+    func customMenuBar(scrollTo index: Int)
+}
 
 class SwipeBarView: UIView {
 
@@ -17,30 +22,31 @@ class SwipeBarView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Properties
     var customTabBarCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: collectionViewLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         return collectionView
     }()
 
     var indicatorView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
+        view.backgroundColor = .orangeMain
         return view
     }()
-    //MARK: Properties
     var indicatorViewLeadingConstraint:NSLayoutConstraint!
     var indicatorViewWidthConstraint: NSLayoutConstraint!
-    //MARK: Setup Views
+    internal weak var delegate: SwipeBarDelgate?
+
+    // MARK: Setup Views
     func setupCollectioView(){
         customTabBarCollectionView.delegate = self
         customTabBarCollectionView.dataSource = self
         customTabBarCollectionView.showsHorizontalScrollIndicator = false
-        customTabBarCollectionView.register(UINib(nibName: CustomCell.reusableIdentifier, bundle: nil), forCellWithReuseIdentifier: CustomCell.reusableIdentifier)
+        customTabBarCollectionView.registerCell(nibName: "TopTabBarCell")
         customTabBarCollectionView.isScrollEnabled = false
 
         let indexPath = IndexPath(item: 0, section: 0)
@@ -50,45 +56,43 @@ class SwipeBarView: UIView {
     func setupCustomTabBar(){
         setupCollectioView()
         self.addSubview(customTabBarCollectionView)
-        customTabBarCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        customTabBarCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        customTabBarCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        customTabBarCollectionView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        customTabBarCollectionView.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
+            $0.height.equalTo(45)
+        }
 
         self.addSubview(indicatorView)
+        indicatorView.snp.makeConstraints{
+            $0.height.equalTo(2)
+            $0.bottom.equalToSuperview()
+        }
         indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: self.frame.width / 4)
         indicatorViewWidthConstraint.isActive = true
-        indicatorView.heightAnchor.constraint(equalToConstant: 5).isActive = true
         indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
         indicatorViewLeadingConstraint.isActive = true
-        indicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
 }
 
 // MARK: - UICollectionViewDelegate, DataSource
 extension SwipeBarView: UICollectionViewDelegate, UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.reusableIdentifier, for: indexPath) as! CustomCell
+        let cell: TopTabBarCell = collectionView.dequeueCell(indexPath: indexPath)
         return cell
     }
 
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width / 4 , height: 55)
+        return CGSize(width: self.frame.width / 4 , height: collectionView.frame.height)
 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.customMenuBar(scrollTo: indexPath.row)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCell else {return}
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
