@@ -15,13 +15,6 @@ enum CalendarBoarderType: Equatable {
     case middle(color: Int)
     case rightBorder(color: Int)
     case bothBorder(color: Int)
-
-    var cellTextColor: UIColor {
-        switch self {
-        case .none: return .gray3
-        default: return .gray1
-        }
-    }
 }
 enum SelectedType: Equatable {
     case days(_ borderType: CalendarBoarderType)
@@ -47,7 +40,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             underLine.backgroundColor = isClick ? .darkGray2 : .white
         }
     }
-    var fillColor: UIColor = .clear {
+    private var fillColor: UIColor = .clear {
         didSet {
             selectionFillLayer.fillColor = fillColor.cgColor
         }
@@ -113,9 +106,6 @@ class ChallengeCalendarCell: FSCalendarCell {
             setLayerHidden(border: border)
         }
         setDayTextColor()
-        if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
-            self.titleLabel.textColor = .gray4
-        }
     }
 
     // MARK: - Style Setting Function
@@ -145,6 +135,9 @@ class ChallengeCalendarCell: FSCalendarCell {
                 titleLabel.textColor = isClick ? .white : .gray1
             }
         }
+        if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
+            self.titleLabel.textColor = .gray4
+        }
     }
     private func setChallengeColor(colorNumber: Int) -> UIColor {
         return colorNumber == -1 ? .orangeMain : colorChip[colorNumber%7]
@@ -165,12 +158,9 @@ class ChallengeCalendarCell: FSCalendarCell {
     }
     private func setBorderType(border: CalendarBoarderType) {
         switch border {
-        case .none:
-            break
         case .leftBorder(let color):
             let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -3)
-            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
-                                             height: layerFrame.width / 2)
+            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
@@ -187,11 +177,9 @@ class ChallengeCalendarCell: FSCalendarCell {
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.29, strokeColor: fillColor)
             setStrokeStyle(layer: bottomBorderLayer, startPoint: 0.5, endPoint: 0.79, strokeColor: fillColor)
-            selectionFillLayer.fillColor = fillColor.cgColor
         case .rightBorder(let color):
             let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -3)
-            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
-                                             height: layerFrame.width / 2)
+            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
@@ -202,8 +190,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.77, strokeColor: fillColor)
         case .bothBorder(let color):
             let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -3)
-            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
-                                             height: layerFrame.width / 2)
+            let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
@@ -213,6 +200,7 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        cornerRadii: cornerRadii).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 1, strokeColor: fillColor)
+        case .none: break
         }
     }
 }
