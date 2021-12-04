@@ -47,6 +47,11 @@ class ChallengeCalendarCell: FSCalendarCell {
             underLine.backgroundColor = isClick ? .darkGray2 : .white
         }
     }
+    var fillColor: UIColor = .clear {
+        didSet {
+            selectionFillLayer.fillColor = fillColor.cgColor
+        }
+    }
     private lazy var selectionFillLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.redCalendar.cgColor
@@ -166,7 +171,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -3)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
                                              height: layerFrame.width / 2)
-            let fillColor: UIColor = setChallengeColor(colorNumber: color)
+            fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
                 $0.path = UIBezierPath(roundedRect: $0.bounds,
@@ -174,9 +179,8 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        cornerRadii: cornerRadii).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0.3, endPoint: 1, strokeColor: fillColor)
-            selectionFillLayer.fillColor = fillColor.cgColor
         case .middle(let color):
-            let fillColor: UIColor = color == -1 ? UIColor.orangeMain : colorChip[color]
+            fillColor = color == -1 ? UIColor.orangeMain : colorChip[color]
             [topBorderLayer, bottomBorderLayer, selectionFillLayer].forEach {
                 $0.frame = getLayerFrame(xPoint: 0, yPoint: 0, width: 2, height: -3)
                 $0.path = UIBezierPath(rect: $0.bounds).cgPath
@@ -188,7 +192,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -3)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
                                              height: layerFrame.width / 2)
-            let fillColor: UIColor = setChallengeColor(colorNumber: color)
+            fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
                 $0.path = UIBezierPath(roundedRect: $0.bounds,
@@ -196,12 +200,11 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        cornerRadii: cornerRadii).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.77, strokeColor: fillColor)
-            selectionFillLayer.fillColor = fillColor.cgColor
         case .bothBorder(let color):
             let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -3)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2,
                                              height: layerFrame.width / 2)
-            let fillColor: UIColor = setChallengeColor(colorNumber: color)
+            fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
                 $0.frame = layerFrame
                 $0.path = UIBezierPath(roundedRect: $0.bounds,
@@ -210,7 +213,6 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        cornerRadii: cornerRadii).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 1, strokeColor: fillColor)
-            selectionFillLayer.fillColor = fillColor.cgColor
         }
     }
 }

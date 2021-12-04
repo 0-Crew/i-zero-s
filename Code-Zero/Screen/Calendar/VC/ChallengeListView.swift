@@ -46,14 +46,20 @@ class ChallengeListView: UIView {
     private func setTitleView(date: String, subject: String, color: UIColor, list: [DayChallengeState]) {
         let challengeTitleView = ChallengeTitleView(frame: .zero)
         self.challengeTitleView.addSubview(challengeTitleView)
-        challengeTitleView.setLabel(date: date,
-                                    state: color == .orangeMain,
-                                    subject: subject,
-                                    color: color)
+        challengeTitleView.setLabel(date: date, state: color == .orangeMain, subject: subject, color: color)
         self.challengeTitleView.backgroundColor = .none
-
         if color != .orangeMain { // 현재 진행중인 챌린지가 아닐 때
-            setChallengedViewLayout()
+            challengeTitleView.snp.remakeConstraints {
+                $0.leading.equalTo(self.snp.leading)
+                $0.trailing.equalTo(self.snp.trailing)
+                $0.height.equalTo(58)
+            }
+            bottleImageView.removeFromSuperview()
+            lineView.removeFromSuperview()
+            challengeListStackView.snp.remakeConstraints {
+                $0.leading.equalTo(self.snp.leading).offset(10)
+                $0.trailing.equalTo(self.snp.trailing).offset(-10)
+            }
             challengeListStackView.arrangedSubviews.enumerated().forEach {
                 let challengedListView = ChallengedListView(frame: .zero)
                 $0.element.backgroundColor = .none
@@ -66,7 +72,11 @@ class ChallengeListView: UIView {
                 }
             }
         } else { // 현재 진행중인 챌린지일 때
-            setChallengingViewLayout()
+            challengeTitleView.snp.remakeConstraints {
+                $0.leading.equalTo(self.bottleImageView.snp.trailing).offset(26)
+                $0.trailing.equalTo(self.snp.trailing)
+                $0.height.equalTo(58)
+            }
             challengeListStackView.arrangedSubviews.enumerated().forEach {
                 let challengingListView = ChallengingListView(frame: .zero)
                 $0.element.backgroundColor = .none
@@ -80,28 +90,6 @@ class ChallengeListView: UIView {
 
                 }
             }
-        }
-    }
-    private func setChallengedViewLayout() {
-        challengeTitleView.snp.remakeConstraints {
-            bottleImageView.snp.removeConstraints()
-            lineView.snp.removeConstraints()
-            $0.leading.equalTo(self.snp.leading)
-            $0.trailing.equalTo(self.snp.trailing)
-            $0.height.equalTo(58)
-        }
-        bottleImageView.removeFromSuperview()
-        lineView.removeFromSuperview()
-        challengeListStackView.snp.remakeConstraints {
-            $0.leading.equalTo(self.snp.leading).offset(10)
-            $0.trailing.equalTo(self.snp.trailing).offset(-10)
-        }
-    }
-    private func setChallengingViewLayout() {
-        challengeTitleView.snp.remakeConstraints {
-            $0.leading.equalTo(self.bottleImageView.snp.trailing).offset(26)
-            $0.trailing.equalTo(self.snp.trailing)
-            $0.height.equalTo(58)
         }
     }
 }
