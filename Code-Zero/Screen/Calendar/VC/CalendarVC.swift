@@ -94,7 +94,9 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
         let challengeDate = challengeDates.map { $0.0 }
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
-        return (challengeDate.contains(stringToDate) || date == calendar.today) ? true : false
+        let ableClickDate: Bool = challengeDate.contains(stringToDate) || date == calendar.today
+        // 챌린지를 한 날이거나 오늘인 경우에만 클릭 가능하게 구성
+        return ableClickDate ? true : false
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
