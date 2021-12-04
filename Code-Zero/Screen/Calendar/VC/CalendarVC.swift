@@ -42,31 +42,7 @@ class CalendarVC: UIViewController {
     private var challengeContext: [ChallengeData] = []
     private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
         didSet {
-            if selectedChallege != [] {
-                let challengeNumber = challengeDates.filter { $0.0 == selectedChallege[0] }[0].1
-                let challengeData = challengeContext.filter { $0.colorNumber == challengeNumber }[0]
-                let challengeWeek = challengeDates.filter { $0.1 == challengeNumber }.map { $0.0 }.map { $0.components(separatedBy: "-")[2] }.sorted()
-                let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd")
-                let challengeColor = challengeDates.filter { $0.1 == challengeNumber }.map { $0.0 }.contains
-                { $0 == stringToDate } ? -1 : challengeData.colorNumber
-                let challengeListView = ChallengeListView(frame: CGRect(x: 0,
-                                                                        y: 0,
-                                                                        width: view.frame.width-40,
-                                                                        height: 273),
-                                                          color: challengeColor,
-                                                          date: "11.\(challengeWeek.first!) - \(challengeWeek.last!)",
-                                                          subject: challengeData.subject,
-                                                          list: challengeData.list)
-                challengeView.subviews[0].removeFromSuperview()
-                challengeView.addSubview(challengeListView)
-            } else {
-                let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
-                                                                             y: 0,
-                                                                             width: view.frame.width-40,
-                                                                             height: 167))
-                challengeView.subviews[0].removeFromSuperview()
-                challengeView.addSubview(todayJoinChallengeView)
-            }
+            selectedChallege != [] ? setChallengeListView() : setChallengeJoinView()
         }
     }
 
@@ -79,7 +55,7 @@ class CalendarVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        setChallengeView()
+        setChallengeJoinView()
         makeButton()
         makeDumyData()
         findTodayIsChallenge()
@@ -88,20 +64,11 @@ class CalendarVC: UIViewController {
 }
 
 // MARK: - View Function
-
 extension CalendarVC {
-
-    func setChallengeView() {
-        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
-                                                                     y: 0,
-                                                                     width: view.frame.width-40,
-                                                                     height: 167))
-        challengeView.addSubview(todayJoinChallengeView)
-    }
-    @objc func moveMonthButtonDidTap(sender: UIButton) {
+    @objc private func moveMonthButtonDidTap(sender: UIButton) {
         calendar.setCurrentPage(moveMonth(date: calendar.currentPage, value: sender.tag), animated: true)
     }
-    func findTodayIsChallenge() {
+    private func findTodayIsChallenge() {
         let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd")
         if challengeDates.contains(where: { $0.0 == stringToDate }) {
             if let challengeColor = challengeDates.filter({ $0.0 == stringToDate }).map({ $0.1 }).first {
@@ -167,13 +134,13 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   fillSelectionColorFor date: Date) -> UIColor? {
         return isToday(calendar: calendar, date: date) ? .white : .clear
     }
-    func isToday(calendar: FSCalendar, date: Date) -> Bool {
+    private func isToday(calendar: FSCalendar, date: Date) -> Bool {
         // 오늘 챌린지를 진행중이라면 true
         let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd")
         return date == calendar.today && !challengeDates.contains(where: { $0.0 == stringToDate }) ?
             true : false
     }
-    func moveMonth(date: Date, value: Int) -> Date {
+    private func moveMonth(date: Date, value: Int) -> Date {
         // 현재 달(기준: 0)에서 특정 달(value)만큼 이동
         return Calendar.current.date(byAdding: .month, value: value, to: date)!
     }
@@ -190,58 +157,59 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         let challengeCell = (cell as? ChallengeCalendarCell)
 
         guard position == .current else {
-            challengeCell?.cellBoarderType = .none
-            challengeCell?.cellDayType = .days
+            challengeCell?.cellDayType = .days(.none)
             return
         }
 
-        challengeCell?.cellDayType = date == calendar.today ? .today : .days
+        challengeCell?.cellDayType = date == calendar.today ? .today(.none) : .days(.none)
 
-        let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
+        let stringToDate = date.datePickerToString(format: "yyyy-MM-dd") // 현재 선택된 날짜 String
         let challengeColor = challengeDates.filter { $0.0 == stringToDate }.map { $0.1 }.first ?? -1
+        // 만약 날짜가 챌린지한 날짜라면 컬러 추출
         let todayChallengeColor = challengeDates.filter {
             $0.0 == calendar.today?.datePickerToString(format: "yyyy-MM-dd")
-        }.first?.1
+        }.first?.1 // 현재 날짜(오늘)의 컬러 추출 (없다면 nil)
+        let colorChip = findTodayChallenge(challengeColor, todayChallengeColor)
         let previousDate = gregorian.date(byAdding: .day, value: -1, to: date)!
-            .datePickerToString(format: "yyyy-MM-dd")
+            .datePickerToString(format: "yyyy-MM-dd") // 이전 날짜
         let nextDate = gregorian.date(byAdding: .day, value: 1, to: date)!
-            .datePickerToString(format: "yyyy-MM-dd")
-        challengeCell?.isClick = selectedChallege.contains { $0 == stringToDate }
-        if calendar.selectedDate == calendar.today && date == calendar.today { challengeCell?.isClick = true }
-        challengeCell?.cellBoarderType = {
-            if challengeDates.contains(where: { $0.0 == stringToDate }) {
+            .datePickerToString(format: "yyyy-MM-dd") // 다음 날짜
+        challengeCell?.isClick = selectedChallege.contains { $0 == stringToDate } // 날짜가 선택된 챌린지인지
 
+        if calendar.selectedDate == calendar.today && date == calendar.today { challengeCell?.isClick = true }
+        // 만약 오늘이 선택되어 있고 날짜가 오늘이라면? 클릭으로 변경 ( 챌린지 한 날이 아니여도 오늘은 선택 가능하기 때문 )
+
+        challengeCell?.cellDayType = {
+            if date == calendar.today && challengeColor == -1 { // 오늘이면서 선택되지 않았다면?
+                return .today(.none)
+            }
+            if challengeDates.contains(where: { $0.0 == stringToDate }) {
                 if date.dayNumberOfWeek() == 7 { // 토요일이라면
                     if !challengeDates.contains(where: { $0.0 == previousDate }) {
-                        return challengeColor == todayChallengeColor ?
-                            .bothBorder(color: -1) : .bothBorder(color: challengeColor)
+                        return returnType(border: .bothBorder(color: colorChip), findDate: date)
                     }
-                    return challengeColor == todayChallengeColor ?
-                        .rightBorder(color: -1) : .rightBorder(color: challengeColor)
+                    return returnType(border: .rightBorder(color: colorChip), findDate: date)
                 } else if date.dayNumberOfWeek() == 1 { // 일요일이라면
                     if !challengeDates.contains(where: { $0.0 == nextDate }) {
-                        return challengeColor == todayChallengeColor ?
-                            .bothBorder(color: -1) : .bothBorder(color: challengeColor)
+                        return returnType(border: .bothBorder(color: colorChip), findDate: date)
                     }
-                    return challengeColor == todayChallengeColor ?
-                        .leftBorder(color: -1) : .leftBorder(color: challengeColor)
+                    return returnType(border: .leftBorder(color: colorChip), findDate: date)
                 }
+
                 if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) &&
                     challengeDates.contains(where: { $0.0 == nextDate && $0.1 == challengeColor }) {
                     // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
-                    return challengeColor == todayChallengeColor ?
-                        .middle(color: -1) : .middle(color: challengeColor) // 중간 취급
+                    return returnType(border: .middle(color: colorChip), findDate: date) // 중간 취급
                 } else if challengeDates.contains(where: { $0.0 == previousDate && $0.1 == challengeColor }) {
                     // 이전날만 존재한다면
-                    return challengeColor == todayChallengeColor ?
-                        .rightBorder(color: -1) : .rightBorder(color: challengeColor) // 오른쪽 라운드 담당
+                    return returnType(border: .rightBorder(color: colorChip), findDate: date) // 오른쪽 라운드 담당
                 } else { // 다음날만 존재한다면
-                    return challengeColor == todayChallengeColor ?
-                        .leftBorder(color: -1) : .leftBorder(color: challengeColor) // 왼쪽 라운드 담당
+                    return returnType(border: .leftBorder(color: colorChip), findDate: date) // 왼쪽 라운드 담당
                 }
             } else {
-                return .none
+                return .days(.none)
             }
+
         }()
     }
 }
@@ -303,6 +271,44 @@ extension CalendarVC {
 
         super.updateViewConstraints()
     }
+    private func returnType(border: CalendarBoarderType, findDate: Date) -> SelectedType {
+        return findDate == calendar.today ? .today(border) : .days(border)
+    }
+    private func findTodayChallenge(_ challengeColor: Int, _ todayChallengeColor: Int?) -> Int {
+        return challengeColor == todayChallengeColor ? -1 : challengeColor
+    }
+    private func setChallengeListView() {
+        let challengeNumber = challengeDates.filter { $0.0 == selectedChallege[0] }[0].1
+        // 지금 선택되어 있는 챌린지 날짜의 컬러를 찾아줌
+        let challengeSubject = challengeContext.filter { $0.colorNumber == challengeNumber }[0]
+        // 챌린지 주제 목록에서 현재 챌린지 날짜의 컬러를 통해 어떤 주제인지 찾아줌
+        let challengeDateList = challengeDates.filter { $0.1 == challengeNumber }.map { $0.0 }
+        let challengeWeek = challengeDateList.map { $0.components(separatedBy: "-")[2] }.sorted()
+        // 챌린지 날짜 구하기(기간 표시를 위해)
+        let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd") // 오늘 날짜(String화)
+        let challengeColor = challengeDateList.contains { $0 == stringToDate }
+        ? -1 : challengeSubject.colorNumber
+        // 오늘 날짜가 선택되어 있따면 컬러를 오렌지 컬러로 변경해주기 위한 코드
+        let challengeListView = ChallengeListView(frame: CGRect(x: 0,
+                                                                y: 0,
+                                                                width: view.frame.width-40,
+                                                                height: 273),
+                                                  color: challengeColor,
+                                                  date: "11.\(challengeWeek.first!) - \(challengeWeek.last!)",
+                                                  subject: challengeSubject.subject,
+                                                  list: challengeSubject.list)
+        challengeView.subviews[0].removeFromSuperview()
+        challengeView.addSubview(challengeListView) // 이전에 다른 뷰가 삽입되어 있을 수 있어서 삭제 후 삽입
+    }
+    private func setChallengeJoinView() {
+        let todayJoinChallengeView = JoinChallengeView(frame: CGRect(x: 0,
+                                                                     y: 0,
+                                                                     width: view.frame.width-40,
+                                                                     height: 167))
+
+        challengeView.subviews[safe: 0]?.removeFromSuperview()
+        challengeView.addSubview(todayJoinChallengeView)
+    }
 }
 
 // MARK: - Server
@@ -347,5 +353,11 @@ extension CalendarVC {
            ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 3),
            ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3), ("2021-11-26", 3),
            ("2021-11-27", 3)]
+    }
+}
+
+extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
     }
 }
