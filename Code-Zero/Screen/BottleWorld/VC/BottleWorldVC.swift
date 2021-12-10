@@ -21,9 +21,11 @@ class BottleWorldVC: UIViewController {
         collectionView.isPagingEnabled = true
         return collectionView
     }()
+    var customMenuBar = SwipeBarView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCustomTabBar()
     }
 }
 
@@ -36,6 +38,17 @@ extension BottleWorldVC {
         }
         pageCollectionView.registerCell(nibName: "BottleWorldListCell")
 //        pageCollectionView.topAnchor.constraint(equalTo: self.customMenuBar.bottomAnchor).isActive = true
+    }
+    func setupCustomTabBar() {
+        self.view.addSubview(customMenuBar)
+        customMenuBar.delegate = self
+        customMenuBar.snp.remakeConstraints {
+            $0.width.equalTo(view.frame.width/4)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.height.equalTo(60)
+        }
     }
 }
 
@@ -63,5 +76,12 @@ extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension BottleWorldVC: SwipeBarDelgate {
+    func customMenuBar(scrollTo index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        self.pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
