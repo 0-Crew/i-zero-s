@@ -27,7 +27,8 @@ class SwipeBarView: UIView {
     var customTabBarCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0),
+                                              collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .white
         return collectionView
     }()
@@ -37,12 +38,10 @@ class SwipeBarView: UIView {
         view.backgroundColor = .orangeMain
         return view
     }()
-    var indicatorViewLeadingConstraint:NSLayoutConstraint!
-    var indicatorViewWidthConstraint: NSLayoutConstraint!
     internal weak var delegate: SwipeBarDelgate?
 
     // MARK: Setup Views
-    func setupCollectioView(){
+    func setupCollectioView() {
         customTabBarCollectionView.delegate = self
         customTabBarCollectionView.dataSource = self
         customTabBarCollectionView.showsHorizontalScrollIndicator = false
@@ -53,7 +52,7 @@ class SwipeBarView: UIView {
         customTabBarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
-    func setupCustomTabBar(){
+    func setupCustomTabBar() {
         setupCollectioView()
         self.addSubview(customTabBarCollectionView)
         customTabBarCollectionView.snp.makeConstraints {
@@ -62,48 +61,47 @@ class SwipeBarView: UIView {
         }
 
         self.addSubview(indicatorView)
-        indicatorView.snp.makeConstraints{
+        indicatorView.snp.makeConstraints {
             $0.height.equalTo(2)
             $0.bottom.equalToSuperview()
+            $0.width.equalTo(frame.width/4)
+            $0.leading.equalToSuperview()
         }
-        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: self.frame.width / 4)
-        indicatorViewWidthConstraint.isActive = true
-        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-        indicatorViewLeadingConstraint.isActive = true
     }
 
 }
 
 // MARK: - UICollectionViewDelegate, DataSource
 extension SwipeBarView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TopTabBarCell = collectionView.dequeueCell(indexPath: indexPath)
         return cell
     }
-
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return 3
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width / 4 , height: collectionView.frame.height)
-
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width / 4, height: collectionView.frame.height)
     }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.customMenuBar(scrollTo: indexPath.row)
     }
 }
+
 // MARK: - UICollectionViewDelegateFlowLayout
 extension SwipeBarView: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
-
