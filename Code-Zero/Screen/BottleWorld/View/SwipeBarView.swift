@@ -56,16 +56,18 @@ class SwipeBarView: UIView {
         setupCollectioView()
         self.addSubview(customTabBarCollectionView)
         customTabBarCollectionView.snp.makeConstraints {
-            $0.leading.trailing.top.equalToSuperview()
+            $0.leading.equalTo(self.snp.leading)
+            $0.trailing.equalTo(self.snp.trailing)
+            $0.top.equalTo(self.snp.top)
             $0.height.equalTo(45)
         }
 
         self.addSubview(indicatorView)
         indicatorView.snp.makeConstraints {
             $0.height.equalTo(2)
-            $0.bottom.equalToSuperview()
-            $0.width.equalTo(frame.width/4)
-            $0.leading.equalToSuperview()
+            $0.bottom.equalTo(self.snp.bottom)
+            $0.width.equalTo(frame.width/3)
+            $0.leading.equalTo(self.snp.leading)
         }
     }
 
@@ -85,7 +87,7 @@ extension SwipeBarView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width / 4, height: collectionView.frame.height)
+        return CGSize(width: self.frame.width / 3, height: collectionView.frame.height)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.customMenuBar(scrollTo: indexPath.row)

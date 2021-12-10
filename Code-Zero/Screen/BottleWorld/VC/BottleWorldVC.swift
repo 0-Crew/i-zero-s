@@ -19,6 +19,7 @@ class BottleWorldVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     var customMenuBar = SwipeBarView()
@@ -26,6 +27,9 @@ class BottleWorldVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCustomTabBar()
+        setPageCollectionViewLayout()
+        title = "보틀월드"
+        navigationController?.hidesBarsOnSwipe = true
     }
 }
 
@@ -34,20 +38,24 @@ extension BottleWorldVC {
     func setPageCollectionViewLayout() {
         view.addSubview(pageCollectionView)
         pageCollectionView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.equalTo(view.snp.leading)
+            $0.trailing.equalTo(view.snp.trailing)
+            $0.bottom.equalTo(view.snp.bottom)
+            $0.top.equalTo(customMenuBar.snp.bottom)
         }
         pageCollectionView.registerCell(nibName: "BottleWorldListCell")
-//        pageCollectionView.topAnchor.constraint(equalTo: self.customMenuBar.bottomAnchor).isActive = true
     }
     func setupCustomTabBar() {
         self.view.addSubview(customMenuBar)
         customMenuBar.delegate = self
         customMenuBar.snp.remakeConstraints {
-            $0.width.equalTo(view.frame.width/4)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.leading.equalTo(view.snp.leading)
+            $0.trailing.equalTo(view.snp.trailing)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.height.equalTo(60)
+        }
+        customMenuBar.indicatorView.snp.remakeConstraints {
+            $0.width.equalTo(view.frame.width / 3)
         }
     }
 }
@@ -59,9 +67,21 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
         return cell
     }
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        customMenuBar.indicatorView.snp.remakeConstraints {
+            $0.leading.equalTo(scrollView.contentOffset.x / 3)
+        }
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let itemAt = Int(targetContentOffset.pointee.x / self.view.frame.width)
+        let indexPath = IndexPath(item: itemAt, section: 0)
+        customMenuBar.customTabBarCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
     }
 }
 
@@ -70,7 +90,7 @@ extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: pageCollectionView.frame.width, height: pageCollectionView.frame.height)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

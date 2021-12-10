@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				195AC719275BD5E900BDECB6 /* View */,
 				D256B8EF275A0A06006D3CFD /* Cell */,
 				D256B8E62759E9BF006D3CFD /* VC */,
+				191A4E9C27637A12005D0525 /* BottleWorld.storyboard */,
 			);
 			path = BottleWorld;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
+				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
 				195AC71D275BD71F00BDECB6 /* TopTabBarCell.xib in Resources */,
