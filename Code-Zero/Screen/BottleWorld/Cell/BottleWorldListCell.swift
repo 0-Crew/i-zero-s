@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SnapKit
 class BottleWorldListCell: UICollectionViewCell {
 
     // MARK: - IBOutlet
@@ -15,10 +15,13 @@ class BottleWorldListCell: UICollectionViewCell {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchResultView: UIView!
 
+    var emptyView = FollowEmptyView(frame: .zero)
+
     // MARK: - Override Fucntion
     override func awakeFromNib() {
         super.awakeFromNib()
         setView()
+        setResultView()
     }
 
     // MARK: - Style Set Function
@@ -26,6 +29,14 @@ class BottleWorldListCell: UICollectionViewCell {
         self.backgroundColor = .white
         searchView.makeRounded(cornerRadius: 10)
         searchButton.titleLabel?.text = ""
+    }
+    private func setResultView() {
+        searchResultView.addSubview(emptyView)
+        emptyView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(searchResultView.snp.height)
+            $0.width.equalTo(searchResultView.snp.width)
+        }
     }
 
 }
