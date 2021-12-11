@@ -14,8 +14,7 @@ class BottleWorldVC: UIViewController {
     lazy var pageCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 100, height: 100),
-                                              collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
@@ -24,6 +23,7 @@ class BottleWorldVC: UIViewController {
     }()
     var customMenuBar = SwipeBarView()
 
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCustomTabBar()
@@ -52,11 +52,12 @@ extension BottleWorldVC {
             $0.leading.equalTo(view.snp.leading)
             $0.trailing.equalTo(view.snp.trailing)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.height.equalTo(60)
+            $0.height.equalTo(47)
         }
-        customMenuBar.indicatorView.snp.remakeConstraints {
-            $0.width.equalTo(view.frame.width / 3)
-        }
+        customMenuBar.indicatorViewWidthConstraint.constant = self.view.frame.width / 3
+//        customMenuBar.indicatorView.snp.remakeConstraints {
+//            $0.width.equalTo(view.frame.width / 3)
+//        }
     }
 }
 
@@ -71,10 +72,10 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return 3
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-        customMenuBar.indicatorView.snp.remakeConstraints {
-            $0.leading.equalTo(scrollView.contentOffset.x / 3)
-        }
+//        customMenuBar.indicatorView.snp.remakeConstraints {
+//            $0.leading.equalTo(scrollView.contentOffset.x / 3)
+//        }
+        customMenuBar.indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 3
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
@@ -90,7 +91,7 @@ extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: pageCollectionView.frame.width, height: pageCollectionView.frame.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -99,6 +100,7 @@ extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - SwipeBarDelgate
 extension BottleWorldVC: SwipeBarDelgate {
     func customMenuBar(scrollTo index: Int) {
         let indexPath = IndexPath(row: index, section: 0)

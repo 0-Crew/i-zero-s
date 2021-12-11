@@ -11,7 +11,7 @@ class BottleWorldListCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundView?.backgroundColor = .yellow
+        self.backgroundColor = .gray
         // Initialization code
     }
 

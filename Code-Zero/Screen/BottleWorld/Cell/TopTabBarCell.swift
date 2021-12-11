@@ -14,10 +14,11 @@ class TopTabBarCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .white
         // Initialization code
     }
     override var isSelected: Bool {
-        didSet{
+        didSet {
             self.titleLabel.textColor = isSelected ? .orangeMain : .gray2
             self.titleLabel.font = isSelected
             ? .spoqaHanSansNeo(size: 14, family: .bold) : .spoqaHanSansNeo(size: 14, family: .medium)

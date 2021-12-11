@@ -23,7 +23,7 @@ class SwipeBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Properties
+    // MARK: Property
     var customTabBarCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
@@ -32,13 +32,16 @@ class SwipeBarView: UIView {
         collectionView.backgroundColor = .white
         return collectionView
     }()
-
     var indicatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .orangeMain
         return view
     }()
     internal weak var delegate: SwipeBarDelgate?
+    var indicatorViewLeadingConstraint: NSLayoutConstraint!
+    var indicatorViewWidthConstraint: NSLayoutConstraint!
+    var follower: Int = 0
+    var following: Int = 0
 
     // MARK: Setup Views
     func setupCollectioView() {
@@ -53,6 +56,7 @@ class SwipeBarView: UIView {
     }
 
     func setupCustomTabBar() {
+        backgroundColor = .lightGray2
         setupCollectioView()
         self.addSubview(customTabBarCollectionView)
         customTabBarCollectionView.snp.makeConstraints {
@@ -66,9 +70,17 @@ class SwipeBarView: UIView {
         indicatorView.snp.makeConstraints {
             $0.height.equalTo(2)
             $0.bottom.equalTo(self.snp.bottom)
-            $0.width.equalTo(frame.width/3)
-            $0.leading.equalTo(self.snp.leading)
         }
+//        indicatorView.snp.makeConstraints {
+//            $0.leading.equalTo(self.snp.leading)
+//            $0.width.equalTo(self.frame.width / 3)
+//        }
+        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        indicatorViewLeadingConstraint.isActive = true
+        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant:
+                                                                                self.frame.width / 3)
+        indicatorViewWidthConstraint.isActive = true
+
     }
 
 }
@@ -78,6 +90,7 @@ extension SwipeBarView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TopTabBarCell = collectionView.dequeueCell(indexPath: indexPath)
+        cell.titleLabel.text = ["둘러보기", "\(follower) 팔로워", "\(following) 팔로잉"][indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView,
