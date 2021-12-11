@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// class 명의 Xib View를 load할 때 사용  
+/// 반드시 class 명과 Xib 파일 이름이 같아야 한다.
 class LoadXibView: UIView {
 
     override init(frame: CGRect) {
