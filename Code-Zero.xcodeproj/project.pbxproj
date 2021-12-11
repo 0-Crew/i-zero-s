@@ -678,6 +678,7 @@
 				195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
+				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */,
 				194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */,
