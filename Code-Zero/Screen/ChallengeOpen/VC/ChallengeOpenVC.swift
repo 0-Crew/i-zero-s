@@ -183,7 +183,6 @@ extension ChallengeOpenVC {
         if currentStep == .second {
             scrollView.setContentOffset(.init(x: scrollView.contentOffset.x, y: 76), animated: true)
         }
-
     }
 
     // keyboard가 사라질 때 어떤 동작을 수행

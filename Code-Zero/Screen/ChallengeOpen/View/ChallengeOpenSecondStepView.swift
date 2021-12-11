@@ -51,12 +51,28 @@ extension ChallengeOpenSecondStepView {
     private func initView() {
         containerView.setBorder(borderColor: .orangeMain, borderWidth: 1)
         inconvenientInputTextField.text = optionList[0]
+        inconvenientInputTextField.delegate = self
         optionTableView.registerCell(cellType: OptionCell.self)
         optionTableView.setBorder(borderColor: .orangeMain, borderWidth: 1)
         optionTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
 }
-
+// MARK: - UITextFieldDelegate
+extension ChallengeOpenSecondStepView: UITextFieldDelegate {
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+        if text.count + string.count > 20 {
+            return false
+        }
+        return true
+    }
+}
 // MARK: - UITableViewDelegate
 extension ChallengeOpenSecondStepView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
