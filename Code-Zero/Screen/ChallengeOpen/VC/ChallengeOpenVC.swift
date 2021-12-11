@@ -10,49 +10,6 @@ import SnapKit
 
 typealias UserInputTextTuple = (convenienceText: String, inconvenienceText: String, isTodayStart: Bool?)
 
-enum ChallengeOpenStep: Int {
-    case first = 0
-    case second = 1
-    case third = 2
-}
-
-extension ChallengeOpenStep {
-    var previousButtonImage: UIImage? {
-        switch self {
-        case .first:
-            return UIImage(named: "icXBlack")
-        case .second, .third:
-            return UIImage(named: "icArrowLeft")?.withRenderingMode(.alwaysTemplate)
-        }
-    }
-    var openStepTitleText: String {
-        switch self {
-        case .first:
-            return "보틀 씻는 중"
-        case .second:
-            return "거의 다 씻었어요!"
-        case .third:
-            return "보틀 씻기 완료!"
-        }
-    }
-    var openStepImage: UIImage? {
-        switch self {
-        case .first, .second:
-            return UIImage(named: "icChallengeOpenBottle")
-        case .third:
-            return UIImage(named: "icNavBottle")
-        }
-    }
-    var nextStepTitle: String {
-        switch self {
-        case .first, .second:
-            return "다음"
-        case .third:
-            return "챌린지 시작하기"
-        }
-    }
-}
-
 protocol ChallengeOpenStepViewType {
     var delegate: ChallengeOpenStepDelegate? { get set }
     func presentStep(userInput: UserInputTextTuple?)
@@ -75,12 +32,10 @@ class ChallengeOpenVC: UIViewController {
     @IBOutlet weak var openStepImageView: UIImageView!
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressBarView: UIView!
-
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstStepView: ChallengeOpenFirstStepView!
     @IBOutlet weak var secondStepView: ChallengeOpenSecondStepView!
     @IBOutlet weak var thirdStepView: ChallengeOpenThirdStepView!
-
     @IBOutlet weak var nextButton: UIButton!
 
     // MARK: - Property
@@ -102,6 +57,7 @@ class ChallengeOpenVC: UIViewController {
     }
     private var userInputTextTuple: UserInputTextTuple = ("", "", nil)
 
+    // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -114,56 +70,7 @@ class ChallengeOpenVC: UIViewController {
         unregisterForKeyboardNotifications()
     }
 
-    func initView() {
-        previousStepButton.tintColor = .gray4
-
-        progressBarView.snp.makeConstraints {
-            let progressWidth = self.progressContainerView.frame.width
-            let trailingConstants = progressWidth / 3 - progressWidth
-            $0.top.leading.bottom.equalToSuperview()
-            progressBarTrailingConstraints = $0.trailing
-                .equalToSuperview()
-                .offset(trailingConstants)
-                .constraint
-        }
-
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitleColor(.gray3, for: .disabled)
-        setNextButtonState(isEnable: false)
-
-        [firstStepView, secondStepView, thirdStepView].forEach {
-            var view = $0 as? ChallengeOpenStepViewType
-            view?.delegate = self
-        }
-    }
-
-    func present(to step: ChallengeOpenStep) {
-        let viewWidth = Int(view.bounds.width)
-        let contentOffset: CGPoint = .init(x: viewWidth * step.rawValue, y: 0)
-        scrollView.setContentOffset(contentOffset, animated: true)
-        // progress bar animation
-        let progressWidth = progressContainerView.bounds.width
-        let constants = progressWidth * CGFloat(step.rawValue + 1) / 3 - progressWidth
-        progressBarTrailingConstraints?.update(offset: constants)
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0.0,
-            options: .curveEaseIn
-        ) {
-            self.progressContainerView.layoutIfNeeded()
-        }
-
-    }
-    func setNextButtonState(isEnable: Bool) {
-        nextButton.isEnabled = isEnable
-        nextButton.backgroundColor = isEnable ? .orangeMain : .gray2
-    }
-    func setOpenView(step: ChallengeOpenStep) {
-        previousStepButton.setImage(step.previousButtonImage, for: .normal)
-        openStepTitleLabel.text = step.openStepTitleText
-        openStepImageView.image = step.openStepImage
-        nextButton.setTitle(step.nextStepTitle, for: .normal)
-    }
+    // MARK: - IBAction Method
     @IBAction func nextButtonDidTap() {
         guard let nextStep = ChallengeOpenStep(rawValue: currentStep.rawValue + 1) else {
             // TODO: 챌린지 오픈 완료 시 동작
@@ -183,12 +90,61 @@ class ChallengeOpenVC: UIViewController {
         present(to: previousStep)
     }
 }
-// MARK: - UIScrollViewDelegate
-extension ChallengeOpenVC: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+// MARK: - UI Method
+extension ChallengeOpenVC {
+    private func initView() {
+        previousStepButton.tintColor = .gray4
+        progressBarView.snp.makeConstraints {
+            let progressWidth = self.progressContainerView.frame.width
+            let trailingConstants = progressWidth / 3 - progressWidth
+            $0.top.leading.bottom.equalToSuperview()
+            progressBarTrailingConstraints = $0.trailing
+                .equalToSuperview()
+                .offset(trailingConstants)
+                .constraint
+        }
+        // next button init
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.setTitleColor(.gray3, for: .disabled)
+        setNextButtonState(isEnable: false)
+        // step view delegate
+        [firstStepView, secondStepView, thirdStepView].forEach {
+            var view = $0 as? ChallengeOpenStepViewType
+            view?.delegate = self
+        }
+    }
+
+    private func present(to step: ChallengeOpenStep) {
+        let viewWidth = Int(view.bounds.width)
+        let contentOffset: CGPoint = .init(x: viewWidth * step.rawValue, y: 0)
+        scrollView.setContentOffset(contentOffset, animated: true)
+        // progress bar animation
+        let progressWidth = progressContainerView.bounds.width
+        let constants = progressWidth * CGFloat(step.rawValue + 1) / 3 - progressWidth
+        progressBarTrailingConstraints?.update(offset: constants)
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.0,
+            options: .curveEaseIn
+        ) {
+            self.progressContainerView.layoutIfNeeded()
+        }
+    }
+
+    private func setNextButtonState(isEnable: Bool) {
+        nextButton.isEnabled = isEnable
+        nextButton.backgroundColor = isEnable ? .orangeMain : .gray2
+    }
+
+    private func setOpenView(step: ChallengeOpenStep) {
+        previousStepButton.setImage(step.previousButtonImage, for: .normal)
+        openStepTitleLabel.text = step.openStepTitleText
+        openStepImageView.image = step.openStepImage
+        nextButton.setTitle(step.nextStepTitle, for: .normal)
     }
 }
 
+// MARK: - ChallengeOpenStepDelegate
 extension ChallengeOpenVC: ChallengeOpenStepDelegate {
     func challengeStep(step: ChallengeOpenStep, inputString string: String) {
         switch step {
@@ -206,6 +162,7 @@ extension ChallengeOpenVC: ChallengeOpenStepDelegate {
     }
 }
 
+// MARK: - Keyboard Notification Setting
 extension ChallengeOpenVC {
     // keyboard가 보여질 때 어떤 동작을 수행
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -214,9 +171,7 @@ extension ChallengeOpenVC {
             let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt,
             let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         else { return }
-
         let keyboardHeight: CGFloat = keyboardFrame.cgRectValue.height
-
         UIView.animate(
             withDuration: duration,
             delay: 0,
@@ -225,7 +180,6 @@ extension ChallengeOpenVC {
             let transfrom = CGAffineTransform(translationX: 0, y: -keyboardHeight)
             self.nextButton.transform = transfrom
         }
-
         if currentStep == .second {
             scrollView.setContentOffset(.init(x: scrollView.contentOffset.x, y: 76), animated: true)
         }

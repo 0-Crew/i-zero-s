@@ -57,6 +57,7 @@ extension ChallengeOpenSecondStepView {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ChallengeOpenSecondStepView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == optionList.count - 1 {
@@ -74,6 +75,7 @@ extension ChallengeOpenSecondStepView: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ChallengeOpenSecondStepView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return optionList.count
@@ -87,6 +89,7 @@ extension ChallengeOpenSecondStepView: UITableViewDataSource {
     }
 }
 
+// MARK: - ChallengeOpenStepViewType
 extension ChallengeOpenSecondStepView {
     func presentStep(userInput: UserInputTextTuple?) {
         let canPass: Bool = inconvenientInputTextField.text?.count != 0 ? true: false

@@ -9,12 +9,13 @@ import UIKit
 
 class ChallengeOpenThirdStepView: LoadXibView, ChallengeOpenStepViewType {
 
+    // MARK: - IBOutlet
     @IBOutlet weak var convenienceTextLabel: UILabel!
     @IBOutlet weak var inconvenienceTextLabel: UILabel!
-
     @IBOutlet weak var fromTodayButton: UIButton!
     @IBOutlet weak var fromTomorrowButton: UIButton!
 
+    // MARK: - Property
     private lazy var fromDateButtonList: [UIButton] = [fromTodayButton, fromTomorrowButton]
     private var fromDateButtonIsSelectedList: [Bool] = [false, false] {
         didSet {
@@ -28,6 +29,7 @@ class ChallengeOpenThirdStepView: LoadXibView, ChallengeOpenStepViewType {
     }
     internal weak var delegate: ChallengeOpenStepDelegate?
 
+    // MARK: - Lifecycle Method
     override init(frame: CGRect) {
         super.init(frame: frame)
         initView()
@@ -37,6 +39,7 @@ class ChallengeOpenThirdStepView: LoadXibView, ChallengeOpenStepViewType {
         initView()
     }
 
+    // MARK: - UI Setting
     private func initView() {
         [fromTodayButton, fromTomorrowButton].forEach {
             guard let button = $0 else { return }
@@ -52,6 +55,7 @@ class ChallengeOpenThirdStepView: LoadXibView, ChallengeOpenStepViewType {
         button.backgroundColor = isSelected ? .orangeMain : .white
     }
 
+    // MARK: - IBAction
     @IBAction func fromDateButtonsDidTap(sender: UIButton) {
         var state = [false, false]
 
@@ -67,6 +71,7 @@ class ChallengeOpenThirdStepView: LoadXibView, ChallengeOpenStepViewType {
     }
 }
 
+// MARK: - ChallengeOpenStepViewType
 extension ChallengeOpenThirdStepView {
     func presentStep(userInput: UserInputTextTuple?) {
         let canComplete = fromDateButtonIsSelectedList.contains(true)

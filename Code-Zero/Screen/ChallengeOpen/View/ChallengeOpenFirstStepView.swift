@@ -13,6 +13,7 @@ class ChallengeOpenFirstStepView: LoadXibView, ChallengeOpenStepViewType {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var convenientInputTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
+
     // MARK: - Property
     internal weak var delegate: ChallengeOpenStepDelegate?
 
@@ -55,12 +56,9 @@ extension ChallengeOpenFirstStepView {
         editButton.isHidden = false
     }
 }
+
 // MARK: - UITextFieldDelegate
 extension ChallengeOpenFirstStepView: UITextFieldDelegate {
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        guard let text = textField.text, text.count != 0 else { return }
-//        delegate?.challengeStep(step: .first, inputString: text)
-//    }
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
