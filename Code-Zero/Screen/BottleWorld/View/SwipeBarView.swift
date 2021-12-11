@@ -24,7 +24,7 @@ class SwipeBarView: UIView {
     }
 
     // MARK: Property
-    var customTabBarCollectionView: UICollectionView = {
+    internal var customTabBarCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0),
@@ -32,16 +32,14 @@ class SwipeBarView: UIView {
         collectionView.backgroundColor = .white
         return collectionView
     }()
-    var indicatorView: UIView = {
+    internal var indicatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .orangeMain
         return view
     }()
     internal weak var delegate: SwipeBarDelgate?
-    var indicatorViewLeadingConstraint: NSLayoutConstraint!
-    var indicatorViewWidthConstraint: NSLayoutConstraint!
-    var follower: Int = 0
-    var following: Int = 0
+    internal var follower: Int = 0
+    internal var following: Int = 0
 
     // MARK: Setup Views
     func setupCollectioView() {
@@ -50,7 +48,6 @@ class SwipeBarView: UIView {
         customTabBarCollectionView.showsHorizontalScrollIndicator = false
         customTabBarCollectionView.registerCell(nibName: "TopTabBarCell")
         customTabBarCollectionView.isScrollEnabled = false
-
         let indexPath = IndexPath(item: 0, section: 0)
         customTabBarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
@@ -60,29 +57,16 @@ class SwipeBarView: UIView {
         setupCollectioView()
         self.addSubview(customTabBarCollectionView)
         customTabBarCollectionView.snp.makeConstraints {
-            $0.leading.equalTo(self.snp.leading)
-            $0.trailing.equalTo(self.snp.trailing)
-            $0.top.equalTo(self.snp.top)
+            $0.leading.trailing.top.equalToSuperview()
             $0.height.equalTo(45)
         }
-
         self.addSubview(indicatorView)
         indicatorView.snp.makeConstraints {
             $0.height.equalTo(2)
-            $0.bottom.equalTo(self.snp.bottom)
+            $0.bottom.leading.equalToSuperview()
+            $0.width.equalTo(self.frame.width / 3)
         }
-//        indicatorView.snp.makeConstraints {
-//            $0.leading.equalTo(self.snp.leading)
-//            $0.width.equalTo(self.frame.width / 3)
-//        }
-        indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-        indicatorViewLeadingConstraint.isActive = true
-        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant:
-                                                                                self.frame.width / 3)
-        indicatorViewWidthConstraint.isActive = true
-
     }
-
 }
 
 // MARK: - UICollectionViewDelegate, DataSource

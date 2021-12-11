@@ -48,16 +48,15 @@ extension BottleWorldVC {
     func setupCustomTabBar() {
         self.view.addSubview(customMenuBar)
         customMenuBar.delegate = self
-        customMenuBar.snp.remakeConstraints {
+        customMenuBar.snp.makeConstraints {
             $0.leading.equalTo(view.snp.leading)
             $0.trailing.equalTo(view.snp.trailing)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.height.equalTo(47)
         }
-        customMenuBar.indicatorViewWidthConstraint.constant = self.view.frame.width / 3
-//        customMenuBar.indicatorView.snp.remakeConstraints {
-//            $0.width.equalTo(view.frame.width / 3)
-//        }
+        customMenuBar.indicatorView.snp.updateConstraints {
+            $0.width.equalTo(view.frame.width/3)
+        }
     }
 }
 
@@ -72,10 +71,9 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
         return 3
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        customMenuBar.indicatorView.snp.remakeConstraints {
-//            $0.leading.equalTo(scrollView.contentOffset.x / 3)
-//        }
-        customMenuBar.indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 3
+        customMenuBar.indicatorView.snp.updateConstraints {
+            $0.leading.equalTo(scrollView.contentOffset.x / 3)
+        }
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
