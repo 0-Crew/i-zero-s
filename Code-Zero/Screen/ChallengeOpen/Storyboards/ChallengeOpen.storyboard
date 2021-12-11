@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Challenge OpenVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="ChallengeOpenVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,9 @@
                                         <color key="tintColor" name="gray4"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="icXBlack"/>
+                                        <connections>
+                                            <action selector="previousButtonDidTap" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qY9-9m-ReU"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보틀 씻는 중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dk-Rb-6U4">
                                         <rect key="frame" x="54" y="15" width="71" height="21"/>
@@ -87,7 +90,7 @@
                                     <constraint firstAttribute="height" constant="50" id="yfl-Un-jn4"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok5-SJ-GiM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok5-SJ-GiM">
                                 <rect key="frame" x="0.0" y="94" width="375" height="718"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHB-lP-TVk">
@@ -132,8 +135,11 @@
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="21H-73-3pP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="tuo-GC-DcQ"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="LOy-7A-i7Y"/>
+                                </connections>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlM-lr-KOh">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlM-lr-KOh">
                                 <rect key="frame" x="0.0" y="750" width="375" height="62"/>
                                 <color key="backgroundColor" name="orangeMain"/>
                                 <constraints>
@@ -142,6 +148,9 @@
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="다음"/>
+                                <connections>
+                                    <action selector="nextButtonDidTap" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jrr-7x-to1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -163,6 +172,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RnZ-Zj-HHt"/>
+                    <connections>
+                        <outlet property="firstStepView" destination="mWP-n7-T6C" id="n2n-ka-gu8"/>
+                        <outlet property="nextButton" destination="vlM-lr-KOh" id="O5p-FP-Pnx"/>
+                        <outlet property="openStepImageView" destination="6fd-8t-75x" id="yUK-7R-tT8"/>
+                        <outlet property="openStepTitleLabel" destination="4Dk-Rb-6U4" id="ajo-SG-PEo"/>
+                        <outlet property="previousStepButton" destination="Zgs-rD-BfH" id="Rwo-Jo-ToS"/>
+                        <outlet property="progressBarView" destination="oqM-YK-7dC" id="PxY-yT-Ku7"/>
+                        <outlet property="progressContainerView" destination="7Rt-Yn-XKg" id="bbc-Ct-tJo"/>
+                        <outlet property="scrollView" destination="ok5-SJ-GiM" id="4Oc-9g-H9A"/>
+                        <outlet property="secondStepView" destination="4JN-bl-woW" id="tah-GM-grc"/>
+                        <outlet property="thirdStepView" destination="9bm-Va-kfB" id="kgi-3K-dm4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

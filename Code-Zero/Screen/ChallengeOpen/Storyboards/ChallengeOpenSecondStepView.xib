@@ -17,7 +17,13 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenSecondStepView" customModule="Code_Zero" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenSecondStepView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="ol5-l9-1ci" id="VhN-XJ-EU9"/>
+                <outlet property="inconvenientInputTextField" destination="L0b-7d-dxO" id="AgO-Ho-DQJ"/>
+                <outlet property="optionTableView" destination="Ed3-ta-mdZ" id="gRB-r5-NID"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="NnD-Ya-tAA">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -38,11 +44,14 @@
                             <color key="textColor" name="gray3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="서브웨이에서 비닐봉투 받기봉투 받기우" placeholder="플라스틱 빨대 사용 안 하기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-7d-dxO">
+                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="서브웨이에서 비닐봉투 받기봉투 받기우" placeholder="플라스틱 빨대 사용 안 하기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-7d-dxO">
                             <rect key="frame" x="10" y="25" width="344" height="21"/>
                             <color key="textColor" name="orangeMain"/>
                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="inconvenientInputTextFieldEditingChanged:" destination="-1" eventType="editingChanged" id="M8v-Ra-0fF"/>
+                            </connections>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -63,12 +72,16 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ed3-ta-mdZ">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ed3-ta-mdZ">
                     <rect key="frame" x="30" y="248" width="354" height="158"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="158" id="Isc-wf-kuW"/>
                     </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="1s4-tC-Iu2"/>
+                        <outlet property="delegate" destination="-1" id="IIo-21-48n"/>
+                    </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챌린지 기간 동안 언제든 변경할 수 있어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmq-kj-Nce">
                     <rect key="frame" x="30" y="416" width="354" height="17"/>

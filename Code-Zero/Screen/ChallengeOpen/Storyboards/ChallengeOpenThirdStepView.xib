@@ -18,7 +18,14 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenSecondThirdView" customModule="Code_Zero" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenThirdStepView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="convenienceTextLabel" destination="w1n-6x-Nz9" id="M0z-hd-W6g"/>
+                <outlet property="fromTodayButton" destination="gu6-Ba-2HY" id="frF-3S-DCN"/>
+                <outlet property="fromTomorrowButton" destination="jyg-GO-4ji" id="Y4Z-0u-WWm"/>
+                <outlet property="inconvenienceTextLabel" destination="DqN-2X-7Oh" id="g1g-wy-gud"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="63d-73-cWI">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -86,8 +93,11 @@
                     <state key="normal" title="오늘부터">
                         <color key="titleColor" name="orangeMain"/>
                     </state>
+                    <connections>
+                        <action selector="fromDateButtonsDidTapWithSender:" destination="-1" eventType="touchUpInside" id="ZUp-Vh-pdW"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyg-GO-4ji">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyg-GO-4ji">
                     <rect key="frame" x="116" y="284" width="78" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="Syi-09-rlZ"/>
@@ -95,9 +105,12 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="오늘부터">
+                    <state key="normal" title="내일부터">
                         <color key="titleColor" name="orangeMain"/>
                     </state>
+                    <connections>
+                        <action selector="fromDateButtonsDidTapWithSender:" destination="-1" eventType="touchUpInside" id="zWu-Mn-89g"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="isH-cJ-2TH"/>

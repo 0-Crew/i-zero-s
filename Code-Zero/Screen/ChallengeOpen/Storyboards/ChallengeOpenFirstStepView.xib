@@ -17,7 +17,13 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenFirstStepView" customModule="Code_Zero" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenFirstStepView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="l0b-Aw-TUg" id="UBC-3R-U2L"/>
+                <outlet property="convenientInputTextField" destination="Ylf-Qv-BGQ" id="Jrt-0g-NJa"/>
+                <outlet property="editButton" destination="yaU-3W-I6o" id="lab-B9-zY7"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="DPr-y6-hrD">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -41,17 +47,24 @@
                             <color key="textColor" name="gray3"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="서브웨이에서 비닐봉투 받기봉투 받기우" placeholder="플라스틱 빨대 사용 안 하기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-Qv-BGQ">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="플라스틱 빨대 사용 안 하기" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-Qv-BGQ">
                             <rect key="frame" x="10" y="25" width="344" height="22"/>
                             <color key="textColor" name="orangeMain"/>
                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="convenientInputTextFieldEditingChanged:" destination="-1" eventType="editingChanged" id="0QW-gh-J0N"/>
+                                <outlet property="delegate" destination="-1" id="9ZY-sE-n5G"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaU-3W-I6o">
                             <rect key="frame" x="324" y="25" width="20" height="22"/>
                             <color key="tintColor" name="orangeMain"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="icEdit"/>
+                            <connections>
+                                <action selector="editButtonDidTapWithSender:" destination="-1" eventType="touchUpInside" id="y7g-vS-LVa"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
