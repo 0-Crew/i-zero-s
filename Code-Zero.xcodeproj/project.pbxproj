@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
+		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -163,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */,
 				9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */,
 				9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */,
 				9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */,
@@ -494,6 +496,7 @@
 				9BF5EA69272E8A590008A5C3 /* FSCalendar */,
 				9BF5EA6C272E8B6D0008A5C3 /* Moya */,
 				9BF5EA6F272E8BD20008A5C3 /* SnapKit */,
+				191A4EA22764FADF005D0525 /* Gedatsu */,
 			);
 			productName = "Code-Zero";
 			productReference = A2B7BDCD2714214300F1DB1F /* Code-Zero.app */;
@@ -571,6 +574,7 @@
 				9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */,
 				9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */,
 			);
 			productRefGroup = A2B7BDCE2714214300F1DB1F /* Products */;
 			projectDirPath = "";
@@ -1056,6 +1060,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			requirement = {
+				kind = exactVersion;
+				version = 1.2.0;
+			};
+		};
 		9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
@@ -1083,6 +1095,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		191A4EA22764FADF005D0525 /* Gedatsu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */;
+			productName = Gedatsu;
+		};
 		9BF5EA69272E8A590008A5C3 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */;
