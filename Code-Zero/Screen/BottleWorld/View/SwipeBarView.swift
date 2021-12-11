@@ -17,7 +17,7 @@ class SwipeBarView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        setupCustomTabBar()
+        setupCustomTabBar(width: frame.width/3)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -52,7 +52,7 @@ class SwipeBarView: UIView {
         customTabBarCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
-    func setupCustomTabBar() {
+    func setupCustomTabBar(width: CGFloat) {
         backgroundColor = .lightGray2
         setupCollectioView()
         self.addSubview(customTabBarCollectionView)
@@ -64,7 +64,7 @@ class SwipeBarView: UIView {
         indicatorView.snp.makeConstraints {
             $0.height.equalTo(2)
             $0.bottom.leading.equalToSuperview()
-            $0.width.equalTo(self.frame.width / 3)
+            $0.width.equalTo(width)
         }
     }
 }

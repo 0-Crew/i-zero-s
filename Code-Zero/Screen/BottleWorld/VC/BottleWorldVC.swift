@@ -21,7 +21,7 @@ class BottleWorldVC: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    var customMenuBar = SwipeBarView()
+    var customMenuBar: SwipeBarView!
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -29,7 +29,6 @@ class BottleWorldVC: UIViewController {
         setupCustomTabBar()
         setPageCollectionViewLayout()
         title = "보틀월드"
-        navigationController?.hidesBarsOnSwipe = true
     }
 }
 
@@ -38,24 +37,19 @@ extension BottleWorldVC {
     func setPageCollectionViewLayout() {
         view.addSubview(pageCollectionView)
         pageCollectionView.snp.makeConstraints {
-            $0.leading.equalTo(view.snp.leading)
-            $0.trailing.equalTo(view.snp.trailing)
-            $0.bottom.equalTo(view.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(customMenuBar.snp.bottom)
         }
         pageCollectionView.registerCell(nibName: "BottleWorldListCell")
     }
     func setupCustomTabBar() {
+        customMenuBar = SwipeBarView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
         self.view.addSubview(customMenuBar)
         customMenuBar.delegate = self
         customMenuBar.snp.makeConstraints {
-            $0.leading.equalTo(view.snp.leading)
-            $0.trailing.equalTo(view.snp.trailing)
+            $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.height.equalTo(47)
-        }
-        customMenuBar.indicatorView.snp.updateConstraints {
-            $0.width.equalTo(view.frame.width/3)
         }
     }
 }
