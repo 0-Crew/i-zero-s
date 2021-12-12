@@ -11,6 +11,8 @@
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
 		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
 		191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA427650A41005D0525 /* FollowEmptyView.swift */; };
+		191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA6276652DB005D0525 /* UserListCell.swift */; };
+		191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EA7276652DB005D0525 /* UserListCell.xib */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -96,6 +98,8 @@
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
 		191A4EA427650A41005D0525 /* FollowEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowEmptyView.swift; sourceTree = "<group>"; };
+		191A4EA6276652DB005D0525 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
+		191A4EA7276652DB005D0525 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
@@ -474,6 +478,8 @@
 				D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */,
 				195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */,
 				195AC71B275BD71F00BDECB6 /* TopTabBarCell.xib */,
+				191A4EA6276652DB005D0525 /* UserListCell.swift */,
+				191A4EA7276652DB005D0525 /* UserListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -612,6 +618,7 @@
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
 				A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */,
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
+				191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */,
 				A2B7BDD82714214300F1DB1F /* Main.storyboard in Resources */,
 				19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
@@ -674,6 +681,7 @@
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
 				191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
+				191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */,
 				A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */,
 				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,
 				A25C8BFC2731423000D2BA78 /* UIButton+Extension.swift in Sources */,
