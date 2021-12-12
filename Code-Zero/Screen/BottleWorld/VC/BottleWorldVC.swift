@@ -59,6 +59,7 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
+        cell.emptyView.viewType = [.noneSearch, .noneFollower, .noneFollowing][indexPath.row] // testCode
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -10,6 +10,7 @@
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
 		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
+		191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA427650A41005D0525 /* FollowEmptyView.swift */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -94,6 +95,7 @@
 /* Begin PBXFileReference section */
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
+		191A4EA427650A41005D0525 /* FollowEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowEmptyView.swift; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				195AC717275BD5E500BDECB6 /* SwipeBarView.swift */,
 				191A4E9F276450EC005D0525 /* FollowEmptyView.xib */,
+				191A4EA427650A41005D0525 /* FollowEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */,
 				A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */,
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
+				191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
 				A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */,
 				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,
