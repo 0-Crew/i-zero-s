@@ -51,6 +51,7 @@ class ChallengeOpenSecondStepView: LoadXibView, ChallengeOpenStepViewType {
 extension ChallengeOpenSecondStepView {
     private func initView() {
         containerView.setBorder(borderColor: .orangeMain, borderWidth: 1)
+        selectedInconvenientText = optionList[0]
         inconvenientInputTextField.text = optionList[0]
         inconvenientInputTextField.delegate = self
         optionTableView.registerCell(cellType: OptionCell.self)
@@ -122,7 +123,8 @@ extension ChallengeOpenSecondStepView: UITableViewDataSource {
 // MARK: - ChallengeOpenStepViewType
 extension ChallengeOpenSecondStepView {
     func presentStep(userInput: UserInputTextTuple?) {
-        let canPass: Bool = inconvenientInputTextField.text?.count != 0 ? true: false
-        delegate?.challengeStepCanPass(step: .first, canPass: canPass)
+        let canPass: Bool = inconvenientInputTextField.text?.count != 0 ? true : false
+        delegate?.challengeStepCanPass(step: .second, canPass: canPass)
+        delegate?.challengeStep(step: .second, inputString: selectedInconvenientText)
     }
 }
