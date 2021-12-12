@@ -93,6 +93,14 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bottleBackView" destination="rV8-0e-g0d" id="DXN-vb-0HO"/>
+                <outlet property="bottleImage" destination="aEW-2N-GMP" id="39u-z8-baU"/>
+                <outlet property="challengeLabel" destination="xoW-PW-QFh" id="98O-0v-uWi"/>
+                <outlet property="challengeTermLabel" destination="q1c-kK-KdM" id="mcW-W4-Z8E"/>
+                <outlet property="followButton" destination="3hn-27-uaw" id="Laa-gH-0MH"/>
+                <outlet property="userNameLabel" destination="BE5-nh-kDD" id="OIt-gI-HrN"/>
+            </connections>
             <point key="canvasLocation" x="201.44927536231884" y="109.15178571428571"/>
         </tableViewCell>
     </objects>
