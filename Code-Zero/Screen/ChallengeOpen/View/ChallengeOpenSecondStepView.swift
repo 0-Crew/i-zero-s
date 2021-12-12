@@ -12,6 +12,7 @@ class ChallengeOpenSecondStepView: LoadXibView, ChallengeOpenStepViewType {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var inconvenientInputTextField: UITextField!
     @IBOutlet weak var optionTableView: UITableView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     // MARK: - Property
     internal var optionList: [String] = (0...5).map { "선택지\($0)"} + ["직접입력"]
     internal var selectedInconvenientText: String = "" {
@@ -56,9 +57,22 @@ extension ChallengeOpenSecondStepView {
         optionTableView.setBorder(borderColor: .orangeMain, borderWidth: 1)
         optionTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
+    internal func setEditing(isEditing: Bool, willComeUpHeight: CGFloat = 0) {
+        let bottomEmptyHeight = frame.height - descriptionLabel.frame.maxY - 12
+        let moveY = willComeUpHeight - bottomEmptyHeight
+        if isEditing {
+            bounds.origin.y = moveY
+        } else {
+            bounds.origin.y = 0
+        }
+    }
 }
 // MARK: - UITextFieldDelegate
 extension ChallengeOpenSecondStepView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(false)
+        return true
+    }
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,

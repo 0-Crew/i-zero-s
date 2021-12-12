@@ -20,6 +20,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeOpenSecondStepView" customModule="Code_Zero" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="ol5-l9-1ci" id="VhN-XJ-EU9"/>
+                <outlet property="descriptionLabel" destination="zmq-kj-Nce" id="9dZ-Nl-PTS"/>
                 <outlet property="inconvenientInputTextField" destination="L0b-7d-dxO" id="AgO-Ho-DQJ"/>
                 <outlet property="optionTableView" destination="Ed3-ta-mdZ" id="gRB-r5-NID"/>
             </connections>

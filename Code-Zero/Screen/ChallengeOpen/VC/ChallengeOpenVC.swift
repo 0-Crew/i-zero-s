@@ -181,7 +181,10 @@ extension ChallengeOpenVC {
             self.nextButton.transform = transfrom
         }
         if currentStep == .second {
-            scrollView.setContentOffset(.init(x: scrollView.contentOffset.x, y: 76), animated: true)
+            secondStepView.setEditing(
+                isEditing: true,
+                willComeUpHeight: keyboardHeight + nextButton.frame.height
+            )
         }
     }
 
@@ -189,7 +192,7 @@ extension ChallengeOpenVC {
     @objc func keyboardWillHide(_ notification: NSNotification) {
         self.nextButton.transform = .identity
         if currentStep == .second {
-            scrollView.setContentOffset(.init(x: scrollView.contentOffset.x, y: 0), animated: true)
+            secondStepView.setEditing(isEditing: false)
         }
     }
 
