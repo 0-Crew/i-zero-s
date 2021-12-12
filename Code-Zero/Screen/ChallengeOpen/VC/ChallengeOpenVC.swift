@@ -74,6 +74,7 @@ class ChallengeOpenVC: UIViewController {
     @IBAction func nextButtonDidTap() {
         guard let nextStep = ChallengeOpenStep(rawValue: currentStep.rawValue + 1) else {
             // TODO: 챌린지 오픈 완료 시 동작
+            dismiss(animated: true, completion: nil)
             return
         }
         view.endEditing(true)
