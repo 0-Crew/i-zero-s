@@ -13,6 +13,8 @@
 		191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA427650A41005D0525 /* FollowEmptyView.swift */; };
 		191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA6276652DB005D0525 /* UserListCell.swift */; };
 		191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EA7276652DB005D0525 /* UserListCell.xib */; };
+		191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EAA27665CA4005D0525 /* UserListView.xib */; };
+		191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EAC27665CB9005D0525 /* UserListView.swift */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -100,6 +102,8 @@
 		191A4EA427650A41005D0525 /* FollowEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowEmptyView.swift; sourceTree = "<group>"; };
 		191A4EA6276652DB005D0525 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		191A4EA7276652DB005D0525 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
+		191A4EAA27665CA4005D0525 /* UserListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
+		191A4EAC27665CB9005D0525 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				195AC717275BD5E500BDECB6 /* SwipeBarView.swift */,
 				191A4E9F276450EC005D0525 /* FollowEmptyView.xib */,
 				191A4EA427650A41005D0525 /* FollowEmptyView.swift */,
+				191A4EAA27665CA4005D0525 /* UserListView.xib */,
+				191A4EAC27665CB9005D0525 /* UserListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
+				191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */,
 				A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */,
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
 				191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */,
@@ -691,6 +698,7 @@
 				19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */,
 				19A142C4274FBA4F00E8DC45 /* ChallengedListView.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
+				191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */,
 				195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,

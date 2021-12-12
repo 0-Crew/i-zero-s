@@ -16,6 +16,7 @@ class BottleWorldListCell: UICollectionViewCell {
     @IBOutlet weak var searchResultView: UIView!
 
     var emptyView = FollowEmptyView(frame: .zero)
+    var userListView = UserListView(frame: .zero)
 
     // MARK: - Override Fucntion
     override func awakeFromNib() {
@@ -32,11 +33,19 @@ class BottleWorldListCell: UICollectionViewCell {
     }
     private func setResultView() {
         // if 구조체.count == 0 이라면
-        setEmptyView()
+        setUserListView()
     }
     func setEmptyView() {
         searchResultView.addSubview(emptyView)
         emptyView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(searchResultView.snp.height)
+            $0.width.equalTo(searchResultView.snp.width)
+        }
+    }
+    func setUserListView() {
+        searchResultView.addSubview(userListView)
+        userListView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(searchResultView.snp.height)
             $0.width.equalTo(searchResultView.snp.width)

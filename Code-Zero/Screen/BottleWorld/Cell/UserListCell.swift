@@ -28,6 +28,7 @@ class UserListCell: UITableViewCell {
         bottleBackView.makeRounded(cornerRadius: nil)
         bottleBackView.setBorder(borderColor: .lightGray1, borderWidth: 1)
         followButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
+        selectionStyle = .none
     }
     func setUserInfo(userName: String, term: String, challenge: String, isFollow: Bool) {
         userNameLabel.text = "\(userName)의 보틀"
