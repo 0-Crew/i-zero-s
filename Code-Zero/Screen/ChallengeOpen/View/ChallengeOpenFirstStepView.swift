@@ -33,7 +33,7 @@ class ChallengeOpenFirstStepView: LoadXibView, ChallengeOpenStepViewType {
             return
         }
         let canPass = text.count != 0
-        canPass ? unhighlightingContainerView() : highlightingContainerView()
+        canPass ? highlightingContainerView() : unhighlightingContainerView()
         delegate?.challengeStepCanPass(step: .first, canPass: canPass)
         delegate?.challengeStep(step: .first, inputString: text)
     }
@@ -59,6 +59,10 @@ extension ChallengeOpenFirstStepView {
 
 // MARK: - UITextFieldDelegate
 extension ChallengeOpenFirstStepView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(false)
+        return true
+    }
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
