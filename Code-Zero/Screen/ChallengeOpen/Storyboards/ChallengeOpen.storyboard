@@ -68,7 +68,6 @@
                                         <rect key="frame" x="149" y="15" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="CLN-95-cCd"/>
-                                            <constraint firstAttribute="width" constant="20" id="EE4-G2-0Xg"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
