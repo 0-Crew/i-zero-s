@@ -31,6 +31,10 @@ class BottleWorldListCell: UICollectionViewCell {
         searchButton.titleLabel?.text = ""
     }
     private func setResultView() {
+        // if 구조체.count == 0 이라면
+        setEmptyView()
+    }
+    func setEmptyView() {
         searchResultView.addSubview(emptyView)
         emptyView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
