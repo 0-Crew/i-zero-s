@@ -140,7 +140,10 @@ extension ChallengeOpenVC {
     private func setOpenView(step: ChallengeOpenStep) {
         previousStepButton.setImage(step.previousButtonImage, for: .normal)
         openStepTitleLabel.text = step.openStepTitleText
-        openStepImageView.image = step.openStepImage
+        openStepImageView.image = step.openStepImageStyle.image
+        openStepImageView.snp.updateConstraints {
+            $0.width.equalTo(step.openStepImageStyle.width)
+        }
         nextButton.setTitle(step.nextStepTitle, for: .normal)
     }
 }

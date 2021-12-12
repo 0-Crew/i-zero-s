@@ -32,12 +32,12 @@ extension ChallengeOpenStep {
             return "보틀 씻기 완료!"
         }
     }
-    var openStepImage: UIImage? {
+    var openStepImageStyle: (image: UIImage?, width: CGFloat) {
         switch self {
         case .first, .second:
-            return UIImage(named: "icChallengeOpenBottle")
+            return (UIImage(named: "icChallengeOpenBottle"), 20)
         case .third:
-            return UIImage(named: "icNavBottle")
+            return (UIImage(named: "icNavBottle"), 8)
         }
     }
     var nextStepTitle: String {
