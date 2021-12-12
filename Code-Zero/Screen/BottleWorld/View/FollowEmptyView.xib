@@ -15,7 +15,12 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowEmptyView" customModule="Code_Zero" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowEmptyView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyImage" destination="be8-Aq-EUG" id="aqW-WD-hzq"/>
+                <outlet property="noneTitleLabel" destination="XNR-U4-T0y" id="nay-AA-VPA"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="422" height="677"/>
