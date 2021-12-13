@@ -222,6 +222,7 @@ extension ChallengeListCell: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: OptionCell = tableView.dequeueCell(indexPath: indexPath)
+        cell.setCellType(type: .challenge)
         cell.optionTextLabel.text = optionsList[indexPath.row]
         return cell
     }
@@ -232,7 +233,6 @@ extension ChallengeListCell {
 
     // keyboard가 보여질 때 어떤 동작을 수행
     @objc func keyboardWillShow(_ notification: NSNotification) {
-
         guard
             let offset = editingChallengeOffset,
             let challengeView = challengeViewList[offset]

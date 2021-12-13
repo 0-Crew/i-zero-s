@@ -35,6 +35,16 @@
 		6E5B24B6274A20210071C9F2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BFA84EB2731499800E09C20 /* Calendar.storyboard */; };
 		6E5B24B8274D2C450071C9F2 /* EmptyChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24B7274D2C450071C9F2 /* EmptyChallengeCell.swift */; };
 		6E6C1E942751216C007488AD /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C1E932751216C007488AD /* OptionCell.swift */; };
+		6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD29EA2764EDF0004BAD6B /* ChallengeOpenStep.swift */; };
+		6EB97228275B384800AB8349 /* ChallengeOpenFirstStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB97227275B384800AB8349 /* ChallengeOpenFirstStepView.xib */; };
+		6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB97229275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib */; };
+		6EB9722C275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB9722B275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib */; };
+		6EB9722F275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9722E275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift */; };
+		6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97230275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift */; };
+		6EB97233275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97232275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift */; };
+		6EB97236275B86CD00AB8349 /* LoadXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97235275B86CD00AB8349 /* LoadXibView.swift */; };
+		6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5AC9E275517EF007CCC67 /* ChallengeOpen.storyboard */; };
+		6EE5ACA227592F35007CCC67 /* ChallengeOpenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5ACA127592F35007CCC67 /* ChallengeOpenVC.swift */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
 		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
 		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
@@ -119,6 +129,16 @@
 		6E5B24B42749402B0071C9F2 /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		6E5B24B7274D2C450071C9F2 /* EmptyChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyChallengeCell.swift; sourceTree = "<group>"; };
 		6E6C1E932751216C007488AD /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
+		6EAD29EA2764EDF0004BAD6B /* ChallengeOpenStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenStep.swift; sourceTree = "<group>"; };
+		6EB97227275B384800AB8349 /* ChallengeOpenFirstStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeOpenFirstStepView.xib; sourceTree = "<group>"; };
+		6EB97229275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeOpenSecondStepView.xib; sourceTree = "<group>"; };
+		6EB9722B275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeOpenThirdStepView.xib; sourceTree = "<group>"; };
+		6EB9722E275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenFirstStepView.swift; sourceTree = "<group>"; };
+		6EB97230275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenSecondStepView.swift; sourceTree = "<group>"; };
+		6EB97232275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenThirdStepView.swift; sourceTree = "<group>"; };
+		6EB97235275B86CD00AB8349 /* LoadXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadXibView.swift; sourceTree = "<group>"; };
+		6EE5AC9E275517EF007CCC67 /* ChallengeOpen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeOpen.storyboard; sourceTree = "<group>"; };
+		6EE5ACA127592F35007CCC67 /* ChallengeOpenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenVC.swift; sourceTree = "<group>"; };
 		9B9927D92733DED200A180CB /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		9BFA84EB2731499800E09C20 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -234,6 +254,62 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6EAD29E92764EDD5004BAD6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6EAD29EA2764EDF0004BAD6B /* ChallengeOpenStep.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6EB9722D275B3AC900AB8349 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6EB9722E275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift */,
+				6EB97230275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift */,
+				6EB97232275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6EB97234275B850D00AB8349 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6EB97235275B86CD00AB8349 /* LoadXibView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6EE5AC9C275517D4007CCC67 /* ChallengeOpen */ = {
+			isa = PBXGroup;
+			children = (
+				6EAD29E92764EDD5004BAD6B /* Model */,
+				6EB9722D275B3AC900AB8349 /* View */,
+				6EE5ACA027592F21007CCC67 /* VC */,
+				6EE5AC9D275517DD007CCC67 /* Storyboards */,
+			);
+			path = ChallengeOpen;
+			sourceTree = "<group>";
+		};
+		6EE5AC9D275517DD007CCC67 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6EE5AC9E275517EF007CCC67 /* ChallengeOpen.storyboard */,
+				6EB97227275B384800AB8349 /* ChallengeOpenFirstStepView.xib */,
+				6EB97229275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib */,
+				6EB9722B275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6EE5ACA027592F21007CCC67 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				6EE5ACA127592F35007CCC67 /* ChallengeOpenVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		9BFA84E82731496300E09C20 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +411,7 @@
 		A2DC88C8271C112D0099438A /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				6EB97234275B850D00AB8349 /* View */,
 				A2DC88CC271C11970099438A /* Model */,
 				A2DC88CB271C117D0099438A /* Extension */,
 				A2DC88CD271C11B70099438A /* Service */,
@@ -345,6 +422,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				6EE5AC9C275517D4007CCC67 /* ChallengeOpen */,
 				D256B8E52759E70B006D3CFD /* BottleWorld */,
 				A2FC30492736957300B29296 /* Challenge */,
 				9BFA84E82731496300E09C20 /* Calendar */,
@@ -598,6 +676,7 @@
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
 				191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
+				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
@@ -615,9 +694,12 @@
 				A2B7BDD82714214300F1DB1F /* Main.storyboard in Resources */,
 				19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
+				6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */,
+				6EB9722C275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib in Resources */,
 				1998752F274FB81F004CD747 /* ChallengedListView.xib in Resources */,
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
 				6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */,
+				6EB97228275B384800AB8349 /* ChallengeOpenFirstStepView.xib in Resources */,
 				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,7 +748,11 @@
 				1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */,
 				6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
+				6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */,
+				6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */,
+				6EB9722F275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift in Sources */,
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
+				6EB97236275B86CD00AB8349 /* LoadXibView.swift in Sources */,
 				A2B7BDD52714214300F1DB1F /* ViewController.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
 				A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */,
@@ -694,10 +780,13 @@
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
+				6EE5ACA227592F35007CCC67 /* ChallengeOpenVC.swift in Sources */,
 				6E5B24B52749402B0071C9F2 /* ChallengeView.swift in Sources */,
 				A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */,
 				1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */,
 				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
+				6EB97233275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift in Sources */,
+				19DE921F273FC8D8001B0C30 /* TodayCalendarCell.swift in Sources */,
 				D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -76,7 +76,7 @@ class ChallengeVC: UIViewController {
     // MARK: - Field Method
     private func fetchFollowingPeopleFirstNameList() {
         followingPeopleChallengingLists = [
-            ("김", true),
+            ("김", false),
             ("이", true),
             ("박", false)
         ]
@@ -137,7 +137,11 @@ extension ChallengeVC: ChallengeListCellDelegate {
 
 extension ChallengeVC: EmptyChallengeCellDelegate {
     func didStartChallengeViewTap() {
-        // TODO: - 챌린지 오픈 뷰 연결할 곳
+        let challengeOpenStoryboard = UIStoryboard(name: "ChallengeOpen", bundle: nil)
+        guard let challengeOpenVC = challengeOpenStoryboard.instantiateViewController(
+            withIdentifier: "ChallengeOpenVC"
+        ) as? ChallengeOpenVC else { return }
+        present(challengeOpenVC, animated: true, completion: nil)
     }
 }
 
