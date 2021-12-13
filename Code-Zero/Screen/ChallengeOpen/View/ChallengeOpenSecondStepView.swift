@@ -57,15 +57,12 @@ extension ChallengeOpenSecondStepView {
         optionTableView.registerCell(cellType: OptionCell.self)
         optionTableView.setBorder(borderColor: .orangeMain, borderWidth: 1)
         optionTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        optionTableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
     }
     internal func setEditing(isEditing: Bool, willComeUpHeight: CGFloat = 0) {
         let bottomEmptyHeight = frame.height - descriptionLabel.frame.maxY - 12
         let moveY = willComeUpHeight - bottomEmptyHeight
-        if isEditing {
-            bounds.origin.y = moveY
-        } else {
-            bounds.origin.y = 0
-        }
+        bounds.origin.y = isEditing ? moveY : 0
     }
 }
 // MARK: - UITextFieldDelegate

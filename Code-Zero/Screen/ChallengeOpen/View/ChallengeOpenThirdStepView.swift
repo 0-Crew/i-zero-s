@@ -27,6 +27,12 @@ class ChallengeOpenThirdStepView: LoadXibView, ChallengeOpenStepViewType {
             }
         }
     }
+    internal var isTodayStart: Bool? {
+        if !fromDateButtonIsSelectedList.contains(true) {
+            return nil
+        }
+        return fromDateButtonIsSelectedList[0]
+    }
     internal weak var delegate: ChallengeOpenStepDelegate?
 
     // MARK: - Lifecycle Method

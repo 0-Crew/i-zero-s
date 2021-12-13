@@ -12,6 +12,11 @@ class OptionCell: UITableViewCell {
         case challenge
         case challengeOpen
     }
+    let selectedColorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray1
+        return view
+    }()
     let optionTextLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray1
@@ -34,6 +39,13 @@ class OptionCell: UITableViewCell {
         initLayout()
     }
     private func initLayout() {
+        selectionStyle = .none
+        contentView.addSubview(selectedColorView)
+        selectedColorView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.leading.equalToSuperview().offset(5)
+            $0.trailing.equalToSuperview().offset(-13)
+        }
         contentView.addSubview(optionTextLabel)
         optionTextLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(5)
@@ -45,22 +57,11 @@ class OptionCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if cellType == .challenge { return }
-        if selected {
-            optionTextLabel.font = .spoqaHanSansNeo(size: 14, family: .bold)
-        } else {
-            optionTextLabel.font = .spoqaHanSansNeo(size: 14, family: .medium)
-        }
+        selectedColorView.isHidden = !selected
+        let fontFamily: UIFont.Family = selected ? .bold : .medium
+        optionTextLabel.font = .spoqaHanSansNeo(size: 14, family: fontFamily)
     }
     internal func setCellType(type: CellType) {
         cellType = type
-        if type == .challenge {
-            selectionStyle = .none
-            selectedBackgroundView = nil
-        } else {
-            selectionStyle = .default
-            let highlightingView: UIView = .init()
-            highlightingView.backgroundColor = .lightGray1
-            selectedBackgroundView = highlightingView
-        }
     }
 }

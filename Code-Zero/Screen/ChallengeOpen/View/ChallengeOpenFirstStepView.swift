@@ -80,7 +80,7 @@ extension ChallengeOpenFirstStepView: UITextFieldDelegate {
 
 extension ChallengeOpenFirstStepView {
     func presentStep(userInput: UserInputTextTuple?) {
-        let canPass: Bool = convenientInputTextField.text?.count != 0 ? true: false
+        let canPass: Bool = convenientInputTextField.text?.count != 0
         delegate?.challengeStepCanPass(step: .first, canPass: canPass)
     }
 }
