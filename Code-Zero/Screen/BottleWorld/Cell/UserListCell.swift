@@ -31,15 +31,19 @@ class UserListCell: UITableViewCell {
         selectionStyle = .none
     }
     func setUserInfo(user: UserData) {
-        userNameLabel.text = "\(user.name)의 보틀"
         if user.term != nil {
+            challengeTermLabel.isHidden = false
             challengeTermLabel.text = user.term
             challengeLabel.text = user.subject
+            challengeLabel.textColor = .orangeMain
         } else {
-            setNoneChallenge()
+            challengeTermLabel.isHidden = true
+            challengeLabel.text = "보틀 씻는 중"
+            challengeLabel.textColor = .gray2
         }
         bottleImage.image = UIImage(named: "icBottleMain\(user.bottleLevel)")
         user.follow ? setFollowButton() : setFollowingButton()
+        userNameLabel.text = "\(user.name)의 보틀"
         if let text = userNameLabel.text {
             let attributedStr = NSMutableAttributedString(string: text)
             attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
@@ -60,10 +64,5 @@ class UserListCell: UITableViewCell {
                                font: .spoqaHanSansNeo(size: 12, family: .bold),
                                backgroundColor: .white)
 
-    }
-    private func setNoneChallenge() {
-        challengeTermLabel.removeFromSuperview()
-        challengeLabel.text = "보틀 씻는 중"
-        challengeLabel.textColor = .gray2
     }
 }

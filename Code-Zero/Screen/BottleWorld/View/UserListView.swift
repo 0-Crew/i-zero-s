@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+import SnapKit
 
 struct UserData {
     let name: String
@@ -54,6 +56,23 @@ class UserListView: UIView {
         userListTableView.register(nibName, forCellReuseIdentifier: "UserListCell")
         userListTableView.delegate = self
         userListTableView.dataSource = self
+        setRefresh()
+    }
+    private func setRefresh() {
+        let refresh = UIRefreshControl()
+        let loadingView = AnimationView(name: "loading")
+        loadingView.play()
+        loadingView.frame = CGRect(x: userListTableView.frame.width/2 - 25, y: 5, width: 50, height: 50)
+        loadingView.contentMode = .scaleToFill
+        loadingView.loopMode = .loop
+        refresh.tintColor = .clear
+        refresh.addSubview(loadingView)
+        refresh.addTarget(self, action: #selector(updateTableViewData(refressh:)), for: .valueChanged)
+        userListTableView.addSubview(refresh)
+    }
+    @objc private func updateTableViewData(refressh: UIRefreshControl) {
+        refressh.endRefreshing()
+        userListTableView.reloadData()
     }
 }
 
@@ -109,7 +128,7 @@ extension UserListView {
                              term: "12/13-20", follow: true)
         let data8 = UserData(name: "미니테스트중", bottleLevel: 7, subject: nil,
                              term: nil, follow: true)
-        lookAroundUser = [data1, data2, data3, data4, data5, data6, data7]
+        lookAroundUser = [data1, data2, data3, data4, data5, data6, data7, data8]
         follower = [data1, data4, data5, data7, data8]
         following = [data2, data3, data6]
     }

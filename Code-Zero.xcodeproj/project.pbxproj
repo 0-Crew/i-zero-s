@@ -16,6 +16,7 @@
 		191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EAA27665CA4005D0525 /* UserListView.xib */; };
 		191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EAC27665CB9005D0525 /* UserListView.swift */; };
 		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
+		1927B80A27673F7A00E72F61 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927B80927673F7A00E72F61 /* loading.json */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -105,6 +106,7 @@
 		191A4EA7276652DB005D0525 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		191A4EAA27665CA4005D0525 /* UserListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
 		191A4EAC27665CB9005D0525 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		1927B80927673F7A00E72F61 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
@@ -206,6 +208,14 @@
 				191A4E9C27637A12005D0525 /* BottleWorld.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		1927B80B276797A100E72F61 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				1927B80927673F7A00E72F61 /* loading.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		195AC719275BD5E900BDECB6 /* View */ = {
@@ -368,6 +378,7 @@
 		A2DC88CA271C11470099438A /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1927B80B276797A100E72F61 /* Lottie */,
 				A2B7BDD92714214600F1DB1F /* Assets.xcassets */,
 				A2696D6A272D60C1001A2C60 /* Color.xcassets */,
 				A2B7BDDE2714214600F1DB1F /* Info.plist */,
@@ -637,6 +648,7 @@
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
 				6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */,
 				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
+				1927B80A27673F7A00E72F61 /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
