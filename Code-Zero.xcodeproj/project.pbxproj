@@ -15,6 +15,7 @@
 		191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EA7276652DB005D0525 /* UserListCell.xib */; };
 		191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EAA27665CA4005D0525 /* UserListView.xib */; };
 		191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EAC27665CB9005D0525 /* UserListView.swift */; };
+		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
@@ -174,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1927B80827673DBD00E72F61 /* Lottie in Frameworks */,
 				191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */,
 				9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */,
 				9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */,
@@ -512,6 +514,7 @@
 				9BF5EA6C272E8B6D0008A5C3 /* Moya */,
 				9BF5EA6F272E8BD20008A5C3 /* SnapKit */,
 				191A4EA22764FADF005D0525 /* Gedatsu */,
+				1927B80727673DBD00E72F61 /* Lottie */,
 			);
 			productName = "Code-Zero";
 			productReference = A2B7BDCD2714214300F1DB1F /* Code-Zero.app */;
@@ -590,6 +593,7 @@
 				9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */,
 				9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */,
+				1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A2B7BDCE2714214300F1DB1F /* Products */;
 			projectDirPath = "";
@@ -1088,6 +1092,14 @@
 				version = 1.2.0;
 			};
 		};
+		1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 3.2.3;
+			};
+		};
 		9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
@@ -1119,6 +1131,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */;
 			productName = Gedatsu;
+		};
+		1927B80727673DBD00E72F61 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		9BF5EA69272E8A590008A5C3 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
