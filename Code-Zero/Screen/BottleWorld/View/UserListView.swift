@@ -15,14 +15,14 @@ struct UserData {
     let follow: Bool
 }
 
-enum UserListTapType {
-    case lookAround
-    case follower
-    case following
-}
-
 class UserListView: UIView {
 
+    // MARK: - Property
+    enum UserListTapType {
+        case lookAround
+        case follower
+        case following
+    }
     var lookAroundUser: [UserData] = []
     var follower: [UserData] = []
     var following: [UserData] = []
@@ -81,23 +81,11 @@ extension UserListView: UITableViewDataSource {
         let cell: UserListCell = tableView.dequeueCell(indexPath: indexPath)
         switch tapType {
         case .lookAround:
-            let data = lookAroundUser[indexPath.row]
-            cell.setUserInfo(userName: data.name,
-                             term: data.term,
-                             challenge: data.subject,
-                             isFollow: data.follow)
+            cell.setUserInfo(user: lookAroundUser[indexPath.row])
         case .follower:
-            let data = follower[indexPath.row]
-            cell.setUserInfo(userName: data.name,
-                             term: data.term,
-                             challenge: data.subject,
-                             isFollow: data.follow)
+            cell.setUserInfo(user: follower[indexPath.row])
         case .following:
-            let data = following[indexPath.row]
-            cell.setUserInfo(userName: data.name,
-                             term: data.term,
-                             challenge: data.subject,
-                             isFollow: data.follow)
+            cell.setUserInfo(user: following[indexPath.row])
         }
         return cell
     }

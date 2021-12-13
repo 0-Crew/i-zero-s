@@ -30,16 +30,17 @@ class UserListCell: UITableViewCell {
         followButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         selectionStyle = .none
     }
-    func setUserInfo(userName: String, term: String, challenge: String, isFollow: Bool) {
-        userNameLabel.text = "\(userName)의 보틀"
-        challengeTermLabel.text = term
-        challengeLabel.text = challenge
-        isFollow ? setFollowButton() : setFollowingButton()
+    func setUserInfo(user: UserData) {
+        userNameLabel.text = "\(user.name)의 보틀"
+        challengeTermLabel.text = user.term
+        challengeLabel.text = user.subject
+        bottleImage.image = UIImage(named: "icBottleMain\(user.bottleLevel)")
+        user.follow ? setFollowButton() : setFollowingButton()
         if let text = userNameLabel.text {
             let attributedStr = NSMutableAttributedString(string: text)
             attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
                                        value: UIFont.futuraStd(size: 13, family: .bold),
-                                       range: (text as NSString).range(of: userName))
+                                       range: (text as NSString).range(of: user.name))
             userNameLabel.attributedText = attributedStr
         }
     }
