@@ -7,6 +7,11 @@
 
 import UIKit
 import SnapKit
+
+protocol UserSearchDelegate: AnyObject {
+    func didSearchButtonTap(text: String)
+}
+
 class BottleWorldListCell: UICollectionViewCell {
 
     // MARK: - IBOutlet
@@ -17,7 +22,13 @@ class BottleWorldListCell: UICollectionViewCell {
 
     var emptyView = FollowEmptyView(frame: .zero)
     var userListView = UserListView(frame: .zero)
+    internal weak var delegate: UserSearchDelegate?
 
+    @IBAction func searchButtonDidTap(_ sender: Any) {
+        if let text = searchTextField.text {
+            delegate?.didSearchButtonTap(text: text)
+        }
+    }
     // MARK: - Override Fucntion
     override func awakeFromNib() {
         super.awakeFromNib()
