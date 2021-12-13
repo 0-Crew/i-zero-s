@@ -71,7 +71,6 @@ class ChallengeOpenVC: UIViewController {
 
     private func completeChallenge() {
         userInputTextTuple.isTodayStart = thirdStepView.isTodayStart
-        
     }
 
     // MARK: - IBAction Method
