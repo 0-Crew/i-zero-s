@@ -32,8 +32,12 @@ class UserListCell: UITableViewCell {
     }
     func setUserInfo(user: UserData) {
         userNameLabel.text = "\(user.name)의 보틀"
-        challengeTermLabel.text = user.term
-        challengeLabel.text = user.subject
+        if user.term != nil {
+            challengeTermLabel.text = user.term
+            challengeLabel.text = user.subject
+        } else {
+            setNoneChallenge()
+        }
         bottleImage.image = UIImage(named: "icBottleMain\(user.bottleLevel)")
         user.follow ? setFollowButton() : setFollowingButton()
         if let text = userNameLabel.text {
@@ -56,5 +60,10 @@ class UserListCell: UITableViewCell {
                                font: .spoqaHanSansNeo(size: 12, family: .bold),
                                backgroundColor: .white)
 
+    }
+    private func setNoneChallenge() {
+        challengeTermLabel.removeFromSuperview()
+        challengeLabel.text = "보틀 씻는 중"
+        challengeLabel.textColor = .gray2
     }
 }

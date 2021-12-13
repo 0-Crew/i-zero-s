@@ -10,8 +10,8 @@ import UIKit
 struct UserData {
     let name: String
     let bottleLevel: Int
-    let subject: String
-    let term: String
+    let subject: String?
+    let term: String?
     let follow: Bool
 }
 
@@ -107,8 +107,10 @@ extension UserListView {
                              term: "12/3-10", follow: false)
         let data7 = UserData(name: "워유보갓", bottleLevel: 3, subject: "종이 컵홀더 안 쓰기종이 컵",
                              term: "12/13-20", follow: true)
+        let data8 = UserData(name: "미니테스트중", bottleLevel: 7, subject: nil,
+                             term: nil, follow: true)
         lookAroundUser = [data1, data2, data3, data4, data5, data6, data7]
-        follower = [data1, data4, data5, data7]
+        follower = [data1, data4, data5, data7, data8]
         following = [data2, data3, data6]
     }
 }

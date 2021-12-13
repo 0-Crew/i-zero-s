@@ -32,7 +32,8 @@ class BottleWorldListCell: UICollectionViewCell {
         searchButton.titleLabel?.text = ""
     }
     private func setResultView() {
-        // if 구조체.count == 0 이라면
+        // if 구조체.count == 0 이라면 setEmptyView()
+        // else 라면 
         setUserListView()
     }
     func setEmptyView() {
