@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UserListCellDelegate: AnyObject {
+    func didFollowButtonTap(index: Int)
+}
+
 class UserListCell: UITableViewCell {
 
     // MARK: - @IBOutlet
@@ -16,6 +20,12 @@ class UserListCell: UITableViewCell {
     @IBOutlet weak var challengeTermLabel: UILabel!
     @IBOutlet weak var challengeLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+
+    @IBAction func followButtonDidTap(_ sender: UIButton) {
+        delegate?.didFollowButtonTap(index: cellIndex?.row ?? 0)
+    }
+    var cellIndex: IndexPath?
+    var delegate: UserListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

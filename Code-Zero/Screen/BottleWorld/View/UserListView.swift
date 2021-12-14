@@ -99,6 +99,8 @@ extension UserListView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UserListCell = tableView.dequeueCell(indexPath: indexPath)
+        cell.delegate = self
+        cell.cellIndex = indexPath // 나중에는 여기에 인덱스 대신에 나중에는 유저 고유 이메일 같은거가 들어가야 할 듯
         switch tapType {
         case .lookAround:
             cell.setUserInfo(user: lookAroundUser[indexPath.row])
@@ -132,5 +134,11 @@ extension UserListView {
         lookAroundUser = [data1, data2, data3, data4, data5, data6, data7, data8]
         follower = [data1, data4, data5, data7, data8]
         following = [data2, data3, data6]
+    }
+}
+
+extension UserListView: UserListCellDelegate {
+    func didFollowButtonTap(index: Int) {
+        /// 팔로우, 팔로잉 서버 연결 코드 작성 예정
     }
 }
