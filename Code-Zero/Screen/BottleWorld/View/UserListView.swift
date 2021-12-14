@@ -14,7 +14,7 @@ struct UserData {
     let bottleLevel: Int
     let subject: String?
     let term: String?
-    let follow: Bool
+    var follow: Bool
 }
 
 class UserListView: UIView {
@@ -140,5 +140,14 @@ extension UserListView {
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(index: Int) {
         /// 팔로우, 팔로잉 서버 연결 코드 작성 예정
+        switch tapType {
+        case .lookAround:
+            lookAroundUser[index].follow = !lookAroundUser[index].follow
+        case .follower:
+            follower[index].follow = !follower[index].follow
+        case .following:
+            following[index].follow = !following[index].follow
+        }
+        userListTableView.reloadData()
     }
 }
