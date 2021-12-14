@@ -29,6 +29,7 @@ class UserListView: UIView {
     var follower: [UserData] = []
     var following: [UserData] = []
     var tapType: UserListTapType = .lookAround
+    var filteringText: String? // 필터링 할 단어
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
