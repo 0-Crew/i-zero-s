@@ -8,10 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol UserSearchDelegate: AnyObject {
-    func didSearchButtonTap(text: String)
-}
-
 class BottleWorldListCell: UICollectionViewCell {
 
     // MARK: - IBOutlet
@@ -22,7 +18,6 @@ class BottleWorldListCell: UICollectionViewCell {
 
     var emptyView = FollowEmptyView(frame: .zero)
     var userListView = UserListView(frame: .zero)
-    internal weak var delegate: UserSearchDelegate?
 
     @IBAction func searchButtonDidTap(_ sender: Any) {
         if let text = searchTextField.text {
@@ -37,7 +32,9 @@ class BottleWorldListCell: UICollectionViewCell {
         setView()
         setResultView()
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing(true)
+    }
     // MARK: - Style Set Function
     private func setView() {
         self.backgroundColor = .white
