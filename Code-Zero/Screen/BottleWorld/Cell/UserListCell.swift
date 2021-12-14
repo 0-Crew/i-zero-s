@@ -21,11 +21,14 @@ class UserListCell: UITableViewCell {
     @IBOutlet weak var challengeLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
 
+    // MARK: - @IBAction
     @IBAction func followButtonDidTap(_ sender: UIButton) {
         delegate?.didFollowButtonTap(index: cellIndex?.row ?? 0)
     }
-    var cellIndex: IndexPath?
-    var delegate: UserListCellDelegate?
+
+    // MARK: - Property
+    internal var cellIndex: IndexPath?
+    internal weak var delegate: UserListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

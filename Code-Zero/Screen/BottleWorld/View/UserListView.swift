@@ -139,7 +139,7 @@ extension UserListView {
 
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(index: Int) {
-        /// 팔로우, 팔로잉 서버 연결 코드 작성 예정
+        // 팔로우, 팔로잉 서버 연결 코드 작성 예정
         switch tapType {
         case .lookAround:
             lookAroundUser[index].follow = !lookAroundUser[index].follow
