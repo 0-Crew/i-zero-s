@@ -57,13 +57,7 @@ class UserListCell: UITableViewCell {
         bottleImage.image = UIImage(named: "icBottleMain\(user.bottleLevel)")
         user.follow ? setFollowButton() : setFollowingButton()
         userNameLabel.text = "\(user.name)의 보틀"
-        if let text = userNameLabel.text {
-            let attributedStr = NSMutableAttributedString(string: text)
-            attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
-                                       value: UIFont.futuraStd(size: 13, family: .bold),
-                                       range: (text as NSString).range(of: user.name))
-            userNameLabel.attributedText = attributedStr
-        }
+        userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [user.name])
     }
     private func setFollowButton() {
         followButton.setButton(text: "팔로우",

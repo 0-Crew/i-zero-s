@@ -32,21 +32,14 @@ extension UILabel {
 
         self.attributedText = attributedString
     }
-//    func setLineSpacing(lineSpacing: CGFloat = 0.0) {
-//        guard let labelText = self.text else { return }
-//
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.lineSpacing = lineSpacing
-//
-//        let attributedString = NSMutableAttributedString(string: labelText)
-//        attributedString.addAttribute(
-//            .paragraphStyle,
-//            value: lineSpacing,
-//            range: .init(location: 0, length: attributedString.length - 1)
-//        )
-//        let attributes = [
-//        let attributedText = NSAttributedString(string: labelText, attributes: [])
-//
-//        self.attributedText =
-//    }
+
+    func setFontWith(font: UIFont, in ranges: [String]) {
+            guard let text = self.text else { return }
+            let attributedString = NSMutableAttributedString(string: text)
+            ranges.forEach {
+                let range = attributedString.mutableString.range(of: $0)
+                attributedString.addAttribute(.font, value: font, range: range)
+            }
+            self.attributedText = attributedString
+        }
 }
