@@ -39,6 +39,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="icSearch"/>
+                                <connections>
+                                    <action selector="searchButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="dso-Fk-4FQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="lightGray1"/>
