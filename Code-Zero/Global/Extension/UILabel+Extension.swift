@@ -32,21 +32,24 @@ extension UILabel {
 
         self.attributedText = attributedString
     }
-//    func setLineSpacing(lineSpacing: CGFloat = 0.0) {
-//        guard let labelText = self.text else { return }
-//
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.lineSpacing = lineSpacing
-//
-//        let attributedString = NSMutableAttributedString(string: labelText)
-//        attributedString.addAttribute(
-//            .paragraphStyle,
-//            value: lineSpacing,
-//            range: .init(location: 0, length: attributedString.length - 1)
-//        )
-//        let attributes = [
-//        let attributedText = NSAttributedString(string: labelText, attributes: [])
-//
-//        self.attributedText =
-//    }
+
+    func setTextWithLineHeight(letterSpacing: CGFloat = -0.5, lineHeight: CGFloat) {
+
+        guard let attributeText = self.text else { return }
+
+        let style = NSMutableParagraphStyle()
+        style.maximumLineHeight = lineHeight
+        style.minimumLineHeight = lineHeight
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: style,
+            .baselineOffset: (lineHeight - font.lineHeight) / 4,
+            .kern: letterSpacing
+        ]
+
+        let attrString = NSAttributedString(string: attributeText,
+                                            attributes: attributes)
+        self.attributedText = attrString
+
+    }
 }
