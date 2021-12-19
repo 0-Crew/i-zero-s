@@ -53,8 +53,7 @@ class UserListView: UIView {
         setTableView()
     }
     private func setTableView() {
-        let nibName = UINib(nibName: "UserListCell", bundle: nil)
-        userListTableView.register(nibName, forCellReuseIdentifier: "UserListCell")
+        userListTableView.registerCell(nibName: "UserListCell")
         userListTableView.delegate = self
         userListTableView.dataSource = self
         setRefresh()
