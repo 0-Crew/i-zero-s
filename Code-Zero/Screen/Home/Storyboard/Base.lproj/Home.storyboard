@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9eT-CS-W9G">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FuturaStd-Bold.otf">
+            <string>FuturaStd-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Xl6-2R-eaE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fgJ-vv-ZSX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FH5-Qd-Vup">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FRA-iQ-3oM" kind="relationship" relationship="rootViewController" id="HRo-aj-E5F"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ehp-gK-flz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="97.767857142857139"/>
+        </scene>
+        <!--Challenge-->
+        <scene sceneID="N2m-sF-Xnm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Challenge" id="FRA-iQ-3oM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yit-y3-oDO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIh-6B-UoD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="98"/>
+        </scene>
+        <!--HomeVC-->
+        <scene sceneID="j7Q-9V-aWY">
+            <objects>
+                <viewController id="9eT-CS-W9G" customClass="HomeVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u9l-81-MGn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qls-8v-jQE">
+                                <rect key="frame" x="30" y="84" width="384" height="135"/>
+                                <string key="text">Wash
+Your
+Bottle</string>
+                                <fontDescription key="fontDescription" name="FuturaStd-Bold" family="Futura Std" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZ6-ae-Pjv">
+                                <rect key="frame" x="30" y="231" width="384" height="34"/>
+                                <string key="text">지금 할 수 있는 것부터 
+시작하는 7일간의 제로웨이스트 챌린지</string>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HiS-TA-ssG">
+                                <rect key="frame" x="149" y="785" width="116" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZk-OT-28T">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="UU3-q2-unO"/>
+                                            <constraint firstAttribute="width" constant="50" id="ilV-NN-8kx"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="imgKakao"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9w2-VE-mDN">
+                                        <rect key="frame" x="66" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="929-SO-EAk"/>
+                                            <constraint firstAttribute="height" constant="50" id="k3h-PG-IhU"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="imgApple"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 보틀이 있다면," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adb-Mu-5RO">
+                                <rect key="frame" x="159" y="760.5" width="96.5" height="14.5"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vp-2s-dY0">
+                                <rect key="frame" x="49.5" y="685.5" width="315" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ave-c5-XPN"/>
+                                    <constraint firstAttribute="width" constant="315" id="t0o-He-Jvg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="보틀 선물 받고 시작하기" image="icStarWhite">
+                                    <color key="titleColor" name="white"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ary-3y-pQw"/>
+                        <color key="backgroundColor" name="orangeMain"/>
+                        <constraints>
+                            <constraint firstItem="iZ6-ae-Pjv" firstAttribute="top" secondItem="qls-8v-jQE" secondAttribute="bottom" constant="12" id="1lQ-wx-hQK"/>
+                            <constraint firstItem="Ary-3y-pQw" firstAttribute="bottom" secondItem="HiS-TA-ssG" secondAttribute="bottom" constant="27" id="3s8-HM-1xg"/>
+                            <constraint firstItem="qls-8v-jQE" firstAttribute="leading" secondItem="Ary-3y-pQw" secondAttribute="leading" constant="30" id="D8W-VR-GgW"/>
+                            <constraint firstItem="0Vp-2s-dY0" firstAttribute="centerX" secondItem="u9l-81-MGn" secondAttribute="centerX" id="FQG-6G-67B"/>
+                            <constraint firstItem="qls-8v-jQE" firstAttribute="top" secondItem="Ary-3y-pQw" secondAttribute="top" constant="40" id="Hqk-mi-ZZK"/>
+                            <constraint firstItem="Adb-Mu-5RO" firstAttribute="centerX" secondItem="u9l-81-MGn" secondAttribute="centerX" id="Ra0-Ox-uMp"/>
+                            <constraint firstItem="Adb-Mu-5RO" firstAttribute="top" secondItem="0Vp-2s-dY0" secondAttribute="bottom" constant="30" id="Xjb-MV-Ckr"/>
+                            <constraint firstItem="iZ6-ae-Pjv" firstAttribute="leading" secondItem="Ary-3y-pQw" secondAttribute="leading" constant="30" id="d5h-fS-qh7"/>
+                            <constraint firstItem="Ary-3y-pQw" firstAttribute="trailing" secondItem="iZ6-ae-Pjv" secondAttribute="trailing" id="em6-KG-ZgG"/>
+                            <constraint firstItem="Ary-3y-pQw" firstAttribute="trailing" secondItem="qls-8v-jQE" secondAttribute="trailing" id="juU-7L-edR"/>
+                            <constraint firstItem="HiS-TA-ssG" firstAttribute="centerX" secondItem="Ary-3y-pQw" secondAttribute="centerX" id="tM3-LJ-OaF"/>
+                            <constraint firstItem="HiS-TA-ssG" firstAttribute="top" secondItem="Adb-Mu-5RO" secondAttribute="bottom" constant="10" id="wi2-hu-Tci"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="CNh-Wl-ZM7"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="appDescriptionLabel" destination="iZ6-ae-Pjv" id="rft-3f-sZo"/>
+                        <outlet property="appTitleLabel" destination="qls-8v-jQE" id="CfI-77-Q7U"/>
+                        <outlet property="appleSignInButton" destination="9w2-VE-mDN" id="OJw-rA-fOo"/>
+                        <outlet property="kakaoSignInButton" destination="TZk-OT-28T" id="mZT-Gq-X1J"/>
+                        <outlet property="onboardingButton" destination="0Vp-2s-dY0" id="K13-x7-cce"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISl-9r-whq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057.9710144927537" y="97.767857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icStarWhite" width="20" height="20"/>
+        <image name="imgApple" width="50" height="50"/>
+        <image name="imgKakao" width="50" height="50"/>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Aln-dv-l68">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FuturaStd-Bold.otf">
+            <string>FuturaStd-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CMR-2F-A3t"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900.0000000000002" y="-640.17857142857144"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WuI-cs-zxA">
+            <objects>
+                <viewController id="AmE-h1-Ss4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sl4-Vg-rTu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3b-iL-4m3">
+                                <rect key="frame" x="108" y="693" width="142" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-DG-DFK">
+                                <rect key="frame" x="30" y="84" width="384" height="135"/>
+                                <string key="text">Wash
+Your
+Bottle</string>
+                                <fontDescription key="fontDescription" name="FuturaStd-Bold" family="Futura Std" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyE-3K-q2A">
+                                <rect key="frame" x="30" y="231" width="384" height="34"/>
+                                <string key="text">지금 할 수 있는 것부터 
+시작하는 7일간의 제로웨이스트 챌린지</string>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KVA-BQ-oDd"/>
+                        <color key="backgroundColor" name="orangeMain"/>
+                        <constraints>
+                            <constraint firstItem="i5M-DG-DFK" firstAttribute="top" secondItem="KVA-BQ-oDd" secondAttribute="top" constant="40" id="3gN-1Y-zis"/>
+                            <constraint firstItem="KVA-BQ-oDd" firstAttribute="trailing" secondItem="i5M-DG-DFK" secondAttribute="trailing" id="BDS-Ms-pYa"/>
+                            <constraint firstItem="KVA-BQ-oDd" firstAttribute="trailing" secondItem="PyE-3K-q2A" secondAttribute="trailing" id="HyM-HU-rxi"/>
+                            <constraint firstItem="PyE-3K-q2A" firstAttribute="leading" secondItem="KVA-BQ-oDd" secondAttribute="leading" constant="30" id="SVy-fa-pGG"/>
+                            <constraint firstItem="PyE-3K-q2A" firstAttribute="top" secondItem="i5M-DG-DFK" secondAttribute="bottom" constant="12" id="gSD-ko-db7"/>
+                            <constraint firstItem="i5M-DG-DFK" firstAttribute="leading" secondItem="KVA-BQ-oDd" secondAttribute="leading" constant="30" id="neq-R0-EpI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UC8-Oh-1Gz"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qYO-Au-PtW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092.753623188406" y="-640.17857142857144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sdo-Wg-cNv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Aln-dv-l68" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a7x-35-wDc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AmE-h1-Ss4" kind="relationship" relationship="rootViewController" id="RPl-v5-gVP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1X-GW-apx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182.60869565217394" y="-640.17857142857144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
