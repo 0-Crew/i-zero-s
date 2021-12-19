@@ -41,16 +41,6 @@ class ChallengeTitleView: UIView {
         challengeSubjectLabel.text = "편리함 | \(subject)"
         subjectView.backgroundColor = color
 
-        if let text = challengeSubjectLabel.text {
-            let changeString: String = "|"
-            let attributedStr = NSMutableAttributedString(string: text)
-            attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
-                                       value: UIFont.futuraStd(size: 14, family: .bold),
-                                       range: (text as NSString).range(of: changeString))
-            attributedStr.addAttribute(NSAttributedString.Key(rawValue: kCTFontAttributeName as String),
-                                       value: UIFont.spoqaHanSansNeo(size: 14, family: .bold),
-                                       range: (text as NSString).range(of: subject))
-            challengeSubjectLabel.attributedText = attributedStr
-        }
+        challengeSubjectLabel.setFontWith(font: .futuraStd(size: 14, family: .bold), in: ["|",subject])
     }
 }

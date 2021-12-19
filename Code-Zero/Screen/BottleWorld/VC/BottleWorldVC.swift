@@ -44,7 +44,7 @@ extension BottleWorldVC {
     }
     func setupCustomTabBar() {
         customMenuBar = SwipeBarView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        self.view.addSubview(customMenuBar)
+        view.addSubview(customMenuBar)
         customMenuBar.delegate = self
         customMenuBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
@@ -60,6 +60,7 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
         cell.emptyView.viewType = [.noneSearch, .noneFollower, .noneFollowing][indexPath.row] // testCode
+        cell.userListView.tapType = [.lookAround, .follower, .following][indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -97,6 +98,7 @@ extension BottleWorldVC: UICollectionViewDelegateFlowLayout {
 extension BottleWorldVC: SwipeBarDelgate {
     func customMenuBar(scrollTo index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
-        self.pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        view.endEditing(true)
     }
 }

@@ -52,4 +52,14 @@ extension UILabel {
         self.attributedText = attrString
 
     }
+  
+    func setFontWith(font: UIFont, in ranges: [String]) {
+            guard let text = self.text else { return }
+            let attributedString = NSMutableAttributedString(string: text)
+            ranges.forEach {
+                let range = attributedString.mutableString.range(of: $0)
+                attributedString.addAttribute(.font, value: font, range: range)
+            }
+            self.attributedText = attributedString
+        }
 }
