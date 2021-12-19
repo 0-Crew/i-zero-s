@@ -33,7 +33,7 @@ extension UILabel {
         self.attributedText = attributedString
     }
 
-    func setTextWithLineHeight(letterSpacing: CGFloat = -0.5, lineHeight: CGFloat) {
+    func setTextWithLineHeight(lineHeight: CGFloat) {
 
         guard let attributeText = self.text else { return }
 
@@ -43,8 +43,7 @@ extension UILabel {
 
         let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: style,
-            .baselineOffset: (lineHeight - font.lineHeight) / 4,
-            .kern: letterSpacing
+            .baselineOffset: (lineHeight - font.lineHeight) / 4
         ]
 
         let attrString = NSAttributedString(string: attributeText,
