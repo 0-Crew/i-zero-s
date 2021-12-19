@@ -40,7 +40,7 @@ class HomeVC: UIViewController {
 
 extension HomeVC {
     private func initView() {
-        appTitleLabel.setTextWithLineHeight(letterSpacing: 1.35, lineHeight: 54)
+        appTitleLabel.setTextWithLineHeight(lineHeight: 54)
         appDescriptionLabel.setTextWithLineHeight(lineHeight: 21)
 
         onboardingButton.setBorder(borderColor: .white, borderWidth: 1.0)
