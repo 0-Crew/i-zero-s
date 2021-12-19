@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9eT-CS-W9G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fgJ-vv-ZSX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -23,16 +23,15 @@
         <!--Navigation Controller-->
         <scene sceneID="Xl6-2R-eaE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fgJ-vv-ZSX" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="fgJ-vv-ZSX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FH5-Qd-Vup">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="standardAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FRA-iQ-3oM" kind="relationship" relationship="rootViewController" id="HRo-aj-E5F"/>
+                        <segue destination="9eT-CS-W9G" kind="relationship" relationship="rootViewController" id="F9R-xN-2Oz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehp-gK-flz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -47,7 +46,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIh-6B-UoD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="591" y="98"/>
+            <point key="canvasLocation" x="579" y="-33"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="j7Q-9V-aWY">
@@ -85,6 +84,9 @@ Bottle</string>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="imgKakao"/>
+                                        <connections>
+                                            <action selector="kakaoSignInButtonDidTap" destination="9eT-CS-W9G" eventType="touchUpInside" id="4zq-Uj-9Xu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9w2-VE-mDN">
                                         <rect key="frame" x="66" y="0.0" width="50" height="50"/>
@@ -94,6 +96,9 @@ Bottle</string>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="imgApple"/>
+                                        <connections>
+                                            <action selector="appleSignInButtonDidTap" destination="9eT-CS-W9G" eventType="touchUpInside" id="YBs-yj-zFs"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -114,6 +119,9 @@ Bottle</string>
                                 <state key="normal" title="보틀 선물 받고 시작하기" image="icStarWhite">
                                     <color key="titleColor" name="white"/>
                                 </state>
+                                <connections>
+                                    <action selector="onboardingButtonDidTap" destination="9eT-CS-W9G" eventType="touchUpInside" id="jGq-Rt-W00"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ary-3y-pQw"/>

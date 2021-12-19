@@ -18,16 +18,40 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        // Do any additional setup after loading the view.
+    }
+
+    @IBAction func onboardingButtonDidTap() {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        guard
+            let onboardingStepOneVC = storyboard.instantiateViewController(
+                withIdentifier: "OnboardingStepOneVC"
+            ) as? OnboardingStepOneVC else { return }
+        navigationController?.pushViewController(onboardingStepOneVC, animated: true)
+    }
+
+    @IBAction func kakaoSignInButtonDidTap() {
+        changeRootViewToChallenge()
+    }
+    @IBAction func appleSignInButtonDidTap() {
+        changeRootViewToChallenge()
     }
 
 }
 
 extension HomeVC {
-    func initView() {
-        appTitleLabel.setTextWithLineHeight(letterSpacing: 1.35 ,lineHeight: 54)
+    private func initView() {
+        appTitleLabel.setTextWithLineHeight(letterSpacing: 1.35, lineHeight: 54)
         appDescriptionLabel.setTextWithLineHeight(lineHeight: 21)
 
         onboardingButton.setBorder(borderColor: .white, borderWidth: 1.0)
+    }
+    private func changeRootViewToChallenge() {
+        let storybard = UIStoryboard(name: "Challenge", bundle: nil)
+        let challengeNavigationVC = storybard.instantiateViewController(withIdentifier: "Challenge")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            challengeNavigationVC,
+            animated: true,
+            completion: nil
+        )
     }
 }
