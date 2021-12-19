@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FuturaStd-Bold.otf">
+            <string>FuturaStd-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMo-B5-P52">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFQ-T2-tBf">
+                                        <rect key="frame" x="20" y="13" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="yFQ-T2-tBf" secondAttribute="height" multiplier="1:1" id="75g-oK-YOk"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="13" maxX="10" maxY="13"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="icArrowLeftDart"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4ep-F2-BUA"/>
+                                    <constraint firstItem="yFQ-T2-tBf" firstAttribute="leading" secondItem="pMo-B5-P52" secondAttribute="leading" constant="20" id="KEs-ld-7XW"/>
+                                    <constraint firstAttribute="bottom" secondItem="yFQ-T2-tBf" secondAttribute="bottom" constant="13" id="Y7X-cA-vLj"/>
+                                    <constraint firstItem="yFQ-T2-tBf" firstAttribute="top" secondItem="pMo-B5-P52" secondAttribute="top" constant="13" id="zhd-EY-bmS"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaE-i4-KG2">
+                                <rect key="frame" x="30" y="124" width="134" height="135"/>
+                                <string key="text">Wash
+Your
+Bottle</string>
+                                <fontDescription key="fontDescription" name="FuturaStd-Bold" family="Futura Std" pointSize="45"/>
+                                <color key="textColor" name="orangeMain"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQK-CP-JlJ">
+                                <rect key="frame" x="30" y="271" width="224" height="34"/>
+                                <string key="text">지금 할 수 있는 것부터 
+시작하는 7일간의 제로웨이스트 챌린지</string>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <color key="textColor" name="orangeMain"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="XvG-VR-mxG">
+                                <rect key="frame" x="33" y="592.5" width="348" height="113.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z4-Ug-XYv">
+                                        <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWc-le-3gQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="카카오톡 로그인"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3z4-Ug-XYv" secondAttribute="height" multiplier="315:45" id="1gI-6i-cha"/>
+                                            <constraint firstItem="qWc-le-3gQ" firstAttribute="leading" secondItem="3z4-Ug-XYv" secondAttribute="leading" id="Hxh-bZ-Ha4"/>
+                                            <constraint firstItem="qWc-le-3gQ" firstAttribute="top" secondItem="3z4-Ug-XYv" secondAttribute="top" id="K48-7q-5R6"/>
+                                            <constraint firstAttribute="bottom" secondItem="qWc-le-3gQ" secondAttribute="bottom" id="yBG-ub-pO7"/>
+                                            <constraint firstAttribute="trailing" secondItem="qWc-le-3gQ" secondAttribute="trailing" id="zM5-m5-bj8"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ2-KF-D44">
+                                        <rect key="frame" x="0.0" y="64" width="348" height="49.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycK-Zd-iFp">
+                                                <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Apple로 로그인"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ycK-Zd-iFp" firstAttribute="leading" secondItem="oZ2-KF-D44" secondAttribute="leading" id="5uQ-k5-VOg"/>
+                                            <constraint firstAttribute="trailing" secondItem="ycK-Zd-iFp" secondAttribute="trailing" id="MTX-uK-1xc"/>
+                                            <constraint firstAttribute="bottom" secondItem="ycK-Zd-iFp" secondAttribute="bottom" id="rhL-Uj-WO0"/>
+                                            <constraint firstItem="ycK-Zd-iFp" firstAttribute="top" secondItem="oZ2-KF-D44" secondAttribute="top" id="xuw-Ph-L4W"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pMo-B5-P52" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1jQ-T8-yxW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pMo-B5-P52" secondAttribute="trailing" id="Akp-uM-DMr"/>
+                            <constraint firstItem="pMo-B5-P52" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Bny-Xk-Vk8"/>
+                            <constraint firstItem="gaE-i4-KG2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="GRD-FV-iEc"/>
+                            <constraint firstItem="XvG-VR-mxG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Gty-78-2KT"/>
+                            <constraint firstItem="wQK-CP-JlJ" firstAttribute="top" secondItem="gaE-i4-KG2" secondAttribute="bottom" constant="12" id="PZF-Gz-uQ6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XvG-VR-mxG" secondAttribute="bottom" constant="156" id="a7T-i5-H1l"/>
+                            <constraint firstItem="3z4-Ug-XYv" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="315/375" id="cUx-2G-jWz"/>
+                            <constraint firstItem="wQK-CP-JlJ" firstAttribute="leading" secondItem="gaE-i4-KG2" secondAttribute="leading" id="rnN-oQ-SVd"/>
+                            <constraint firstItem="gaE-i4-KG2" firstAttribute="top" secondItem="pMo-B5-P52" secondAttribute="bottom" constant="30" id="xHH-Hw-H7n"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icArrowLeftDart" width="24" height="24"/>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
