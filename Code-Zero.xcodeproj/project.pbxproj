@@ -32,6 +32,7 @@
 		19A142C4274FBA4F00E8DC45 /* ChallengedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A142C3274FBA4F00E8DC45 /* ChallengedListView.swift */; };
 		19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A142C5274FC0E100E8DC45 /* ChallengingListView.swift */; };
 		19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A142C7274FC0EA00E8DC45 /* ChallengingListView.xib */; };
+		19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B74642276F7BC30038367C /* NickSettingVC.swift */; };
 		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
 		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
@@ -134,6 +135,7 @@
 		19A142C3274FBA4F00E8DC45 /* ChallengedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengedListView.swift; sourceTree = "<group>"; };
 		19A142C5274FC0E100E8DC45 /* ChallengingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengingListView.swift; path = "Code-Zero/Screen/Calendar/VC/ChallengingListView.swift"; sourceTree = SOURCE_ROOT; };
 		19A142C7274FC0EA00E8DC45 /* ChallengingListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengingListView.xib; sourceTree = "<group>"; };
+		19B74642276F7BC30038367C /* NickSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickSettingVC.swift; sourceTree = "<group>"; };
 		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
 		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				197A6550276F784900166255 /* SignInVC.swift */,
+				19B74642276F7BC30038367C /* NickSettingVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
+				19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */,
 				195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */,
 				194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
