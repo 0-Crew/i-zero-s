@@ -114,8 +114,7 @@ extension UserListView: UITableViewDataSource {
 
 extension UserListView {
     private func makeDumyData() {
-        let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "종이 컵홀더 받기",
-                             term: "12/8-13", follow: true)
+        let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "플라스틱 빨대사용하기플라스틱 빨대사용", term: "12/8-13", follow: true)
         let data2 = UserData(name: "주혁이", bottleLevel: 0, subject: "일회용컵으로 커피 마시기",
                              term: "12/1-8", follow: false)
         let data3 = UserData(name: "민희", bottleLevel: 3, subject: "텀블러 가지고 다니기",

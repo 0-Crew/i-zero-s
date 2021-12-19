@@ -59,7 +59,7 @@
                                         <color key="textColor" name="gray4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라스틱 빨대사용하기플라스틱 빨대사용" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoW-PW-QFh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라스틱 빨대사용하기플라스틱 빨대사용" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoW-PW-QFh">
                                         <rect key="frame" x="0.0" y="18.5" width="175.5" height="31.5"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="13"/>
                                         <color key="textColor" name="orangeMain"/>
