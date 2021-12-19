@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Sign InVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" id="Y6W-OH-hqX" customClass="SignInVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,46 +64,63 @@ Bottle</string>
                                 <color key="textColor" name="orangeMain"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="XvG-VR-mxG">
-                                <rect key="frame" x="33" y="592.5" width="348" height="113.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRx-qH-HHP">
+                                <rect key="frame" x="0.0" y="305" width="414" height="591"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z4-Ug-XYv">
-                                        <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="XvG-VR-mxG">
+                                        <rect key="frame" x="33" y="259" width="348" height="113"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWc-le-3gQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="카카오톡 로그인"/>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="separatorColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="3z4-Ug-XYv" secondAttribute="height" multiplier="315:45" id="1gI-6i-cha"/>
-                                            <constraint firstItem="qWc-le-3gQ" firstAttribute="leading" secondItem="3z4-Ug-XYv" secondAttribute="leading" id="Hxh-bZ-Ha4"/>
-                                            <constraint firstItem="qWc-le-3gQ" firstAttribute="top" secondItem="3z4-Ug-XYv" secondAttribute="top" id="K48-7q-5R6"/>
-                                            <constraint firstAttribute="bottom" secondItem="qWc-le-3gQ" secondAttribute="bottom" id="yBG-ub-pO7"/>
-                                            <constraint firstAttribute="trailing" secondItem="qWc-le-3gQ" secondAttribute="trailing" id="zM5-m5-bj8"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ2-KF-D44">
-                                        <rect key="frame" x="0.0" y="64" width="348" height="49.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycK-Zd-iFp">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z4-Ug-XYv">
                                                 <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Apple로 로그인"/>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWc-le-3gQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="카카오톡 로그인"/>
+                                                        <connections>
+                                                            <action selector="loginButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="H0M-Uu-ydC"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="3z4-Ug-XYv" secondAttribute="height" multiplier="315:45" id="1gI-6i-cha"/>
+                                                    <constraint firstItem="qWc-le-3gQ" firstAttribute="leading" secondItem="3z4-Ug-XYv" secondAttribute="leading" id="Hxh-bZ-Ha4"/>
+                                                    <constraint firstItem="qWc-le-3gQ" firstAttribute="top" secondItem="3z4-Ug-XYv" secondAttribute="top" id="K48-7q-5R6"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qWc-le-3gQ" secondAttribute="bottom" id="yBG-ub-pO7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qWc-le-3gQ" secondAttribute="trailing" id="zM5-m5-bj8"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ2-KF-D44">
+                                                <rect key="frame" x="0.0" y="63.5" width="348" height="49.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycK-Zd-iFp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Apple로 로그인"/>
+                                                        <connections>
+                                                            <action selector="loginButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Fv1-Zy-pCB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="ycK-Zd-iFp" firstAttribute="leading" secondItem="oZ2-KF-D44" secondAttribute="leading" id="5uQ-k5-VOg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ycK-Zd-iFp" secondAttribute="trailing" id="MTX-uK-1xc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ycK-Zd-iFp" secondAttribute="bottom" id="rhL-Uj-WO0"/>
+                                                    <constraint firstItem="ycK-Zd-iFp" firstAttribute="top" secondItem="oZ2-KF-D44" secondAttribute="top" id="xuw-Ph-L4W"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="separatorColor"/>
-                                        <constraints>
-                                            <constraint firstItem="ycK-Zd-iFp" firstAttribute="leading" secondItem="oZ2-KF-D44" secondAttribute="leading" id="5uQ-k5-VOg"/>
-                                            <constraint firstAttribute="trailing" secondItem="ycK-Zd-iFp" secondAttribute="trailing" id="MTX-uK-1xc"/>
-                                            <constraint firstAttribute="bottom" secondItem="ycK-Zd-iFp" secondAttribute="bottom" id="rhL-Uj-WO0"/>
-                                            <constraint firstItem="ycK-Zd-iFp" firstAttribute="top" secondItem="oZ2-KF-D44" secondAttribute="top" id="xuw-Ph-L4W"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="XvG-VR-mxG" firstAttribute="centerY" secondItem="mRx-qH-HHP" secondAttribute="centerY" constant="20" id="YV7-XR-9Ve"/>
+                                    <constraint firstItem="XvG-VR-mxG" firstAttribute="centerX" secondItem="mRx-qH-HHP" secondAttribute="centerX" id="bQG-Q5-8kj"/>
+                                    <constraint firstItem="3z4-Ug-XYv" firstAttribute="width" secondItem="mRx-qH-HHP" secondAttribute="width" multiplier="315/375" id="vaL-ZB-qCi"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -112,14 +129,20 @@ Bottle</string>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pMo-B5-P52" secondAttribute="trailing" id="Akp-uM-DMr"/>
                             <constraint firstItem="pMo-B5-P52" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Bny-Xk-Vk8"/>
                             <constraint firstItem="gaE-i4-KG2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="GRD-FV-iEc"/>
-                            <constraint firstItem="XvG-VR-mxG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Gty-78-2KT"/>
                             <constraint firstItem="wQK-CP-JlJ" firstAttribute="top" secondItem="gaE-i4-KG2" secondAttribute="bottom" constant="12" id="PZF-Gz-uQ6"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XvG-VR-mxG" secondAttribute="bottom" constant="156" id="a7T-i5-H1l"/>
-                            <constraint firstItem="3z4-Ug-XYv" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="315/375" id="cUx-2G-jWz"/>
+                            <constraint firstAttribute="bottom" secondItem="mRx-qH-HHP" secondAttribute="bottom" id="cuP-5h-3CG"/>
+                            <constraint firstItem="mRx-qH-HHP" firstAttribute="top" secondItem="wQK-CP-JlJ" secondAttribute="bottom" id="mcF-Ui-nlM"/>
+                            <constraint firstItem="mRx-qH-HHP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rke-NR-c2T"/>
                             <constraint firstItem="wQK-CP-JlJ" firstAttribute="leading" secondItem="gaE-i4-KG2" secondAttribute="leading" id="rnN-oQ-SVd"/>
                             <constraint firstItem="gaE-i4-KG2" firstAttribute="top" secondItem="pMo-B5-P52" secondAttribute="bottom" constant="30" id="xHH-Hw-H7n"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mRx-qH-HHP" secondAttribute="trailing" id="xdE-wy-Xp9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="yFQ-T2-tBf" id="nyt-FF-YCl"/>
+                        <outlet property="subtitleLabel" destination="wQK-CP-JlJ" id="UgN-sO-0Gr"/>
+                        <outlet property="titleLabel" destination="gaE-i4-KG2" id="QEa-Bh-njZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
