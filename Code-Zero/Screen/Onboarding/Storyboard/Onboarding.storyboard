@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFb-tZ-FmX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFb-tZ-FmX">
                                 <rect key="frame" x="30" y="40" width="312" height="108"/>
                                 <string key="text">누구나 포기하기 
 어려운 편리함이 있습니다</string>
@@ -82,6 +82,12 @@
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="nextButton" destination="ifq-Kj-wJ1" id="gk2-Yn-wrY"/>
+                        <outletCollection property="descriptionLabels" destination="cFb-tZ-FmX" collectionClass="NSMutableArray" id="aC4-jA-NvD"/>
+                        <outletCollection property="descriptionLabels" destination="UnX-e4-dqB" collectionClass="NSMutableArray" id="Uvw-mz-kfT"/>
+                        <outletCollection property="descriptionLabels" destination="VMJ-vX-NIe" collectionClass="NSMutableArray" id="68U-mI-H7p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보틀 선물 드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aG5-Pk-w9R">
-                                <rect key="frame" x="30" y="40" width="198.5" height="38"/>
+                                <rect key="frame" x="30" y="40" width="207" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="vLS-8H-yWb"/>
                                 </constraints>
@@ -105,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 포기할 수 없는 편리함과" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-ya-p1Z">
-                                <rect key="frame" x="30" y="419" width="193" height="24"/>
+                                <rect key="frame" x="30" y="419" width="201" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="wbm-lU-9q2"/>
                                 </constraints>
@@ -120,7 +126,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 참아볼 수 있는 불편함을 적을 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-PW-CKf">
-                                <rect key="frame" x="30" y="445" width="289.5" height="24"/>
+                                <rect key="frame" x="30" y="445" width="300" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Rb1-HR-AlE"/>
                                 </constraints>
@@ -132,7 +138,7 @@
                                 <rect key="frame" x="30" y="485" width="315" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-JS-Beg">
-                                        <rect key="frame" x="14" y="8" width="26" height="13"/>
+                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="kZA-Fq-ugA"/>
                                         </constraints>
@@ -164,7 +170,7 @@
                                 <rect key="frame" x="30" y="554" width="315" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-0k-HC8">
-                                        <rect key="frame" x="14" y="8" width="26" height="13"/>
+                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="WcP-1V-Iia"/>
                                         </constraints>
