@@ -49,9 +49,21 @@ extension UILabel {
         let attrString = NSAttributedString(string: attributeText,
                                             attributes: attributes)
         self.attributedText = attrString
-
     }
-  
+
+    func setTextLetterSpacing(letterSpacing: CGFloat) {
+
+        guard let attributeText = self.text else { return }
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .kern: letterSpacing
+        ]
+
+        let attrString = NSAttributedString(string: attributeText,
+                                            attributes: attributes)
+        self.attributedText = attrString
+    }
+
     func setFontWith(font: UIFont, in ranges: [String]) {
             guard let text = self.text else { return }
             let attributedString = NSMutableAttributedString(string: text)
