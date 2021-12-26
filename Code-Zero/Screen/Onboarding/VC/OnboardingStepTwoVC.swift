@@ -39,6 +39,7 @@ class OnboardingStepTwoVC: UIViewController {
         descriptionView.alpha = 0
         descriptionView.subviews.forEach {
             guard let label = $0 as? UILabel else { return }
+            label.setTextLetterSpacing(letterSpacing: -0.5)
             label.setFontWith(font: .spoqaHanSansNeo(size: 16, family: .bold), in: ["편리함", "불편함"])
         }
     }

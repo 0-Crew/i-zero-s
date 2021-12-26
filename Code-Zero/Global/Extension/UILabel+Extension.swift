@@ -53,15 +53,23 @@ extension UILabel {
 
     func setTextLetterSpacing(letterSpacing: CGFloat) {
 
-        guard let attributeText = self.text else { return }
-
+        guard let text = self.text else { return }
         let attributes: [NSAttributedString.Key: Any] = [
             .kern: letterSpacing
         ]
 
-        let attrString = NSAttributedString(string: attributeText,
-                                            attributes: attributes)
-        self.attributedText = attrString
+        if let attributedText = self.attributedText {
+            let attributedString = NSMutableAttributedString(attributedString: attributedText)
+            attributedString.addAttributes(
+                attributes,
+                range: .init(location: 0, length: attributedString.length)
+            )
+            self.attributedText = attributedString
+        } else {
+            let attrString = NSAttributedString(string: text,
+                                                attributes: attributes)
+            self.attributedText = attrString
+        }
     }
 
     func setFontWith(font: UIFont, in ranges: [String]) {
