@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFb-tZ-FmX">
-                                <rect key="frame" x="30" y="40" width="312" height="108"/>
+                                <rect key="frame" x="30" y="40" width="315" height="108"/>
                                 <string key="text">누구나 포기하기 
 어려운 편리함이 있습니다</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
@@ -71,7 +71,7 @@
                             <constraint firstItem="VMJ-vX-NIe" firstAttribute="top" secondItem="UnX-e4-dqB" secondAttribute="bottom" constant="24" id="KBM-Ap-dIz"/>
                             <constraint firstAttribute="bottom" secondItem="ifq-Kj-wJ1" secondAttribute="bottom" id="Mef-Sy-lm0"/>
                             <constraint firstItem="cFb-tZ-FmX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="P5n-fU-nNr"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cFb-tZ-FmX" secondAttribute="trailing" constant="33" id="Tyl-Ac-txS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cFb-tZ-FmX" secondAttribute="trailing" constant="30" id="Tyl-Ac-txS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VMJ-vX-NIe" secondAttribute="trailing" constant="33" id="ckm-cs-BPG"/>
                             <constraint firstItem="cFb-tZ-FmX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="dBc-jy-qLf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ifq-Kj-wJ1" secondAttribute="trailing" id="h4m-qg-zjw"/>
@@ -93,15 +93,15 @@
             </objects>
             <point key="canvasLocation" x="998.55072463768124" y="-640.17857142857144"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding Step TwoVC-->
         <scene sceneID="Rhu-ym-z0o">
             <objects>
-                <viewController id="0pS-v6-zDP" sceneMemberID="viewController">
+                <viewController id="0pS-v6-zDP" customClass="OnboardingStepTwoVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v7W-oo-lwb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보틀 선물 드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aG5-Pk-w9R">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="보틀 선물 드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aG5-Pk-w9R">
                                 <rect key="frame" x="30" y="40" width="207" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="vLS-8H-yWb"/>
@@ -110,92 +110,108 @@
                                 <color key="textColor" name="darkGray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 포기할 수 없는 편리함과" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-ya-p1Z">
-                                <rect key="frame" x="30" y="419" width="201" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="wbm-lU-9q2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
-                                <color key="textColor" name="gray3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgOnboarding2" translatesAutoresizingMaskIntoConstraints="NO" id="hUU-K9-rb9">
-                                <rect key="frame" x="93" y="154" width="189" height="189"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hUU-K9-rb9" secondAttribute="height" multiplier="1:1" id="obR-Xs-Wa5"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 참아볼 수 있는 불편함을 적을 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-PW-CKf">
-                                <rect key="frame" x="30" y="445" width="300" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Rb1-HR-AlE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
-                                <color key="textColor" name="gray3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyP-Cx-yMn">
-                                <rect key="frame" x="30" y="485" width="315" height="53"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZhV-dp-WyZ">
+                                <rect key="frame" x="30" y="357" width="315" height="188"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-JS-Beg">
-                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 참아볼 수 있는 불편함을 적을 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-PW-CKf">
+                                        <rect key="frame" x="0.0" y="26" width="300" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="13" id="kZA-Fq-ugA"/>
+                                            <constraint firstAttribute="height" constant="24" id="Rb1-HR-AlE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
                                         <color key="textColor" name="gray3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라스틱 빨대 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcO-xK-Mfa">
-                                        <rect key="frame" x="14" y="26" width="287" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 포기할 수 없는 편리함과" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-ya-p1Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="ryh-oH-aEc"/>
+                                            <constraint firstAttribute="height" constant="24" id="wbm-lU-9q2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
                                         <color key="textColor" name="gray3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FIc-12-sZS">
+                                        <rect key="frame" x="0.0" y="66" width="315" height="122"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyP-Cx-yMn">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="53"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-JS-Beg">
+                                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="13" id="kZA-Fq-ugA"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
+                                                        <color key="textColor" name="gray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라스틱 빨대 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcO-xK-Mfa">
+                                                        <rect key="frame" x="14" y="26" width="287" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="ryh-oH-aEc"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                        <color key="textColor" name="gray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="white"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="QcO-xK-Mfa" secondAttribute="bottom" constant="8" id="917-OQ-x4u"/>
+                                                    <constraint firstItem="QcO-xK-Mfa" firstAttribute="leading" secondItem="7TM-JS-Beg" secondAttribute="leading" id="AwJ-f3-2IN"/>
+                                                    <constraint firstItem="7TM-JS-Beg" firstAttribute="leading" secondItem="EyP-Cx-yMn" secondAttribute="leading" constant="14" id="BBw-YB-hol"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QcO-xK-Mfa" secondAttribute="trailing" constant="14" id="MIO-3x-mTn"/>
+                                                    <constraint firstItem="7TM-JS-Beg" firstAttribute="top" secondItem="EyP-Cx-yMn" secondAttribute="top" constant="8" id="diP-sJ-t9V"/>
+                                                    <constraint firstItem="QcO-xK-Mfa" firstAttribute="top" secondItem="7TM-JS-Beg" secondAttribute="bottom" constant="5" id="zlL-Nh-EhO"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oW-G0-YPr">
+                                                <rect key="frame" x="0.0" y="69" width="315" height="53"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-0k-HC8">
+                                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="13" id="WcP-1V-Iia"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
+                                                        <color key="textColor" name="gray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="텀블러 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eS-3Y-d4f">
+                                                        <rect key="frame" x="14" y="26" width="287" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="Jc9-dc-J4N"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                        <color key="textColor" name="gray3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="white"/>
+                                                <constraints>
+                                                    <constraint firstItem="7eS-3Y-d4f" firstAttribute="top" secondItem="UQr-0k-HC8" secondAttribute="bottom" constant="5" id="Kvp-CW-l5v"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7eS-3Y-d4f" secondAttribute="trailing" constant="14" id="XtA-eL-XV0"/>
+                                                    <constraint firstAttribute="bottom" secondItem="7eS-3Y-d4f" secondAttribute="bottom" constant="8" id="dWT-HN-g4d"/>
+                                                    <constraint firstItem="7eS-3Y-d4f" firstAttribute="leading" secondItem="UQr-0k-HC8" secondAttribute="leading" id="qPi-vo-jNL"/>
+                                                    <constraint firstItem="UQr-0k-HC8" firstAttribute="leading" secondItem="9oW-G0-YPr" secondAttribute="leading" constant="14" id="qwL-93-YHX"/>
+                                                    <constraint firstItem="UQr-0k-HC8" firstAttribute="top" secondItem="9oW-G0-YPr" secondAttribute="top" constant="8" id="uwb-TD-5sk"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="white"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="QcO-xK-Mfa" secondAttribute="bottom" constant="8" id="917-OQ-x4u"/>
-                                    <constraint firstItem="QcO-xK-Mfa" firstAttribute="leading" secondItem="7TM-JS-Beg" secondAttribute="leading" id="AwJ-f3-2IN"/>
-                                    <constraint firstItem="7TM-JS-Beg" firstAttribute="leading" secondItem="EyP-Cx-yMn" secondAttribute="leading" constant="14" id="BBw-YB-hol"/>
-                                    <constraint firstAttribute="trailing" secondItem="QcO-xK-Mfa" secondAttribute="trailing" constant="14" id="MIO-3x-mTn"/>
-                                    <constraint firstItem="7TM-JS-Beg" firstAttribute="top" secondItem="EyP-Cx-yMn" secondAttribute="top" constant="8" id="diP-sJ-t9V"/>
-                                    <constraint firstItem="QcO-xK-Mfa" firstAttribute="top" secondItem="7TM-JS-Beg" secondAttribute="bottom" constant="5" id="zlL-Nh-EhO"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oW-G0-YPr">
-                                <rect key="frame" x="30" y="554" width="315" height="53"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-0k-HC8">
-                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="13" id="WcP-1V-Iia"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
-                                        <color key="textColor" name="gray3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="텀블러 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eS-3Y-d4f">
-                                        <rect key="frame" x="14" y="26" width="287" height="19"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="Jc9-dc-J4N"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
-                                        <color key="textColor" name="gray3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="white"/>
-                                <constraints>
-                                    <constraint firstItem="7eS-3Y-d4f" firstAttribute="top" secondItem="UQr-0k-HC8" secondAttribute="bottom" constant="5" id="Kvp-CW-l5v"/>
-                                    <constraint firstAttribute="trailing" secondItem="7eS-3Y-d4f" secondAttribute="trailing" constant="14" id="XtA-eL-XV0"/>
-                                    <constraint firstAttribute="bottom" secondItem="7eS-3Y-d4f" secondAttribute="bottom" constant="8" id="dWT-HN-g4d"/>
-                                    <constraint firstItem="7eS-3Y-d4f" firstAttribute="leading" secondItem="UQr-0k-HC8" secondAttribute="leading" id="qPi-vo-jNL"/>
-                                    <constraint firstItem="UQr-0k-HC8" firstAttribute="leading" secondItem="9oW-G0-YPr" secondAttribute="leading" constant="14" id="qwL-93-YHX"/>
-                                    <constraint firstItem="UQr-0k-HC8" firstAttribute="top" secondItem="9oW-G0-YPr" secondAttribute="top" constant="8" id="uwb-TD-5sk"/>
+                                    <constraint firstItem="FIc-12-sZS" firstAttribute="top" secondItem="ZtB-PW-CKf" secondAttribute="bottom" constant="16" id="DMW-SY-1jP"/>
+                                    <constraint firstItem="ZtB-PW-CKf" firstAttribute="top" secondItem="qD1-ya-p1Z" secondAttribute="bottom" constant="2" id="ElJ-QT-sp9"/>
+                                    <constraint firstItem="ZtB-PW-CKf" firstAttribute="leading" secondItem="qD1-ya-p1Z" secondAttribute="leading" id="Hbp-J3-sC0"/>
+                                    <constraint firstAttribute="trailing" secondItem="qD1-ya-p1Z" secondAttribute="trailing" id="OEf-Rn-obb"/>
+                                    <constraint firstItem="FIc-12-sZS" firstAttribute="leading" secondItem="ZhV-dp-WyZ" secondAttribute="leading" id="RBd-lI-Oyt"/>
+                                    <constraint firstItem="qD1-ya-p1Z" firstAttribute="leading" secondItem="ZhV-dp-WyZ" secondAttribute="leading" id="bFt-1m-eai"/>
+                                    <constraint firstAttribute="bottom" secondItem="FIc-12-sZS" secondAttribute="bottom" id="xoT-av-ERV"/>
+                                    <constraint firstItem="qD1-ya-p1Z" firstAttribute="top" secondItem="ZhV-dp-WyZ" secondAttribute="top" id="ya4-Yk-JBD"/>
+                                    <constraint firstAttribute="trailing" secondItem="FIc-12-sZS" secondAttribute="trailing" id="z6E-7s-9RA"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epk-3Z-BBo">
@@ -208,31 +224,31 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="다음"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="imgOnboarding2" translatesAutoresizingMaskIntoConstraints="NO" id="hUU-K9-rb9">
+                                <rect key="frame" x="59" y="95" width="230" height="230"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hUU-K9-rb9" secondAttribute="height" multiplier="1:1" id="obR-Xs-Wa5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HsB-ZA-K5F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EyP-Cx-yMn" firstAttribute="top" secondItem="ZtB-PW-CKf" secondAttribute="bottom" constant="16" id="87I-AR-7W1"/>
                             <constraint firstItem="epk-3Z-BBo" firstAttribute="trailing" secondItem="HsB-ZA-K5F" secondAttribute="trailing" id="A9D-JX-Of8"/>
-                            <constraint firstItem="HsB-ZA-K5F" firstAttribute="trailing" secondItem="EyP-Cx-yMn" secondAttribute="trailing" constant="30" id="AeZ-cg-krY"/>
-                            <constraint firstItem="9oW-G0-YPr" firstAttribute="top" secondItem="EyP-Cx-yMn" secondAttribute="bottom" constant="16" id="BuN-kb-u8q"/>
-                            <constraint firstItem="qD1-ya-p1Z" firstAttribute="top" secondItem="hUU-K9-rb9" secondAttribute="bottom" constant="76" id="Cbb-bp-L6O"/>
-                            <constraint firstItem="9oW-G0-YPr" firstAttribute="leading" secondItem="HsB-ZA-K5F" secondAttribute="leading" constant="30" id="GrY-qo-s2i"/>
-                            <constraint firstItem="qD1-ya-p1Z" firstAttribute="leading" secondItem="HsB-ZA-K5F" secondAttribute="leading" constant="30" id="Kjs-PC-xrg"/>
+                            <constraint firstItem="HsB-ZA-K5F" firstAttribute="trailing" secondItem="ZhV-dp-WyZ" secondAttribute="trailing" constant="30" id="I2S-CE-QXw"/>
                             <constraint firstItem="hUU-K9-rb9" firstAttribute="centerX" secondItem="v7W-oo-lwb" secondAttribute="centerX" id="MTJ-5t-2WK"/>
                             <constraint firstItem="epk-3Z-BBo" firstAttribute="leading" secondItem="HsB-ZA-K5F" secondAttribute="leading" id="Qcg-KD-MoN"/>
-                            <constraint firstItem="ZtB-PW-CKf" firstAttribute="top" secondItem="qD1-ya-p1Z" secondAttribute="bottom" constant="2" id="SS7-QP-aiB"/>
-                            <constraint firstItem="EyP-Cx-yMn" firstAttribute="leading" secondItem="HsB-ZA-K5F" secondAttribute="leading" constant="30" id="ZgB-Ax-7RE"/>
-                            <constraint firstItem="HsB-ZA-K5F" firstAttribute="trailing" secondItem="9oW-G0-YPr" secondAttribute="trailing" constant="30" id="acN-jE-ruU"/>
-                            <constraint firstItem="ZtB-PW-CKf" firstAttribute="leading" secondItem="qD1-ya-p1Z" secondAttribute="leading" id="eLb-lv-Kok"/>
+                            <constraint firstItem="ZhV-dp-WyZ" firstAttribute="leading" secondItem="HsB-ZA-K5F" secondAttribute="leading" constant="30" id="eZe-RG-kfZ"/>
                             <constraint firstItem="aG5-Pk-w9R" firstAttribute="leading" secondItem="HsB-ZA-K5F" secondAttribute="leading" constant="30" id="eru-qm-vNf"/>
-                            <constraint firstItem="hUU-K9-rb9" firstAttribute="height" secondItem="v7W-oo-lwb" secondAttribute="height" multiplier="0.283251" id="jz0-5u-Vxx"/>
-                            <constraint firstItem="aG5-Pk-w9R" firstAttribute="top" secondItem="HsB-ZA-K5F" secondAttribute="top" constant="40" id="uEC-wy-Rgf"/>
-                            <constraint firstItem="hUU-K9-rb9" firstAttribute="top" secondItem="aG5-Pk-w9R" secondAttribute="bottom" constant="76" id="wJv-kB-NVU"/>
                             <constraint firstAttribute="bottom" secondItem="epk-3Z-BBo" secondAttribute="bottom" id="xyb-BX-Jeh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ztQ-qg-keD"/>
+                    <connections>
+                        <outlet property="descriptionView" destination="ZhV-dp-WyZ" id="snV-y8-lmb"/>
+                        <outlet property="logoImageView" destination="hUU-K9-rb9" id="tEk-Ne-C4f"/>
+                        <outlet property="titleLabel" destination="aG5-Pk-w9R" id="7id-Yl-BJp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blW-qn-5sG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

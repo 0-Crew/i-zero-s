@@ -9,6 +9,7 @@ import UIKit
 
 class OnboardingStepOneVC: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var descriptionLabels: [UILabel]!
     @IBOutlet weak var nextButton: UIButton!
 
@@ -22,23 +23,27 @@ class OnboardingStepOneVC: UIViewController {
     }
 
     private func initView() {
+        descriptionLabels[0].setTextLetterSpacing(letterSpacing: -0.5)
         descriptionLabels[1...2].forEach {
             $0.alpha = 0
         }
-        nextButton.alpha = 0
+
     }
 
     private func startAnimation() {
-        animateAlpha(view: descriptionLabels[1]) { _ in
-            self.animateAlpha(view: self.descriptionLabels[2]) { _ in
-                self.animateAlpha(view: self.nextButton)
-            }
+        descriptionLabels[1...2].enumerated().forEach {
+            animateOrderedAlpha(by: $0.offset, view: $0.element)
         }
     }
 
-    private func animateAlpha(view: UIView, completion: ((Bool) -> Void)? = nil) {
-        UIView.animate(withDuration: 0.8, animations: {
-            view.alpha = 1
-        }, completion: completion)
+    private func animateOrderedAlpha(by index: Int, view: UIView, completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(
+            withDuration: 0.8,
+            delay: Double(index) * 0.8,
+            options: .curveEaseIn,
+            animations: {
+                view.alpha = 1
+            },
+            completion: completion)
     }
 }
