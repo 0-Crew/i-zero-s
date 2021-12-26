@@ -33,6 +33,25 @@ extension UILabel {
         self.attributedText = attributedString
     }
 
+    func setTextWithLineHeight(lineHeight: CGFloat) {
+
+        guard let attributeText = self.text else { return }
+
+        let style = NSMutableParagraphStyle()
+        style.maximumLineHeight = lineHeight
+        style.minimumLineHeight = lineHeight
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: style,
+            .baselineOffset: (lineHeight - font.lineHeight) / 4
+        ]
+
+        let attrString = NSAttributedString(string: attributeText,
+                                            attributes: attributes)
+        self.attributedText = attrString
+
+    }
+  
     func setFontWith(font: UIFont, in ranges: [String]) {
             guard let text = self.text else { return }
             let attributedString = NSMutableAttributedString(string: text)

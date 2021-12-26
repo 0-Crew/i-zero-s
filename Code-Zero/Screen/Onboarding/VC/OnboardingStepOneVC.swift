@@ -1,17 +1,16 @@
 //
-//  ViewController.swift
+//  OnboardingStepOneVC.swift
 //  Code-Zero
 //
-//  Created by 이주혁 on 2021/10/11.
+//  Created by 주혁 on 2021/12/19.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class OnboardingStepOneVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 }
