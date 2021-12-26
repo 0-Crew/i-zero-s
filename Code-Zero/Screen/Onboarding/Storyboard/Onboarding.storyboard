@@ -102,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="보틀 선물 드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aG5-Pk-w9R">
-                                <rect key="frame" x="30" y="40" width="207" height="38"/>
+                                <rect key="frame" x="30" y="40" width="198.5" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="vLS-8H-yWb"/>
                                 </constraints>
@@ -114,7 +114,7 @@
                                 <rect key="frame" x="30" y="357" width="315" height="188"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 참아볼 수 있는 불편함을 적을 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-PW-CKf">
-                                        <rect key="frame" x="0.0" y="26" width="300" height="24"/>
+                                        <rect key="frame" x="0.0" y="26" width="289.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Rb1-HR-AlE"/>
                                         </constraints>
@@ -138,7 +138,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-JS-Beg">
-                                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                                        <rect key="frame" x="14" y="8" width="26" height="13"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="13" id="kZA-Fq-ugA"/>
                                                         </constraints>
@@ -152,7 +152,7 @@
                                                             <constraint firstAttribute="height" constant="19" id="ryh-oH-aEc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
-                                                        <color key="textColor" name="gray3"/>
+                                                        <color key="textColor" name="gray2"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -170,7 +170,7 @@
                                                 <rect key="frame" x="0.0" y="69" width="315" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-0k-HC8">
-                                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                                        <rect key="frame" x="14" y="8" width="26" height="13"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="13" id="WcP-1V-Iia"/>
                                                         </constraints>
@@ -184,7 +184,7 @@
                                                             <constraint firstAttribute="height" constant="19" id="Jc9-dc-J4N"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
-                                                        <color key="textColor" name="gray3"/>
+                                                        <color key="textColor" name="gray2"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -259,6 +259,9 @@
         <image name="imgOnboarding2" width="230" height="230"/>
         <namedColor name="darkGray1">
             <color red="0.3059999942779541" green="0.27799999713897705" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray2">
+            <color red="0.68599998950958252" green="0.66699999570846558" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray3">
             <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

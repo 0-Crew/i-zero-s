@@ -32,11 +32,11 @@ class OnboardingStepOneVC: UIViewController {
 
     private func startAnimation() {
         descriptionLabels[1...2].enumerated().forEach {
-            animateOrderedAlpha(by: $0.offset, view: $0.element)
+            animateAlphaOrdered(by: $0.offset, view: $0.element)
         }
     }
 
-    private func animateOrderedAlpha(by index: Int, view: UIView, completion: ((Bool) -> Void)? = nil) {
+    private func animateAlphaOrdered(by index: Int, view: UIView, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(
             withDuration: 0.8,
             delay: Double(index) * 0.8,
