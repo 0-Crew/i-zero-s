@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WcN-na-7bz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eBR-uL-ZiN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -151,7 +151,7 @@ Bottle</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="83.705357142857139"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="83.705357142857139"/>
         </scene>
         <!--Nick SettingVC-->
         <scene sceneID="KdA-VD-l4T">
@@ -192,7 +192,7 @@ Bottle</string>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="lightGray2"/>
+                                <color key="backgroundColor" name="white"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="lbT-Qc-YmL" secondAttribute="trailing" constant="10" id="Brg-Fg-QCa"/>
                                     <constraint firstAttribute="bottom" secondItem="lbT-Qc-YmL" secondAttribute="bottom" constant="8" id="C2A-Hv-9sx"/>
@@ -212,6 +212,9 @@ Bottle</string>
                                 <buttonConfiguration key="configuration" style="plain" title="확인">
                                     <fontDescription key="titleFontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextButtonDidTap:" destination="J21-lA-9R1" eventType="touchUpInside" id="HlO-vO-yAa"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 사용 중이에요! 다른 닉네임을 적어주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axA-Q4-KM9">
                                 <rect key="frame" x="30" y="272.5" width="227.5" height="14.5"/>
@@ -236,36 +239,39 @@ Bottle</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xst-rC-jI9"/>
+                    <connections>
+                        <outlet property="duplicateCheckLabel" destination="axA-Q4-KM9" id="RQ5-LC-bCL"/>
+                        <outlet property="nextButton" destination="Du6-SB-Ruv" id="F4J-10-oq2"/>
+                        <outlet property="nickBoxView" destination="AWr-r5-Bn6" id="SxY-Xc-oKM"/>
+                        <outlet property="nickTextField" destination="N7S-65-M4w" id="YaT-Fv-Oan"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oV3-Uf-T8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778.2608695652175" y="82.366071428571431"/>
+            <point key="canvasLocation" x="2688.4057971014495" y="82.366071428571431"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="w9R-sH-4ru">
+        <scene sceneID="w4L-Wo-2YJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="WcN-na-7bz" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eBR-uL-ZiN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gKg-3a-Sa9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dia-O8-Ehg">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="7bo-ad-4Li"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="ZCh-qv-5Qc"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WnY-kB-sze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coc-P3-Fm6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>
         <image name="icArrowLeftDart" width="24" height="24"/>
         <namedColor name="gray3">
             <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lightGray2">
-            <color red="0.92900002002716064" green="0.9179999828338623" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="orangeMain">
             <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
