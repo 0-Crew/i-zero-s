@@ -201,21 +201,6 @@ Bottle</string>
                                     <constraint firstItem="lbT-Qc-YmL" firstAttribute="top" secondItem="AWr-r5-Bn6" secondAttribute="top" constant="8" id="hWj-EC-0JV"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Du6-SB-Ruv">
-                                <rect key="frame" x="0.0" y="841" width="414" height="55"/>
-                                <color key="backgroundColor" name="orangeMain"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Du6-SB-Ruv" secondAttribute="height" multiplier="375:50" id="M0h-Tb-0jc"/>
-                                </constraints>
-                                <color key="tintColor" name="white"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="확인">
-                                    <fontDescription key="titleFontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="nextButtonDidTap:" destination="J21-lA-9R1" eventType="touchUpInside" id="HlO-vO-yAa"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 사용 중이에요! 다른 닉네임을 적어주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axA-Q4-KM9">
                                 <rect key="frame" x="30" y="272.5" width="227.5" height="14.5"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
@@ -227,21 +212,17 @@ Bottle</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="axA-Q4-KM9" firstAttribute="leading" secondItem="AWr-r5-Bn6" secondAttribute="leading" id="1vq-Yz-ync"/>
-                            <constraint firstAttribute="bottom" secondItem="Du6-SB-Ruv" secondAttribute="bottom" id="Lyu-8V-pyT"/>
                             <constraint firstItem="5rc-fU-e1Y" firstAttribute="top" secondItem="syI-sf-Rmy" secondAttribute="top" constant="30" id="MSa-96-6Tw"/>
                             <constraint firstItem="AWr-r5-Bn6" firstAttribute="leading" secondItem="syI-sf-Rmy" secondAttribute="leading" constant="30" id="PDb-kT-w6w"/>
                             <constraint firstItem="AWr-r5-Bn6" firstAttribute="centerX" secondItem="8Vq-qi-rZS" secondAttribute="centerX" id="e3n-Wd-8wV"/>
-                            <constraint firstItem="syI-sf-Rmy" firstAttribute="trailing" secondItem="Du6-SB-Ruv" secondAttribute="trailing" id="en4-Q3-mF4"/>
                             <constraint firstItem="AWr-r5-Bn6" firstAttribute="top" secondItem="5rc-fU-e1Y" secondAttribute="bottom" constant="54" id="irO-hh-jgV"/>
                             <constraint firstItem="axA-Q4-KM9" firstAttribute="top" secondItem="AWr-r5-Bn6" secondAttribute="bottom" constant="13" id="oyc-5Z-v5E"/>
                             <constraint firstItem="5rc-fU-e1Y" firstAttribute="leading" secondItem="syI-sf-Rmy" secondAttribute="leading" constant="30" id="sTc-zM-4pn"/>
-                            <constraint firstItem="Du6-SB-Ruv" firstAttribute="leading" secondItem="syI-sf-Rmy" secondAttribute="leading" id="z6E-6w-WRy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xst-rC-jI9"/>
                     <connections>
                         <outlet property="duplicateCheckLabel" destination="axA-Q4-KM9" id="RQ5-LC-bCL"/>
-                        <outlet property="nextButton" destination="Du6-SB-Ruv" id="F4J-10-oq2"/>
                         <outlet property="nickBoxView" destination="AWr-r5-Bn6" id="SxY-Xc-oKM"/>
                         <outlet property="nickTextField" destination="N7S-65-M4w" id="YaT-Fv-Oan"/>
                     </connections>
