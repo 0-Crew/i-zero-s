@@ -44,6 +44,7 @@
 		6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E85751C276F1967008CDFD7 /* Onboarding.storyboard */; };
 		6E857522276F7296008CDFD7 /* OnboardingStepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E857521276F7296008CDFD7 /* OnboardingStepOneVC.swift */; };
 		6E857524276F76FA008CDFD7 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E857523276F76FA008CDFD7 /* UIWindow+Extension.swift */; };
+		6E8575262771F471008CDFD7 /* OnboardingStepTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8575252771F471008CDFD7 /* OnboardingStepTwoVC.swift */; };
 		6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAD29EA2764EDF0004BAD6B /* ChallengeOpenStep.swift */; };
 		6EB97228275B384800AB8349 /* ChallengeOpenFirstStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB97227275B384800AB8349 /* ChallengeOpenFirstStepView.xib */; };
 		6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB97229275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib */; };
@@ -146,6 +147,7 @@
 		6E85751C276F1967008CDFD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		6E857521276F7296008CDFD7 /* OnboardingStepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepOneVC.swift; sourceTree = "<group>"; };
 		6E857523276F76FA008CDFD7 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		6E8575252771F471008CDFD7 /* OnboardingStepTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepTwoVC.swift; sourceTree = "<group>"; };
 		6EAD29EA2764EDF0004BAD6B /* ChallengeOpenStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenStep.swift; sourceTree = "<group>"; };
 		6EB97227275B384800AB8349 /* ChallengeOpenFirstStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeOpenFirstStepView.xib; sourceTree = "<group>"; };
 		6EB97229275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeOpenSecondStepView.xib; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				6E857521276F7296008CDFD7 /* OnboardingStepOneVC.swift */,
+				6E8575252771F471008CDFD7 /* OnboardingStepTwoVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -771,7 +774,7 @@
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
 				A2B7BDD82714214300F1DB1F /* Home.storyboard in Resources */,
 				191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */,
-				A2B7BDD82714214300F1DB1F /* Main.storyboard in Resources */,
+				A2B7BDD82714214300F1DB1F /* Home.storyboard in Resources */,
 				19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
 				6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */,
@@ -866,6 +869,7 @@
 				6EE5ACA227592F35007CCC67 /* ChallengeOpenVC.swift in Sources */,
 				6E5B24B52749402B0071C9F2 /* ChallengeView.swift in Sources */,
 				6E857524276F76FA008CDFD7 /* UIWindow+Extension.swift in Sources */,
+				6E8575262771F471008CDFD7 /* OnboardingStepTwoVC.swift in Sources */,
 				A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */,
 				6E857522276F7296008CDFD7 /* OnboardingStepOneVC.swift in Sources */,
 				1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */,
