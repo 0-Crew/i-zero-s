@@ -59,13 +59,13 @@ extension NickSettingVC {
                 duplicateCheckLabel.isHidden = false
                 duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
             } else { // 중복 아닐 시
-                // 회원가입 완료 후 로직 존재
+                // 설정 페이지로 이동
             }
         }
     }
     func filterNickName(text: String) -> String? {
         do {
-            let regex = try NSRegularExpression(pattern: "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9!_]")
+            let regex = try NSRegularExpression(pattern: "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9_]")
             let results = regex.matches(in: text,
                                         range: NSRange(text.startIndex..., in: text))
             return results.map {
