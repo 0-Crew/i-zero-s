@@ -24,10 +24,8 @@ class OnboardingStepOneVC: UIViewController {
 
     private func initView() {
         descriptionLabels[0].setTextLetterSpacing(letterSpacing: -0.5)
-        descriptionLabels[1...2].forEach {
-            $0.alpha = 0
-        }
-
+        descriptionLabels[1].alpha = 0
+        descriptionLabels[2].alpha = 0
     }
 
     private func startAnimation() {
