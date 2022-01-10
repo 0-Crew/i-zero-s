@@ -15,26 +15,19 @@ class NickSettingVC: UIViewController {
     @IBOutlet weak var nickTextField: UITextField!
     @IBOutlet weak var duplicateCheckLabel: UILabel!
 
-    // MARK: - @IBAction
-    @IBAction func nextButtonDidTap(_ sender: UIButton) {
-        if nickTextField.text != "" {
-            if let text = nickTextField.text {
-                print(checkDuplicateNick(nick: text))
-            }
-        }
-    }
     // MARK: - Property
     var duplicateNick: [String] = ["민희", "주혁", "보틀월드"]
     lazy var accessoryView: UIView = {
         return UIView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 50.0))
     }()
-    var nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setButton(text: "확인",
                          color: .gray3,
                          font: .spoqaHanSansNeo(size: 16, family: .bold),
                          backgroundColor: .red)
         button.backgroundColor = .gray2
+        button.addTarget(self, action: #selector(checkDuplicateNick), for: .touchUpInside)
         return button
     }()
 
@@ -60,8 +53,15 @@ extension NickSettingVC {
 
         nickTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
-    func checkDuplicateNick(nick: String) -> Bool {  // 중복검사(서버로 대체 예정)
-        return duplicateNick.contains(nick)
+    @objc func checkDuplicateNick() {
+        if let text = nickTextField.text {
+            if duplicateNick.contains(text) {  // 중복검사(서버로 대체 예정)
+                duplicateCheckLabel.isHidden = false
+                duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
+            } else { // 중복 아닐 시
+                // 회원가입 완료 후 로직 존재
+            }
+        }
     }
     func filterNickName(text: String) -> String? {
         do {
@@ -82,6 +82,7 @@ extension NickSettingVC {
 // MARK: - UITextFieldDelegate
 extension NickSettingVC: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
+        duplicateCheckLabel.isHidden = true
         textField.text = textField.text?.trimmingCharacters(in: .whitespaces) // 스페이스 제거
         if let text = textField.text {
             if let regexText = filterNickName(text: text) {
