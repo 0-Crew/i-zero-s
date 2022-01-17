@@ -57,15 +57,15 @@ extension NickSettingVC {
         nickTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     @objc func checkDuplicateNick() {
-        if let text = nickTextField.text {
-            if duplicateNick.contains(text) {  // 중복검사(서버로 대체 예정)
-                duplicateCheckLabel.isHidden = false
-                duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
-            } else { // 중복 아닐 시
-                // 설정 페이지로 이동
-            }
+        guard let text = nickTextField.text else { return }
+        guard duplicateNick.contains(text) else {
+            // 설정 페이지로 이동
+            return
         }
+        duplicateCheckLabel.isHidden = false
+        duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
     }
+
     func filterNickName(text: String) -> String? {
         do {
             let regex = try NSRegularExpression(pattern: "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9_]")
