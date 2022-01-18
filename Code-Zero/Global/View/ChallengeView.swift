@@ -13,7 +13,21 @@ protocol ChallengeViewDelegate: AnyObject {
     func didChallengeTextFieldEdit(challengeOffset: Int, text: String)
 }
 
+extension ChallengeViewDelegate {
+    func didEditButtonTap(challengeOffset: Int, yPosition: CGFloat) {
+        return
+    }
+    func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
+        return
+    }
+    func didChallengeTextFieldEdit(challengeOffset: Int, text: String) {
+        return
+    }
+}
+
 enum ChallengeState {
+    case onboardingNotCompleted
+    case onboardingCompleted
     case willChallenge
     case challengingNotCompleted
     case challengingCompleted
@@ -25,7 +39,11 @@ extension ChallengeState {
 
     var highlightViewIsHidden: Bool {
         switch self {
-        case .willChallenge, .didChallengeNotCompleted, .didChallengeCompleted:
+        case .willChallenge,
+                .didChallengeNotCompleted,
+                .didChallengeCompleted,
+                .onboardingNotCompleted,
+                .onboardingCompleted:
             return true
         case .challengingNotCompleted, .challengingCompleted:
             return false
@@ -33,7 +51,12 @@ extension ChallengeState {
     }
     var highlightViewBackgroundColor: UIColor? {
         switch self {
-        case .willChallenge, .challengingNotCompleted, .didChallengeNotCompleted, .didChallengeCompleted:
+        case .willChallenge,
+                .challengingNotCompleted,
+                .didChallengeNotCompleted,
+                .didChallengeCompleted,
+                .onboardingNotCompleted,
+                .onboardingCompleted:
             return nil
         case .challengingCompleted:
             return .orangeMain
@@ -44,36 +67,36 @@ extension ChallengeState {
         switch self {
         case .willChallenge:
             return UIImage(named: "icWaterNone")
-        case .challengingNotCompleted, .didChallengeNotCompleted:
+        case .challengingNotCompleted, .didChallengeNotCompleted, .onboardingNotCompleted:
             return UIImage(named: "icWaterToday")
-        case .challengingCompleted, .didChallengeCompleted:
+        case .challengingCompleted, .didChallengeCompleted, .onboardingCompleted:
             return UIImage(named: "icWaterSuccess")
         }
     }
 
     var dateLabelIsHidden: Bool {
         switch self {
-        case .willChallenge, .challengingNotCompleted, .didChallengeNotCompleted:
+        case .willChallenge, .challengingNotCompleted, .didChallengeNotCompleted, .onboardingNotCompleted:
             return false
-        case .challengingCompleted, .didChallengeCompleted:
+        case .challengingCompleted, .didChallengeCompleted, .onboardingCompleted:
             return true
         }
     }
 
     var dateLabelTextColor: UIColor? {
         switch self {
-        case .willChallenge, .didChallengeNotCompleted:
+        case .willChallenge, .didChallengeNotCompleted, .onboardingNotCompleted:
             return .gray3
         case .challengingNotCompleted:
             return .orangeMain
-        case .challengingCompleted, .didChallengeCompleted:
+        case .challengingCompleted, .didChallengeCompleted, .onboardingCompleted:
             return nil
         }
     }
 
     var challengeTextFieldTextColor: UIColor? {
         switch self {
-        case .willChallenge:
+        case .willChallenge, .onboardingNotCompleted, .onboardingCompleted:
             return .gray2
         case .challengingNotCompleted:
             return .orangeMain
@@ -86,7 +109,11 @@ extension ChallengeState {
 
     var editButtonIsHidden: Bool {
         switch self {
-        case .willChallenge, .challengingCompleted, .didChallengeCompleted:
+        case .willChallenge,
+                .challengingCompleted,
+                .didChallengeCompleted,
+                .onboardingNotCompleted,
+                .onboardingCompleted:
             return true
         case .challengingNotCompleted, .didChallengeNotCompleted:
             return false
@@ -95,7 +122,7 @@ extension ChallengeState {
 
     var editButtonTintColor: UIColor? {
         switch self {
-        case .willChallenge, .didChallengeCompleted:
+        case .willChallenge, .didChallengeCompleted, .onboardingNotCompleted, .onboardingCompleted:
             return nil
         case .challengingNotCompleted, .didChallengeNotCompleted:
             return .gray1
@@ -216,9 +243,9 @@ extension ChallengeView {
         switch state {
         case .willChallenge:
             toggleChallengeStateHandler = nil
-        case .challengingNotCompleted, .didChallengeNotCompleted:
+        case .challengingNotCompleted, .didChallengeNotCompleted, .onboardingNotCompleted:
             toggleChallengeStateHandler = isMine ? completeChallengeHandler : nil
-        case .challengingCompleted, .didChallengeCompleted:
+        case .challengingCompleted, .didChallengeCompleted, .onboardingCompleted:
             toggleChallengeStateHandler = isMine ? nonCompleteChallengeHandler : nil
         }
     }
@@ -260,6 +287,8 @@ extension ChallengeView {
             setChallengeState(state: .challengingCompleted, isMine: isMine)
         } else if challengeState == .didChallengeNotCompleted {
             setChallengeState(state: .didChallengeCompleted, isMine: isMine)
+        } else if challengeState == .onboardingNotCompleted {
+            setChallengeState(state: .onboardingCompleted, isMine: true)
         }
     }
     private func setChallengeStateNonComplete() {
@@ -267,6 +296,8 @@ extension ChallengeView {
             setChallengeState(state: .challengingNotCompleted, isMine: isMine)
         } else if challengeState == .didChallengeCompleted {
             setChallengeState(state: .didChallengeNotCompleted, isMine: isMine)
+        } else if challengeState == .onboardingCompleted {
+            setChallengeState(state: .onboardingNotCompleted, isMine: true)
         }
     }
 }

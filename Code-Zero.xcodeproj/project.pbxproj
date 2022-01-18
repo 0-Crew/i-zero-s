@@ -281,7 +281,6 @@
 		6E5B24B3274940200071C9F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6E5B24B42749402B0071C9F2 /* ChallengeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +349,8 @@
 		6EB97234275B850D00AB8349 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */,
+				6E5B24B42749402B0071C9F2 /* ChallengeView.swift */,
 				6EB97235275B86CD00AB8349 /* LoadXibView.swift */,
 			);
 			path = View;
@@ -598,7 +599,6 @@
 			isa = PBXGroup;
 			children = (
 				6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */,
-				6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */,
 				A2FC304D273695ED00B29296 /* Challenge.storyboard */,
 			);
 			path = Storyboards;
