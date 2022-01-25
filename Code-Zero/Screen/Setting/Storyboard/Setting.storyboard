@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--SettingVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingVC" id="Y6W-OH-hqX" customClass="SettingVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,13 +20,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzJ-gt-aTA">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-Dd-QLx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-Dd-QLx">
                                         <rect key="frame" x="370" y="13" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="tfg-Dd-QLx" secondAttribute="height" multiplier="1:1" id="fT0-sg-ocb"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="icXBlack24"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button" image="icXBlack24"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -37,19 +37,32 @@
                                     <constraint firstAttribute="height" constant="50" id="pVn-jE-1jt"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-4I-Eo6">
+                                <rect key="frame" x="0.0" y="114" width="414" height="99"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="99" id="Nze-nl-00v"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tzJ-gt-aTA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GUy-EQ-Zut"/>
+                            <constraint firstItem="fQA-4I-Eo6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Tg6-b9-mTO"/>
                             <constraint firstItem="tzJ-gt-aTA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UEd-nG-FhR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tzJ-gt-aTA" secondAttribute="trailing" id="iwK-to-dTo"/>
+                            <constraint firstItem="fQA-4I-Eo6" firstAttribute="top" secondItem="tzJ-gt-aTA" secondAttribute="bottom" constant="20" id="kcz-DE-l3Q"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fQA-4I-Eo6" secondAttribute="trailing" id="ufb-Vk-f5l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userView" destination="fQA-4I-Eo6" id="En3-i0-Dtf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88" y="7"/>
+            <point key="canvasLocation" x="86.956521739130437" y="6.6964285714285712"/>
         </scene>
     </scenes>
     <resources>
