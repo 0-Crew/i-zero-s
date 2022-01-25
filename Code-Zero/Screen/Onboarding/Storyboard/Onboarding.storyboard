@@ -494,6 +494,7 @@
                     <navigationItem key="navigationItem" id="ZUS-wY-jbt"/>
                     <connections>
                         <outlet property="bottleImageView" destination="AY0-fk-xhy" id="bWs-F8-UYm"/>
+                        <outlet property="challengeTermLabel" destination="ge2-il-HQ9" id="ks8-Zt-TxN"/>
                         <outlet property="challengesStackView" destination="YDp-VY-8IG" id="uzG-sK-JrJ"/>
                         <outlet property="gradientLineView" destination="jgs-Ul-4Xd" id="r5c-7X-Q9x"/>
                         <outlet property="initialLineView" destination="Uth-zq-RmW" id="u09-sI-etU"/>

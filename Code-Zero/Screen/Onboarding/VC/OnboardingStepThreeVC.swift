@@ -12,10 +12,12 @@ class OnboardingStepThreeVC: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var bottleImageView: UIImageView!
+    @IBOutlet weak var challengeTermLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var challengesStackView: UIStackView!
     @IBOutlet weak var initialLineView: UIView!
     @IBOutlet weak var gradientLineView: UIView!
+    // MARK: - UI Property
     private let guideView: UIView = {
         let view = UIView()
         let imageView = UIImageView(image: UIImage(named: "imgOnboardingMessage"))
@@ -37,19 +39,17 @@ class OnboardingStepThreeVC: UIViewController {
         }
         return view
     }()
-
+    private var bottleImageList: [UIImage?] = (0...7)
+        .map { UIImage(named: "icBottleMain\($0)") }
+    private var challengeViewList: [ChallengeView?] {
+        return challengesStackView.arrangedSubviews.map { $0 as? ChallengeView}
+    }
+    // MARK: - Property
     private var notCompleteCount: Int = 7 {
         didSet {
             updateBottleImageView()
         }
     }
-    private var bottleImageLists: [UIImage?] = (0...7)
-        .map { UIImage(named: "icBottleMain\($0)") }
-
-    private var challengeListView: [ChallengeView?] {
-        return challengesStackView.arrangedSubviews.map { $0 as? ChallengeView}
-    }
-
     internal var challengeTextList: [String] = [
         "음식 남기지 않기1",
         "음식 남기지 않기2",
@@ -59,6 +59,19 @@ class OnboardingStepThreeVC: UIViewController {
         "음식 남기지 않기6",
         "음식 남기지 않기7"
     ]
+    private var todayTotalDateString: String {
+        return Date().datePickerToString(format: "MM.dd")
+    }
+    private var todayDayString: String {
+        return todayTotalDateString
+            .components(separatedBy: ".")
+            .last ?? ""
+    }
+    private var todayMonthString: String {
+        return todayTotalDateString
+            .components(separatedBy: ".")
+            .first ?? ""
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,17 +81,11 @@ class OnboardingStepThreeVC: UIViewController {
 // MARK: - UI Setting
 extension OnboardingStepThreeVC {
     private func initView() {
-        challengeListView.enumerated().forEach {
-            let challengeView = $0.element
-            challengeView?.challengeOffset = $0.offset
-            challengeView?.setChallengeState(state: .onboardingNotCompleted, isMine: true)
-            challengeView?.setChallengeText(text: challengeTextList[$0.offset])
-            challengeView?.delegate = self
-            if $0.offset == challengeListView.count - 1 {
-                challengeView?.dateLabel.textColor = .orangeMain
-                challengeView?.highlightingView.setBorder(borderColor: .gray1, borderWidth: 1)
-                challengeView?.highlightingView.isHidden = false
-            }
+        let startDate = Date().getDateIntervalBy(intervalDay: -6)?.datePickerToString(format: "MM.dd") ?? ""
+        let endDate = Date().datePickerToString(format: "dd")
+        challengeTermLabel.text = "\(startDate) - \(endDate)"
+        challengeViewList.enumerated().forEach {
+            initChallengeView(offset: $0.offset, challengeView: $0.element)
         }
         gradientLineView.setGradient(
             startColor: .orangeMain,
@@ -87,21 +94,31 @@ extension OnboardingStepThreeVC {
         updateBottleImageView()
         guideView.frame = CGRect(
             x: 21,
-            y: challengeListView[1]?.frame.maxY ?? 0,
+            y: challengeViewList[1]?.frame.maxY ?? 0,
             width: 140,
             height: 54.4
         )
         scrollView.addSubview(guideView)
     }
+    private func initChallengeView(offset: Int, challengeView: ChallengeView?) {
+        challengeView?.challengeOffset = offset
+        challengeView?.setChallengeState(state: .onboardingNotCompleted, isMine: true)
+        challengeView?.setChallengeDate(date: Date().getDateIntervalBy(intervalDay: offset - 6))
+        challengeView?.setChallengeText(text: challengeTextList[offset])
+        challengeView?.delegate = self
+        if offset == challengeViewList.count - 1 {
+            challengeView?.setChallengeState(state: .onboardingTodayNotCompleted, isMine: true)
+        }
+    }
     private func updateBottleImageView() {
-        bottleImageView.image = bottleImageLists[7 - notCompleteCount]
+        bottleImageView.image = bottleImageList[7 - notCompleteCount]
     }
 }
 // MARK: - ChallengeViewDelegate
 extension OnboardingStepThreeVC: ChallengeViewDelegate {
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
         guideView.isHidden = true
-        if currentState == .onboardingNotCompleted {
+        if currentState == .onboardingNotCompleted || currentState == .onboardingTodayNotCompleted {
             notCompleteCount += 1
         } else {
             notCompleteCount -= 1
