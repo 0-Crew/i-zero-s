@@ -18,6 +18,7 @@
 		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
 		1927B80A27673F7A00E72F61 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927B80927673F7A00E72F61 /* loading.json */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
+		1933FE82279FEC0400BD0CA6 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE81279FEC0400BD0CA6 /* Setting.storyboard */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
@@ -122,6 +123,7 @@
 		191A4EAC27665CB9005D0525 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1927B80927673F7A00E72F61 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
+		1933FE81279FEC0400BD0CA6 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,30 @@
 				1927B80927673F7A00E72F61 /* loading.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		1933FE7E279FEBEB00BD0CA6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1933FE80279FEBF700BD0CA6 /* VC */,
+				1933FE7F279FEBF100BD0CA6 /* Storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1933FE7F279FEBF100BD0CA6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1933FE81279FEC0400BD0CA6 /* Setting.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1933FE80279FEBF700BD0CA6 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		195AC719275BD5E900BDECB6 /* View */ = {
@@ -494,6 +520,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				1933FE7E279FEBEB00BD0CA6 /* Setting */,
 				6E85751A276F194A008CDFD7 /* Onboarding */,
 				6EE5AC9C275517D4007CCC67 /* ChallengeOpen */,
 				D256B8E52759E70B006D3CFD /* BottleWorld */,
@@ -769,6 +796,7 @@
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
+				1933FE82279FEC0400BD0CA6 /* Setting.storyboard in Resources */,
 				191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */,
 				A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */,
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
