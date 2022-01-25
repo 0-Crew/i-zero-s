@@ -24,6 +24,8 @@
 		1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE8F27A0174700BD0CA6 /* NotUserView.swift */; };
 		1933FE9227A017DE00BD0CA6 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE9127A017DE00BD0CA6 /* UserView.xib */; };
 		1933FE9427A0191B00BD0CA6 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE9327A0191B00BD0CA6 /* UserView.swift */; };
+		1933FE9627A01C8200BD0CA6 /* SettingLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE9527A01C8200BD0CA6 /* SettingLineView.xib */; };
+		1933FE9827A01D2300BD0CA6 /* SettingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE9727A01D2300BD0CA6 /* SettingLineView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
@@ -134,6 +136,8 @@
 		1933FE8F27A0174700BD0CA6 /* NotUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotUserView.swift; sourceTree = "<group>"; };
 		1933FE9127A017DE00BD0CA6 /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
 		1933FE9327A0191B00BD0CA6 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		1933FE9527A01C8200BD0CA6 /* SettingLineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLineView.xib; sourceTree = "<group>"; };
+		1933FE9727A01D2300BD0CA6 /* SettingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLineView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				1933FE81279FEC0400BD0CA6 /* Setting.storyboard */,
 				1933FE8D27A016B100BD0CA6 /* NotUserView.xib */,
 				1933FE9127A017DE00BD0CA6 /* UserView.xib */,
+				1933FE9527A01C8200BD0CA6 /* SettingLineView.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				1933FE8B279FF50900BD0CA6 /* SettingVC.swift */,
 				1933FE8F27A0174700BD0CA6 /* NotUserView.swift */,
 				1933FE9327A0191B00BD0CA6 /* UserView.swift */,
+				1933FE9727A01D2300BD0CA6 /* SettingLineView.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -827,6 +833,7 @@
 				1998752F274FB81F004CD747 /* ChallengedListView.xib in Resources */,
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
 				6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */,
+				1933FE9627A01C8200BD0CA6 /* SettingLineView.xib in Resources */,
 				6EB97228275B384800AB8349 /* ChallengeOpenFirstStepView.xib in Resources */,
 				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
 				1927B80A27673F7A00E72F61 /* loading.json in Resources */,
@@ -902,6 +909,7 @@
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */,
 				1933FE9427A0191B00BD0CA6 /* UserView.swift in Sources */,
+				1933FE9827A01D2300BD0CA6 /* SettingLineView.swift in Sources */,
 				195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */,
@@ -1114,7 +1122,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1142,7 +1150,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
