@@ -57,7 +57,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="userView" destination="fQA-4I-Eo6" id="En3-i0-Dtf"/>
+                        <outlet property="userInfoView" destination="fQA-4I-Eo6" id="En3-i0-Dtf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
