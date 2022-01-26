@@ -18,6 +18,14 @@
 		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
 		1927B80A27673F7A00E72F61 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927B80927673F7A00E72F61 /* loading.json */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
+		1933FE82279FEC0400BD0CA6 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE81279FEC0400BD0CA6 /* Setting.storyboard */; };
+		1933FE8C279FF50900BD0CA6 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE8B279FF50900BD0CA6 /* SettingVC.swift */; };
+		1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE8D27A016B100BD0CA6 /* NotUserView.xib */; };
+		1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE8F27A0174700BD0CA6 /* NotUserView.swift */; };
+		1933FE9227A017DE00BD0CA6 /* UserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE9127A017DE00BD0CA6 /* UserView.xib */; };
+		1933FE9427A0191B00BD0CA6 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE9327A0191B00BD0CA6 /* UserView.swift */; };
+		1933FE9627A01C8200BD0CA6 /* SettingLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE9527A01C8200BD0CA6 /* SettingLineView.xib */; };
+		1933FE9827A01D2300BD0CA6 /* SettingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933FE9727A01D2300BD0CA6 /* SettingLineView.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
@@ -123,6 +131,14 @@
 		191A4EAC27665CB9005D0525 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		1927B80927673F7A00E72F61 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
+		1933FE81279FEC0400BD0CA6 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		1933FE8B279FF50900BD0CA6 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		1933FE8D27A016B100BD0CA6 /* NotUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotUserView.xib; sourceTree = "<group>"; };
+		1933FE8F27A0174700BD0CA6 /* NotUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotUserView.swift; sourceTree = "<group>"; };
+		1933FE9127A017DE00BD0CA6 /* UserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserView.xib; sourceTree = "<group>"; };
+		1933FE9327A0191B00BD0CA6 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		1933FE9527A01C8200BD0CA6 /* SettingLineView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLineView.xib; sourceTree = "<group>"; };
+		1933FE9727A01D2300BD0CA6 /* SettingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLineView.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -246,6 +262,37 @@
 				1927B80927673F7A00E72F61 /* loading.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		1933FE7E279FEBEB00BD0CA6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1933FE80279FEBF700BD0CA6 /* VC */,
+				1933FE7F279FEBF100BD0CA6 /* Storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1933FE7F279FEBF100BD0CA6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1933FE81279FEC0400BD0CA6 /* Setting.storyboard */,
+				1933FE8D27A016B100BD0CA6 /* NotUserView.xib */,
+				1933FE9127A017DE00BD0CA6 /* UserView.xib */,
+				1933FE9527A01C8200BD0CA6 /* SettingLineView.xib */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1933FE80279FEBF700BD0CA6 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				1933FE8B279FF50900BD0CA6 /* SettingVC.swift */,
+				1933FE8F27A0174700BD0CA6 /* NotUserView.swift */,
+				1933FE9327A0191B00BD0CA6 /* UserView.swift */,
+				1933FE9727A01D2300BD0CA6 /* SettingLineView.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		195AC719275BD5E900BDECB6 /* View */ = {
@@ -498,6 +545,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				1933FE7E279FEBEB00BD0CA6 /* Setting */,
 				6E85751A276F194A008CDFD7 /* Onboarding */,
 				6EE5AC9C275517D4007CCC67 /* ChallengeOpen */,
 				D256B8E52759E70B006D3CFD /* BottleWorld */,
@@ -758,6 +806,7 @@
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
 				191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
+				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
 				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */,
@@ -769,9 +818,11 @@
 				19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */,
 				1998752B274F9D76004CD747 /* ChallengeTitleView.xib in Resources */,
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
+				1933FE9227A017DE00BD0CA6 /* UserView.xib in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
+				1933FE82279FEC0400BD0CA6 /* Setting.storyboard in Resources */,
 				191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */,
 				A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */,
 				A2696D68272D163D001A2C60 /* Spoqa Han Sans Neo Regular.otf in Resources */,
@@ -785,6 +836,7 @@
 				1998752F274FB81F004CD747 /* ChallengedListView.xib in Resources */,
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
 				6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */,
+				1933FE9627A01C8200BD0CA6 /* SettingLineView.xib in Resources */,
 				6EB97228275B384800AB8349 /* ChallengeOpenFirstStepView.xib in Resources */,
 				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
 				1927B80A27673F7A00E72F61 /* loading.json in Resources */,
@@ -847,6 +899,7 @@
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
 				191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
+				1933FE8C279FF50900BD0CA6 /* SettingVC.swift in Sources */,
 				191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */,
 				A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */,
 				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,
@@ -858,8 +911,11 @@
 				19A142C4274FBA4F00E8DC45 /* ChallengedListView.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */,
+				1933FE9427A0191B00BD0CA6 /* UserView.swift in Sources */,
+				1933FE9827A01D2300BD0CA6 /* SettingLineView.swift in Sources */,
 				195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
+				1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
@@ -1070,7 +1126,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1098,7 +1154,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
