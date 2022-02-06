@@ -54,7 +54,7 @@ extension NickSettingVC {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
 
-        nickTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+//        nickTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     @objc func checkDuplicateNick() {
         guard let text = nickTextField.text else { return }
@@ -103,13 +103,13 @@ extension NickSettingVC: UITextFieldDelegate {
             textField.text = text?.substring(from: 0, goto: maxNumber)
         }
         print("2: \(textField.text)")
-//
-//        if let text = textField.text {
-//            if text.count > 5 {
-//                textField.deleteBackward()
-//            }
-//        }
 
+        if let text = textField.text {
+            if text.count > 5 {
+                textField.deleteBackward()
+            }
+        }
+//
 //        textField.text = textField.text?.trimmingCharacters(in: .whitespaces) // 스페이스 제거
 //        if let text = textField.text {
 //            if let regexText = filterNickName(text: text) {
@@ -134,13 +134,14 @@ extension NickSettingVC: UITextFieldDelegate {
         return true
     }
 //
-//    func textField(_ textField: UITextField,
-//                   shouldChangeCharactersIn range: NSRange,
-//                   replacementString string: String) -> Bool {
-//        return self.textLimit(existingText: textField.text,
-//                              newText: string,
-//                              limit: 5)
-//    }
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        print(textField.text, string)
+        return self.textLimit(existingText: textField.text,
+                              newText: string,
+                              limit: 5)
+    }
 
 }
 
