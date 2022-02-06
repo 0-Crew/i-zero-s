@@ -11,6 +11,7 @@ import SnapKit
 
 class OnboardingStepFourVC: UIViewController {
 
+    // MARK: - IBOutlet
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var linkLabel: UILabel!
@@ -35,6 +36,7 @@ class OnboardingStepFourVC: UIViewController {
         }
     }
 
+    // MARK: - IBAction
     @IBAction func linkLabelDidTap(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: linkLabel)
 
