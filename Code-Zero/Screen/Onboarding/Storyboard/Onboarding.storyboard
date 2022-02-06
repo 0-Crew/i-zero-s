@@ -556,6 +556,9 @@
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title=" 첫 챌린지 시작하기" image="icStarWhite"/>
+                                <connections>
+                                    <action selector="startChallengeButtonDidTap:" destination="PdR-Gp-cNd" eventType="touchUpInside" id="QrD-5W-xri"/>
+                                </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRI-UW-h26">
                                 <rect key="frame" x="78.5" y="611" width="218" height="29"/>

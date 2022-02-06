@@ -48,4 +48,14 @@ class OnboardingStepFourVC: UIViewController {
             presentSafariWebVC(url: Constants.privacyTermURL)
         }
     }
+
+    @IBAction func startChallengeButtonDidTap(_ sender: Any) {
+        let storybard = UIStoryboard(name: "Challenge", bundle: nil)
+        let challengeNavigationVC = storybard.instantiateViewController(withIdentifier: "Challenge")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            challengeNavigationVC,
+            animated: true,
+            completion: nil
+        )
+    }
 }
