@@ -12,6 +12,7 @@ class AccountSettingVC: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet var settingListView: [UIView]!
 
+    // MARK: - Property
     let settingListText = ["계정 공개 범위", "계정 관리"]
 
     // MARK: - View Life Cycle

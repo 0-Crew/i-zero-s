@@ -110,6 +110,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="icArrowLeftDark"/>
+                                        <connections>
+                                            <action selector="backButtonDidTap:" destination="V91-sn-lHb" eventType="touchUpInside" id="6yI-Ep-hQ7"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 공개 범위" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J12-5L-bR1">
                                         <rect key="frame" x="159" y="15" width="96" height="20"/>
@@ -147,6 +150,9 @@
                                     <constraint firstAttribute="width" constant="51" id="gOG-U4-OEV"/>
                                 </constraints>
                                 <color key="onTintColor" name="orangeMain"/>
+                                <connections>
+                                    <action selector="privacySwitchDidTap:" destination="V91-sn-lHb" eventType="valueChanged" id="AT0-pd-Oyz"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cBu-P4-70i"/>
@@ -163,6 +169,9 @@
                             <constraint firstItem="eWR-DV-4eO" firstAttribute="top" secondItem="Mmz-Me-sIH" secondAttribute="bottom" constant="25" id="un5-cb-1JU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="privacySwitch" destination="HAO-7C-PMl" id="1e1-wL-4xD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OU-Bn-M33" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

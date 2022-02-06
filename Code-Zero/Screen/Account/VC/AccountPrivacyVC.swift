@@ -9,21 +9,27 @@ import UIKit
 
 class AccountPrivacyVC: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var privacySwitch: UISwitch!
+
+    // MARK: - @IBAction
+    @IBAction func privacySwitchDidTap(_ sender: UISwitch) {
+        isPrivateSwitchOn = sender.isOn
+    }
+    @IBAction func backButtonDidTap(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+
+    // MARK: - Property
+    var isPrivateSwitchOn: Bool = true {
+        didSet {
+            // TODO: 서버 연결 해서 계정 범위 수정
+        }
+    }
+
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        privacySwitch.isOn = isPrivateSwitchOn
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
