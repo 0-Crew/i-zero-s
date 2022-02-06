@@ -15,6 +15,8 @@
 		191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EA7276652DB005D0525 /* UserListCell.xib */; };
 		191A4EAB27665CA4005D0525 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EAA27665CA4005D0525 /* UserListView.xib */; };
 		191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EAC27665CB9005D0525 /* UserListView.swift */; };
+		1923D91527AFC1E500FE2C87 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1923D91427AFC1E500FE2C87 /* Account.storyboard */; };
+		1923D91927AFC22A00FE2C87 /* AccountSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91827AFC22A00FE2C87 /* AccountSettingVC.swift */; };
 		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
 		1927B80A27673F7A00E72F61 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927B80927673F7A00E72F61 /* loading.json */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
@@ -129,6 +131,8 @@
 		191A4EA7276652DB005D0525 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		191A4EAA27665CA4005D0525 /* UserListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
 		191A4EAC27665CB9005D0525 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		1923D91427AFC1E500FE2C87 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		1923D91827AFC22A00FE2C87 /* AccountSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingVC.swift; sourceTree = "<group>"; };
 		1927B80927673F7A00E72F61 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		1933C68A274FD0D500E0842D /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
 		1933FE81279FEC0400BD0CA6 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -254,6 +258,31 @@
 				191A4E9C27637A12005D0525 /* BottleWorld.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		1923D91127AFC1C600FE2C87 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				1923D91327AFC1D300FE2C87 /* VC */,
+				1923D91227AFC1CE00FE2C87 /* Storyboard */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		1923D91227AFC1CE00FE2C87 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1923D91427AFC1E500FE2C87 /* Account.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1923D91327AFC1D300FE2C87 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				1923D91827AFC22A00FE2C87 /* AccountSettingVC.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		1927B80B276797A100E72F61 /* Lottie */ = {
@@ -545,6 +574,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				1923D91127AFC1C600FE2C87 /* Account */,
 				1933FE7E279FEBEB00BD0CA6 /* Setting */,
 				6E85751A276F194A008CDFD7 /* Onboarding */,
 				6EE5AC9C275517D4007CCC67 /* ChallengeOpen */,
@@ -819,6 +849,7 @@
 				1998752B274F9D76004CD747 /* ChallengeTitleView.xib in Resources */,
 				A2696D6B272D60C1001A2C60 /* Color.xcassets in Resources */,
 				1933FE9227A017DE00BD0CA6 /* UserView.xib in Resources */,
+				1923D91527AFC1E500FE2C87 /* Account.storyboard in Resources */,
 				A2696D65272D163D001A2C60 /* Spoqa Han Sans Neo Bold.otf in Resources */,
 				D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */,
 				A2B7BDDA2714214600F1DB1F /* Assets.xcassets in Resources */,
@@ -930,6 +961,7 @@
 				6E5B24B52749402B0071C9F2 /* ChallengeView.swift in Sources */,
 				6E857524276F76FA008CDFD7 /* UIWindow+Extension.swift in Sources */,
 				6E8575262771F471008CDFD7 /* OnboardingStepTwoVC.swift in Sources */,
+				1923D91927AFC22A00FE2C87 /* AccountSettingVC.swift in Sources */,
 				A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */,
 				6E857522276F7296008CDFD7 /* OnboardingStepOneVC.swift in Sources */,
 				1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */,
