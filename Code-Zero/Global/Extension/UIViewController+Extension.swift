@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 extension UIViewController {
     /// Device Height ratio via zeplin view
@@ -56,5 +57,12 @@ extension UIViewController {
         let navigationBar: UINavigationBar! = self.navigationController?.navigationBar
         navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationBar.backgroundColor = UIColor.white
+    }
+
+    func presentSafariWebVC(url string: String) {
+      if let URL = URL(string: string) {
+        let viewController = SFSafariViewController(url: URL)
+        present(viewController, animated: true)
+      }
     }
 }
