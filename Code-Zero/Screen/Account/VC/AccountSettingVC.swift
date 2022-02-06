@@ -31,13 +31,27 @@ class AccountSettingVC: UIViewController {
             $1.addSubview(settingLineView)
             settingLineView.settingLabel.text = settingListText[$0]
 
-            let tapGesture = UITapGestureRecognizer(target: self,
-                                                    action: #selector(settingListDidTap(sender:)))
-            $1.addGestureRecognizer(tapGesture)
+            if $0 == 0 {
+                let tapGesture = UITapGestureRecognizer(target: self,
+                                                        action: #selector(firstListDidTap(sender:)))
+                $1.addGestureRecognizer(tapGesture)
+            } else {
+                let tapGesture = UITapGestureRecognizer(target: self,
+                                                        action: #selector(secondListDidTap(sender:)))
+                $1.addGestureRecognizer(tapGesture)
+            }
+
         }
     }
 
-    @objc func settingListDidTap(sender: UITapGestureRecognizer) {
-        print("tap")
+    @objc func firstListDidTap(sender: UITapGestureRecognizer) {
+        guard let privacyVC = storyboard?.instantiateViewController(
+            withIdentifier: "AccountPrivacyVC"
+        ) as? AccountPrivacyVC else { return }
+        self.navigationController?.pushViewController(privacyVC, animated: true)
+    }
+
+    @objc func secondListDidTap(sender: UITapGestureRecognizer) {
+        // 두번째 뷰 이동
     }
 }
