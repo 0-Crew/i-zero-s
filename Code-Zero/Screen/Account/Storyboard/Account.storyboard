@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V91-sn-lHb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
         <array key="Spoqa Han Sans Neo Medium.otf">
             <string>SpoqaHanSansNeo-Medium</string>
         </array>
@@ -88,9 +92,94 @@
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="45.535714285714285"/>
         </scene>
+        <!--Account PrivacyVC-->
+        <scene sceneID="PYr-xa-cc2">
+            <objects>
+                <viewController storyboardIdentifier="AccountPrivacyVC" id="V91-sn-lHb" customClass="AccountPrivacyVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BFP-p7-xbr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mmz-Me-sIH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yz-Sa-ler">
+                                        <rect key="frame" x="20" y="13" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6yz-Sa-ler" secondAttribute="height" multiplier="1:1" id="pXj-UJ-Gin"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="icArrowLeftDark"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 공개 범위" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J12-5L-bR1">
+                                        <rect key="frame" x="159" y="15" width="96" height="20"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="J12-5L-bR1" firstAttribute="centerX" secondItem="Mmz-Me-sIH" secondAttribute="centerX" id="5qG-PA-4GL"/>
+                                    <constraint firstAttribute="height" constant="50" id="UWT-aj-lTW"/>
+                                    <constraint firstAttribute="bottom" secondItem="6yz-Sa-ler" secondAttribute="bottom" constant="13" id="bDL-kH-C04"/>
+                                    <constraint firstItem="6yz-Sa-ler" firstAttribute="top" secondItem="Mmz-Me-sIH" secondAttribute="top" constant="13" id="dyJ-z0-Ybz"/>
+                                    <constraint firstItem="J12-5L-bR1" firstAttribute="centerY" secondItem="Mmz-Me-sIH" secondAttribute="centerY" id="iL9-Xa-l5A"/>
+                                    <constraint firstItem="6yz-Sa-ler" firstAttribute="leading" secondItem="Mmz-Me-sIH" secondAttribute="leading" constant="20" id="wnU-E9-P0p"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 계정 공개하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWR-DV-4eO">
+                                <rect key="frame" x="30" y="119" width="110.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                <color key="textColor" name="darkGray2"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="둘러보기에서 내 보틀을 다른 사용자에게 보여줍니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5H-ki-5QX">
+                                <rect key="frame" x="30" y="148.5" width="278" height="16"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                <color key="textColor" name="gray2"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HAO-7C-PMl">
+                                <rect key="frame" x="332" y="113.5" width="53" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="HVK-hr-9Hq"/>
+                                    <constraint firstAttribute="width" constant="51" id="gOG-U4-OEV"/>
+                                </constraints>
+                                <color key="onTintColor" name="orangeMain"/>
+                            </switch>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cBu-P4-70i"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eWR-DV-4eO" firstAttribute="leading" secondItem="cBu-P4-70i" secondAttribute="leading" constant="30" id="4Hi-Co-eEa"/>
+                            <constraint firstItem="u5H-ki-5QX" firstAttribute="leading" secondItem="eWR-DV-4eO" secondAttribute="leading" id="4IE-Ay-4qr"/>
+                            <constraint firstItem="Mmz-Me-sIH" firstAttribute="leading" secondItem="cBu-P4-70i" secondAttribute="leading" id="Ng5-bo-hEe"/>
+                            <constraint firstItem="Mmz-Me-sIH" firstAttribute="trailing" secondItem="cBu-P4-70i" secondAttribute="trailing" id="Rnb-hT-9b0"/>
+                            <constraint firstItem="HAO-7C-PMl" firstAttribute="centerY" secondItem="eWR-DV-4eO" secondAttribute="centerY" id="S8O-0E-3qA"/>
+                            <constraint firstItem="cBu-P4-70i" firstAttribute="trailing" secondItem="HAO-7C-PMl" secondAttribute="trailing" constant="31" id="Xet-Tq-EqT"/>
+                            <constraint firstItem="Mmz-Me-sIH" firstAttribute="top" secondItem="cBu-P4-70i" secondAttribute="top" id="aIg-ml-tFY"/>
+                            <constraint firstItem="u5H-ki-5QX" firstAttribute="top" secondItem="eWR-DV-4eO" secondAttribute="bottom" constant="10" id="n1v-jH-llM"/>
+                            <constraint firstItem="eWR-DV-4eO" firstAttribute="top" secondItem="Mmz-Me-sIH" secondAttribute="bottom" constant="25" id="un5-cb-1JU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3OU-Bn-M33" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="723" y="46"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icArrowLeftDark" width="24" height="24"/>
+        <namedColor name="darkGray2">
+            <color red="0.22400000691413879" green="0.21600000560283661" blue="0.19200000166893005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray2">
+            <color red="0.68599998950958252" green="0.66699999570846558" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
