@@ -29,6 +29,14 @@ class AccountSettingVC: UIViewController {
 
             $1.addSubview(settingLineView)
             settingLineView.settingLabel.text = settingListText[$0]
+
+            let tapGesture = UITapGestureRecognizer(target: self,
+                                                    action: #selector(settingListDidTap(sender:)))
+            $1.addGestureRecognizer(tapGesture)
         }
+    }
+
+    @objc func settingListDidTap(sender: UITapGestureRecognizer) {
+        print("tap")
     }
 }
