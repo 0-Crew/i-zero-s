@@ -50,15 +50,39 @@
                                     <constraint firstItem="vpd-xu-kgL" firstAttribute="top" secondItem="FmW-BU-BMP" secondAttribute="top" constant="13" id="nVm-Tg-TN2"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9s-MD-Nb5">
+                                <rect key="frame" x="30" y="114" width="354" height="36"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="xDu-kQ-P0e"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Eo-yp-KWM">
+                                <rect key="frame" x="30" y="162" width="354" height="36"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="aNE-XO-oGn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9Eo-yp-KWM" firstAttribute="top" secondItem="L9s-MD-Nb5" secondAttribute="bottom" constant="12" id="4tC-aQ-R1x"/>
+                            <constraint firstItem="L9s-MD-Nb5" firstAttribute="top" secondItem="FmW-BU-BMP" secondAttribute="bottom" constant="20" id="8TZ-cx-Gg5"/>
+                            <constraint firstItem="9Eo-yp-KWM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="8YI-Ct-CPD"/>
                             <constraint firstItem="FmW-BU-BMP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DK5-1v-Iwy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Eo-yp-KWM" secondAttribute="trailing" constant="30" id="PM9-Ib-Ewn"/>
                             <constraint firstItem="FmW-BU-BMP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UtN-ht-DR3"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="L9s-MD-Nb5" secondAttribute="trailing" constant="30" id="aKi-Uq-hD5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FmW-BU-BMP" secondAttribute="trailing" id="oRe-Wk-1rx"/>
+                            <constraint firstItem="L9s-MD-Nb5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="pN7-RS-a8x"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="settingListView" destination="L9s-MD-Nb5" collectionClass="NSMutableArray" id="t7q-5A-rIl"/>
+                        <outletCollection property="settingListView" destination="9Eo-yp-KWM" collectionClass="NSMutableArray" id="piY-rY-18c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

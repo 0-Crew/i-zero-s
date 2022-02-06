@@ -9,21 +9,26 @@ import UIKit
 
 class AccountSettingVC: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet var settingListView: [UIView]!
+
+    let settingListText = ["계정 공개 범위", "계정 관리"]
+
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setSettingList()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    func setSettingList() {
+        settingListView.enumerated().forEach {
+            let settingLineView = SettingLineView(frame: CGRect(x: 0,
+                                                                y: 0,
+                                                                width: self.view.frame.width - 60,
+                                                                height: $1.frame.height))
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            $1.addSubview(settingLineView)
+            settingLineView.settingLabel.text = settingListText[$0]
+        }
     }
-    */
-
 }
