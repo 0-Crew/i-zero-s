@@ -246,6 +246,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="icEditOrange"/>
+                                        <connections>
+                                            <action selector="editButtonDidTap:" destination="SEI-IE-cKg" eventType="touchUpInside" id="cEU-kj-kxm"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="희영룰룰루" placeholder="닉네임을 설정해 주세요" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLz-MM-h1Y">
                                         <rect key="frame" x="10" y="33" width="314" height="19"/>
@@ -288,6 +291,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editButton" destination="hJ9-2f-if3" id="3U9-1s-G43"/>
                         <outlet property="emailLabel" destination="oJQ-gN-4r7" id="xVd-JO-nfR"/>
                         <outlet property="nickTextField" destination="yLz-MM-h1Y" id="bgE-bp-sX4"/>
                         <outlet property="nickView" destination="FU4-yA-oe0" id="TfX-zH-Lgs"/>
