@@ -12,6 +12,9 @@ class AccountSettingVC: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet var settingListView: [UIView]!
 
+    @IBAction func backButtonDidTap(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     // MARK: - Property
     let settingListText = ["계정 공개 범위", "계정 관리"]
 
@@ -50,7 +53,7 @@ class AccountSettingVC: UIViewController {
         ) as? AccountPrivacyVC else { return }
         self.navigationController?.pushViewController(privacyVC, animated: true)
     }
-    
+
     @objc func secondListDidTap(sender: UITapGestureRecognizer) {
         guard let accountVC = storyboard?.instantiateViewController(
             withIdentifier: "AccountNickVC"

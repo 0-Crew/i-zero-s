@@ -17,6 +17,9 @@ class AccountNickVC: UIViewController {
     @IBOutlet weak var duplicateCheckLabel: UILabel!
 
     // MARK: - @IBAction
+    @IBAction func backButtonDidTap(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     @IBAction func editButtonDidTap(_ sender: UIButton) {
         checkNickname()
     }
