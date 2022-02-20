@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3F827C227140020185C /* AccountDeleteVC.swift */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
 		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
@@ -126,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1906C3F827C227140020185C /* AccountDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteVC.swift; sourceTree = "<group>"; };
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
 		191A4EA427650A41005D0525 /* FollowEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowEmptyView.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				1923D91827AFC22A00FE2C87 /* AccountSettingVC.swift */,
 				1923D91A27AFC94B00FE2C87 /* AccountPrivacyVC.swift */,
 				1923D91C27AFD4CE00FE2C87 /* AccountNickVC.swift */,
+				1906C3F827C227140020185C /* AccountDeleteVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */,
+				1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,

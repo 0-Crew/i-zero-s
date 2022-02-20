@@ -337,6 +337,112 @@
             </objects>
             <point key="canvasLocation" x="2313" y="46"/>
         </scene>
+        <!--Account DeleteVC-->
+        <scene sceneID="OW9-bh-K4m">
+            <objects>
+                <viewController storyboardIdentifier="AccountDeleteVC" id="IH7-Q8-CSf" customClass="AccountDeleteVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dm2-av-oyg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8D-gL-CFz">
+                                <rect key="frame" x="40" y="347" width="334" height="202"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pko-bm-neN">
+                                        <rect key="frame" x="0.0" y="145" width="334" height="57"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrQ-hX-HJn">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="57"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="확인">
+                                                    <color key="titleColor" name="gray2"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="okButtonDidTap:" destination="IH7-Q8-CSf" eventType="touchUpInside" id="0dW-cs-xif"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dc-Pn-EFK">
+                                                <rect key="frame" x="167" y="0.0" width="167" height="57"/>
+                                                <color key="backgroundColor" name="orangeMain"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" name="white"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancleButtonDidTap:" destination="IH7-Q8-CSf" eventType="touchUpInside" id="ejk-EA-p2E"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqL-kf-FkO">
+                                        <rect key="frame" x="0.0" y="144" width="334" height="1"/>
+                                        <color key="backgroundColor" name="lightGray2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="u2F-PU-hmK"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-Ww-DZq">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="144"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qwV-ca-87C">
+                                                <rect key="frame" x="63.5" y="48.5" width="207" height="47.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정을 정말 삭제하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5O-nP-tuh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                                        <color key="textColor" name="darkGray2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모든 정보가 완전히 삭제됩니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7f-g8-6wD">
+                                                        <rect key="frame" x="21.5" y="31.5" width="164.5" height="16"/>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                                        <color key="textColor" name="gray4"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="qwV-ca-87C" firstAttribute="centerY" secondItem="rdh-Ww-DZq" secondAttribute="centerY" id="eHI-9F-g9H"/>
+                                            <constraint firstItem="qwV-ca-87C" firstAttribute="centerX" secondItem="rdh-Ww-DZq" secondAttribute="centerX" id="rQf-DU-JGm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="white"/>
+                                <constraints>
+                                    <constraint firstItem="Pko-bm-neN" firstAttribute="leading" secondItem="i8D-gL-CFz" secondAttribute="leading" id="6PN-ap-Oga"/>
+                                    <constraint firstItem="bqL-kf-FkO" firstAttribute="leading" secondItem="i8D-gL-CFz" secondAttribute="leading" id="7yR-DB-bIC"/>
+                                    <constraint firstItem="Pko-bm-neN" firstAttribute="height" secondItem="i8D-gL-CFz" secondAttribute="height" multiplier="50/178" id="Gq6-fj-zx0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pko-bm-neN" secondAttribute="trailing" id="JKP-MM-zLV"/>
+                                    <constraint firstAttribute="trailing" secondItem="rdh-Ww-DZq" secondAttribute="trailing" id="R7g-g6-U6M"/>
+                                    <constraint firstAttribute="width" secondItem="i8D-gL-CFz" secondAttribute="height" multiplier="295:178" id="TWb-Yg-Qsu"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pko-bm-neN" secondAttribute="bottom" id="ehc-UA-ea4"/>
+                                    <constraint firstItem="Pko-bm-neN" firstAttribute="top" secondItem="bqL-kf-FkO" secondAttribute="bottom" id="ibO-tz-Dlx"/>
+                                    <constraint firstItem="rdh-Ww-DZq" firstAttribute="top" secondItem="i8D-gL-CFz" secondAttribute="top" id="qPL-Wn-m5k"/>
+                                    <constraint firstItem="rdh-Ww-DZq" firstAttribute="leading" secondItem="i8D-gL-CFz" secondAttribute="leading" id="qew-KT-R7R"/>
+                                    <constraint firstAttribute="trailing" secondItem="bqL-kf-FkO" secondAttribute="trailing" id="vnZ-eR-qg7"/>
+                                    <constraint firstItem="bqL-kf-FkO" firstAttribute="top" secondItem="rdh-Ww-DZq" secondAttribute="bottom" id="wio-vS-S7t"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vfS-Vp-dpb"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="i8D-gL-CFz" firstAttribute="centerX" secondItem="dm2-av-oyg" secondAttribute="centerX" id="dyS-jt-kOP"/>
+                            <constraint firstItem="i8D-gL-CFz" firstAttribute="centerY" secondItem="dm2-av-oyg" secondAttribute="centerY" id="hbH-5f-73H"/>
+                            <constraint firstItem="vfS-Vp-dpb" firstAttribute="trailing" secondItem="i8D-gL-CFz" secondAttribute="trailing" constant="40" id="wSp-ln-ZMg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="i8D-gL-CFz" id="oRR-ht-78v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vef-wF-660" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3010" y="46"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="RGK-r7-68v">
             <objects>
@@ -373,11 +479,17 @@
         <namedColor name="gray4">
             <color red="0.40799999237060547" green="0.37999999523162842" blue="0.33700001239776611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="lightGray2">
+            <color red="0.92900002002716064" green="0.9179999828338623" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="orangeMain">
             <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="redAlert">
             <color red="1" green="0.32899999618530273" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
