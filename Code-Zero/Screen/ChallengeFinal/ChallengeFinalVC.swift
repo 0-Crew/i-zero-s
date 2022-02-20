@@ -31,13 +31,13 @@ class ChallengeFinalVC: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var challengeListStackView: UIStackView!
+    @IBOutlet weak var backgroundView: UIView!
     // MARK: - UI Property
     var challengeViewList: [FinalChallengeView] {
         return challengeListStackView.subviews.compactMap {
             $0 as? FinalChallengeView
         }
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +53,12 @@ class ChallengeFinalVC: UIViewController {
             finalChallengeView.challengeTextField.text = challengeTextList[$0.offset]
             finalChallengeView.cachedText = challengeTextList[$0.offset]
         }
+        backgroundView.dropShadow(
+            color: .init(red: 0, green: 0, blue: 0, alpha: 1),
+            offSet: .init(width: 0, height: 2),
+            opacity: 0.15,
+            radius: 20
+        )
     }
 }
 // MARK: - FinalChallengeViewDelegate

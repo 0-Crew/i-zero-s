@@ -190,6 +190,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="5Ft-xc-3xh" id="KzG-YD-Dza"/>
                         <outlet property="challengeListStackView" destination="M7O-ib-71N" id="IYR-CL-OZ4"/>
                         <outlet property="scrollView" destination="AzQ-W6-MC5" id="OSg-HX-fmR"/>
                     </connections>
