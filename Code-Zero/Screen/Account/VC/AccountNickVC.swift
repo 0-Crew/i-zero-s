@@ -21,7 +21,8 @@ class AccountNickVC: UIViewController {
         checkNickname()
     }
     @IBAction func logoutButtonDidTap(_ sender: UIButton) {
-        // TODO: 시작하기 화면으로 이동
+        // TODO: 로그아웃(토큰 삭제?)
+        changeRootViewToHome()
     }
     @IBAction func deleteAccountButton(_ sender: UIButton) {
         // TODO: 알랏창으로 이동
@@ -35,19 +36,23 @@ class AccountNickVC: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        nickView.setBorder(borderColor: .gray2, borderWidth: 1)
-        emailLabel.text = email
-        nickTextField.text = nick
-        duplicateCheckLabel.text = ""
-        nickTextField.delegate = self
+        setLayout()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         checkNickname()
     }
 }
 
+// MARK: - Set View Layout && Function
 extension AccountNickVC {
-    func checkNickname() {
+    private func setLayout() {
+        nickView.setBorder(borderColor: .gray2, borderWidth: 1)
+        emailLabel.text = email
+        nickTextField.text = nick
+        duplicateCheckLabel.text = ""
+        nickTextField.delegate = self
+    }
+    private func checkNickname() {
         guard let nickCount = nickTextField.text?.count else { return }
         if nickCount == 0 {
             self.view.endEditing(true)
@@ -66,8 +71,18 @@ extension AccountNickVC {
             duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
         }
     }
+    private func changeRootViewToHome() {
+        let storybard = UIStoryboard(name: "Home", bundle: nil)
+        let homeNavigationVC = storybard.instantiateViewController(withIdentifier: "Home")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            homeNavigationVC,
+            animated: true,
+            completion: nil
+        )
+    }
 }
 
+// MARK: - UITextFieldDelegate
 extension AccountNickVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         editButton.setImage(UIImage(named: "icCheckOrange"), for: .normal)
