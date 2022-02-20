@@ -50,8 +50,11 @@ class AccountSettingVC: UIViewController {
         ) as? AccountPrivacyVC else { return }
         self.navigationController?.pushViewController(privacyVC, animated: true)
     }
-
+    
     @objc func secondListDidTap(sender: UITapGestureRecognizer) {
-        // 두번째 뷰 이동
+        guard let accountVC = storyboard?.instantiateViewController(
+            withIdentifier: "AccountNickVC"
+        ) as? AccountNickVC else { return }
+        self.navigationController?.pushViewController(accountVC, animated: true)
     }
 }
