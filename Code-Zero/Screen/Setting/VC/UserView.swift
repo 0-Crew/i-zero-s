@@ -9,13 +9,16 @@ import UIKit
 
 class UserView: UIView {
 
+    // MARK: - Property
     var moveViewController: ((UIViewController) -> Void)?
 
+    // MARK: - IBOutlet
     @IBOutlet weak var nickBackView: UIView!
     @IBOutlet weak var nickFirstLabel: UILabel!
     @IBOutlet weak var nickButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
 
+    // MARK: - IBAction
     @IBAction func nickButtonDidTap(_ sender: UIButton) {
         guard let moveViewController = moveViewController else { return }
         let storybard = UIStoryboard(name: "Account", bundle: nil)
@@ -23,6 +26,7 @@ class UserView: UIView {
         moveViewController(accountVC)
     }
 
+    // MARK: - Override Function
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
