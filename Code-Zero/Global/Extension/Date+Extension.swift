@@ -23,4 +23,9 @@ extension Date {
         // 날짜에 맞는 요일 찾는 함수 (1 일요일 ~ 7 토요일)
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
+
+    /// 오늘기준으로 intervalDay일 전, 후의 날짜를 구하는 함수
+    func getDateIntervalBy(intervalDay: Int) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: intervalDay, to: self)
+    }
 }
