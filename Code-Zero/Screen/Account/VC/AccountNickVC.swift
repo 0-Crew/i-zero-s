@@ -14,12 +14,20 @@ class AccountNickVC: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nickTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var duplicateCheckLabel: UILabel!
 
     // MARK: - @IBAction
     @IBAction func editButtonDidTap(_ sender: UIButton) {
         guard let text = nickTextField.text else { return }
         print(text)
     }
+    @IBAction func logoutButtonDidTap(_ sender: UIButton) {
+
+    }
+    @IBAction func deleteAccountButton(_ sender: UIButton) {
+
+    }
+
     // MARK: - Property
     var email: String = "xwoud@naver.com"
     var nick: String = "희영룰루루"

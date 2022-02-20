@@ -273,14 +273,49 @@
                                     <constraint firstAttribute="bottom" secondItem="hJ9-2f-if3" secondAttribute="bottom" constant="8" id="xjE-yg-zyn"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETb-HN-XEQ">
+                                <rect key="frame" x="30" y="833" width="52" height="29"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="로그아웃">
+                                    <color key="titleColor" name="gray4"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonDidTap:" destination="SEI-IE-cKg" eventType="touchUpInside" id="fn7-G2-5rE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFK-uY-2la">
+                                <rect key="frame" x="87" y="833" width="52" height="29"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="탈퇴하기">
+                                    <color key="titleColor" name="gray1"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAccountButton:" destination="SEI-IE-cKg" eventType="touchUpInside" id="RvJ-z3-fYJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkO-Yq-nqg">
+                                <rect key="frame" x="30" y="241" width="33.5" height="14"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                <color key="textColor" name="redAlert"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T9f-2z-396"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Wf9-b9-Dej" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="1Ta-7h-p98"/>
+                            <constraint firstItem="vkO-Yq-nqg" firstAttribute="top" secondItem="FU4-yA-oe0" secondAttribute="bottom" constant="12" id="6Eg-xd-rm5"/>
                             <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="FU4-yA-oe0" secondAttribute="trailing" constant="30" id="CCj-6x-hkF"/>
+                            <constraint firstItem="vkO-Yq-nqg" firstAttribute="leading" secondItem="FU4-yA-oe0" secondAttribute="leading" id="Dlt-Y6-Kr9"/>
+                            <constraint firstItem="jFK-uY-2la" firstAttribute="leading" secondItem="ETb-HN-XEQ" secondAttribute="trailing" constant="5" id="EqX-HP-qF2"/>
                             <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="oJQ-gN-4r7" secondAttribute="trailing" constant="30" id="Gbd-RT-BtH"/>
+                            <constraint firstItem="ETb-HN-XEQ" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="ImU-Xi-S5K"/>
+                            <constraint firstItem="jFK-uY-2la" firstAttribute="top" secondItem="ETb-HN-XEQ" secondAttribute="top" id="K4m-Ok-qQH"/>
                             <constraint firstItem="FU4-yA-oe0" firstAttribute="top" secondItem="oJQ-gN-4r7" secondAttribute="bottom" constant="20" id="Msa-Hh-0pK"/>
+                            <constraint firstItem="ETb-HN-XEQ" firstAttribute="bottom" secondItem="4Gh-lv-qTz" secondAttribute="bottom" constant="-34" id="NBR-6d-tKP"/>
+                            <constraint firstItem="jFK-uY-2la" firstAttribute="bottom" secondItem="ETb-HN-XEQ" secondAttribute="bottom" id="SFG-rr-Q8v"/>
                             <constraint firstItem="oJQ-gN-4r7" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="Xea-Cm-iuL"/>
                             <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="Zbm-9d-3tn" secondAttribute="trailing" id="ePY-NC-xh3"/>
                             <constraint firstItem="FU4-yA-oe0" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="fFy-iW-NUq"/>
@@ -291,6 +326,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="duplicateCheckLabel" destination="vkO-Yq-nqg" id="ozy-l3-xNx"/>
                         <outlet property="editButton" destination="hJ9-2f-if3" id="3U9-1s-G43"/>
                         <outlet property="emailLabel" destination="oJQ-gN-4r7" id="xVd-JO-nfR"/>
                         <outlet property="nickTextField" destination="yLz-MM-h1Y" id="bgE-bp-sX4"/>
@@ -325,14 +361,23 @@
         <namedColor name="darkGray2">
             <color red="0.22400000691413879" green="0.21600000560283661" blue="0.19200000166893005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="gray1">
+            <color red="0.75700002908706665" green="0.73299998044967651" blue="0.6940000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="gray2">
             <color red="0.68599998950958252" green="0.66699999570846558" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray3">
             <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="gray4">
+            <color red="0.40799999237060547" green="0.37999999523162842" blue="0.33700001239776611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="orangeMain">
             <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="redAlert">
+            <color red="1" green="0.32899999618530273" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
