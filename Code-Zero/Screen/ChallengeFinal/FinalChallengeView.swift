@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - FinalChallengeViewState
 enum FinalChallengeViewState {
     case challengeNotComplete
     case challengeWillEdit
@@ -84,7 +85,7 @@ extension FinalChallengeViewState {
         }
     }
 }
-
+// MARK: - FinalChallengeViewDelegate
 protocol FinalChallengeViewDelegate: AnyObject {
     func challengeTextFieldWillEdit(offset: Int)
     func challengeTextFieldDidEdit(offset: Int, inputText: String?)
@@ -92,14 +93,14 @@ protocol FinalChallengeViewDelegate: AnyObject {
 }
 
 class FinalChallengeView: LoadXibView {
-
+    // MARK: - IBOutlet
     @IBOutlet weak var dropWaterImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var challengeTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var editCompleteButton: UIButton!
     @IBOutlet weak var highlightView: UIView!
-
+    // MARK: - Property
     var offset: Int!
     var finalChallengeState: FinalChallengeViewState!
     weak var delegate: FinalChallengeViewDelegate?
@@ -114,7 +115,7 @@ class FinalChallengeView: LoadXibView {
         super.init(coder: coder)
         initView()
     }
-
+    // MARK: - IBAction
     @IBAction func editButtonDidTap() {
         setState(state: .challengeEditing)
         delegate?.challengeTextFieldWillEdit(offset: offset)
@@ -151,7 +152,7 @@ class FinalChallengeView: LoadXibView {
     }
 
 }
-
+// MARK: - UI Setting
 extension FinalChallengeView {
     private func initView() {
         highlightView.setBorder(borderColor: .orangeMain, borderWidth: 1)

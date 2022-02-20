@@ -8,7 +8,7 @@
 import UIKit
 
 class ChallengeFinalVC: UIViewController {
-
+    // MARK: - Property
     internal var challengeTextList: [String] = [
         "음식 남기지 않기1",
         "음식 남기지 않기2",
@@ -27,15 +27,17 @@ class ChallengeFinalVC: UIViewController {
         .challengeNotComplete,
         .challengeNotComplete
     ]
-
+    
+    // MARK: - IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var challengeListStackView: UIStackView!
-
+    // MARK: - UI Property
     var challengeViewList: [FinalChallengeView] {
         return challengeListStackView.subviews.compactMap {
             $0 as? FinalChallengeView
         }
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +55,7 @@ class ChallengeFinalVC: UIViewController {
         }
     }
 }
-
+// MARK: - FinalChallengeViewDelegate
 extension ChallengeFinalVC: FinalChallengeViewDelegate {
     func challengeTextFieldWillEdit(offset: Int) {
         let finalChallengeView = challengeViewList[offset]
