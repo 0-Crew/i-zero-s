@@ -13,6 +13,9 @@
         <array key="FuturaStd-Bold.otf">
             <string>FuturaStd-Bold</string>
         </array>
+        <array key="FuturaStd-Heavy.otf">
+            <string>FuturaStd-Heavy</string>
+        </array>
         <array key="Spoqa Han Sans Neo Bold.otf">
             <string>SpoqaHanSansNeo-Bold</string>
         </array>
@@ -460,6 +463,9 @@
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="다음"/>
+                                <connections>
+                                    <segue destination="PdR-Gp-cNd" kind="show" id="E9a-up-Q6O"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hkU-cb-mzl"/>
@@ -504,6 +510,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8KC-If-wwv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2485.5999999999999" y="-641.82908545727139"/>
+        </scene>
+        <!--Onboarding Step FourVC-->
+        <scene sceneID="3oL-dv-fnC">
+            <objects>
+                <viewController id="PdR-Gp-cNd" customClass="OnboardingStepFourVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7AT-Bg-q3i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일이 지나면" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgf-lF-Jhn">
+                                <rect key="frame" x="30" y="40" width="152" height="34"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="28"/>
+                                <color key="textColor" name="darkGray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wash Your Bottle!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ue-nB-MTP">
+                                <rect key="frame" x="30" y="74" width="230" height="30"/>
+                                <fontDescription key="fontDescription" name="FuturaStd-Heavy" family="Futura Std" pointSize="30"/>
+                                <color key="textColor" name="darkGray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보틀을 씻고 새로운 챌린지를 시작할 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxU-fa-uaf">
+                                <rect key="frame" x="30" y="116" width="264" height="17"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <color key="textColor" name="gray3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-Sc-g1W" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="126.5" y="209" width="122" height="271"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MFh-Sc-g1W" secondAttribute="height" multiplier="152:339" id="4JH-Jp-knP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="onboarding"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ME-Vg-l5c">
+                                <rect key="frame" x="30" y="554" width="315" height="45"/>
+                                <color key="backgroundColor" name="orangeMain"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0ME-Vg-l5c" secondAttribute="height" multiplier="7:1" id="N3u-29-iMo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 첫 챌린지 시작하기" image="icStarWhite"/>
+                                <connections>
+                                    <action selector="startChallengeButtonDidTap:" destination="PdR-Gp-cNd" eventType="touchUpInside" id="QrD-5W-xri"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRI-UW-h26">
+                                <rect key="frame" x="78.5" y="611" width="218" height="29"/>
+                                <string key="text">시작하기 버튼 클릭 시
+이용약관과 개인정보정책에 동의하게 됩니다</string>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                <color key="textColor" name="gray3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7kh-Xb-OZu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MFh-Sc-g1W" firstAttribute="height" secondItem="7AT-Bg-q3i" secondAttribute="height" multiplier="0.406297" id="1mV-rO-dj5"/>
+                            <constraint firstItem="0ue-nB-MTP" firstAttribute="top" secondItem="cgf-lF-Jhn" secondAttribute="bottom" id="3Ev-2q-wvB"/>
+                            <constraint firstItem="MFh-Sc-g1W" firstAttribute="centerX" secondItem="7AT-Bg-q3i" secondAttribute="centerX" id="8g2-G6-dDo"/>
+                            <constraint firstItem="7kh-Xb-OZu" firstAttribute="trailing" secondItem="0ME-Vg-l5c" secondAttribute="trailing" constant="30" id="Ecg-2Y-PpB"/>
+                            <constraint firstItem="cgf-lF-Jhn" firstAttribute="top" secondItem="7kh-Xb-OZu" secondAttribute="top" constant="40" id="JRb-6e-SLc"/>
+                            <constraint firstItem="cgf-lF-Jhn" firstAttribute="leading" secondItem="7kh-Xb-OZu" secondAttribute="leading" constant="30" id="JXi-Lp-DZZ"/>
+                            <constraint firstItem="uxU-fa-uaf" firstAttribute="leading" secondItem="0ue-nB-MTP" secondAttribute="leading" id="MdD-Em-PKu"/>
+                            <constraint firstItem="0ME-Vg-l5c" firstAttribute="top" secondItem="MFh-Sc-g1W" secondAttribute="bottom" priority="250" constant="74" id="MiI-Xg-HQa"/>
+                            <constraint firstItem="0ME-Vg-l5c" firstAttribute="leading" secondItem="7kh-Xb-OZu" secondAttribute="leading" constant="30" id="SAh-oy-x8A"/>
+                            <constraint firstItem="uxU-fa-uaf" firstAttribute="top" secondItem="0ue-nB-MTP" secondAttribute="bottom" constant="12" id="Stw-Ii-cOC"/>
+                            <constraint firstItem="lRI-UW-h26" firstAttribute="centerX" secondItem="7AT-Bg-q3i" secondAttribute="centerX" id="Wbh-YC-Uo3"/>
+                            <constraint firstItem="MFh-Sc-g1W" firstAttribute="top" secondItem="uxU-fa-uaf" secondAttribute="bottom" priority="250" constant="76" id="a29-me-dE9"/>
+                            <constraint firstItem="lRI-UW-h26" firstAttribute="top" secondItem="0ME-Vg-l5c" secondAttribute="bottom" constant="12" id="hrP-9z-eBA"/>
+                            <constraint firstItem="0ue-nB-MTP" firstAttribute="leading" secondItem="cgf-lF-Jhn" secondAttribute="leading" id="ulo-8p-C4a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aRi-9c-nXw"/>
+                    <connections>
+                        <outlet property="animationView" destination="MFh-Sc-g1W" id="UDr-S4-aNa"/>
+                        <outlet property="linkLabel" destination="lRI-UW-h26" id="UKc-Yo-pP7"/>
+                        <outlet property="startChallengeButton" destination="0ME-Vg-l5c" id="ilo-w4-Y5w"/>
+                        <outlet property="subtitleLabel" destination="uxU-fa-uaf" id="BiG-ug-cAL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1c4-X5-EP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3220" y="-642.11822660098528"/>
         </scene>
     </scenes>
     <resources>
