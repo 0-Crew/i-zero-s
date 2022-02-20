@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1906C3FB27C239DD0020185C /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FA27C239DD0020185C /* APITarget.swift */; };
+		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
+		1906C40327C240270020185C /* UserNickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserNickService.swift */; };
+		1906C40527C241330020185C /* SimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40427C241330020185C /* SimpleData.swift */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
 		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
@@ -128,6 +132,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1906C3FA27C239DD0020185C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
+		1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
+		1906C40227C240270020185C /* UserNickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNickService.swift; sourceTree = "<group>"; };
+		1906C40427C241330020185C /* SimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleData.swift; sourceTree = "<group>"; };
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
 		191A4EA427650A41005D0525 /* FollowEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowEmptyView.swift; sourceTree = "<group>"; };
@@ -634,6 +642,7 @@
 			isa = PBXGroup;
 			children = (
 				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
+				1906C40427C241330020185C /* SimpleData.swift */,
 				6E6E4A4927AFCCEB00390493 /* Constants.swift */,
 			);
 			path = Model;
@@ -643,6 +652,9 @@
 			isa = PBXGroup;
 			children = (
 				A2DC88D7271C12A90099438A /* NetworkResult.swift */,
+				1906C3FA27C239DD0020185C /* APITarget.swift */,
+				1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */,
+				1906C40227C240270020185C /* UserNickService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -967,9 +979,11 @@
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */,
+				1906C40527C241330020185C /* SimpleData.swift in Sources */,
 				195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */,
 				194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
+				1906C40327C240270020185C /* UserNickService.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
@@ -983,6 +997,8 @@
 				1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */,
 				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
 				6EB97233275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift in Sources */,
+				1906C3FB27C239DD0020185C /* APITarget.swift in Sources */,
+				1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */,
 				D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

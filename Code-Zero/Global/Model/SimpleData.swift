@@ -1,24 +1,21 @@
 //
-//  Dummy.swift
+//  SimpleData.swift
 //  Code-Zero
 //
-//  Created by 이주혁 on 2021/10/17.
+//  Created by 미니 on 2022/02/20.
 //
 
 import Foundation
 
-struct GenericResponse<T: Codable>: Codable {
-
-    let status: Int
-    let success: Bool
-    let message: String
-    let data: T?
+struct SimpleData: Codable {
+    var status: Int
+    var success: Bool
+    var message: String
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = (try? values.decode(Int.self, forKey: .status)) ?? -1
         success = (try? values.decode(Bool.self, forKey: .success)) ?? false
         message = (try? values.decode(String.self, forKey: .message)) ?? ""
-        data = (try? values.decode(T.self, forKey: .data)) ?? nil
     }
 }
