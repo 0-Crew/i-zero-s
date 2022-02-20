@@ -149,6 +149,7 @@ Bottle</string>
                     </view>
                     <navigationItem key="navigationItem" id="TqY-xd-47e"/>
                     <connections>
+                        <outlet property="appleLoginView" destination="oZ2-KF-D44" id="8sS-YG-ATi"/>
                         <outlet property="backButton" destination="yFQ-T2-tBf" id="nyt-FF-YCl"/>
                         <outlet property="subtitleLabel" destination="wQK-CP-JlJ" id="UgN-sO-0Gr"/>
                         <outlet property="titleLabel" destination="gaE-i4-KG2" id="QEa-Bh-njZ"/>

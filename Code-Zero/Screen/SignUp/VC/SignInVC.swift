@@ -18,7 +18,6 @@ class SignInVC: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func loginButtonDidTap(_ sender: Any) {
-        requestLogin()
 
     }
 
@@ -26,6 +25,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        socialLoginSetting()
     }
 }
 
@@ -37,30 +37,31 @@ extension SignInVC {
         titleLabel.textAlignment = .left
         subtitleLabel.setLineSpacing(lineSpacing: 5)
         subtitleLabel.textAlignment = .left
-        addButton()
+    }
+}
+
+// MARK: - Login Function
+extension SignInVC {
+    func socialLoginSetting() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(appleLoginViewDidTap(sender:)))
+        appleLoginView.addGestureRecognizer(tapGesture)
+    }
+    @objc func appleLoginViewDidTap(sender: UITapGestureRecognizer) {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        as? ASAuthorizationControllerPresentationContextProviding
+        controller.performRequests()
     }
 
-    func addButton() {
-        let button = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
-            button.addTarget(self, action: #selector(loginHandler), for: .touchUpInside)
-        appleLoginView.addSubview(button)
-        }
-
-    @objc func loginHandler() {
-            let request = ASAuthorizationAppleIDProvider().createRequest()
-            request.requestedScopes = [.fullName, .email]
-            let controller = ASAuthorizationController(authorizationRequests: [request])
-            controller.delegate = self
-            controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
-            controller.performRequests()
-        }
-
-    func requestLogin() {
-        UserLoginService.shared.requestLogin(id: "mini1234",
-                                             email: "xwoud@test.com",
-                                             provider: "apple") { [weak self] result in
+    func requestLogin(id: String, email: String, provider: String) {
+        UserLoginService.shared.requestLogin(id: id,
+                                             email: email,
+                                             provider: provider) { [weak self] result in
             switch result {
-
             case .success(let data):
                 print(data)
             case .requestErr(let error):
@@ -73,18 +74,33 @@ extension SignInVC {
         }
     }
 }
-extension SignInVC : ASAuthorizationControllerDelegate  {
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+// MARK: - ASAuthorizationControllerDelegate
+extension SignInVC: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let user = credential.user
-            print("👨‍🍳 \(user)")
-            if let email = credential.email {
-                print("✉️ \(email)")
+            UserDefaults.standard.set(user, forKey: "appleId")
+            if let email = credential.email { // 회원가입 시
+                requestLogin(id: user, email: email, provider: "apple")
             }
         }
     }
-
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("error \(error)")
+        guard let error = error as? ASAuthorizationError else {return}
+             switch error.code {
+             case .canceled:
+                 print("Canceled")
+             case .unknown:
+                 print("Unknow")
+             case .invalidResponse:
+                 print("invalid Respone")
+             case .notHandled:
+                 print("Not Handled")
+             case .failed:
+                 print("Failed")
+             default:
+                 print("Default")
+             }
     }
 }

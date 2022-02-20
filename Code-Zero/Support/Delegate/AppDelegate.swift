@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 import Gedatsu
 
 @main
@@ -16,6 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? ) -> Bool {
             // Override point for customization after application launch.
             Gedatsu.open()
+            if let appleUser = UserDefaults.standard.string(forKey: "appleId") { // 애플 유저라면
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                appleIDProvider.getCredentialState(forUserID: appleUser) { (credentialState, error) in
+                    switch credentialState {
+                    case .authorized:
+                        // 인증성공 상태 - > 홈(메인) 화면으로 이동?
+                        break
+                    case .revoked:
+                        // 인증만료 상태 -> 다시 로그인 하는 화면으로 이동
+                        UserDefaults.standard.removeObject(forKey: "appleId")
+                        break
+                    default:
+                        break
+                    }
+                }
+            }
+            
             return true
         }
 
