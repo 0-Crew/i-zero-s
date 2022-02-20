@@ -101,7 +101,7 @@ class FinalChallengeView: LoadXibView {
     @IBOutlet weak var highlightView: UIView!
 
     var offset: Int!
-    var state: FinalChallengeViewState!
+    var finalChallengeState: FinalChallengeViewState!
     weak var delegate: FinalChallengeViewDelegate?
     var cachedText: String?
 
@@ -130,7 +130,7 @@ class FinalChallengeView: LoadXibView {
     }
 
     @IBAction func tooggleChallengeStateDidTap() {
-        switch state {
+        switch finalChallengeState {
         case .challengeNotComplete:
             setState(state: .challengeComplete)
             delegate?.toggleChallengeStateDidTap(offset: offset, state: .challengeComplete)
@@ -163,7 +163,7 @@ extension FinalChallengeView {
     }
 
     func setState(state: FinalChallengeViewState) {
-        self.state = state
+        finalChallengeState = state
         dropWaterImageView.image = state.dropWaterImage
         dateLabel.isHidden = state.dateLabelIsHidden
         challengeTextField.isEnabled = state.challengeTextFieldIsEnable
