@@ -64,4 +64,21 @@ extension AccountNickVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         editButton.setImage(UIImage(named: "icCheckOrange"), for: .normal)
     }
+    func textField(_ textField: UITextField,
+                       shouldChangeCharactersIn range: NSRange,
+                       replacementString string: String) -> Bool {
+            if string.isEmpty {
+                return true
+            }
+            switch string {
+            case "ㄱ"..."ㅎ", "a"..."z", "A"..."Z", "ㅏ"..."ㅣ", "0"..."9", "_":
+                let currentText = textField.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+                return updatedText.count <= 7
+            default:
+                return false
+            }
+        }
 }
