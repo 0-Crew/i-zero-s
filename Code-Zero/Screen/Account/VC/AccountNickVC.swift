@@ -18,8 +18,7 @@ class AccountNickVC: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func editButtonDidTap(_ sender: UIButton) {
-        guard let text = nickTextField.text else { return }
-        print(text)
+        checkNickname()
     }
     @IBAction func logoutButtonDidTap(_ sender: UIButton) {
 
@@ -38,11 +37,27 @@ class AccountNickVC: UIViewController {
         nickView.setBorder(borderColor: .gray2, borderWidth: 1)
         emailLabel.text = email
         nickTextField.text = nick
+        duplicateCheckLabel.text = ""
         nickTextField.delegate = self
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        checkNickname()
+    }
+}
+
+extension AccountNickVC {
+    func checkNickname() {
+        guard let nickCount = nickTextField.text?.count else { return }
+        if nickCount == 0 {
             self.view.endEditing(true)
+            editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
+            nickTextField.text = nick
         }
+        if nickCount > 0 && nickCount <= 5 {
+            // 중복검사
+        }
+
+    }
 }
 
 extension AccountNickVC: UITextFieldDelegate {
