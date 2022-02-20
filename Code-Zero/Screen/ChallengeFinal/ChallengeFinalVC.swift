@@ -27,7 +27,7 @@ class ChallengeFinalVC: UIViewController {
         .challengeNotComplete,
         .challengeNotComplete
     ]
-    
+
     // MARK: - IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var challengeListStackView: UIStackView!
