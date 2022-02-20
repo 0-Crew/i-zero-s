@@ -12,6 +12,9 @@ enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
     case auth(id: String, email: String, provider: String)
+
+    // 챌린지
+    case myChallengeAdd(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -28,6 +31,8 @@ extension APITarget: TargetType {
             return "/user/name"
         case .auth:
             return "/auth"
+        case .myChallengeAdd:
+            return "/my-challenge/add"
         }
     }
 
@@ -36,6 +41,8 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth:
             return .post
+        case .myChallengeAdd:
+            return .get
         }
     }
 
@@ -56,6 +63,8 @@ extension APITarget: TargetType {
         case .auth(let id, let email, let provider):
             return .requestParameters(parameters: ["snsId": id, "email": email, "provider": provider],
                                       encoding: JSONEncoding.default)
+        case .myChallengeAdd:
+            return .requestPlain
         }
     }
     var validationType: Moya.ValidationType {
@@ -66,7 +75,9 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token) :
+        case .userNick(_, let token):
+            return ["Content-Type": "application/json", "Authorization": token]
+        case .myChallengeAdd(let token):
             return ["Content-Type": "application/json", "Authorization": token]
         default:
             return ["Content-Type": "application/json"]
