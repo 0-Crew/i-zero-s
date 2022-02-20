@@ -40,6 +40,9 @@ class AccountNickVC: UIViewController {
         nickTextField.text = nick
         nickTextField.delegate = self
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
 }
 
 extension AccountNickVC: UITextFieldDelegate {
