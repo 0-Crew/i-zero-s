@@ -45,7 +45,7 @@
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="종이 컵홀더 안 쓰기" placeholder="참을 수 있는 불편함을 적어주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2E0-MM-rDf">
                     <rect key="frame" x="43" y="0.0" width="197" height="30"/>
-                    <color key="textColor" name="gray2"/>
+                    <color key="textColor" name="gray3"/>
                     <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                     <connections>
@@ -116,9 +116,6 @@
         <image name="icXBlack" width="20" height="20"/>
         <namedColor name="gray1">
             <color red="0.75700002908706665" green="0.73299998044967651" blue="0.6940000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="gray2">
-            <color red="0.68599998950958252" green="0.66699999570846558" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray3">
             <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -78,7 +78,7 @@ extension FinalChallengeViewState {
     var challengeTextFieldColor: UIColor {
         switch self {
         case .challengeNotComplete, .challengeWillEdit, .challengeEditing:
-            return .gray2
+            return .gray3
         case .challengeComplete:
             return .orangeMain
         }
