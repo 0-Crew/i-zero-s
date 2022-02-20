@@ -163,6 +163,7 @@
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
 		195AC71B275BD71F00BDECB6 /* TopTabBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopTabBarCell.xib; sourceTree = "<group>"; };
+		196961BF27C2A36100BC563B /* Code-Zero.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Code-Zero.entitlements"; sourceTree = "<group>"; };
 		197A654D276F748D00166255 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		197A6550276F784900166255 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		1998752A274F9D76004CD747 /* ChallengeTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTitleView.xib; sourceTree = "<group>"; };
@@ -574,6 +575,7 @@
 		A2B7BDCF2714214300F1DB1F /* Code-Zero */ = {
 			isa = PBXGroup;
 			children = (
+				196961BF27C2A36100BC563B /* Code-Zero.entitlements */,
 				A2DC88C8271C112D0099438A /* Global */,
 				A2DC88C9271C113B0099438A /* Screen */,
 				A2DC88CA271C11470099438A /* Support */,
@@ -1200,6 +1202,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DUQE66MABG;
@@ -1228,6 +1231,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DUQE66MABG;
