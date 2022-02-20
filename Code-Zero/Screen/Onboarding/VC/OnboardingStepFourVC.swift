@@ -22,7 +22,7 @@ class OnboardingStepFourVC: UIViewController {
     }
     private func initView() {
         animationView.play()
-        linkLabel.setUnderLineBoldFontWithLink(in: ["이용약관", "개인정보정책"])
+        linkLabel.setUnderLineBoldFont(in: ["이용약관", "개인정보정책"])
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(linkLabelDidTap(_:))

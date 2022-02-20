@@ -82,7 +82,9 @@ extension UILabel {
         self.attributedText = attributedString
     }
 
-    func setUnderLineBoldFontWithLink(in ranges: [String]) {
+    /// 특정 문자열에 밑줄 효과를 주는 함수
+    /// - Parameter ranges: 밑줄 효과를 주는 문자열 배열
+    func setUnderLineBoldFont(in ranges: [String]) {
         guard let text = self.text else { return }
         let attributedString = NSMutableAttributedString(string: text)
 
