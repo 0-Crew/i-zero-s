@@ -16,6 +16,7 @@ class SignInVC: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func loginButtonDidTap(_ sender: Any) {
+        requestLogin()
 
     }
 
@@ -34,5 +35,23 @@ extension SignInVC {
         titleLabel.textAlignment = .left
         subtitleLabel.setLineSpacing(lineSpacing: 5)
         subtitleLabel.textAlignment = .left
+    }
+
+    func requestLogin() {
+        UserLoginService.shared.requestLogin(id: "mini1234",
+                                             email: "xwoud@test.com",
+                                             provider: "apple") { [weak self] result in
+            switch result {
+
+            case .success(let data):
+                print(data)
+            case .requestErr(let error):
+                print(error)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("serverErr")
+            }
+        }
     }
 }

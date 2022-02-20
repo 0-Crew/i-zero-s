@@ -11,6 +11,7 @@ import Moya
 enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
+    case auth(id: String, email: String, provider: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -25,13 +26,15 @@ extension APITarget: TargetType {
         switch self {
         case .userNick:
             return "/user/name"
+        case .auth:
+            return "/auth"
         }
     }
 
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick:
+        case .userNick, .auth:
             return .post
         }
     }
@@ -50,6 +53,9 @@ extension APITarget: TargetType {
 
         case .userNick(let nick, _):
             return .requestParameters(parameters: ["name": nick], encoding: JSONEncoding.default)
+        case .auth(let id, let email, let provider):
+            return .requestParameters(parameters: ["snsId": id, "email": email, "provider": provider],
+                                      encoding: JSONEncoding.default)
         }
     }
     var validationType: Moya.ValidationType {
@@ -62,6 +68,8 @@ extension APITarget: TargetType {
         switch self {
         case .userNick(_, let token) :
             return ["Content-Type": "application/json", "Authorization": token]
+        default:
+            return ["Content-Type": "application/json"]
         }
     }
 }

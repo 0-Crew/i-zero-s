@@ -7,4 +7,9 @@
 
 import Foundation
 
-enum NetworkResult { }
+enum NetworkResult<T> {
+    case success(T)
+    case requestErr(String)
+    case serverErr
+    case networkFail
+}
