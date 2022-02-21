@@ -27,13 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     case .revoked:
                         // 인증만료 상태 -> 다시 로그인 하는 화면으로 이동
                         UserDefaults.standard.removeObject(forKey: "appleId")
-                        break
                     default:
                         break
                     }
                 }
             }
-            
             return true
         }
 
