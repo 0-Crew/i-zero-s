@@ -98,6 +98,23 @@ class ChallengeOpenVC: UIViewController {
 // MARK: - UI Method
 extension ChallengeOpenVC {
     private func initView() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        ChallengeOpenPreviewService
+            .shared
+            .requestChallengeAddPreview(token: token) { result in
+                switch result {
+                case .success(let previewData):
+                    dump(previewData)
+                case .requestErr(_):
+                    break
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
         previousStepButton.tintColor = .gray4
         progressBarView.snp.makeConstraints {
             let progressWidth = self.progressContainerView.frame.width
