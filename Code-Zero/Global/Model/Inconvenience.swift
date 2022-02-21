@@ -14,3 +14,12 @@ struct Inconvenience: Codable {
     let isDeleted: Bool
     let createdAt, updatedAt: String
 }
+
+// MARK: - Convenience
+struct Convenience: Codable {
+    let id: Int
+    let name: String
+    let isDeleted: Bool
+    let createdAt, updatedAt: String
+}
+

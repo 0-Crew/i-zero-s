@@ -10,7 +10,8 @@ import Moya
 
 // MARK: - ChallengePreviewData
 struct ChallengePreviewData: Codable {
-    let convenience, inconvenience: [Inconvenience]
+    let convenience: [Convenience]
+    let inconvenience: [Inconvenience]
 }
 
 class ChallengeOpenPreviewService {
