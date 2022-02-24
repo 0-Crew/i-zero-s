@@ -65,7 +65,7 @@ extension ChallengeOpenSecondStepView {
         bounds.origin.y = isEditing ? moveY : 0
     }
 
-    internal func setOptionList(options: [Inconvenience]) {
+    internal func setOptionList(options: [Convenience]) {
         optionList = options.map { $0.name } + ["직접입력"]
         optionTableView.reloadData()
         selectedInconvenientText = optionList[0]

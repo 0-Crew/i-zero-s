@@ -7,14 +7,15 @@
 
 import Foundation
 
-// MARK: - MyInconvenience
-struct MyInconvenience: Codable {
+// MARK: - Convenience
+struct Convenience: Codable {
     let id: Int
     let name, createdAt, updatedAt: String
     let isDeleted: Bool
-    let myChallengeID, day: Int
-    let isFinished: Bool
-    let userID: Int
+    let myChallengeID: Int?
+    let day: Int?
+    let isFinished: Bool?
+    let userID: Int?
 
     enum CodingKeys: String, CodingKey {
         case id, name, createdAt, updatedAt, isDeleted

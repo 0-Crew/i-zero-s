@@ -77,7 +77,7 @@ class ChallengeOpenVC: UIViewController {
         let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
         // swiftlint:enable line_length
         Indicator.shared.show()
-        ChallengeOpenPreviewService
+        ChallengeOpenService
             .shared
             .requestChallengeAddPreview(token: token) { [weak self] result in
                 switch result {

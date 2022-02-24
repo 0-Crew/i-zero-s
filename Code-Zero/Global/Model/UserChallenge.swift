@@ -1,5 +1,5 @@
 //
-//  MyChallenge.swift
+//  UserChallenge.swift
 //  Code-Zero
 //
 //  Created by 주혁 on 2022/02/21.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - MyChallenge
-struct MyChallenge: Codable {
+// MARK: - UserChallenge
+struct UserChallenge: Codable {
     let id: Int
     let isDeleted: Bool
     let createdAt, updatedAt, startedAt: String

@@ -11,11 +11,11 @@ import Moya
 // MARK: - ChallengePreviewData
 struct ChallengePreviewData: Codable {
     let convenience: [Convenience]
-    let inconvenience: [Inconvenience]
+    let inconvenience: [Convenience]
 }
 
-class ChallengeOpenPreviewService {
-    static let shared = ChallengeOpenPreviewService()
+class ChallengeOpenService {
+    static let shared = ChallengeOpenService()
     private lazy var service = MoyaProvider<APITarget>(plugins: [MoyaLoggingPlugin()])
 
     public func requestChallengeAddPreview(
