@@ -75,9 +75,7 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token):
-            return ["Content-Type": "application/json", "Authorization": token]
-        case .myChallengeAdd(let token):
+        case .userNick(_, let token), .myChallengeAdd(let token):
             return ["Content-Type": "application/json", "Authorization": token]
         default:
             return ["Content-Type": "application/json"]
