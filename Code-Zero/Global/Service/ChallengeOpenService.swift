@@ -22,7 +22,7 @@ class ChallengeOpenService {
         token: String,
         completion: @escaping (NetworkResult<ChallengePreviewData>) -> Void
     ) {
-        service.request(.myChallengeAdd(token: token)) { result in
+        service.request(.challengeOpenPreview(token: token)) { result in
             switch result {
             case .success(let response):
                 do {

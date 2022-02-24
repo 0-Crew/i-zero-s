@@ -55,7 +55,7 @@
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
 		6E1D336B27C2051800746CD5 /* FinalChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */; };
 		6E1D336D27C2053C00746CD5 /* FinalChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */; };
-		6E1D336F27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336E27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift */; };
+		6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */; };
 		6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337227C2B30C00746CD5 /* UserChallenge.swift */; };
 		6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337427C2B35000746CD5 /* Convenience.swift */; };
 		6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A58E927C3A0D500C84D7E /* Indicator.swift */; };
@@ -191,7 +191,7 @@
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
 		6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalChallengeView.xib; sourceTree = "<group>"; };
 		6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeView.swift; sourceTree = "<group>"; };
-		6E1D336E27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenPreviewService.swift; sourceTree = "<group>"; };
+		6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenService.swift; sourceTree = "<group>"; };
 		6E1D337227C2B30C00746CD5 /* UserChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallenge.swift; sourceTree = "<group>"; };
 		6E1D337427C2B35000746CD5 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		6E3A58E927C3A0D500C84D7E /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
@@ -726,7 +726,7 @@
 				1906C3FA27C239DD0020185C /* APITarget.swift */,
 				1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */,
 				1906C40227C240270020185C /* UserNickService.swift */,
-				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift */,
+				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1042,7 +1042,7 @@
 				6E5B24B8274D2C450071C9F2 /* EmptyChallengeCell.swift in Sources */,
 				19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */,
 				6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */,
-				6E1D336F27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift in Sources */,
+				6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */,
 				6E1D336D27C2053C00746CD5 /* FinalChallengeView.swift in Sources */,
 				19A142C4274FBA4F00E8DC45 /* ChallengedListView.swift in Sources */,
 				6E6E4A4A27AFCCEB00390493 /* Constants.swift in Sources */,

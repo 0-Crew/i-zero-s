@@ -14,7 +14,7 @@ enum APITarget {
     case auth(id: String, email: String, provider: String)
 
     // 챌린지
-    case myChallengeAdd(token: String)
+    case challengeOpenPreview(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -31,7 +31,7 @@ extension APITarget: TargetType {
             return "/user/name"
         case .auth:
             return "/auth"
-        case .myChallengeAdd:
+        case .challengeOpenPreview:
             return "/my-challenge/add"
         }
     }
@@ -41,7 +41,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth:
             return .post
-        case .myChallengeAdd:
+        case .challengeOpenPreview:
             return .get
         }
     }
@@ -63,7 +63,7 @@ extension APITarget: TargetType {
         case .auth(let id, let email, let provider):
             return .requestParameters(parameters: ["snsId": id, "email": email, "provider": provider],
                                       encoding: JSONEncoding.default)
-        case .myChallengeAdd:
+        case .challengeOpenPreview:
             return .requestPlain
         }
     }
@@ -75,7 +75,7 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token), .myChallengeAdd(let token):
+        case .userNick(_, let token), .challengeOpenPreview(let token):
             return ["Content-Type": "application/json", "Authorization": token]
         default:
             return ["Content-Type": "application/json"]
