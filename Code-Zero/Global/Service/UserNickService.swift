@@ -8,27 +8,28 @@
 import Foundation
 import Moya
 
-struct TokenDate: Codable {
-    let accesstoken: String
-}
-
 class UserLoginService {
     static let shared = UserLoginService()
     private lazy var service = MoyaProvider<APITarget>(plugins: [MoyaLoggingPlugin()])
 
     public func requestLogin(id: String,
-                             email: String,
+                             token: String,
                              provider: String,
-                             completion: @escaping (NetworkResult<GenericResponse<TokenDate>>) -> Void) {
+                             completion: @escaping (NetworkResult<UserLoginData>) -> Void) {
 
-        service.request(APITarget.auth(id: id, email: email, provider: provider)) { result in
+        service.request(APITarget.auth(idKey: id,
+                                       token: token,
+                                       provider: provider)) { result in
             switch result {
             case .success(let response):
                 do {
                     let decoder = JSONDecoder()
-                    let body = try decoder.decode(GenericResponse<TokenDate>.self, from: response.data)
-                    completion(.success(body))
-
+                    let body = try decoder.decode(
+                        GenericResponse<UserLoginData>.self,
+                        from: response.data
+                    )
+                    guard let data = body.data else { return }
+                    completion(.success(data))
                 } catch let error {
                     debugPrint(error)
                 }
@@ -38,6 +39,7 @@ class UserLoginService {
                     completion(.networkFail)
                 }
                 completion(.serverErr)
+                debugPrint(error)
             }
         }
     }

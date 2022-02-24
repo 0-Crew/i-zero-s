@@ -57,13 +57,17 @@ extension SignInVC {
         controller.performRequests()
     }
 
-    func requestLogin(id: String, email: String, provider: String) {
+    func requestLogin(id: String, token: String, provider: String) {
         UserLoginService.shared.requestLogin(id: id,
-                                             email: email,
+                                             token: token,
                                              provider: provider) { [weak self] result in
             switch result {
             case .success(let data):
-                print(data)
+                if data.type == "login" {
+                    // 로그인인 경우 -> 홈 화면으로 이동
+                } else {
+                    // 회원가입인 경우 -> 닉네임 설정 뷰로 이동
+                }
             case .requestErr(let error):
                 print(error)
             case .serverErr:
@@ -79,10 +83,13 @@ extension SignInVC: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let user = credential.user
-            UserDefaults.standard.set(user, forKey: "appleId")
-            if let email = credential.email { // 회원가입 시
-                requestLogin(id: user, email: email, provider: "apple")
+            if let identityToken = credential.identityToken,
+            let tokenString = String(data: identityToken, encoding: .utf8) {
+                requestLogin(id: credential.user,
+                             token: tokenString,
+                             provider: "apple")
+                UserDefaults.standard.set(credential.user,
+                                          forKey: "appleId")
             }
         }
     }

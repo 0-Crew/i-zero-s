@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448CF27C79D56004E8A10 /* UserLoginData.swift */; };
 		1906C3FB27C239DD0020185C /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FA27C239DD0020185C /* APITarget.swift */; };
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
 		1906C40327C240270020185C /* UserNickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserNickService.swift */; };
@@ -136,6 +137,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190448CF27C79D56004E8A10 /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		1906C3FA27C239DD0020185C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
 		1906C40227C240270020185C /* UserNickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNickService.swift; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
 				1906C40427C241330020185C /* SimpleData.swift */,
 				6E6E4A4927AFCCEB00390493 /* Constants.swift */,
+				190448CF27C79D56004E8A10 /* UserLoginData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
+				190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */,
