@@ -56,7 +56,6 @@ extension SignInVC {
         as? ASAuthorizationControllerPresentationContextProviding
         controller.performRequests()
     }
-
     func requestLogin(id: String, token: String, provider: String) {
         UserLoginService.shared.requestLogin(id: id,
                                              token: token,
@@ -64,9 +63,11 @@ extension SignInVC {
             switch result {
             case .success(let data):
                 if data.type == "login" {
-                    // 로그인인 경우 -> 홈 화면으로 이동
+                    // 로그인인 경우 -> 메인 화면으로 이동
+                    self?.moveChallengeVC()
                 } else {
                     // 회원가입인 경우 -> 닉네임 설정 뷰로 이동
+                    self?.moveNickSettingVC()
                 }
             case .requestErr(let error):
                 print(error)
@@ -76,6 +77,24 @@ extension SignInVC {
                 print("serverErr")
             }
         }
+    }
+    func moveChallengeVC() {
+        let storybard = UIStoryboard(name: "Challenge", bundle: nil)
+        let challengeVC = storybard.instantiateViewController(withIdentifier: "Challenge")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            challengeVC,
+            animated: true,
+            completion: nil
+        )
+    }
+    func moveNickSettingVC() {
+        guard let nickSettingVC = storyboard?.instantiateViewController(withIdentifier: "NickSettingVC")
+        else { return }
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            nickSettingVC,
+            animated: true,
+            completion: nil
+        )
     }
 }
 // MARK: - ASAuthorizationControllerDelegate
