@@ -55,6 +55,10 @@ extension ChallengeOpenFirstStepView {
         containerView.setBorder(borderColor: .gray2, borderWidth: 1)
         editButton.isHidden = false
     }
+    internal func setTextFieldPlaceHolder(examples: [Convenience]) {
+        let randomConvenience = examples.randomElement()
+        convenientInputTextField.placeholder = randomConvenience?.name
+    }
 }
 
 // MARK: - UITextFieldDelegate
