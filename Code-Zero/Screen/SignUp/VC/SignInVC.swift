@@ -62,13 +62,7 @@ extension SignInVC {
                                              provider: provider) { [weak self] result in
             switch result {
             case .success(let data):
-                if data.type == "login" {
-                    // 로그인인 경우 -> 메인 화면으로 이동
-                    self?.moveChallengeVC()
-                } else {
-                    // 회원가입인 경우 -> 닉네임 설정 뷰로 이동
-                    self?.moveNickSettingVC()
-                }
+                data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
             case .requestErr(let error):
                 print(error)
             case .serverErr:
