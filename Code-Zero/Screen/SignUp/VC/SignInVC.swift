@@ -16,11 +16,6 @@ class SignInVC: UIViewController {
     @IBOutlet weak var appleLoginView: UIView!
     @IBOutlet weak var subtitleLabel: UILabel!
 
-    // MARK: - @IBAction
-    @IBAction func loginButtonDidTap(_ sender: Any) {
-
-    }
-
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

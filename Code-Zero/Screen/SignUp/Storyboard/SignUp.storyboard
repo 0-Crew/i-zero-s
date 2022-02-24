@@ -80,9 +80,6 @@ Bottle</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="카카오톡 로그인"/>
-                                                        <connections>
-                                                            <action selector="loginButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="H0M-Uu-ydC"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="separatorColor"/>
