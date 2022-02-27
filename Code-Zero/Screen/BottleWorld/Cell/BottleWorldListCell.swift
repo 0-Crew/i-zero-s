@@ -34,6 +34,7 @@ class BottleWorldListCell: UICollectionViewCell {
         super.awakeFromNib()
         setView()
         setUserListView()
+        searchTextField.delegate = self
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         endEditing(true)
@@ -61,6 +62,16 @@ class BottleWorldListCell: UICollectionViewCell {
             $0.width.equalTo(searchResultView.snp.width)
         }
         userListView.delegate = self
+    }
+}
+
+extension BottleWorldListCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            userListView.filteringText = text
+        }
+        endEditing(true)
+        return true
     }
 }
 
