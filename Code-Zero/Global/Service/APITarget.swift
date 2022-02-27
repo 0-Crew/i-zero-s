@@ -15,6 +15,12 @@ enum APITarget {
 
     // 챌린지
     case challengeOpenPreview(token: String)
+    case challengeOpen(
+        convenienceString: String,
+        inconvenienceString: String,
+        isfromToday: Bool,
+        token: String
+    )
 }
 
 // MARK: TargetType Protocol 구현
@@ -33,13 +39,15 @@ extension APITarget: TargetType {
             return "/auth"
         case .challengeOpenPreview:
             return "/my-challenge/add"
+        case .challengeOpen:
+            return "/my-challenge/add"
         }
     }
 
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick, .auth:
+        case .userNick, .auth, .challengeOpen:
             return .post
         case .challengeOpenPreview:
             return .get
@@ -65,6 +73,12 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default)
         case .challengeOpenPreview:
             return .requestPlain
+        case .challengeOpen(let convenienceString, let inconvenienceString, let isfromToday, _):
+            return .requestParameters(parameters: ["convenienceString": convenienceString,
+                                                   "inconvenienceString": inconvenienceString,
+                                                   "isfromToday": isfromToday],
+                                      encoding: JSONEncoding.default
+            )
         }
     }
     var validationType: Moya.ValidationType {
@@ -75,7 +89,8 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token), .challengeOpenPreview(let token):
+        case .userNick(_, let token), .challengeOpenPreview(let token),
+                .challengeOpen(_, _, _, let token):
             return ["Content-Type": "application/json", "Authorization": token]
         default:
             return ["Content-Type": "application/json"]
