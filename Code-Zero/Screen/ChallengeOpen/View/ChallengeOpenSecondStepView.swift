@@ -64,6 +64,15 @@ extension ChallengeOpenSecondStepView {
         let moveY = willComeUpHeight - bottomEmptyHeight
         bounds.origin.y = isEditing ? moveY : 0
     }
+
+    internal func setOptionList(options: [Convenience]) {
+        optionList = options.map { $0.name } + ["직접입력"]
+        optionTableView.reloadData()
+        selectedInconvenientText = optionList[0]
+        inconvenientInputTextField.text = optionList[0]
+        inconvenientInputTextField.placeholder = optionList.randomElement()
+        optionTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+    }
 }
 // MARK: - UITextFieldDelegate
 extension ChallengeOpenSecondStepView: UITextFieldDelegate {

@@ -55,6 +55,9 @@
                     <state key="normal" title="희영룰룰루" image="icArrowRightDark">
                         <color key="titleColor" name="darkGray2"/>
                     </state>
+                    <connections>
+                        <action selector="nickButtonDidTap:" destination="-1" eventType="touchUpInside" id="zvd-RI-SUb"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="khy1234@naver.com " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmf-aQ-kMr">
                     <rect key="frame" x="30" y="92" width="138" height="18.5"/>

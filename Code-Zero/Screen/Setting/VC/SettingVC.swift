@@ -30,15 +30,20 @@ class SettingVC: UIViewController {
 
 // MARK: - Set View Info
 extension SettingVC {
-
     func setUserInfoView() {
         if isUser {
             let isUserView = UserView(frame: CGRect(x: 0,
                                                     y: 0,
                                                     width: userInfoView.frame.width,
                                                     height: userInfoView.frame.height))
+            let navigationClosure: (UIViewController) -> Void = { view in
+                self.navigationController?.pushViewController(view, animated: true)
+            }
+
             userInfoView.addSubview(isUserView)
             isUserView.setUserInfo(nick: "김미니미니", email: "xwoud@naver.com")
+            isUserView.moveViewController = navigationClosure
+
         } else {
             let isNotUserView = NotUserView(frame: CGRect(x: 0,
                                                           y: 0,

@@ -72,6 +72,28 @@ class ChallengeOpenVC: UIViewController {
     private func completeChallenge() {
         userInputTextTuple.isTodayStart = thirdStepView.isTodayStart
     }
+    private func fetchChallengePreviewData() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        Indicator.shared.show()
+        ChallengeOpenService
+            .shared
+            .requestChallengeAddPreview(token: token) { [weak self] result in
+                switch result {
+                case .success(let previewData):
+                    self?.firstStepView.setTextFieldPlaceHolder(examples: previewData.convenience)
+                    self?.secondStepView.setOptionList(options: previewData.inconvenience)
+                    Indicator.shared.dismiss()
+                case .requestErr(_):
+                    break
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
 
     // MARK: - IBAction Method
     @IBAction func nextButtonDidTap() {
@@ -117,6 +139,7 @@ extension ChallengeOpenVC {
             var view = $0 as? ChallengeOpenStepViewType
             view?.delegate = self
         }
+        fetchChallengePreviewData()
     }
 
     private func present(to step: ChallengeOpenStep) {
