@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448CF27C79D56004E8A10 /* UserLoginData.swift */; };
 		1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3F827C227140020185C /* AccountDeleteVC.swift */; };
 		1906C3FB27C239DD0020185C /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FA27C239DD0020185C /* APITarget.swift */; };
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
-		1906C40327C240270020185C /* UserNickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserNickService.swift */; };
+		1906C40327C240270020185C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserLoginService.swift */; };
 		1906C40527C241330020185C /* SimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40427C241330020185C /* SimpleData.swift */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
@@ -145,10 +146,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190448CF27C79D56004E8A10 /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		1906C3F827C227140020185C /* AccountDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteVC.swift; sourceTree = "<group>"; };
 		1906C3FA27C239DD0020185C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
-		1906C40227C240270020185C /* UserNickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNickService.swift; sourceTree = "<group>"; };
+		1906C40227C240270020185C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
 		1906C40427C241330020185C /* SimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleData.swift; sourceTree = "<group>"; };
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
 		195AC71B275BD71F00BDECB6 /* TopTabBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopTabBarCell.xib; sourceTree = "<group>"; };
+		196961BF27C2A36100BC563B /* Code-Zero.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Code-Zero.entitlements"; sourceTree = "<group>"; };
 		197A654D276F748D00166255 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		197A6550276F784900166255 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		1998752A274F9D76004CD747 /* ChallengeTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTitleView.xib; sourceTree = "<group>"; };
@@ -621,6 +624,7 @@
 		A2B7BDCF2714214300F1DB1F /* Code-Zero */ = {
 			isa = PBXGroup;
 			children = (
+				196961BF27C2A36100BC563B /* Code-Zero.entitlements */,
 				A2DC88C8271C112D0099438A /* Global */,
 				A2DC88C9271C113B0099438A /* Screen */,
 				A2DC88CA271C11470099438A /* Support */,
@@ -713,6 +717,7 @@
 				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
 				1906C40427C241330020185C /* SimpleData.swift */,
 				6E6E4A4927AFCCEB00390493 /* Constants.swift */,
+				190448CF27C79D56004E8A10 /* UserLoginData.swift */,
 				6E1D337427C2B35000746CD5 /* Convenience.swift */,
 				6E1D337227C2B30C00746CD5 /* UserChallenge.swift */,
 			);
@@ -725,7 +730,7 @@
 				A2DC88D7271C12A90099438A /* NetworkResult.swift */,
 				1906C3FA27C239DD0020185C /* APITarget.swift */,
 				1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */,
-				1906C40227C240270020185C /* UserNickService.swift */,
+				1906C40227C240270020185C /* UserLoginService.swift */,
 				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift */,
 			);
 			path = Service;
@@ -1056,6 +1061,7 @@
 				1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
+				190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */,
@@ -1063,7 +1069,7 @@
 				195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */,
 				194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
-				1906C40327C240270020185C /* UserNickService.swift in Sources */,
+				1906C40327C240270020185C /* UserLoginService.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
@@ -1260,6 +1266,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DUQE66MABG;
@@ -1275,7 +1282,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1288,6 +1295,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DUQE66MABG;
@@ -1303,7 +1311,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
