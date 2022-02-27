@@ -69,4 +69,33 @@ class BottleWorldService {
             }
         }
     }
+
+    // 보틀월드 팔로잉 목록 API
+    public func requestBottleWoldFollowing(
+        token: String,
+        keyword: String?,
+        completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
+    ) {
+        service.request(.bottleWorldFollowing(token: token,
+                                             keyword: keyword)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<[BottleWorldUser]>.self,
+                        from: response.data
+                    )
+                    if let data = body.data {
+                        completion(.success(data))
+                    }
+                } catch let error {
+                    debugPrint(error)
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
 }
