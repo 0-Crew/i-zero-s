@@ -73,12 +73,11 @@ class ChallengeOpenService {
                         GenericResponse<ChallengeMainData>.self,
                         from: response.data
                     )
-
-                    if let data = body.data {
-                        print(data)
+                    if body.data != nil {
                         completion(.success(true))
+                    } else {
+                        completion(.requestErr("챌린지 오픈 실패"))
                     }
-
                 } catch let error {
                     debugPrint(error)
                 }
@@ -89,8 +88,3 @@ class ChallengeOpenService {
         }
     }
 }
-//{
-//    "convenienceString": "일회용 컵에 커피 마시기",
-//    "inconvenienceString": "물티슈 쓰지 않기",
-//    "isfromToday": false
-//}

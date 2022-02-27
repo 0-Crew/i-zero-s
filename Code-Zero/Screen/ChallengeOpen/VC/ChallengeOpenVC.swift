@@ -85,8 +85,8 @@ class ChallengeOpenVC: UIViewController {
                     self?.secondStepView.setOptionList(options: previewData.inconvenience)
                     self?.firstStepView.setTextFieldPlaceHolder(examples: previewData.convenience)
                     Indicator.shared.dismiss()
-                case .requestErr(_):
-                    break
+                case .requestErr(let message):
+                    debugPrint(message)
                 case .serverErr:
                     break
                 case .networkFail:
@@ -109,10 +109,12 @@ class ChallengeOpenVC: UIViewController {
                 token: token
             ) { result in
                 switch result {
-                case .success(_):
-                    self.dismiss(animated: true, completion: nil)
-                case .requestErr(_):
-                    break
+                case .success(let result):
+                    if result {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                case .requestErr(let message):
+                    debugPrint(message)
                 case .serverErr:
                     break
                 case .networkFail:
