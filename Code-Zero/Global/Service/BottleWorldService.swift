@@ -39,4 +39,32 @@ class BottleWorldService {
             }
         }
     }
+
+    public func requestBottleWoldFollower(
+        token: String,
+        keyword: String?,
+        completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
+    ) {
+        service.request(.bottleWorldFollower(token: token,
+                                           keyword: keyword)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<[BottleWorldUser]>.self,
+                        from: response.data
+                    )
+                    if let data = body.data {
+                        completion(.success(data))
+                    }
+                } catch let error {
+                    debugPrint(error)
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
 }
