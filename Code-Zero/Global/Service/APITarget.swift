@@ -100,7 +100,10 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token), .challengeOpenPreview(let token), .challengeOpen(_, _, _, let token), .bottleWorldBrowse(let token, _):
+        case .userNick(_, let token),
+                .challengeOpenPreview(let token),
+                .challengeOpen(_, _, _, let token),
+                .bottleWorldBrowse(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
