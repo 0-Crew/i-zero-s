@@ -112,6 +112,7 @@ extension UserListView: UITableViewDataSource {
     }
 }
 
+// MARK: - Network Function
 extension UserListView {
     private func makeDumyData() {
         let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "플라스틱 빨대사용하기플라스틱 빨대사용", term: "12/8-13", follow: true)
@@ -135,6 +136,7 @@ extension UserListView {
     }
 }
 
+// MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(index: Int) {
         // 팔로우, 팔로잉 서버 연결 코드 작성 예정
