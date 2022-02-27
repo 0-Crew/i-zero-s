@@ -72,58 +72,7 @@ class ChallengeOpenVC: UIViewController {
     private func completeChallenge() {
         userInputTextTuple.isTodayStart = thirdStepView.isTodayStart
     }
-    private func fetchChallengePreviewData() {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
-        // swiftlint:enable line_length
-        Indicator.shared.show()
-        ChallengeOpenService
-            .shared
-            .requestChallengeAddPreview(token: token) { [weak self] result in
-                switch result {
-                case .success(let previewData):
-                    self?.secondStepView.setOptionList(options: previewData.inconvenience)
-                    self?.firstStepView.setTextFieldPlaceHolder(examples: previewData.convenience)
-                    Indicator.shared.dismiss()
-                case .requestErr(let message):
-                    debugPrint(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
 
-    private func requestChallengeOpen() {
-        Indicator.shared.show()
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
-        // swiftlint:enable line_length
-        guard let isFromToday = userInputTextTuple.isTodayStart else { return }
-        ChallengeOpenService
-            .shared
-            .requestChallengeOpen(
-                convenienceString: userInputTextTuple.convenienceText,
-                inconvenienceString: userInputTextTuple.inconvenienceText,
-                isFromToday: isFromToday,
-                token: token
-            ) { result in
-                switch result {
-                case .success(let result):
-                    if result {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                case .requestErr(let message):
-                    debugPrint(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-                Indicator.shared.dismiss()
-            }
-    }
 
     // MARK: - IBAction Method
     @IBAction func nextButtonDidTap() {
@@ -201,6 +150,62 @@ extension ChallengeOpenVC {
             $0.width.equalTo(step.openStepImageStyle.width)
         }
         nextButton.setTitle(step.nextStepTitle, for: .normal)
+    }
+}
+
+// MARK: - Network
+extension ChallengeOpenVC {
+    private func fetchChallengePreviewData() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        Indicator.shared.show()
+        ChallengeOpenService
+            .shared
+            .requestChallengeAddPreview(token: token) { [weak self] result in
+                switch result {
+                case .success(let previewData):
+                    self?.secondStepView.setOptionList(options: previewData.inconvenience)
+                    self?.firstStepView.setTextFieldPlaceHolder(examples: previewData.convenience)
+                    Indicator.shared.dismiss()
+                case .requestErr(let message):
+                    debugPrint(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
+
+    private func requestChallengeOpen() {
+        Indicator.shared.show()
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        guard let isFromToday = userInputTextTuple.isTodayStart else { return }
+        ChallengeOpenService
+            .shared
+            .requestChallengeOpen(
+                convenienceString: userInputTextTuple.convenienceText,
+                inconvenienceString: userInputTextTuple.inconvenienceText,
+                isFromToday: isFromToday,
+                token: token
+            ) { result in
+                switch result {
+                case .success(let result):
+                    if result {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                case .requestErr(let message):
+                    debugPrint(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+                Indicator.shared.dismiss()
+            }
     }
 }
 
