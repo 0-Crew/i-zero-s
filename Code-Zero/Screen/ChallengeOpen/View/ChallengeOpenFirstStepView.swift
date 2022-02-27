@@ -56,6 +56,7 @@ extension ChallengeOpenFirstStepView {
         editButton.isHidden = false
     }
     internal func setTextFieldPlaceHolder(examples: [Convenience]) {
+        delegate?.challengeStepCanPass(step: .first, canPass: false)
         let randomConvenience = examples.randomElement()
         convenientInputTextField.placeholder = randomConvenience?.name
     }

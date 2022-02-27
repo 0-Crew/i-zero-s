@@ -17,7 +17,13 @@ enum APITarget {
     case bottleWorldBrowse(token: String, keyword: String?)
 
     // 챌린지
-    case myChallengeAdd(token: String)
+    case challengeOpenPreview(token: String)
+    case challengeOpen(
+        convenienceString: String,
+        inconvenienceString: String,
+        isFromToday: Bool,
+        token: String
+    )
 }
 
 // MARK: TargetType Protocol 구현
@@ -34,7 +40,7 @@ extension APITarget: TargetType {
             return "/user/name"
         case .auth:
             return "/auth"
-        case .myChallengeAdd:
+        case .challengeOpenPreview, .challengeOpen:
             return "/my-challenge/add"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
@@ -44,9 +50,9 @@ extension APITarget: TargetType {
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick, .auth:
+        case .userNick, .auth, .challengeOpen:
             return .post
-        case .myChallengeAdd, .bottleWorldBrowse:
+        case .challengeOpenPreview, .bottleWorldBrowse:
             return .get
         }
     }
@@ -74,8 +80,14 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .myChallengeAdd:
+        case .challengeOpenPreview:
             return .requestPlain
+        case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
+            return .requestParameters(parameters: ["convenienceString": convenienceString,
+                                                   "inconvenienceString": inconvenienceString,
+                                                   "isfromToday": isFromToday],
+                                      encoding: JSONEncoding.default
+            )
         }
     }
     var validationType: Moya.ValidationType {
@@ -86,7 +98,10 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token), .myChallengeAdd(let token), .bottleWorldBrowse(let token, _):
+        case .userNick(_, let token),
+                .challengeOpenPreview(let token),
+                .challengeOpen(_, _, _, let token),
+                .bottleWorldBrowse(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
