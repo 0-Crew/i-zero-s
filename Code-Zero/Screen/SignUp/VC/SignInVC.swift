@@ -90,15 +90,14 @@ extension SignInVC {
 extension SignInVC: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            if let identityToken = credential.identityToken,
-            let tokenString = String(data: identityToken, encoding: .utf8) {
-                requestLogin(id: credential.user,
-                             token: tokenString,
-                             provider: "apple")
-                UserDefaults.standard.set(credential.user,
-                                          forKey: "appleId")
-            }
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+           let identityToken = credential.identityToken,
+           let tokenString = String(data: identityToken, encoding: .utf8) {
+            requestLogin(id: credential.user,
+                         token: tokenString,
+                         provider: "apple")
+            UserDefaults.standard.set(credential.user,
+                                      forKey: "appleId")
         }
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
