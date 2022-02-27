@@ -72,7 +72,10 @@ class UserListView: UIView {
         let refresh = UIRefreshControl()
         let loadingView = AnimationView(name: "loading")
         loadingView.play()
-        loadingView.frame = CGRect(x: userListTableView.frame.width/2 - 25, y: 5, width: 50, height: 50)
+        loadingView.frame = CGRect(x: UIScreen.main.bounds.size.width/2 - 25,
+                                   y: 5,
+                                   width: 50,
+                                   height: 50)
         loadingView.contentMode = .scaleToFill
         loadingView.loopMode = .loop
         refresh.tintColor = .clear
