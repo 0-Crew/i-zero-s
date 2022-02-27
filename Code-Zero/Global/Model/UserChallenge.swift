@@ -10,14 +10,15 @@ import Foundation
 // MARK: - UserChallenge
 struct UserChallenge: Codable {
     let id: Int
-    let isDeleted: Bool
-    let createdAt, updatedAt, startedAt: String
+    let isDeleted: Bool?
+    let createdAt, updatedAt, count: String?
+    let startedAt: String
     let userID: Int
     let name: String
 
     enum CodingKeys: String, CodingKey {
         case id, isDeleted, createdAt, updatedAt, startedAt
         case userID = "userId"
-        case name
+        case name, count
     }
 }
