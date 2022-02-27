@@ -8,9 +8,15 @@
 import Foundation
 
 extension String {
+
+    // origin 포맷에서 change 포맷의 시간 string으로 바꿔주는 함수
     func recordDate(origin: String,
                     change: String) -> String {
-        var format = origin
+        /*
+         origin : 원래 시간 string의 포맷을 적어주세요
+         change : 바꾸고 싶은 시간 string의 포맷을 적어주세요
+         */
+        let format = origin
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
@@ -20,8 +26,7 @@ extension String {
         formatter.dateFormat = change
         return formatter.string(from: tempDate)
     }
-
-    func toDate() -> Date? { 
+    func toDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
