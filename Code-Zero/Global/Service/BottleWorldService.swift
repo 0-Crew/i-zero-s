@@ -18,7 +18,7 @@ class BottleWorldService {
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldBrowse(token: token,
-                                           keyworkd: keyword)) { result in
+                                           keyword: keyword)) { result in
             switch result {
             case .success(let response):
                 do {
