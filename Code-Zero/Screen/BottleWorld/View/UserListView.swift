@@ -25,11 +25,20 @@ class UserListView: UIView {
         case follower
         case following
     }
-    var lookAroundUser: [UserData] = []
+    var lookAroundUser: [BottleWorldUser] = []
     var follower: [UserData] = []
     var following: [UserData] = []
     var tapType: UserListTapType = .lookAround
-    var filteringText: String? // 필터링 할 단어
+    var filteringText: String? { // 필터링 할 단어
+        didSet {
+            guard let filter = filteringText else {
+                fetchBrowserData(keyword: nil)
+                return
+            }
+            fetchBrowserData(keyword: filter)
+        }
+    }
+    var delegate: BottleWorldUsersDelegate?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
@@ -38,6 +47,7 @@ class UserListView: UIView {
         super.init(frame: frame)
         loadView()
         makeDumyData()
+        fetchBrowserData(keyword: nil)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -62,7 +72,10 @@ class UserListView: UIView {
         let refresh = UIRefreshControl()
         let loadingView = AnimationView(name: "loading")
         loadingView.play()
-        loadingView.frame = CGRect(x: userListTableView.frame.width/2 - 25, y: 5, width: 50, height: 50)
+        loadingView.frame = CGRect(x: UIScreen.main.bounds.size.width/2 - 25,
+                                   y: 5,
+                                   width: 50,
+                                   height: 50)
         loadingView.contentMode = .scaleToFill
         loadingView.loopMode = .loop
         refresh.tintColor = .clear
@@ -71,8 +84,10 @@ class UserListView: UIView {
         userListTableView.addSubview(refresh)
     }
     @objc private func updateTableViewData(refressh: UIRefreshControl) {
-        refressh.endRefreshing()
-        userListTableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.fetchBrowserData(keyword: self.filteringText)
+            refressh.endRefreshing()
+        }
     }
 }
 
@@ -102,7 +117,7 @@ extension UserListView: UITableViewDataSource {
         cell.cellIndex = indexPath // 나중에는 여기에 인덱스 대신에 나중에는 유저 고유 이메일 같은거가 들어가야 할 듯
         switch tapType {
         case .lookAround:
-            cell.setUserInfo(user: lookAroundUser[indexPath.row])
+            cell.fetchUserData(data: lookAroundUser[indexPath.row])
         case .follower:
             cell.setUserInfo(user: follower[indexPath.row])
         case .following:
@@ -112,9 +127,11 @@ extension UserListView: UITableViewDataSource {
     }
 }
 
+// MARK: - Network Function
 extension UserListView {
     private func makeDumyData() {
-        let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "플라스틱 빨대사용하기플라스틱 빨대사용", term: "12/8-13", follow: true)
+        let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "플라스틱 빨대사용하기플라스틱 빨대사용",
+                             term: "12/8-13", follow: true)
         let data2 = UserData(name: "주혁이", bottleLevel: 0, subject: "일회용컵으로 커피 마시기",
                              term: "12/1-8", follow: false)
         let data3 = UserData(name: "민희", bottleLevel: 3, subject: "텀블러 가지고 다니기",
@@ -129,18 +146,43 @@ extension UserListView {
                              term: "12/13-20", follow: true)
         let data8 = UserData(name: "미니테스트중", bottleLevel: 7, subject: nil,
                              term: nil, follow: true)
-        lookAroundUser = [data1, data2, data3, data4, data5, data6, data7, data8]
         follower = [data1, data4, data5, data7, data8]
         following = [data2, data3, data6]
     }
+    private func fetchBrowserData(keyword: String?) {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
+        // swiftlint:enable line_length
+        BottleWorldService
+            .shared
+            .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
+                switch result {
+                case .success(let userData):
+                    self?.lookAroundUser = userData
+                    if userData.count == 0 {
+                        self?.delegate?.presentEmptyUserView()
+                        break
+                    }
+                    self?.delegate?.presentUserListView()
+                    self?.userListTableView.reloadData()
+                case .requestErr(let error):
+                    print(error)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
 }
 
+// MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(index: Int) {
         // 팔로우, 팔로잉 서버 연결 코드 작성 예정
         switch tapType {
         case .lookAround:
-            lookAroundUser[index].follow = !lookAroundUser[index].follow
+            break
         case .follower:
             follower[index].follow = !follower[index].follow
         case .following:
