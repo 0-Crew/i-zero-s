@@ -18,7 +18,7 @@ enum APITarget {
     case challengeOpen(
         convenienceString: String,
         inconvenienceString: String,
-        isfromToday: Bool,
+        isFromToday: Bool,
         token: String
     )
 }
@@ -73,10 +73,10 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default)
         case .challengeOpenPreview:
             return .requestPlain
-        case .challengeOpen(let convenienceString, let inconvenienceString, let isfromToday, _):
+        case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
                                                    "inconvenienceString": inconvenienceString,
-                                                   "isfromToday": isfromToday],
+                                                   "isfromToday": isFromToday],
                                       encoding: JSONEncoding.default
             )
         }
