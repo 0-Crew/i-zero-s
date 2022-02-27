@@ -82,9 +82,35 @@ class ChallengeOpenVC: UIViewController {
             .requestChallengeAddPreview(token: token) { [weak self] result in
                 switch result {
                 case .success(let previewData):
-                    self?.firstStepView.setTextFieldPlaceHolder(examples: previewData.convenience)
                     self?.secondStepView.setOptionList(options: previewData.inconvenience)
+                    self?.firstStepView.setTextFieldPlaceHolder(examples: previewData.convenience)
                     Indicator.shared.dismiss()
+                case .requestErr(_):
+                    break
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
+
+    private func requestChallengeOpen() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        guard let isFromToday = userInputTextTuple.isTodayStart else { return }
+        ChallengeOpenService
+            .shared
+            .requestChallengeOpen(
+                convenienceString: userInputTextTuple.convenienceText,
+                inconvenienceString: userInputTextTuple.inconvenienceText,
+                isFromToday: isFromToday,
+                token: token
+            ) { result in
+                switch result {
+                case .success(_):
+                    self.dismiss(animated: true, completion: nil)
                 case .requestErr(_):
                     break
                 case .serverErr:
@@ -98,9 +124,8 @@ class ChallengeOpenVC: UIViewController {
     // MARK: - IBAction Method
     @IBAction func nextButtonDidTap() {
         guard let nextStep = ChallengeOpenStep(rawValue: currentStep.rawValue + 1) else {
-            // TODO: 챌린지 오픈 완료 시 동작
             completeChallenge()
-            dismiss(animated: true, completion: nil)
+            requestChallengeOpen()
             return
         }
         view.endEditing(true)
