@@ -40,9 +40,7 @@ extension APITarget: TargetType {
             return "/user/name"
         case .auth:
             return "/auth"
-        case .challengeOpenPreview:
-            return "/my-challenge/add"
-        case .challengeOpen:
+        case .challengeOpenPreview, .challengeOpen:
             return "/my-challenge/add"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
