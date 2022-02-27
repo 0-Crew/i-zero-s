@@ -14,7 +14,7 @@ enum APITarget {
     case auth(id: String, email: String, provider: String)
 
     // 보틀월드
-    case bottleWorldBrowse(token: String, keyworkd: String?)
+    case bottleWorldBrowse(token: String, keyword: String?)
 
     // 챌린지
     case myChallengeAdd(token: String)
@@ -73,7 +73,7 @@ extension APITarget: TargetType {
                 return .requestPlain
             }
             return .requestParameters(parameters: ["keyword": keyword],
-                                      encoding: JSONEncoding.default)
+                                      encoding: URLEncoding.queryString)
         case .myChallengeAdd:
             return .requestPlain
         }
