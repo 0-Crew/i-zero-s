@@ -11,7 +11,7 @@ import Moya
 enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
-    case auth(id: String, email: String, provider: String)
+    case auth(idKey: String, token: String, provider: String)
 
     // 보틀월드
     case bottleWorldBrowse(token: String, keyword: String?)
@@ -65,8 +65,8 @@ extension APITarget: TargetType {
 
         case .userNick(let nick, _):
             return .requestParameters(parameters: ["name": nick], encoding: JSONEncoding.default)
-        case .auth(let id, let email, let provider):
-            return .requestParameters(parameters: ["snsId": id, "email": email, "provider": provider],
+        case .auth(let idKey, let token, let provider):
+            return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
                                       encoding: JSONEncoding.default)
         case .bottleWorldBrowse(_, let keyword):
             guard let keyword = keyword else {
