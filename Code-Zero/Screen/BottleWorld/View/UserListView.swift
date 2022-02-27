@@ -84,8 +84,10 @@ class UserListView: UIView {
         userListTableView.addSubview(refresh)
     }
     @objc private func updateTableViewData(refressh: UIRefreshControl) {
-        refressh.endRefreshing()
-        userListTableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.fetchBrowserData(keyword: self.filteringText)
+            refressh.endRefreshing()
+        }
     }
 }
 
