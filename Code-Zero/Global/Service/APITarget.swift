@@ -87,6 +87,8 @@ extension APITarget: TargetType {
             return "/my-inconvenience/update"
         case .notificationButton:
             return "/notification/button"
+        case .bottleWorldFollower:
+            return "/bottleworld/follower"
         }
     }
 
@@ -95,10 +97,11 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen, .notificationButton:
             return .post
+<<<<<<< HEAD
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .myCalendar, .userCalendar,
-                .userInfo, .myChallengeFetch, .myChallengeUser:
+                .userInfo, .myChallengeFetch, .myChallengeUserm, .bottleWorldFollower:
             return .get
         case .deleteAuth:
             return .delete
@@ -195,6 +198,7 @@ extension APITarget: TargetType {
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _):
+                .bottleWorldFollower(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
