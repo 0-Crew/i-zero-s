@@ -79,11 +79,7 @@ extension SignInVC {
     func moveNickSettingVC() {
         guard let nickSettingVC = storyboard?.instantiateViewController(withIdentifier: "NickSettingVC")
         else { return }
-        UIApplication.shared.windows.first?.replaceRootViewController(
-            nickSettingVC,
-            animated: true,
-            completion: nil
-        )
+        navigationController?.pushViewController(nickSettingVC, animated: true)
     }
 }
 // MARK: - ASAuthorizationControllerDelegate
