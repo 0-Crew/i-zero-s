@@ -24,6 +24,7 @@ enum APITarget {
         isFromToday: Bool,
         token: String
     )
+    case myChallengeFetch(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -42,6 +43,8 @@ extension APITarget: TargetType {
             return "/auth"
         case .challengeOpenPreview, .challengeOpen:
             return "/my-challenge/add"
+        case .myChallengeFetch:
+            return "/my-challenge/main"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
         }
@@ -52,7 +55,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .challengeOpenPreview, .bottleWorldBrowse:
+        case .challengeOpenPreview, .bottleWorldBrowse, .myChallengeFetch:
             return .get
         }
     }
@@ -80,7 +83,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview:
+        case .challengeOpenPreview, .myChallengeFetch(_):
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
@@ -101,7 +104,8 @@ extension APITarget: TargetType {
         case .userNick(_, let token),
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
-                .bottleWorldBrowse(let token, _):
+                .bottleWorldBrowse(let token, _),
+                .myChallengeFetch(let token):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
