@@ -9,14 +9,6 @@ import UIKit
 import Lottie
 import SnapKit
 
-struct UserData {
-    let name: String
-    let bottleLevel: Int
-    let subject: String?
-    let term: String?
-    var follow: Bool
-}
-
 class UserListView: UIView {
 
     // MARK: - Property
