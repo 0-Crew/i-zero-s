@@ -45,22 +45,6 @@ extension UserListCell {
         followButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         selectionStyle = .none
     }
-    func setUserInfo(user: UserData) {
-        if user.term != nil {
-            challengeTermLabel.isHidden = false
-            challengeTermLabel.text = user.term
-            challengeLabel.text = user.subject
-            challengeLabel.textColor = .orangeMain
-        } else {
-            challengeTermLabel.isHidden = true
-            challengeLabel.text = "보틀 씻는 중"
-            challengeLabel.textColor = .gray2
-        }
-        bottleImage.image = UIImage(named: "icBottleMain\(user.bottleLevel)")
-        user.follow ? setFollowButton() : setFollowingButton()
-        userNameLabel.text = "\(user.name)의 보틀"
-        userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [user.name])
-    }
     func fetchUserData(data: BottleWorldUser) {
         challengeTermLabel.isHidden = false
         let challengeTerm = getChallengeWeek(startDate: data.challenge.startedAt)
