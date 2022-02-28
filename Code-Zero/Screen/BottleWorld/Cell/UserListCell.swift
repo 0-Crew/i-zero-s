@@ -52,7 +52,7 @@ extension UserListCell {
         challengeLabel.text = data.challenge.name
         challengeLabel.textColor = .orangeMain
         bottleImage.image = UIImage(named: "icBottleMain\(data.challenge.count ?? "0")")
-        data.follow ? setFollowButton() : setFollowingButton()
+        data.follow ? setFollowingButton() : setFollowButton()
         userNameLabel.text = "\(data.user.name)의 보틀"
         userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [data.user.name])
 
