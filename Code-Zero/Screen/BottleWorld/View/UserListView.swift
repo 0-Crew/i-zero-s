@@ -26,9 +26,20 @@ class UserListView: UIView {
         case following
     }
     var lookAroundUser: [BottleWorldUser] = []
-    var follower: [UserData] = []
+    var follower: [BottleWorldUser] = []
     var following: [UserData] = []
-    var tapType: UserListTapType = .lookAround
+    var tapType: UserListTapType = .lookAround {
+        didSet {
+            switch tapType {
+            case .lookAround:
+                fetchBrowserData(keyword: nil)
+            case .follower:
+                fetchFollowerData(keyword: nil)
+            case .following:
+                break
+            }
+        }
+    }
     var filteringText: String? { // 필터링 할 단어
         didSet {
             guard let filter = filteringText else {
@@ -38,7 +49,7 @@ class UserListView: UIView {
             fetchBrowserData(keyword: filter)
         }
     }
-    var delegate: BottleWorldUsersDelegate?
+    weak var delegate: BottleWorldUsersDelegate?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
@@ -47,7 +58,6 @@ class UserListView: UIView {
         super.init(frame: frame)
         loadView()
         makeDumyData()
-        fetchBrowserData(keyword: nil)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -119,7 +129,7 @@ extension UserListView: UITableViewDataSource {
         case .lookAround:
             cell.fetchUserData(data: lookAroundUser[indexPath.row])
         case .follower:
-            cell.setUserInfo(user: follower[indexPath.row])
+            cell.fetchUserData(data: follower[indexPath.row])
         case .following:
             cell.setUserInfo(user: following[indexPath.row])
         }
@@ -146,7 +156,6 @@ extension UserListView {
                              term: "12/13-20", follow: true)
         let data8 = UserData(name: "미니테스트중", bottleLevel: 7, subject: nil,
                              term: nil, follow: true)
-        follower = [data1, data4, data5, data7, data8]
         following = [data2, data3, data6]
     }
     private func fetchBrowserData(keyword: String?) {
@@ -174,6 +183,31 @@ extension UserListView {
                 }
             }
     }
+    private func fetchFollowerData(keyword: String?) {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
+        // swiftlint:enable line_length
+        BottleWorldService
+            .shared
+            .requestBottleWoldFollower(token: token, keyword: keyword) { [weak self] result in
+                switch result {
+                case .success(let userData):
+                    self?.follower = userData
+                    if userData.count == 0 {
+                        self?.delegate?.presentEmptyUserView()
+                        break
+                    }
+                    self?.delegate?.presentUserListView()
+                    self?.userListTableView.reloadData()
+                case .requestErr(let error):
+                    print(error)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
 }
 
 // MARK: - UserListCellDelegate
@@ -184,7 +218,7 @@ extension UserListView: UserListCellDelegate {
         case .lookAround:
             break
         case .follower:
-            follower[index].follow = !follower[index].follow
+            break
         case .following:
             following[index].follow = !following[index].follow
         }
