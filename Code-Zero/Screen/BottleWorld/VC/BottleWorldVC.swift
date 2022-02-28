@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+enum UserListTapType {
+    case lookAround
+    case follower
+    case following
+}
+
 class BottleWorldVC: UIViewController {
 
     // MARK: - Property
