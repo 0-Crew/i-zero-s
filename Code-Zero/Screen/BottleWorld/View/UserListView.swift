@@ -12,11 +12,6 @@ import SnapKit
 class UserListView: UIView {
 
     // MARK: - Property
-    enum UserListTapType {
-        case lookAround
-        case follower
-        case following
-    }
     var lookAroundUser: [BottleWorldUser] = []
     var follower: [BottleWorldUser] = []
     var following: [BottleWorldUser] = []
@@ -140,12 +135,9 @@ extension UserListView {
                 switch result {
                 case .success(let userData):
                     self?.lookAroundUser = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
+                    self?.resetTableViewData(type: .lookAround,
+                                             keyword: keyword,
+                                             count: userData.count)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -165,12 +157,9 @@ extension UserListView {
                 switch result {
                 case .success(let userData):
                     self?.follower = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
+                    self?.resetTableViewData(type: .follower,
+                                             keyword: keyword,
+                                             count: userData.count)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -190,12 +179,9 @@ extension UserListView {
                 switch result {
                 case .success(let userData):
                     self?.following = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
+                    self?.resetTableViewData(type: .following,
+                                             keyword: keyword,
+                                             count: userData.count)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -204,6 +190,13 @@ extension UserListView {
                     break
                 }
             }
+    }
+    func resetTableViewData(type: UserListTapType, keyword: String?, count: Int) {
+        if keyword == nil || keyword == "" {
+            delegate?.fetchDataCount(type: type, count: count)
+        }
+        count == 0 ? delegate?.presentEmptyUserView(): delegate?.presentUserListView()
+        userListTableView.reloadData()
     }
 }
 
