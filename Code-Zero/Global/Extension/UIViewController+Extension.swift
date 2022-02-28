@@ -65,4 +65,15 @@ extension UIViewController {
         present(viewController, animated: true)
       }
     }
+
+    // 두번이상 navigation pop을 연속으로 하고 싶을 때 사용
+    func navigationPopBack(_ number: Int) {
+        if let viewControllers: [UIViewController] = navigationController?.viewControllers {
+            guard viewControllers.count < number else {
+                navigationController?.popToViewController(viewControllers[viewControllers.count - number],
+                                                               animated: true)
+                return
+            }
+        }
+    }
 }
