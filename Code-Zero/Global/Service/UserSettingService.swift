@@ -32,7 +32,9 @@ class UserSettingService {
                     debugPrint(error)
                 }
             case .failure(let error):
-                completion(.serverErr)
+                if error.response?.statusCode == 400 {
+                    completion(.requestErr("duplicateNick"))
+                }
                 debugPrint(error)
             }
         }
