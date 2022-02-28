@@ -16,7 +16,7 @@ class SettingVC: UIViewController {
     @IBOutlet weak var versionLabel: UILabel!
 
     // MARK: - Property
-    let isUser: Bool = true
+    let isUser: Bool = false
     let settingListText = ["알림설정", "문의하기", "이용약관", "개인정보정책", "오픈소스"]
 
     // MARK: - View Life Cycle
@@ -31,15 +31,14 @@ class SettingVC: UIViewController {
 // MARK: - Set View Info
 extension SettingVC {
     func setUserInfoView() {
+        let navigationClosure: (UIViewController) -> Void = { view in
+            self.navigationController?.pushViewController(view, animated: true)
+        }
         if isUser {
             let isUserView = UserView(frame: CGRect(x: 0,
                                                     y: 0,
                                                     width: userInfoView.frame.width,
                                                     height: userInfoView.frame.height))
-            let navigationClosure: (UIViewController) -> Void = { view in
-                self.navigationController?.pushViewController(view, animated: true)
-            }
-
             userInfoView.addSubview(isUserView)
             isUserView.setUserInfo(nick: "김미니미니", email: "xwoud@naver.com")
             isUserView.moveViewController = navigationClosure
@@ -50,6 +49,7 @@ extension SettingVC {
                                                           width: userInfoView.frame.width,
                                                           height: userInfoView.frame.height))
             userInfoView.addSubview(isNotUserView)
+            isNotUserView.moveViewController = navigationClosure
         }
 
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
