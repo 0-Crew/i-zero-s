@@ -193,7 +193,7 @@ extension UserListView {
     }
     func resetTableViewData(type: UserListTapType, keyword: String?, count: Int) {
         if keyword == nil || keyword == "" {
-            delegate?.fetchDataCount(type: type, count: count)
+            delegate?.fetchUserCount(type: type, count: count)
         }
         count == 0 ? delegate?.presentEmptyUserView(): delegate?.presentUserListView()
         userListTableView.reloadData()

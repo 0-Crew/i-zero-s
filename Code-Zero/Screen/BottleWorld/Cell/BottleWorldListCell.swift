@@ -11,6 +11,11 @@ import SnapKit
 protocol BottleWorldUsersDelegate: AnyObject {
     func presentEmptyUserView()
     func presentUserListView()
+    func fetchUserCount(type: UserListTapType, count: Int)
+}
+
+protocol BottleWorldSwipeBarDelegate: AnyObject {
+    func fetchBarCount(type: UserListTapType, count: Int)
 }
 
 class BottleWorldListCell: UICollectionViewCell {
@@ -23,6 +28,7 @@ class BottleWorldListCell: UICollectionViewCell {
 
     var emptyView = FollowEmptyView(frame: .zero)
     var userListView = UserListView(frame: .zero)
+    weak var delegate: BottleWorldSwipeBarDelegate?
 
     @IBAction func searchButtonDidTap(_ sender: Any) {
         if let text = searchTextField.text {
@@ -77,6 +83,10 @@ extension BottleWorldListCell: UITextFieldDelegate {
 
 // MARK: - BottleWorldUsersDelegate
 extension BottleWorldListCell: BottleWorldUsersDelegate {
+    func fetchUserCount(type: UserListTapType, count: Int) {
+        delegate?.fetchBarCount(type: type, count: count)
+    }
+
     func presentEmptyUserView() {
         userListView.removeFromSuperview()
         emptyView.removeFromSuperview()

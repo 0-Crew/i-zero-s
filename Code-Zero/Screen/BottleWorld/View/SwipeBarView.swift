@@ -38,8 +38,18 @@ class SwipeBarView: UIView {
         return view
     }()
     internal weak var delegate: SwipeBarDelgate?
-    internal var follower: Int = 0
-    internal var following: Int = 0
+    internal var follower: Int = 0 {
+        didSet {
+            customTabBarCollectionView.reloadData()
+            customTabBarCollectionView.selectItem(at: [0, 1], animated: false, scrollPosition: [])
+        }
+    }
+    internal var following: Int = 0 {
+        didSet {
+            customTabBarCollectionView.reloadData()
+            customTabBarCollectionView.selectItem(at: [0, 2], animated: false, scrollPosition: [])
+        }
+    }
 
     // MARK: Setup Views
     func setupCollectioView() {
