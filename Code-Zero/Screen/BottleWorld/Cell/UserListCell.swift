@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListCellDelegate: AnyObject {
-    func didFollowButtonTap(index: Int)
+    func didFollowButtonTap(id index: Int)
 }
 
 class UserListCell: UITableViewCell {
@@ -23,17 +23,17 @@ class UserListCell: UITableViewCell {
 
     // MARK: - @IBAction
     @IBAction func followButtonDidTap(_ sender: UIButton) {
-        delegate?.didFollowButtonTap(index: cellIndex?.row ?? 0)
+        guard let userId = userId else { return }
+        delegate?.didFollowButtonTap(id: userId)
     }
 
     // MARK: - Property
-    internal var cellIndex: IndexPath?
+    internal var userId: Int?
     internal weak var delegate: UserListCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setView()
-        // Initialization code
     }
 }
 

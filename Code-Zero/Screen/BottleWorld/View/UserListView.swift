@@ -110,14 +110,16 @@ extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UserListCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
-        cell.cellIndex = indexPath // 나중에는 여기에 인덱스 대신에 나중에는 유저 고유 이메일 같은거가 들어가야 할 듯
         switch tapType {
         case .lookAround:
             cell.fetchUserData(data: lookAroundUser[indexPath.row])
+            cell.userId = lookAroundUser[indexPath.row].user.id
         case .follower:
             cell.fetchUserData(data: follower[indexPath.row])
+            cell.userId = follower[indexPath.row].user.id
         case .following:
             cell.fetchUserData(data: following[indexPath.row])
+            cell.userId = following[indexPath.row].user.id
         }
         return cell
     }
@@ -202,7 +204,7 @@ extension UserListView {
 
 // MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
-    func didFollowButtonTap(index: Int) {
+    func didFollowButtonTap(id index: Int) {
         // 팔로우, 팔로잉 서버 연결 코드 작성 예정
         switch tapType {
         case .lookAround:
