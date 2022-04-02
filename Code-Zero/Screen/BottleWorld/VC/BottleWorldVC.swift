@@ -66,8 +66,8 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
         cell.emptyView.viewType = [.noneSearch, .noneFollower, .noneFollowing][indexPath.row] // testCode
-        cell.userListView.tapType = [.lookAround, .follower, .following][indexPath.row]
         cell.delegate = self
+        cell.tapType = [.lookAround, .follower, .following][indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

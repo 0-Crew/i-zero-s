@@ -12,31 +12,13 @@ import SnapKit
 class UserListView: UIView {
 
     // MARK: - Property
-    var lookAroundUser: [BottleWorldUser] = []
+    var userInfoData: [BottleWorldUser] = [] {
+        didSet {
+            userListTableView.reloadData()
+        }
+    }
     var follower: [BottleWorldUser] = []
     var following: [BottleWorldUser] = []
-    var tapType: UserListTapType = .lookAround {
-        didSet {
-            switch tapType {
-            case .lookAround:
-                fetchBrowserData(keyword: nil)
-            case .follower:
-                fetchFollowerData(keyword: nil)
-            case .following:
-                fetchFollowingData(keyword: nil)
-            }
-        }
-    }
-    var filteringText: String? { // 필터링 할 단어
-        didSet {
-            guard let filter = filteringText else {
-                fetchBrowserData(keyword: nil)
-                return
-            }
-            fetchBrowserData(keyword: filter)
-        }
-    }
-    weak var delegate: BottleWorldUsersDelegate?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
@@ -45,6 +27,7 @@ class UserListView: UIView {
         super.init(frame: frame)
         loadView()
     }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -81,7 +64,7 @@ class UserListView: UIView {
     }
     @objc private func updateTableViewData(refressh: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.fetchBrowserData(keyword: self.filteringText)
+//            self.fetchBrowserData(keyword: self.filteringText)
             refressh.endRefreshing()
         }
     }
@@ -97,108 +80,15 @@ extension UserListView: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tapType {
-        case .lookAround:
-            return lookAroundUser.count
-        case .follower:
-            return follower.count
-        case .following:
-            return following.count
-        }
+        return userInfoData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UserListCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
-        switch tapType {
-        case .lookAround:
-            cell.fetchUserData(data: lookAroundUser[indexPath.row])
-            cell.userId = lookAroundUser[indexPath.row].user.id
-        case .follower:
-            cell.fetchUserData(data: follower[indexPath.row])
-            cell.userId = follower[indexPath.row].user.id
-        case .following:
-            cell.fetchUserData(data: following[indexPath.row])
-            cell.userId = following[indexPath.row].user.id
-        }
+        cell.fetchUserData(data: userInfoData[indexPath.row])
+        cell.userId = userInfoData[indexPath.row].user.id
         return cell
-    }
-}
-
-// MARK: - Network Function
-extension UserListView {
-    private func fetchBrowserData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
-        // swiftlint:enable line_length
-        BottleWorldService
-            .shared
-            .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.lookAroundUser = userData
-                    self?.resetTableViewData(type: .lookAround,
-                                             keyword: keyword,
-                                             count: userData.count)
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-    private func fetchFollowerData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
-        // swiftlint:enable line_length
-        BottleWorldService
-            .shared
-            .requestBottleWoldFollower(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.follower = userData
-                    self?.resetTableViewData(type: .follower,
-                                             keyword: keyword,
-                                             count: userData.count)
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-    private func fetchFollowingData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
-        // swiftlint:enable line_length
-        BottleWorldService
-            .shared
-            .requestBottleWoldFollowing(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.following = userData
-                    self?.resetTableViewData(type: .following,
-                                             keyword: keyword,
-                                             count: userData.count)
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-    func resetTableViewData(type: UserListTapType, keyword: String?, count: Int) {
-        if keyword == nil || keyword == "" {
-            delegate?.fetchUserCount(type: type, count: count)
-        }
-        count == 0 ? delegate?.presentEmptyUserView(): delegate?.presentUserListView()
-        userListTableView.reloadData()
     }
 }
 
@@ -206,14 +96,6 @@ extension UserListView {
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(id index: Int) {
         // 팔로우, 팔로잉 서버 연결 코드 작성 예정
-        switch tapType {
-        case .lookAround:
-            break
-        case .follower:
-            break
-        case .following:
-            break
-        }
         userListTableView.reloadData()
     }
 }
