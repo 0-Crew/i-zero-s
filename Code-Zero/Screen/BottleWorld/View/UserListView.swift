@@ -12,32 +12,13 @@ import SnapKit
 class UserListView: UIView {
 
     // MARK: - Property
-    enum UserListTapType {
-        case lookAround
-        case follower
-        case following
-    }
-    var lookAroundUser: [BottleWorldUser] = []
-    var follower: [BottleWorldUser] = []
-    var following: [BottleWorldUser] = []
-    var tapType: UserListTapType = .lookAround {
-        didSet {
-            switch tapType {
-            case .lookAround:
-                fetchBrowserData(keyword: nil)
-            case .follower:
-                fetchFollowerData(keyword: nil)
-            case .following:
-                fetchFollowingData(keyword: nil)
-            }
-        }
-    }
-    var filteringText: String? { // 필터링 할 단어
+    var userInfoData: [BottleWorldUser] = [] {
         didSet {
             userListTableView.reloadData()
         }
     }
-    weak var delegate: BottleWorldUsersDelegate?
+    var follower: [BottleWorldUser] = []
+    var following: [BottleWorldUser] = []
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
@@ -105,94 +86,9 @@ extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UserListCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
-        cell.cellIndex = indexPath // 나중에는 여기에 인덱스 대신에 나중에는 유저 고유 이메일 같은거가 들어가야 할 듯
-        switch tapType {
-        case .lookAround:
-            cell.fetchUserData(data: lookAroundUser[indexPath.row])
-        case .follower:
-            cell.fetchUserData(data: follower[indexPath.row])
-        case .following:
-            cell.fetchUserData(data: following[indexPath.row])
-        }
+        cell.fetchUserData(data: userInfoData[indexPath.row])
+        cell.userId = userInfoData[indexPath.row].user.id
         return cell
-    }
-}
-
-// MARK: - Network Function
-extension UserListView {
-    private func fetchBrowserData(keyword: String?) {
-        guard let token = UserDefaultManager.shared.accessToken else { return }
-
-        BottleWorldService
-            .shared
-            .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.lookAroundUser = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-    private func fetchFollowerData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
-        // swiftlint:enable line_length
-        BottleWorldService
-            .shared
-            .requestBottleWoldFollower(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.follower = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-    private func fetchFollowingData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
-        // swiftlint:enable line_length
-        BottleWorldService
-            .shared
-            .requestBottleWoldFollowing(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.following = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
     }
 }
 
@@ -200,14 +96,6 @@ extension UserListView {
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(id index: Int) {
         // 팔로우, 팔로잉 서버 연결 코드 작성 예정
-        switch tapType {
-        case .lookAround:
-            break
-        case .follower:
-            break
-        case .following:
-            break
-        }
         userListTableView.reloadData()
     }
 }
