@@ -10,12 +10,14 @@ import SnapKit
 
 class ChallengeVC: UIViewController {
 
-    typealias FollowingPepleChallengeTuple = (firstName: String, isChallenging: Bool)
+    typealias FollowingPeopleChallengingTuple = (firstName: String, userChallenge: UserChallenge?)
+
 
     // MARK: - Property
     // followingPeopleChallengingLists[0] bool 값을 false 로 바꾸면 Empty View 보입니다.
-    private var followingPeopleChallengingLists: [FollowingPepleChallengeTuple] = [
-        ("김", true), ("이", false), ("박", false)
+    private var myChallengeData: MyChallengeData?
+    private var followingPeopleChallengingLists: [FollowingPeopleChallengingTuple] = [
+        ("김", nil), ("이", nil), ("박", nil)
     ]
     private var selectedPersonIndex: Int = 0 {
         didSet {
@@ -51,7 +53,6 @@ class ChallengeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItems()
-        fetchFollowingPeopleFirstNameList()
         followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         setFollowingListStackView()
         setCollectionView()
@@ -74,38 +75,76 @@ class ChallengeVC: UIViewController {
         challengeListCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     // MARK: - Field Method
-    private func fetchFollowingPeopleFirstNameList() {
-        followingPeopleChallengingLists = [
-            ("김", false),
-            ("이", true),
-            ("박", false)
-        ]
-    }
+}
 
+extension ChallengeVC {
+    func fetchMyChallenge() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        Indicator.shared.show()
+        MainChallengeService
+            .shared
+            .requestMyChallenge(token: token) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.myChallengeData = data
+                case .requestErr(let message):
+                    print(message)
+                    self?.myChallengeData = nil
+                case .serverErr:
+                    self?.myChallengeData = nil
+                case .networkFail:
+                    self?.myChallengeData = nil
+                }
+                Indicator.shared.dismiss()
+            }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension ChallengeVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return followingPeopleChallengingLists.count <= 3 ? 3 : followingPeopleChallengingLists.count
+        return followingPeopleChallengingLists.count + 1 <= 3 ? 3 : followingPeopleChallengingLists.count
     }
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        let isMine = indexPath.item == 0
 
-        if followingPeopleChallengingLists[indexPath.item].isChallenging {
-            let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
-            cell.setChallengeListCell(isMine: indexPath.item == 0)
+        if indexPath.item == 0 {
+            if let myChallengeDataValue = myChallengeData {
+                let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
+                cell.setChallengeListCell(isMine: isMine)
+                cell.bindChallenge(
+                    challenge: myChallengeDataValue.myChallenge,
+                    inconveniences: myChallengeDataValue.inconvenience,
+                    conveniences: myChallengeDataValue.inconvenience
+                )
+                cell.delegate = self
+                return cell
+            } else {
+                let cell: EmptyChallengeCell = collectionView.dequeueCell(indexPath: indexPath)
+                cell.setEmptyChallengeView(isMine: indexPath.item == 0)
+                cell.delegate = self
+                return cell
+            }
+        }
+
+        guard let userChallengeValue = followingPeopleChallengingLists[indexPath.item].userChallenge else {
+            let cell: EmptyChallengeCell = collectionView.dequeueCell(indexPath: indexPath)
+            cell.setEmptyChallengeView(isMine: isMine)
             cell.delegate = self
             return cell
         }
-
-        let cell: EmptyChallengeCell = collectionView.dequeueCell(indexPath: indexPath)
-        cell.setEmptyChallengeView(isMine: indexPath.item == 0)
+        let cell: ChallengeListCell = collectionView.dequeueCell(indexPath: indexPath)
+        cell.setChallengeListCell(isMine: isMine)
+        cell.bindChallenge(challenge: userChallengeValue, inconveniences: [], conveniences: [])
         cell.delegate = self
         return cell
     }
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

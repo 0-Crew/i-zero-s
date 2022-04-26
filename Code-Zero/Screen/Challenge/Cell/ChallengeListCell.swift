@@ -48,13 +48,19 @@ class ChallengeListCell: UICollectionViewCell {
         "선택지5",
         "선택지6",
         "직접입력"
-    ]
+    ] {
+        didSet {
+            optionsTableView.reloadData()
+        }
+    }
     // MARK: Business Logic Data Property
     private var editingChallengeOffset: Int?
     internal weak var delegate: ChallengeListCellDelegate?
     internal var isMine: Bool!
     // MARK: - IBOutlet
+    @IBOutlet weak var dateTermLabel: UILabel!
     @IBOutlet weak var bottleImageView: UIImageView!
+    @IBOutlet weak var convenienceTextLabel: UILabel!
     @IBOutlet weak var initialLineView: UIView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var challengeListStackView: UIStackView!
@@ -133,6 +139,10 @@ extension ChallengeListCell {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
     }
+    private func setChallengeDate(offset: Int, dueDate: Date?) {
+        let challengeView = challengeViewList[offset]
+        challengeView?.setChallengeDate(date: dueDate)
+    }
     private func setChallengeViewChaingingState(offset: Int) {
         let challengeView = challengeViewList[offset]
         challengeView?.toggleIsChangingState(to: offset == editingChallengeOffset)
@@ -149,6 +159,63 @@ extension ChallengeListCell {
         mutableYPosition = isOver ? yPosition - 8 - 134 : mutableYPosition
         optionsTableView.frame = .init(x: 81, y: mutableYPosition, width: width, height: 134)
         optionsTableView.isHidden = false
+    }
+    internal func fetchMyChallenge() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+        // swiftlint:enable line_length
+        MainChallengeService
+            .shared
+            .requestMyChallenge(token: token) { result in
+                switch result {
+                case .success(let data):
+                    let challenge = data.myChallenge
+                    let myInconveniences = data.myInconveniences
+                    let inconveniences = data.inconvenience
+                    self.bindChallenge(
+                        challenge: challenge,
+                        inconveniences: myInconveniences,
+                        conveniences: inconveniences
+                    )
+                case .requestErr(let message):
+                    print(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
+
+    internal func bindChallenge(
+        challenge: UserChallenge,
+        inconveniences: [Convenience],
+        conveniences: [Convenience]
+    ) {
+        guard
+            let startDate = challenge.startedAt.toDate(),
+            let endDate = challenge.startedAt.toDate()?.getDateIntervalBy(intervalDay: 6)
+        else {
+            return
+        }
+        let startDateText = startDate.datePickerToString(format: "MM.dd")
+        let endDateText = endDate.datePickerToString(format: "dd")
+        dateTermLabel.text = "\(startDateText) - \(endDateText)"
+        convenienceTextLabel.text = challenge.name
+
+        optionsList = conveniences.map { $0.name } + ["직접입력"]
+        challengeTextList = inconveniences.map { $0.name }
+        challengeStateList = inconveniences.compactMap {
+            $0.mapChallengeState(challengeStartDate: startDate)
+        }
+        inconveniences
+            .map { $0.getDueDate(challengeStartDate: startDate) }
+            .enumerated()
+            .forEach {
+                setChallengeDate(offset: $0.offset, dueDate: $0.element)
+            }
+        setChallengeListCell(isMine: isMine)
+
     }
 }
 

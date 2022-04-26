@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -152,7 +152,7 @@
                         <viewLayoutGuide key="frameLayoutGuide" id="7pm-Pj-Yhj"/>
                     </scrollView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0k2-3u-BwF">
-                        <rect key="frame" x="81" y="51" width="209" height="36"/>
+                        <rect key="frame" x="81" y="51" width="211.5" height="36"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icStarWhite" translatesAutoresizingMaskIntoConstraints="NO" id="bUS-7a-rjl">
                                 <rect key="frame" x="10" y="8" width="20" height="20"/>
@@ -187,6 +187,7 @@
                         </subviews>
                         <color key="backgroundColor" name="orangeMain"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vOU-2f-GiT" secondAttribute="trailing" constant="10" id="DQt-TN-soz"/>
                             <constraint firstItem="qzK-W2-Ymz" firstAttribute="centerY" secondItem="0k2-3u-BwF" secondAttribute="centerY" id="Ety-Vq-Lna"/>
                             <constraint firstItem="vOU-2f-GiT" firstAttribute="leading" secondItem="qzK-W2-Ymz" secondAttribute="trailing" id="JF8-FJ-o07"/>
                             <constraint firstItem="dbG-Bj-HjE" firstAttribute="leading" secondItem="bUS-7a-rjl" secondAttribute="trailing" constant="5" id="XP7-Ur-IO3"/>
@@ -216,13 +217,14 @@
                 <constraint firstItem="k4f-mp-vON" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jgf-Qb-mS5"/>
                 <constraint firstItem="jdG-l8-er1" firstAttribute="centerY" secondItem="DdL-bl-AdL" secondAttribute="centerY" id="qJY-Fz-xxc"/>
                 <constraint firstAttribute="trailing" secondItem="m2s-iT-NH8" secondAttribute="trailing" id="shg-Ts-b1s"/>
-                <constraint firstAttribute="trailing" secondItem="0k2-3u-BwF" secondAttribute="trailing" constant="85" id="tQJ-i2-LVB"/>
                 <constraint firstItem="0k2-3u-BwF" firstAttribute="top" secondItem="DdL-bl-AdL" secondAttribute="bottom" constant="8" symbolic="YES" id="ufK-Bt-BG7"/>
             </constraints>
             <size key="customSize" width="235" height="194"/>
             <connections>
                 <outlet property="bottleImageView" destination="k4f-mp-vON" id="jqR-Ir-RIV"/>
                 <outlet property="challengeListStackView" destination="1N9-7v-Slo" id="Jzw-BT-aDT"/>
+                <outlet property="convenienceTextLabel" destination="vOU-2f-GiT" id="Eka-JY-ZNo"/>
+                <outlet property="dateTermLabel" destination="DdL-bl-AdL" id="lIt-sq-P2b"/>
                 <outlet property="initialLineView" destination="uWI-m0-MNk" id="0dA-dc-R4I"/>
                 <outlet property="lineView" destination="Jo4-Hb-Out" id="Oa4-D9-9bI"/>
                 <outlet property="scrollView" destination="m2s-iT-NH8" id="C2e-6E-xOx"/>
