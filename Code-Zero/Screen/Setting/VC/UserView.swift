@@ -16,7 +16,6 @@ class UserView: UIView {
     @IBOutlet weak var nickBackView: UIView!
     @IBOutlet weak var nickFirstLabel: UILabel!
     @IBOutlet weak var nickButton: UIButton!
-    @IBOutlet weak var emailLabel: UILabel!
 
     // MARK: - IBAction
     @IBAction func nickButtonDidTap(_ sender: UIButton) {
@@ -48,9 +47,8 @@ class UserView: UIView {
         nickBackView.makeRounded(cornerRadius: nil)
     }
 
-    func setUserInfo(nick: String, email: String) {
+    func setUserInfo(nick: String) {
         nickButton.setTitle(nick, for: .normal)
-        emailLabel.text = email
         nickFirstLabel.text = String(nick[nick.startIndex])
     }
 }
