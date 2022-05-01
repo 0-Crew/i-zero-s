@@ -57,6 +57,9 @@
 		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
 		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
+		6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A66AC281810B8008D3DA1 /* AlarmCenter.storyboard */; };
+		6E1A66AF2818158A008D3DA1 /* AlarmCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */; };
+		6E1A66B2281815DF008D3DA1 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A66B1281815DF008D3DA1 /* AlarmCell.swift */; };
 		6E1D336B27C2051800746CD5 /* FinalChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */; };
 		6E1D336D27C2053C00746CD5 /* FinalChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */; };
 		6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */; };
@@ -200,6 +203,9 @@
 		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
 		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
+		6E1A66AC281810B8008D3DA1 /* AlarmCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmCenter.storyboard; sourceTree = "<group>"; };
+		6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCenterVC.swift; sourceTree = "<group>"; };
+		6E1A66B1281815DF008D3DA1 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalChallengeView.xib; sourceTree = "<group>"; };
 		6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeView.swift; sourceTree = "<group>"; };
 		6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenService.swift; sourceTree = "<group>"; };
@@ -425,6 +431,40 @@
 			isa = PBXGroup;
 			children = (
 				19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6E1A66A728181056008D3DA1 /* AlarmCenter */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66B0281815C8008D3DA1 /* Cell */,
+				6E1A66A828181060008D3DA1 /* VC */,
+				6E1A66A928181064008D3DA1 /* Storyboard */,
+			);
+			path = AlarmCenter;
+			sourceTree = "<group>";
+		};
+		6E1A66A828181060008D3DA1 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		6E1A66A928181064008D3DA1 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66AC281810B8008D3DA1 /* AlarmCenter.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		6E1A66B0281815C8008D3DA1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66B1281815DF008D3DA1 /* AlarmCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -674,6 +714,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				6E1A66A728181056008D3DA1 /* AlarmCenter */,
 				1923D91127AFC1C600FE2C87 /* Account */,
 				197A654B276F740600166255 /* SignUp */,
 				1933FE7E279FEBEB00BD0CA6 /* Setting */,
@@ -954,6 +995,7 @@
 				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
 				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
+				6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */,
 				6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */,
 				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
@@ -1040,6 +1082,7 @@
 				D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */,
+				6E1A66B2281815DF008D3DA1 /* AlarmCell.swift in Sources */,
 				6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */,
 				6EB9722F275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift in Sources */,
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
@@ -1092,6 +1135,7 @@
 				1906C40327C240270020185C /* UserLoginService.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
+				6E1A66AF2818158A008D3DA1 /* AlarmCenterVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
 				1923D91D27AFD4CE00FE2C87 /* AccountNickVC.swift in Sources */,
 				6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */,
