@@ -75,6 +75,17 @@ class ChallengeVC: UIViewController {
 
     }
 
+    @IBAction func alarmButtonDidTap() {
+        let storyboard = UIStoryboard(name: "AlarmCenter", bundle: nil)
+        guard
+            let viewController = storyboard
+                .instantiateViewController(withIdentifier: "AlarmCenterVC") as? AlarmCenterVC
+        else {
+            return
+        }
+        self.show(viewController, sender: nil)
+    }
+
     @objc private func followingListButtonsDidTab(sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
         selectedPersonIndex = sender.tag
@@ -155,8 +166,32 @@ extension ChallengeVC: EmptyChallengeCellDelegate {
 // MARK: - UI Setting
 extension ChallengeVC {
     private func setNavigationItems() {
-        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        let menuButton: UIBarButtonItem = {
+            let button: UIButton = .init(type: .custom)
+            button.frame = .init(x: 0, y: 0, width: 24, height: 24)
+            button.setImage(UIImage(named: "icMenu"), for: .normal)
+            let barButtonItem = UIBarButtonItem(customView: button)
+            return barButtonItem
+        }()
+
+        let alarmButton: UIBarButtonItem = {
+            let button: UIButton = .init(type: .custom)
+            button.frame = .init(x: 0, y: 0, width: 24, height: 24)
+            button.setImage(UIImage(named: "icAlarm"), for: .normal)
+            button.addTarget(self, action: #selector(alarmButtonDidTap), for: .touchUpInside)
+            let barButtonItem = UIBarButtonItem(customView: button)
+            barButtonItem.target = self
+            barButtonItem.action = #selector(alarmButtonDidTap)
+            return barButtonItem
+        }()
+
+        let space = UIBarButtonItem(
+            barButtonSystemItem: .fixedSpace,
+            target: nil,
+            action: nil
+        )
         space.width = 8
+
         self.navigationItem.setRightBarButtonItems(
             [menuButton, space, alarmButton],
             animated: false
