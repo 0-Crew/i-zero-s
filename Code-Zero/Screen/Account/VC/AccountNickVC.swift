@@ -11,7 +11,6 @@ class AccountNickVC: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var nickView: UIView!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nickTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var duplicateCheckLabel: UILabel!
@@ -37,8 +36,7 @@ class AccountNickVC: UIViewController {
     }
 
     // MARK: - Property
-    var email: String = "xwoud@naver.com"
-    var nick: String = "희영룰루루"
+    var nick: String = "김미니미니"
     var duplicateNick: [String] = ["민희", "주혁", "보틀월드"]
 
     // MARK: - View Life Cycle
@@ -55,7 +53,6 @@ class AccountNickVC: UIViewController {
 extension AccountNickVC {
     private func setLayout() {
         nickView.setBorder(borderColor: .gray2, borderWidth: 1)
-        emailLabel.text = email
         nickTextField.text = nick
         duplicateCheckLabel.text = ""
         nickTextField.delegate = self

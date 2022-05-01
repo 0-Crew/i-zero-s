@@ -41,7 +41,7 @@ extension SettingVC {
             }
 
             userInfoView.addSubview(isUserView)
-            isUserView.setUserInfo(nick: "김미니미니", email: "xwoud@naver.com")
+            isUserView.setUserInfo(nick: "김미니미니")
             isUserView.moveViewController = navigationClosure
 
         } else {
