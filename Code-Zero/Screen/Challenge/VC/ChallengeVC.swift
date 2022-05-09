@@ -166,6 +166,15 @@ extension ChallengeVC: EmptyChallengeCellDelegate {
 // MARK: - UI Setting
 extension ChallengeVC {
     private func setNavigationItems() {
+        let backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        navigationItem.backBarButtonItem = backBarButtonItem
+        navigationController?.navigationBar.tintColor = .gray4
+
         let menuButton: UIBarButtonItem = {
             let button: UIButton = .init(type: .custom)
             button.frame = .init(x: 0, y: 0, width: 24, height: 24)
@@ -196,6 +205,7 @@ extension ChallengeVC {
             [menuButton, space, alarmButton],
             animated: false
         )
+        setNavigationBarClear()
     }
     private func setFollowingListStackView() {
         followingPeopleChallengingLists[0..<3]
