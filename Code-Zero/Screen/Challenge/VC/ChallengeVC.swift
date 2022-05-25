@@ -36,6 +36,7 @@ class ChallengeVC: UIViewController {
         let button: UIButton = .init(type: .custom)
         button.frame = .init(x: 0, y: 0, width: 24, height: 24)
         button.setImage(UIImage(named: "icMenu"), for: .normal)
+        button.addTarget(self, action: #selector(menuButtonDidTap), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
     }()
@@ -151,7 +152,7 @@ extension ChallengeVC {
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         space.width = 8
         self.navigationItem.setRightBarButtonItems(
-            [alarmButton, space, menuButton],
+            [menuButton, space, alarmButton],
             animated: false
         )
     }
@@ -215,3 +216,23 @@ extension ChallengeVC {
         followingButton.isHidden = isMine
     }
 }
+
+// MARK: - Move Controller
+extension ChallengeVC {
+    @objc private func menuButtonDidTap() {
+        let storybard = UIStoryboard(name: "Setting", bundle: nil)
+        guard let settingVC = storybard.instantiateViewController(withIdentifier: "SettingVC") as? SettingVC else { return }
+        settingVC.userInfo = userInfo
+        navigationController?.pushViewController(settingVC, animated: true)
+    }
+    private func changeRootViewToHome() {
+        let storybard = UIStoryboard(name: "Home", bundle: nil)
+        let homeNavigationVC = storybard.instantiateViewController(withIdentifier: "Home")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            homeNavigationVC,
+            animated: true,
+            completion: nil
+        )
+    }
+}
+
