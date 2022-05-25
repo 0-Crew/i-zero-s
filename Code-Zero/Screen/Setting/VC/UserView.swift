@@ -15,15 +15,7 @@ class UserView: UIView {
     // MARK: - IBOutlet
     @IBOutlet weak var nickBackView: UIView!
     @IBOutlet weak var nickFirstLabel: UILabel!
-    @IBOutlet weak var nickButton: UIButton!
-
-    // MARK: - IBAction
-    @IBAction func nickButtonDidTap(_ sender: UIButton) {
-        guard let moveViewController = moveViewController else { return }
-        let storybard = UIStoryboard(name: "Account", bundle: nil)
-        let accountVC = storybard.instantiateViewController(withIdentifier: "AccountSettingVC")
-        moveViewController(accountVC)
-    }
+    @IBOutlet weak var nickLabel: UILabel!
 
     // MARK: - Override Function
     override init(frame: CGRect) {
