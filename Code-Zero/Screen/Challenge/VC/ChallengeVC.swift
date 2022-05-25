@@ -23,6 +23,7 @@ class ChallengeVC: UIViewController {
             updateSocialButtons(offset: selectedPersonIndex)
         }
     }
+    private var userInfo: UserInfo?
 
     // MARK: - UI Components
     private lazy var alarmButton: UIBarButtonItem = {
@@ -59,6 +60,11 @@ class ChallengeVC: UIViewController {
         highlightingFollowingListButton(offset: selectedPersonIndex)
         updateSocialButtons(offset: selectedPersonIndex)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+        fetchUserInfoData()
+    }
+
     // MARK: - IBAction Method
 
     @IBAction func cheerUpButtonDidTap(_ sender: Any) {
@@ -236,3 +242,25 @@ extension ChallengeVC {
     }
 }
 
+// MARK: - Network
+extension ChallengeVC {
+    private func fetchUserInfoData() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
+        UserInfoService.shared.requestLogin(token: token) { [weak self] result in
+            switch result {
+            case .success(let info):
+                self?.userInfo = info.user
+                self?.nickNameLabel.text = info.user.name
+            case .requestErr(let error):
+                print(error)
+            case .serverErr:
+                // 토큰 만료(자동 로그아웃 느낌..)
+                self?.changeRootViewToHome()
+            case .networkFail:
+                // TODO: 서버 자체 에러 - 서버 점검 중 popup 제작?
+                break
+            }
+        }
+    }
+}
