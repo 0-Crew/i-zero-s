@@ -31,8 +31,10 @@ class UserInfoService {
                 }
             case .failure(let error):
                 // 에러 처리 부분
-                if error.errorCode == 500 {
+                guard let response = error.response else { return }
+                if response.statusCode == 500 {
                     completion(.networkFail)
+                    return
                 }
                 completion(.serverErr)
                 debugPrint(error)
