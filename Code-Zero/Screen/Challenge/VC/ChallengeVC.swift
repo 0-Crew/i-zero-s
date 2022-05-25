@@ -227,7 +227,8 @@ extension ChallengeVC {
 extension ChallengeVC {
     @objc private func menuButtonDidTap() {
         let storybard = UIStoryboard(name: "Setting", bundle: nil)
-        guard let settingVC = storybard.instantiateViewController(withIdentifier: "SettingVC") as? SettingVC else { return }
+        guard let settingVC = storybard.instantiateViewController(withIdentifier: "SettingVC")
+                as? SettingVC else { return }
         settingVC.userInfo = userInfo
         navigationController?.pushViewController(settingVC, animated: true)
     }
@@ -246,7 +247,7 @@ extension ChallengeVC {
 extension ChallengeVC {
     private func fetchUserInfoData() {
         // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
         UserInfoService.shared.requestLogin(token: token) { [weak self] result in
             switch result {
             case .success(let info):

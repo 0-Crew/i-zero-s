@@ -37,11 +37,11 @@ class UserView: UIView {
         addSubview(view)
         nickBackView.setBorder(borderColor: .darkGray2, borderWidth: 1)
         nickBackView.makeRounded(cornerRadius: nil)
-        
+
         let gesture = UITapGestureRecognizer(target: self, action: #selector(moveAccountViewController))
         view.addGestureRecognizer(gesture)
     }
-    
+
     @objc func moveAccountViewController() {
         guard let moveViewController = moveViewController else { return }
         let storybard = UIStoryboard(name: "Account", bundle: nil)

@@ -24,7 +24,7 @@ enum APITarget {
         isFromToday: Bool,
         token: String
     )
-    
+
     // 설정
     case userInfo(token: String)
 }
