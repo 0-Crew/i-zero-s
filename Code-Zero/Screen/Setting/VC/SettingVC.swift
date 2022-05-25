@@ -7,14 +7,20 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class SettingVC: UIViewController {
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var userInfoView: UIView!
     @IBOutlet var settingListView: [UIView]!
     @IBOutlet weak var versionLabel: UILabel!
 
+    // MARK: - IBAction
+    @IBAction func closeButtonDidTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Property
     var isUser: Bool = true
     let settingListText = ["문의하기", "이용약관", "개인정보정책", "오픈소스"]
@@ -23,6 +29,7 @@ class SettingVC: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         setUserInfoView()
         setSettingList()
         setAppVersion()
@@ -32,7 +39,9 @@ class SettingVC: UIViewController {
 // MARK: - Set View Info
 extension SettingVC {
     func setUserInfoView() {
-        if isUser {
+        switch isUser {
+        case true:
+            guard let userInfo = userInfo else { return }
             let isUserView = UserView(frame: CGRect(x: 0,
                                                     y: 0,
                                                     width: userInfoView.frame.width,
@@ -40,33 +49,32 @@ extension SettingVC {
             let navigationClosure: (UIViewController) -> Void = { view in
                 self.navigationController?.pushViewController(view, animated: true)
             }
-
+            
             userInfoView.addSubview(isUserView)
-            isUserView.setUserInfo(nick: "김미니미니")
+            isUserView.setUserInfo(nick: userInfo.name)
             isUserView.moveViewController = navigationClosure
-
-        } else {
+        case false:
             let isNotUserView = NotUserView(frame: CGRect(x: 0,
                                                           y: 0,
                                                           width: userInfoView.frame.width,
                                                           height: userInfoView.frame.height))
             userInfoView.addSubview(isNotUserView)
         }
-
+        
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
         versionLabel.text = "버전 \(version ?? "1.0.0")"
     }
-
+    
     func setSettingList() {
         settingListView.enumerated().forEach {
             let settingLineView = SettingLineView(frame: CGRect(x: 0,
                                                                 y: 0,
                                                                 width: self.view.frame.width - 60,
                                                                 height: $1.frame.height))
-
             $1.addSubview(settingLineView)
             settingLineView.settingLabel.text = settingListText[$0]
         }
+        setListTouchGesture()
     }
 
     func setAppVersion() {
