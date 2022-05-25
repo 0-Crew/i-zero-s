@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+enum UserListTapType {
+    case lookAround
+    case follower
+    case following
+}
+
 class BottleWorldVC: UIViewController {
 
     // MARK: - Property
@@ -60,7 +66,8 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
         cell.emptyView.viewType = [.noneSearch, .noneFollower, .noneFollowing][indexPath.row] // testCode
-        cell.userListView.tapType = [.lookAround, .follower, .following][indexPath.row]
+        cell.delegate = self
+        cell.tapType = [.lookAround, .follower, .following][indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,5 +107,18 @@ extension BottleWorldVC: SwipeBarDelgate {
         let indexPath = IndexPath(row: index, section: 0)
         pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         view.endEditing(true)
+    }
+}
+
+extension BottleWorldVC: BottleWorldSwipeBarDelegate {
+    func fetchBarCount(type: UserListTapType, count: Int) {
+        switch type {
+        case .lookAround:
+            break
+        case .follower:
+            customMenuBar.follower = count
+        case .following:
+            customMenuBar.following = count
+        }
     }
 }

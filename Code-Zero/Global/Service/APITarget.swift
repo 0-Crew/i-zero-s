@@ -15,6 +15,8 @@ enum APITarget {
 
     // 보틀월드
     case bottleWorldBrowse(token: String, keyword: String?)
+    case bottleWorldFollower(token: String, keyword: String?)
+    case bottleWorldFollowing(token: String, keyword: String?)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -44,6 +46,10 @@ extension APITarget: TargetType {
             return "/my-challenge/add"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
+        case .bottleWorldFollower:
+            return "/bottleworld/follower"
+        case .bottleWorldFollowing:
+            return "/bottleworld/following"
         }
     }
 
@@ -52,7 +58,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .challengeOpenPreview, .bottleWorldBrowse:
+        case .challengeOpenPreview, .bottleWorldBrowse, .bottleWorldFollower, .bottleWorldFollowing:
             return .get
         }
     }
@@ -74,7 +80,9 @@ extension APITarget: TargetType {
         case .auth(let idKey, let token, let provider):
             return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
                                       encoding: JSONEncoding.default)
-        case .bottleWorldBrowse(_, let keyword):
+        case .bottleWorldBrowse(_, let keyword),
+                .bottleWorldFollower(_, let keyword),
+                .bottleWorldFollowing(_, let keyword):
             guard let keyword = keyword else {
                 return .requestPlain
             }
@@ -101,7 +109,9 @@ extension APITarget: TargetType {
         case .userNick(_, let token),
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
-                .bottleWorldBrowse(let token, _):
+                .bottleWorldBrowse(let token, _),
+                .bottleWorldFollower(let token, _),
+                .bottleWorldFollowing(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
