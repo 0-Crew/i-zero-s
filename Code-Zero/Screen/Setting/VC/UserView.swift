@@ -50,7 +50,14 @@ class UserView: UIView {
     }
 
     func setUserInfo(nick: String) {
-        nickButton.setTitle(nick, for: .normal)
-        nickFirstLabel.text = String(nick[nick.startIndex])
+        nickLabel.text = nick
+        let firstIndex = nick.index(nick.startIndex, offsetBy: 0)
+        let first = String(nick[firstIndex])
+        if first == "_" {
+            let secondIndex = nick.index(nick.startIndex, offsetBy: 1)
+            nickFirstLabel.text = String(nick[secondIndex])
+        } else {
+            nickFirstLabel.text = first
+        }
     }
 }
