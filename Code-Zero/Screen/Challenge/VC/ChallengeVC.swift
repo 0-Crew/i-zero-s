@@ -25,14 +25,14 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - UI Components
-    private let menuButton: UIBarButtonItem = {
+    private lazy var alarmButton: UIBarButtonItem = {
         let button: UIButton = .init(type: .custom)
         button.frame = .init(x: 0, y: 0, width: 24, height: 24)
         button.setImage(UIImage(named: "icAlarm"), for: .normal)
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
     }()
-    private let alarmButton: UIBarButtonItem = {
+    private lazy var menuButton: UIBarButtonItem = {
         let button: UIButton = .init(type: .custom)
         button.frame = .init(x: 0, y: 0, width: 24, height: 24)
         button.setImage(UIImage(named: "icMenu"), for: .normal)
