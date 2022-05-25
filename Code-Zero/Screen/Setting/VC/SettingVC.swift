@@ -92,7 +92,7 @@ extension SettingVC {
 
     @objc func touchUpToTOS() {
         let tosUrl: URL? =
-        NSURL(string: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=") as URL?
+        NSURL(string: "https://chatter-gallium-16e.notion.site/239ddeb527df483a89cdd2d8fe40fff3") as URL?
         guard let tosUrl = tosUrl else { return }
         let safariView: SFSafariViewController = SFSafariViewController(url: tosUrl)
         self.present(safariView, animated: true, completion: nil)
@@ -100,7 +100,7 @@ extension SettingVC {
 
     @objc func touchUpToPrivacyPolicy() {
         let privacyPolicyUrl: URL? =
-        NSURL(string: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=") as URL?
+        NSURL(string: "https://chatter-gallium-16e.notion.site/da60b412544b405aaeb8d4fefa46c5cb") as URL?
         guard let privacyPolicyUrl = privacyPolicyUrl else { return }
         let safariView: SFSafariViewController = SFSafariViewController(url: privacyPolicyUrl)
         self.present(safariView, animated: true, completion: nil)
