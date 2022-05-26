@@ -15,15 +15,7 @@ class UserView: UIView {
     // MARK: - IBOutlet
     @IBOutlet weak var nickBackView: UIView!
     @IBOutlet weak var nickFirstLabel: UILabel!
-    @IBOutlet weak var nickButton: UIButton!
-
-    // MARK: - IBAction
-    @IBAction func nickButtonDidTap(_ sender: UIButton) {
-        guard let moveViewController = moveViewController else { return }
-        let storybard = UIStoryboard(name: "Account", bundle: nil)
-        let accountVC = storybard.instantiateViewController(withIdentifier: "AccountSettingVC")
-        moveViewController(accountVC)
-    }
+    @IBOutlet weak var nickLabel: UILabel!
 
     // MARK: - Override Function
     override init(frame: CGRect) {
@@ -45,10 +37,27 @@ class UserView: UIView {
         addSubview(view)
         nickBackView.setBorder(borderColor: .darkGray2, borderWidth: 1)
         nickBackView.makeRounded(cornerRadius: nil)
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(moveAccountViewController))
+        view.addGestureRecognizer(gesture)
+    }
+
+    @objc func moveAccountViewController() {
+        guard let moveViewController = moveViewController else { return }
+        let storybard = UIStoryboard(name: "Account", bundle: nil)
+        let accountVC = storybard.instantiateViewController(withIdentifier: "AccountSettingVC")
+        moveViewController(accountVC)
     }
 
     func setUserInfo(nick: String) {
-        nickButton.setTitle(nick, for: .normal)
-        nickFirstLabel.text = String(nick[nick.startIndex])
+        nickLabel.text = nick
+        let firstIndex = nick.index(nick.startIndex, offsetBy: 0)
+        let first = String(nick[firstIndex])
+        if first == "_" {
+            let secondIndex = nick.index(nick.startIndex, offsetBy: 1)
+            nickFirstLabel.text = String(nick[secondIndex])
+        } else {
+            nickFirstLabel.text = first
+        }
     }
 }

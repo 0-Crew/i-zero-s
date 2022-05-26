@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448CF27C79D56004E8A10 /* UserLoginData.swift */; };
 		190448DD27CB6274004E8A10 /* BottleWorldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448DC27CB6274004E8A10 /* BottleWorldService.swift */; };
 		190448DF27CB63EE004E8A10 /* BottleWorldUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */; };
-		190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448CF27C79D56004E8A10 /* UserLoginData.swift */; };
 		1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3F827C227140020185C /* AccountDeleteVC.swift */; };
 		1906C3FB27C239DD0020185C /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FA27C239DD0020185C /* APITarget.swift */; };
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
@@ -125,6 +125,8 @@
 		A2DC88D4271C122F0099438A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D3271C122F0099438A /* Home.swift */; };
 		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
 		A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FC304D273695ED00B29296 /* Challenge.storyboard */; };
+		D20A664B283DCC8700AB3E98 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664A283DCC8700AB3E98 /* UserInfoService.swift */; };
+		D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664C283DCCDF00AB3E98 /* SettingData.swift */; };
 		D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */; };
 		D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */; };
 		D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */; };
@@ -148,9 +150,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190448CF27C79D56004E8A10 /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		190448DC27CB6274004E8A10 /* BottleWorldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldService.swift; sourceTree = "<group>"; };
 		190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldUser.swift; sourceTree = "<group>"; };
-		190448CF27C79D56004E8A10 /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		1906C3F827C227140020185C /* AccountDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteVC.swift; sourceTree = "<group>"; };
 		1906C3FA27C239DD0020185C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -266,6 +268,8 @@
 		A2DC88D3271C122F0099438A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A2FC304D273695ED00B29296 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
+		D20A664A283DCC8700AB3E98 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		D20A664C283DCCDF00AB3E98 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
 		D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldVC.swift; sourceTree = "<group>"; };
 		D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldListCell.swift; sourceTree = "<group>"; };
 		D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleWorldListCell.xib; sourceTree = "<group>"; };
@@ -725,6 +729,7 @@
 				6E1D337427C2B35000746CD5 /* Convenience.swift */,
 				6E1D337227C2B30C00746CD5 /* UserChallenge.swift */,
 				190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */,
+				D20A664C283DCCDF00AB3E98 /* SettingData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -735,11 +740,10 @@
 				A2DC88D7271C12A90099438A /* NetworkResult.swift */,
 				1906C3FA27C239DD0020185C /* APITarget.swift */,
 				1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */,
-				1906C40227C240270020185C /* UserNickService.swift */,
-				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */,
 				1906C40227C240270020185C /* UserLoginService.swift */,
-				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenPreviewService.swift */,
+				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */,
 				190448DC27CB6274004E8A10 /* BottleWorldService.swift */,
+				D20A664A283DCC8700AB3E98 /* UserInfoService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1030,6 +1034,7 @@
 				1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */,
 				1923D91B27AFC94B00FE2C87 /* AccountPrivacyVC.swift in Sources */,
 				6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */,
+				D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */,
 				6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */,
@@ -1045,6 +1050,7 @@
 				191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
 				1933FE8C279FF50900BD0CA6 /* SettingVC.swift in Sources */,
+				D20A664B283DCC8700AB3E98 /* UserInfoService.swift in Sources */,
 				191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */,
 				A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */,
 				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,

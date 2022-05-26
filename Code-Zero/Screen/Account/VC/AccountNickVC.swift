@@ -28,8 +28,8 @@ class AccountNickVC: UIViewController {
     }
     @IBAction func deleteAccountButton(_ sender: UIButton) {
         // TODO: 알랏창으로 이동
-        guard let popUpVC =
-                storyboard?.instantiateViewController(identifier: "AccountDeleteVC") as? AccountDeleteVC else {return}
+        guard let popUpVC = storyboard?.instantiateViewController(identifier: "AccountDeleteVC")
+                as? AccountDeleteVC else { return }
         popUpVC.modalPresentationStyle = .overCurrentContext
         popUpVC.modalTransitionStyle = .crossDissolve
         self.present(popUpVC, animated: true, completion: nil)

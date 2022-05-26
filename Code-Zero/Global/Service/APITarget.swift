@@ -26,6 +26,9 @@ enum APITarget {
         isFromToday: Bool,
         token: String
     )
+
+    // 설정
+    case userInfo(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -50,6 +53,8 @@ extension APITarget: TargetType {
             return "/bottleworld/follower"
         case .bottleWorldFollowing:
             return "/bottleworld/following"
+        case .userInfo:
+            return "/user/setting"
         }
     }
 
@@ -58,7 +63,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .challengeOpenPreview, .bottleWorldBrowse, .bottleWorldFollower, .bottleWorldFollowing:
+        case .challengeOpenPreview, .bottleWorldBrowse, .bottleWorldFollower, .bottleWorldFollowing, .userInfo:
             return .get
         }
     }
@@ -88,7 +93,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview:
+        case .challengeOpenPreview, .userInfo:
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
@@ -112,6 +117,7 @@ extension APITarget: TargetType {
                 .bottleWorldBrowse(let token, _),
                 .bottleWorldFollower(let token, _),
                 .bottleWorldFollowing(let token, _):
+                .userInfo(let token):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:

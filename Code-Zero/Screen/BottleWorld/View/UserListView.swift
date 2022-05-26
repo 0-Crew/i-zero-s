@@ -17,8 +17,7 @@ class UserListView: UIView {
             userListTableView.reloadData()
         }
     }
-    var follower: [BottleWorldUser] = []
-    var following: [BottleWorldUser] = []
+    weak var delegate: BottleWorldUsersDelegate?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
