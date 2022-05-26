@@ -28,7 +28,6 @@ class AccountNickVC: UIViewController {
         changeRootViewToHome()
     }
     @IBAction func deleteAccountButton(_ sender: UIButton) {
-        // TODO: 알랏창으로 이동
         guard let popUpVC =
                 storyboard?.instantiateViewController(identifier: "AccountDeleteVC") as? AccountDeleteVC else {return}
         popUpVC.modalPresentationStyle = .overCurrentContext
@@ -37,9 +36,8 @@ class AccountNickVC: UIViewController {
     }
 
     // MARK: - Property
-    var email: String = "xwoud@naver.com"
-    var nick: String = "희영룰루루"
-    var duplicateNick: [String] = ["민희", "주혁", "보틀월드"]
+    var email: String?
+    var nickname: String?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -55,28 +53,30 @@ class AccountNickVC: UIViewController {
 extension AccountNickVC {
     private func setLayout() {
         nickView.setBorder(borderColor: .gray2, borderWidth: 1)
-        emailLabel.text = email
-        nickTextField.text = nick
+        if let email = email,
+           let nickname = nickname {
+            emailLabel.text = email
+            nickTextField.text = nickname
+        } else {
+            emailLabel.text = "wash@your.bottle"
+            nickTextField.text = "워시유어보틀"
+        }
         duplicateCheckLabel.text = ""
         nickTextField.delegate = self
+        nickTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     private func checkNickname() {
-        guard let nickCount = nickTextField.text?.count else { return }
-        if nickCount == 0 {
+        guard let nickname = nickTextField.text else { return }
+        if nickname.count == 0 {
             self.view.endEditing(true)
             editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
-            nickTextField.text = nick
+            nickTextField.text = nickname
         }
-        if nickCount > 0 && nickCount <= 5 {
-            guard let text = nickTextField.text else { return }
-            guard duplicateNick.contains(text) else {
-                self.view.endEditing(true)
-                // TODO: 서버에 닉네임 저장해야함
-                nick =  nickTextField.text!
-                editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
-                return
-            }
-            duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
+        if nickname.count > 0 && nickname.count <= 5 {
+            // swiftlint:disable line_length
+            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+             // swiftlint:enable line_length
+            requestUserNick(token: token, nick: nickname)
         }
     }
     private func changeRootViewToHome() {
@@ -89,22 +89,56 @@ extension AccountNickVC {
         )
     }
 }
-
+// MARK: - Network
+extension AccountNickVC {
+    private func requestUserNick(token: String, nick: String) {
+        UserSettingService.shared.changeUserNick(nick: nick,
+                                                 token: token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if response.message == "유저 이름 세팅 성공" {
+                    self?.view.endEditing(true)
+                    self?.nickname = nick
+                    self?.editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
+                }
+            case .requestErr(let error):
+                if error == "duplicateNick" {
+                    self?.duplicateCheckLabel.text = "이미 사용 중이에요! 다른 닉네임을 적어주세요"
+                }
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                // TODO: 서버 점검중
+                print("serverErr")
+            }
+        }
+    }
+}
 // MARK: - UITextFieldDelegate
 extension AccountNickVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         editButton.setImage(UIImage(named: "icCheckOrange"), for: .normal)
     }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        if let count = textField.text?.count {
+            if count > 0 && count < 6 {
+                duplicateCheckLabel.text = ""
+            } else {
+                duplicateCheckLabel.text = count == 0 ? "" : "5글자까지만 입력할 수 있어요!"
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        editButtonDidTap(editButton)
+        return true
+    }
+    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-
-        if let char = string.cString(using: String.Encoding.utf8) {
-            let isBackSpace = strcmp(char, "\\b") // 백스페이스 감지
-            if isBackSpace == -92 {
-                duplicateCheckLabel.text = textField.text?.count ?? 0 > 6 ? "5자까지만 입력할 수 있어요" : ""
-            }
-        }
 
         if string.isEmpty {
             return true
@@ -114,7 +148,6 @@ extension AccountNickVC: UITextFieldDelegate {
             let currentText = textField.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-            duplicateCheckLabel.text = updatedText.count > 5 ? "5자까지만 입력할 수 있어요!" : ""
             return updatedText.count <= 7
         default:
             return false
