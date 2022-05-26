@@ -39,6 +39,9 @@ class SettingVC: UIViewController {
 // MARK: - Set View Info
 extension SettingVC {
     func setUserInfoView() {
+        let navigationClosure: (UIViewController) -> Void = { view in
+            self.navigationController?.pushViewController(view, animated: true)
+        }
         switch isUser {
         case true:
             guard let userInfo = userInfo else { return }
@@ -46,10 +49,6 @@ extension SettingVC {
                                                     y: 0,
                                                     width: userInfoView.frame.width,
                                                     height: userInfoView.frame.height))
-            let navigationClosure: (UIViewController) -> Void = { view in
-                self.navigationController?.pushViewController(view, animated: true)
-            }
-
             userInfoView.addSubview(isUserView)
             isUserView.setUserInfo(nick: userInfo.name)
             isUserView.moveViewController = navigationClosure
@@ -59,6 +58,7 @@ extension SettingVC {
                                                           width: userInfoView.frame.width,
                                                           height: userInfoView.frame.height))
             userInfoView.addSubview(isNotUserView)
+            isNotUserView.moveViewController = navigationClosure
         }
 
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")

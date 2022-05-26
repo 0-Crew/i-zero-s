@@ -308,7 +308,7 @@
                             <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="Zbm-9d-3tn" secondAttribute="trailing" id="ePY-NC-xh3"/>
                             <constraint firstItem="FU4-yA-oe0" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="fFy-iW-NUq"/>
                             <constraint firstItem="Zbm-9d-3tn" firstAttribute="leading" secondItem="4Gh-lv-qTz" secondAttribute="leading" id="fSQ-ng-v9d"/>
-                            <constraint firstItem="FU4-yA-oe0" firstAttribute="top" secondItem="Zbm-9d-3tn" secondAttribute="bottom" constant="20" id="pQJ-z3-m5N"/>
+                            <constraint firstItem="FU4-yA-oe0" firstAttribute="top" secondItem="Zbm-9d-3tn" secondAttribute="bottom" constant="20" id="oeH-Bn-uTm"/>
                             <constraint firstItem="Zbm-9d-3tn" firstAttribute="top" secondItem="T9f-2z-396" secondAttribute="top" id="u4s-fD-PlY"/>
                         </constraints>
                     </view>
