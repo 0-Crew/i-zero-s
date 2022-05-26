@@ -16,7 +16,7 @@ class SettingVC: UIViewController {
     @IBOutlet weak var versionLabel: UILabel!
 
     // MARK: - Property
-    let isUser: Bool = false
+    let isUser: Bool = true
     let settingListText = ["알림설정", "문의하기", "이용약관", "개인정보정책", "오픈소스"]
 
     // MARK: - View Life Cycle

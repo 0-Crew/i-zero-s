@@ -27,15 +27,15 @@ class AccountNickVC: UIViewController {
         changeRootViewToHome()
     }
     @IBAction func deleteAccountButton(_ sender: UIButton) {
-        guard let popUpVC =
-                storyboard?.instantiateViewController(identifier: "AccountDeleteVC") as? AccountDeleteVC else {return}
+        guard let popUpVC = storyboard?.instantiateViewController(identifier: "AccountDeleteVC")
+                as? AccountDeleteVC else { return }
         popUpVC.modalPresentationStyle = .overCurrentContext
         popUpVC.modalTransitionStyle = .crossDissolve
         self.present(popUpVC, animated: true, completion: nil)
     }
 
     // MARK: - Property
-    var nickname: String?
+    var originNickname: String?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -51,11 +51,9 @@ class AccountNickVC: UIViewController {
 extension AccountNickVC {
     private func setLayout() {
         nickView.setBorder(borderColor: .gray2, borderWidth: 1)
-           let nickname = nickname {
-            emailLabel.text = email
+        if let nickname = originNickname {
             nickTextField.text = nickname
         } else {
-            emailLabel.text = "wash@your.bottle"
             nickTextField.text = "워시유어보틀"
         }
         duplicateCheckLabel.text = ""
@@ -68,10 +66,12 @@ extension AccountNickVC {
             self.view.endEditing(true)
             editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
             nickTextField.text = nickname
-        }
-        if nickname.count > 0 && nickname.count <= 5 {
+        } else if nickname == originNickname {
+            view.endEditing(true)
+            editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
+        } else if nickname.count > 0 && nickname.count <= 5 {
             // swiftlint:disable line_length
-            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoieHdvdWRAdGVzdC5jb20iLCJuYW1lIjoibWluaTMiLCJpZEZpcmViYXNlIjoidzZtblY4VklVU1hWY080Q0paVkNPTHowS2F1MiIsImlhdCI6MTY0NTM3NTM4MCwiZXhwIjoxNjQ3OTY3MzgwLCJpc3MiOiJXWUIifQ.JYS2amG9ydX_BeDCYDc93_cWDGhGOQ29Nq2CGW4SpZE"
+            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM1NzA0NTIsImV4cCI6MTY1NjE2MjQ1MiwiaXNzIjoiV1lCIn0.JOson17TpIuMlbL435hfW27pQnTbD8gNRMRjC8gA1So"
              // swiftlint:enable line_length
             requestUserNick(token: token, nick: nickname)
         }
@@ -95,7 +95,7 @@ extension AccountNickVC {
             case .success(let response):
                 if response.message == "유저 이름 세팅 성공" {
                     self?.view.endEditing(true)
-                    self?.nickname = nick
+                    self?.originNickname = nick
                     self?.editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
                 }
             case .requestErr(let error):
@@ -127,12 +127,10 @@ extension AccountNickVC: UITextFieldDelegate {
             }
         }
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         editButtonDidTap(editButton)
         return true
     }
-    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
