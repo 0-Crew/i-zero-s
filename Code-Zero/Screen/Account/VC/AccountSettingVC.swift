@@ -13,11 +13,13 @@ class AccountSettingVC: UIViewController {
     @IBOutlet var settingListView: [UIView]!
 
     @IBAction func backButtonDidTap(_ sender: UIButton) {
+        deliveryChangeInfo()
         navigationController?.popViewController(animated: true)
     }
     // MARK: - Property
     let settingListText = ["계정 공개 범위", "계정 관리"]
     var userInfo: UserInfo?
+    var changeUserInfoClosure: ((UserInfo) -> Void)?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -54,6 +56,11 @@ class AccountSettingVC: UIViewController {
         ) as? AccountPrivacyVC,
               let userInfo = userInfo else { return }
         privacyVC.originIsPrivate = userInfo.isPrivate
+        privacyVC.changePrivateClosure = { privacy in
+            self.userInfo = UserInfo(id: userInfo.id,
+                                     name: userInfo.name,
+                                     isPrivate: privacy)
+        }
         self.navigationController?.pushViewController(privacyVC, animated: true)
     }
     @objc private func secondListDidTap(sender: UITapGestureRecognizer) {
@@ -62,6 +69,16 @@ class AccountSettingVC: UIViewController {
         ) as? AccountNickVC,
               let userInfo = userInfo else { return }
         accountVC.originNickname = userInfo.name
+        accountVC.changeNickClosure = { nick in
+            self.userInfo = UserInfo(id: userInfo.id,
+                                     name: nick,
+                                     isPrivate: userInfo.isPrivate)
+        }
         self.navigationController?.pushViewController(accountVC, animated: true)
+    }
+    private func deliveryChangeInfo() {
+        guard let userInfo = userInfo,
+              let changeUserInfoClosure = changeUserInfoClosure else { return }
+        changeUserInfoClosure(userInfo)
     }
 }

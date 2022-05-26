@@ -35,7 +35,13 @@ class AccountNickVC: UIViewController {
     }
 
     // MARK: - Property
-    var originNickname: String?
+    var originNickname: String? {
+        didSet {
+            guard let nick = originNickname else { return }
+            deliveryChangeNickname(nick: nick)
+        }
+    }
+    var changeNickClosure: ((String) -> Void)?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -75,6 +81,10 @@ extension AccountNickVC {
              // swiftlint:enable line_length
             requestUserNick(token: token, nick: nickname)
         }
+    }
+    private func deliveryChangeNickname(nick: String) {
+        guard let changeNickClosure = changeNickClosure else { return }
+        changeNickClosure(nick)
     }
     private func changeRootViewToHome() {
         let storybard = UIStoryboard(name: "Home", bundle: nil)
