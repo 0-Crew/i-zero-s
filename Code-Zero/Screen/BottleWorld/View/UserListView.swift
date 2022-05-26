@@ -38,7 +38,7 @@ class UserListView: UIView {
             fetchBrowserData(keyword: filter)
         }
     }
-    var delegate: BottleWorldUsersDelegate?
+    weak var delegate: BottleWorldUsersDelegate?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!

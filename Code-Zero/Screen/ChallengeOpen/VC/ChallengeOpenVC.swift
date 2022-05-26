@@ -73,7 +73,6 @@ class ChallengeOpenVC: UIViewController {
         userInputTextTuple.isTodayStart = thirdStepView.isTodayStart
     }
 
-
     // MARK: - IBAction Method
     @IBAction func nextButtonDidTap() {
         guard let nextStep = ChallengeOpenStep(rawValue: currentStep.rawValue + 1) else {

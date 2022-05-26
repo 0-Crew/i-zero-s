@@ -41,6 +41,6 @@ class ChallengeTitleView: UIView {
         challengeSubjectLabel.text = "편리함 | \(subject)"
         subjectView.backgroundColor = color
 
-        challengeSubjectLabel.setFontWith(font: .futuraStd(size: 14, family: .bold), in: ["|",subject])
+        challengeSubjectLabel.setFontWith(font: .futuraStd(size: 14, family: .bold), in: ["|", subject])
     }
 }
