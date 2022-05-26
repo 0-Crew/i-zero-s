@@ -83,35 +83,19 @@ extension SettingVC {
     }
 
     @objc func touchUpToInsta() {
-        let instagramUrl: URL? =
-        NSURL(string: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=") as URL?
-        guard let instagramUrl = instagramUrl else { return }
-        let safariView: SFSafariViewController = SFSafariViewController(url: instagramUrl)
-        present(safariView, animated: true, completion: nil)
+        presentSafariWebVC(url: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=")
     }
 
     @objc func touchUpToTOS() {
-        let tosUrl: URL? =
-        NSURL(string: "https://chatter-gallium-16e.notion.site/239ddeb527df483a89cdd2d8fe40fff3") as URL?
-        guard let tosUrl = tosUrl else { return }
-        let safariView: SFSafariViewController = SFSafariViewController(url: tosUrl)
-        self.present(safariView, animated: true, completion: nil)
+        presentSafariWebVC(url: "https://chatter-gallium-16e.notion.site/239ddeb527df483a89cdd2d8fe40fff3")
     }
 
     @objc func touchUpToPrivacyPolicy() {
-        let privacyPolicyUrl: URL? =
-        NSURL(string: "https://chatter-gallium-16e.notion.site/da60b412544b405aaeb8d4fefa46c5cb") as URL?
-        guard let privacyPolicyUrl = privacyPolicyUrl else { return }
-        let safariView: SFSafariViewController = SFSafariViewController(url: privacyPolicyUrl)
-        self.present(safariView, animated: true, completion: nil)
+        presentSafariWebVC(url: "https://chatter-gallium-16e.notion.site/da60b412544b405aaeb8d4fefa46c5cb")
     }
 
     @objc func touchUpToOpenSource() {
-        let openSourceUrl: URL? =
-        NSURL(string: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=") as URL?
-        guard let openSourceUrl = openSourceUrl else { return }
-        let safariView: SFSafariViewController = SFSafariViewController(url: openSourceUrl)
-        self.present(safariView, animated: true, completion: nil)
+        presentSafariWebVC(url: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=")
     }
 
     func setListTouchGesture() {
