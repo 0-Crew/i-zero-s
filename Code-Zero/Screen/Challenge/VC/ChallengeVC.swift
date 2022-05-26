@@ -76,6 +76,17 @@ class ChallengeVC: UIViewController {
 
     }
 
+    @IBAction func alarmButtonDidTap() {
+        let storyboard = UIStoryboard(name: "AlarmCenter", bundle: nil)
+        guard
+            let viewController = storyboard
+                .instantiateViewController(withIdentifier: "AlarmCenterVC") as? AlarmCenterVC
+        else {
+            return
+        }
+        self.show(viewController, sender: nil)
+    }
+
     @objc private func followingListButtonsDidTab(sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
         selectedPersonIndex = sender.tag
