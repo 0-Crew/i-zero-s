@@ -16,7 +16,6 @@ class NickSettingVC: UIViewController {
     @IBOutlet weak var duplicateCheckLabel: UILabel!
 
     // MARK: - Property
-    var duplicateNick: [String] = ["민희", "주혁", "보틀월드"]
     lazy var accessoryView: UIView = {
         return UIView(frame: CGRect(x: 0.0,
                                     y: 0.0,
@@ -62,21 +61,6 @@ extension NickSettingVC {
         let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
         // swiftlint:enable line_length
         requestUserNick(token: token, nick: text)
-    }
-
-    func filterNickName(text: String) -> String? {
-        do {
-            let regex = try NSRegularExpression(pattern: "[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9_]")
-            let results = regex.matches(in: text,
-                                        range: NSRange(text.startIndex..., in: text))
-            return results.map {
-                String(text[Range($0.range, in: text)!])
-            }.joined(separator: "")
-
-        } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
-            return nil
-        }
     }
 }
 
@@ -125,6 +109,7 @@ extension NickSettingVC: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        checkDuplicateNick()
         return true
     }
 
