@@ -32,8 +32,14 @@ class UserSettingService {
                     debugPrint(error)
                 }
             case .failure(let error):
-                if error.response?.statusCode == 400 {
+                let errorCode = error.response?.statusCode
+                switch errorCode {
+                case 400:
                     completion(.requestErr("duplicateNick"))
+                case 500:
+                    completion(.networkFail)
+                default:
+                    completion(.serverErr)
                 }
                 debugPrint(error)
             }
