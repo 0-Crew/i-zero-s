@@ -66,6 +66,9 @@
 		6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337227C2B30C00746CD5 /* UserChallenge.swift */; };
 		6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337427C2B35000746CD5 /* Convenience.swift */; };
 		6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A58E927C3A0D500C84D7E /* Indicator.swift */; };
+		6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E533C1B28292985004F36F8 /* challenge_cheerup.json */; };
+		6E533C1E28292998004F36F8 /* challenge_congratulate.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E533C1D28292998004F36F8 /* challenge_congratulate.json */; };
+		6E533C2028292F2B004F36F8 /* AlarmReactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E533C1F28292F2B004F36F8 /* AlarmReactionVC.swift */; };
 		6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */; };
 		6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */; };
 		6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */; };
@@ -212,6 +215,9 @@
 		6E1D337227C2B30C00746CD5 /* UserChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallenge.swift; sourceTree = "<group>"; };
 		6E1D337427C2B35000746CD5 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		6E3A58E927C3A0D500C84D7E /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		6E533C1B28292985004F36F8 /* challenge_cheerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = challenge_cheerup.json; sourceTree = "<group>"; };
+		6E533C1D28292998004F36F8 /* challenge_congratulate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = challenge_congratulate.json; sourceTree = "<group>"; };
+		6E533C1F28292F2B004F36F8 /* AlarmReactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmReactionVC.swift; sourceTree = "<group>"; };
 		6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListCell.swift; sourceTree = "<group>"; };
 		6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListCell.xib; sourceTree = "<group>"; };
 		6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeView.xib; sourceTree = "<group>"; };
@@ -354,6 +360,8 @@
 			children = (
 				1927B80927673F7A00E72F61 /* loading.json */,
 				6EF7D9C327A023A000651DDC /* onboarding.json */,
+				6E533C1B28292985004F36F8 /* challenge_cheerup.json */,
+				6E533C1D28292998004F36F8 /* challenge_congratulate.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -449,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */,
+				6E533C1F28292F2B004F36F8 /* AlarmReactionVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -997,6 +1006,7 @@
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */,
 				6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */,
+				6E533C1E28292998004F36F8 /* challenge_congratulate.json in Resources */,
 				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
@@ -1021,6 +1031,7 @@
 				6E6E4A5027B1251700390493 /* ChallengeFinal.storyboard in Resources */,
 				A2B7BDD82714214300F1DB1F /* Home.storyboard in Resources */,
 				19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */,
+				6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
 				6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */,
 				6EB9722C275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib in Resources */,
@@ -1154,6 +1165,7 @@
 				1906C3FB27C239DD0020185C /* APITarget.swift in Sources */,
 				1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */,
 				D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */,
+				6E533C2028292F2B004F36F8 /* AlarmReactionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

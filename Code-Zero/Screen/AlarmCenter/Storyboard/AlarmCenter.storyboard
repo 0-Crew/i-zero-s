@@ -133,20 +133,50 @@
             </objects>
             <point key="canvasLocation" x="-181.59999999999999" y="26.600985221674879"/>
         </scene>
-        <!--View Controller-->
+        <!--AlarmReactionVC-->
         <scene sceneID="FOa-z6-XDT">
             <objects>
-                <viewController id="Uwz-Xw-7be" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmReactionVC" title="AlarmReactionVC" modalPresentationStyle="fullScreen" id="Uwz-Xw-7be" customClass="AlarmReactionVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ei-yN-hNi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-bK-Bam">
+                                <rect key="frame" x="0.0" y="126" width="375" height="24"/>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
+                                <color key="textColor" name="white"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scs-DH-d8R">
+                                <rect key="frame" x="116" y="619" width="143" height="31"/>
+                                <color key="backgroundColor" name="orangeMain"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="0pp-3C-BDF"/>
+                                    <constraint firstAttribute="width" constant="143" id="hxX-Sw-le8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="축하해 준 친구들 모두보기"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="9Px-uc-1zH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="scs-DH-d8R" firstAttribute="centerX" secondItem="7ei-yN-hNi" secondAttribute="centerX" id="FOm-g3-jm4"/>
+                            <constraint firstItem="hr4-bK-Bam" firstAttribute="top" secondItem="9Px-uc-1zH" secondAttribute="top" constant="82" id="QrT-d0-00g"/>
+                            <constraint firstItem="9Px-uc-1zH" firstAttribute="bottom" secondItem="scs-DH-d8R" secondAttribute="bottom" constant="128" id="aL7-93-ikN"/>
+                            <constraint firstItem="9Px-uc-1zH" firstAttribute="trailing" secondItem="hr4-bK-Bam" secondAttribute="trailing" id="ebd-Uu-fBS"/>
+                            <constraint firstItem="hr4-bK-Bam" firstAttribute="leading" secondItem="9Px-uc-1zH" secondAttribute="leading" id="gUq-zU-wtW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="reactionLabel" destination="hr4-bK-Bam" id="i7d-Lf-JIq"/>
+                        <outlet property="totalLookButton" destination="scs-DH-d8R" id="9Zr-2S-Gan"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="otw-qk-Su0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="27"/>
+            <point key="canvasLocation" x="657" y="27"/>
         </scene>
     </scenes>
     <resources>
@@ -161,6 +191,9 @@
         </namedColor>
         <namedColor name="orangeMain">
             <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -7,43 +7,48 @@
 
 import UIKit
 
-enum AlarmCellType {
+enum AlarmType {
     case normal
     case cheerUp
     case celebrate
+    case beCheered
+    case beCelebrated
+    case totalCheeredUp
+    case totalCelebrated
 }
 
-extension AlarmCellType {
+extension AlarmType {
     var subActionButtonIsHidden: Bool {
         switch self {
-        case .normal:
-            return true
         case .cheerUp, .celebrate:
             return false
+        default:
+            return true
         }
     }
 
     var subActionButtonTitle: String {
         switch self {
-        case .normal:
-            return ""
         case .cheerUp:
             return "응원하기"
         case .celebrate:
             return "축하하기"
+        default:
+            return ""
         }
     }
 }
 
-protocol AlarmCellDelegate {
-    func subActionButtonDidTap(cellType: AlarmCellType)
+protocol AlarmCellDelegate: AnyObject {
+    func subActionButtonDidTap(cellType: AlarmType, offset: Int)
 }
 
 class AlarmCell: UITableViewCell {
 
-    private var cellType: AlarmCellType!
+    private var cellType: AlarmType!
 
-    internal var delegate: AlarmCellDelegate?
+    internal var offset: Int! = 0
+    internal weak var delegate: AlarmCellDelegate?
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var defaultProfileLabel: UILabel!
@@ -57,11 +62,13 @@ class AlarmCell: UITableViewCell {
         // Initialization code
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) { }
+
     private func configureCell() {
         profileImageView.makeRounded(cornerRadius: 36 / 2)
     }
 
-    internal func bindData(type: AlarmCellType = .normal, text: String) {
+    internal func bindData(type: AlarmType = .normal, text: String) {
         cellType = type
         subActionButton.isHidden = type.subActionButtonIsHidden
         subActionButton.setTitle(type.subActionButtonTitle, for: .normal)
@@ -69,7 +76,6 @@ class AlarmCell: UITableViewCell {
     }
 
     @IBAction func subActionButtonDidTap() {
-        delegate?.subActionButtonDidTap(cellType: cellType)
+        delegate?.subActionButtonDidTap(cellType: cellType, offset: offset)
     }
-
 }
