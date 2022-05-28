@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -221,20 +221,8 @@
                                     <constraint firstAttribute="height" constant="50" id="h2A-j3-jaL"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-b9-Dej">
-                                <rect key="frame" x="30" y="114" width="18.5" height="12"/>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="10"/>
-                                <color key="textColor" name="gray3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="khy1234@naver.com " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJQ-gN-4r7">
-                                <rect key="frame" x="30" y="131" width="354" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
-                                <color key="textColor" name="gray2"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FU4-yA-oe0">
-                                <rect key="frame" x="30" y="172" width="354" height="57"/>
+                                <rect key="frame" x="30" y="114" width="354" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czf-K0-oiG">
                                         <rect key="frame" x="10" y="8" width="36" height="20"/>
@@ -300,7 +288,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkO-Yq-nqg">
-                                <rect key="frame" x="30" y="241" width="33.5" height="14"/>
+                                <rect key="frame" x="30" y="183" width="33.5" height="14"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
                                 <color key="textColor" name="redAlert"/>
                                 <nil key="highlightedColor"/>
@@ -309,30 +297,24 @@
                         <viewLayoutGuide key="safeArea" id="T9f-2z-396"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Wf9-b9-Dej" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="1Ta-7h-p98"/>
                             <constraint firstItem="vkO-Yq-nqg" firstAttribute="top" secondItem="FU4-yA-oe0" secondAttribute="bottom" constant="12" id="6Eg-xd-rm5"/>
                             <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="FU4-yA-oe0" secondAttribute="trailing" constant="30" id="CCj-6x-hkF"/>
                             <constraint firstItem="vkO-Yq-nqg" firstAttribute="leading" secondItem="FU4-yA-oe0" secondAttribute="leading" id="Dlt-Y6-Kr9"/>
                             <constraint firstItem="jFK-uY-2la" firstAttribute="leading" secondItem="ETb-HN-XEQ" secondAttribute="trailing" constant="5" id="EqX-HP-qF2"/>
-                            <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="oJQ-gN-4r7" secondAttribute="trailing" constant="30" id="Gbd-RT-BtH"/>
                             <constraint firstItem="ETb-HN-XEQ" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="ImU-Xi-S5K"/>
                             <constraint firstItem="jFK-uY-2la" firstAttribute="top" secondItem="ETb-HN-XEQ" secondAttribute="top" id="K4m-Ok-qQH"/>
-                            <constraint firstItem="FU4-yA-oe0" firstAttribute="top" secondItem="oJQ-gN-4r7" secondAttribute="bottom" constant="20" id="Msa-Hh-0pK"/>
                             <constraint firstItem="ETb-HN-XEQ" firstAttribute="bottom" secondItem="4Gh-lv-qTz" secondAttribute="bottom" constant="-34" id="NBR-6d-tKP"/>
                             <constraint firstItem="jFK-uY-2la" firstAttribute="bottom" secondItem="ETb-HN-XEQ" secondAttribute="bottom" id="SFG-rr-Q8v"/>
-                            <constraint firstItem="oJQ-gN-4r7" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="Xea-Cm-iuL"/>
                             <constraint firstItem="T9f-2z-396" firstAttribute="trailing" secondItem="Zbm-9d-3tn" secondAttribute="trailing" id="ePY-NC-xh3"/>
                             <constraint firstItem="FU4-yA-oe0" firstAttribute="leading" secondItem="T9f-2z-396" secondAttribute="leading" constant="30" id="fFy-iW-NUq"/>
                             <constraint firstItem="Zbm-9d-3tn" firstAttribute="leading" secondItem="4Gh-lv-qTz" secondAttribute="leading" id="fSQ-ng-v9d"/>
-                            <constraint firstItem="Wf9-b9-Dej" firstAttribute="top" secondItem="Zbm-9d-3tn" secondAttribute="bottom" constant="20" id="tDx-Bf-Doe"/>
+                            <constraint firstItem="FU4-yA-oe0" firstAttribute="top" secondItem="Zbm-9d-3tn" secondAttribute="bottom" constant="20" id="oeH-Bn-uTm"/>
                             <constraint firstItem="Zbm-9d-3tn" firstAttribute="top" secondItem="T9f-2z-396" secondAttribute="top" id="u4s-fD-PlY"/>
-                            <constraint firstItem="oJQ-gN-4r7" firstAttribute="top" secondItem="Wf9-b9-Dej" secondAttribute="bottom" constant="5" id="xgY-XG-dPv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="duplicateCheckLabel" destination="vkO-Yq-nqg" id="ozy-l3-xNx"/>
                         <outlet property="editButton" destination="hJ9-2f-if3" id="3U9-1s-G43"/>
-                        <outlet property="emailLabel" destination="oJQ-gN-4r7" id="xVd-JO-nfR"/>
                         <outlet property="nickTextField" destination="yLz-MM-h1Y" id="bgE-bp-sX4"/>
                         <outlet property="nickView" destination="FU4-yA-oe0" id="TfX-zH-Lgs"/>
                     </connections>

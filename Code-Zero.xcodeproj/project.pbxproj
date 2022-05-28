@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448CF27C79D56004E8A10 /* UserLoginData.swift */; };
+		190448DD27CB6274004E8A10 /* BottleWorldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448DC27CB6274004E8A10 /* BottleWorldService.swift */; };
+		190448DF27CB63EE004E8A10 /* BottleWorldUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */; };
 		1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3F827C227140020185C /* AccountDeleteVC.swift */; };
 		1906C3FB27C239DD0020185C /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FA27C239DD0020185C /* APITarget.swift */; };
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
-		1906C40327C240270020185C /* UserNickService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserNickService.swift */; };
+		1906C40327C240270020185C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserLoginService.swift */; };
 		1906C40527C241330020185C /* SimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40427C241330020185C /* SimpleData.swift */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
@@ -38,6 +41,7 @@
 		193E529027C3B60D006F2727 /* UserPrivateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E528F27C3B60D006F2727 /* UserPrivateService.swift */; };
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
+		195A0F0427CCF266009F0FFD /* UserSettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A0F0327CCF266009F0FFD /* UserSettingService.swift */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
 		195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC717275BD5E500BDECB6 /* SwipeBarView.swift */; };
 		195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */; };
@@ -56,6 +60,10 @@
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
 		6E1D336B27C2051800746CD5 /* FinalChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */; };
 		6E1D336D27C2053C00746CD5 /* FinalChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */; };
+		6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */; };
+		6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337227C2B30C00746CD5 /* UserChallenge.swift */; };
+		6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337427C2B35000746CD5 /* Convenience.swift */; };
+		6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A58E927C3A0D500C84D7E /* Indicator.swift */; };
 		6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */; };
 		6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */; };
 		6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */; };
@@ -119,6 +127,8 @@
 		A2DC88D4271C122F0099438A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D3271C122F0099438A /* Home.swift */; };
 		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
 		A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FC304D273695ED00B29296 /* Challenge.storyboard */; };
+		D20A664B283DCC8700AB3E98 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664A283DCC8700AB3E98 /* UserInfoService.swift */; };
+		D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664C283DCCDF00AB3E98 /* SettingData.swift */; };
 		D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */; };
 		D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */; };
 		D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */; };
@@ -142,10 +152,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190448CF27C79D56004E8A10 /* UserLoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
+		190448DC27CB6274004E8A10 /* BottleWorldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldService.swift; sourceTree = "<group>"; };
+		190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldUser.swift; sourceTree = "<group>"; };
 		1906C3F827C227140020185C /* AccountDeleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteVC.swift; sourceTree = "<group>"; };
 		1906C3FA27C239DD0020185C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
-		1906C40227C240270020185C /* UserNickService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNickService.swift; sourceTree = "<group>"; };
+		1906C40227C240270020185C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
 		1906C40427C241330020185C /* SimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleData.swift; sourceTree = "<group>"; };
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
@@ -171,10 +184,12 @@
 		193E528F27C3B60D006F2727 /* UserPrivateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrivateService.swift; sourceTree = "<group>"; };
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
+		195A0F0327CCF266009F0FFD /* UserSettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingService.swift; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
 		195AC71B275BD71F00BDECB6 /* TopTabBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopTabBarCell.xib; sourceTree = "<group>"; };
+		196961BF27C2A36100BC563B /* Code-Zero.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Code-Zero.entitlements"; sourceTree = "<group>"; };
 		197A654D276F748D00166255 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		197A6550276F784900166255 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		1998752A274F9D76004CD747 /* ChallengeTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTitleView.xib; sourceTree = "<group>"; };
@@ -189,6 +204,10 @@
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
 		6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalChallengeView.xib; sourceTree = "<group>"; };
 		6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeView.swift; sourceTree = "<group>"; };
+		6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenService.swift; sourceTree = "<group>"; };
+		6E1D337227C2B30C00746CD5 /* UserChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallenge.swift; sourceTree = "<group>"; };
+		6E1D337427C2B35000746CD5 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
+		6E3A58E927C3A0D500C84D7E /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListCell.swift; sourceTree = "<group>"; };
 		6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListCell.xib; sourceTree = "<group>"; };
 		6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeView.xib; sourceTree = "<group>"; };
@@ -253,6 +272,8 @@
 		A2DC88D3271C122F0099438A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A2FC304D273695ED00B29296 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
+		D20A664A283DCC8700AB3E98 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		D20A664C283DCCDF00AB3E98 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
 		D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldVC.swift; sourceTree = "<group>"; };
 		D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldListCell.swift; sourceTree = "<group>"; };
 		D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleWorldListCell.xib; sourceTree = "<group>"; };
@@ -507,6 +528,7 @@
 				6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */,
 				6E5B24B42749402B0071C9F2 /* ChallengeView.swift */,
 				6EB97235275B86CD00AB8349 /* LoadXibView.swift */,
+				6E3A58E927C3A0D500C84D7E /* Indicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -614,6 +636,7 @@
 		A2B7BDCF2714214300F1DB1F /* Code-Zero */ = {
 			isa = PBXGroup;
 			children = (
+				196961BF27C2A36100BC563B /* Code-Zero.entitlements */,
 				A2DC88C8271C112D0099438A /* Global */,
 				A2DC88C9271C113B0099438A /* Screen */,
 				A2DC88CA271C11470099438A /* Support */,
@@ -706,6 +729,11 @@
 				A2DC88CE271C11D50099438A /* GenericResponse.swift */,
 				1906C40427C241330020185C /* SimpleData.swift */,
 				6E6E4A4927AFCCEB00390493 /* Constants.swift */,
+				190448CF27C79D56004E8A10 /* UserLoginData.swift */,
+				6E1D337427C2B35000746CD5 /* Convenience.swift */,
+				6E1D337227C2B30C00746CD5 /* UserChallenge.swift */,
+				190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */,
+				D20A664C283DCCDF00AB3E98 /* SettingData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -718,6 +746,11 @@
 				1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */,
 				1906C40227C240270020185C /* UserNickService.swift */,
 				193E528F27C3B60D006F2727 /* UserPrivateService.swift */,
+				1906C40227C240270020185C /* UserLoginService.swift */,
+				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */,
+				190448DC27CB6274004E8A10 /* BottleWorldService.swift */,
+				195A0F0327CCF266009F0FFD /* UserSettingService.swift */,
+				D20A664A283DCC8700AB3E98 /* UserInfoService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1008,6 +1041,7 @@
 				1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */,
 				1923D91B27AFC94B00FE2C87 /* AccountPrivacyVC.swift in Sources */,
 				6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */,
+				D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */,
 				6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */,
@@ -1023,6 +1057,7 @@
 				191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */,
 				A2DC88CF271C11D50099438A /* GenericResponse.swift in Sources */,
 				1933FE8C279FF50900BD0CA6 /* SettingVC.swift in Sources */,
+				D20A664B283DCC8700AB3E98 /* UserInfoService.swift in Sources */,
 				191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */,
 				A29574DE273AB2570056CC93 /* ChallengeVC.swift in Sources */,
 				193E529027C3B60D006F2727 /* UserPrivateService.swift in Sources */,
@@ -1031,11 +1066,16 @@
 				6E6E4A5227B12E4200390493 /* ChallengeFinalVC.swift in Sources */,
 				A25C8BFA2731417800D2BA78 /* UILabel+Extension.swift in Sources */,
 				6E6C1E942751216C007488AD /* OptionCell.swift in Sources */,
+				195A0F0427CCF266009F0FFD /* UserSettingService.swift in Sources */,
 				6E5B24B8274D2C450071C9F2 /* EmptyChallengeCell.swift in Sources */,
 				19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */,
+				6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */,
+				6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */,
 				6E1D336D27C2053C00746CD5 /* FinalChallengeView.swift in Sources */,
 				19A142C4274FBA4F00E8DC45 /* ChallengedListView.swift in Sources */,
+				190448DD27CB6274004E8A10 /* BottleWorldService.swift in Sources */,
 				6E6E4A4A27AFCCEB00390493 /* Constants.swift in Sources */,
+				190448DF27CB63EE004E8A10 /* BottleWorldUser.swift in Sources */,
 				A2DC88D4271C122F0099438A /* Home.swift in Sources */,
 				191A4EAD27665CB9005D0525 /* UserListView.swift in Sources */,
 				1933FE9427A0191B00BD0CA6 /* UserView.swift in Sources */,
@@ -1046,6 +1086,7 @@
 				1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
+				190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
 				19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */,
@@ -1053,11 +1094,12 @@
 				195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */,
 				194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */,
 				A2B7BDD32714214300F1DB1F /* SceneDelegate.swift in Sources */,
-				1906C40327C240270020185C /* UserNickService.swift in Sources */,
+				1906C40327C240270020185C /* UserLoginService.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
 				1923D91D27AFD4CE00FE2C87 /* AccountNickVC.swift in Sources */,
+				6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */,
 				6EE5ACA227592F35007CCC67 /* ChallengeOpenVC.swift in Sources */,
 				6EF7D9C12794324300651DDC /* OnboardingStepThreeVC.swift in Sources */,
 				6E5B24B52749402B0071C9F2 /* ChallengeView.swift in Sources */,
@@ -1069,6 +1111,7 @@
 				1998752D274FA852004CD747 /* ChallengeTitleView.swift in Sources */,
 				A2696D6F272D6141001A2C60 /* UIColor+Extension.swift in Sources */,
 				6EB97233275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift in Sources */,
+				6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */,
 				1906C3FB27C239DD0020185C /* APITarget.swift in Sources */,
 				1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */,
 				D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */,
@@ -1248,6 +1291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DUQE66MABG;
@@ -1263,7 +1307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1276,6 +1320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DUQE66MABG;
@@ -1291,7 +1336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.team-zero.WYB";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

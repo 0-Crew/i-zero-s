@@ -21,12 +21,23 @@ class AccountPrivacyVC: UIViewController {
     }
 
     // MARK: - Property
-    var isPrivateSwitchOn: Bool? = true
+    var originIsPrivate: Bool?
+    var changePrivateClosure: ((Bool) -> Void)?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        privacySwitch.isOn = isPrivateSwitchOn ?? false
+        setoriginData()
+    }
+
+    // MARK: - Set Propety Data
+    private func setoriginData() {
+        guard let originIsPrivate = originIsPrivate else { return }
+        privacySwitch.isOn = originIsPrivate
+    }
+    private func deliveryChangeNickname(state: Bool) {
+        guard let changePrivateClosure = changePrivateClosure else { return }
+        changePrivateClosure(state)
     }
 }
 
@@ -40,6 +51,8 @@ extension AccountPrivacyVC {
             switch result {
             case .success(let data):
                 self?.privacySwitch.isOn = data.isPrivate
+                originIsPrivate = data.isPrivate
+                deliveryChangeNickname(state: data.isPrivate)
             case .serverErr:
                 // 토큰 만료(자동 로그아웃 느낌..)
                 print("serverErr")

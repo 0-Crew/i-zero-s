@@ -11,8 +11,23 @@ import Moya
 enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
-    case auth(id: String, email: String, provider: String)
     case userPrivate(token: String)
+    case auth(idKey: String, token: String, provider: String)
+
+    // 보틀월드
+    case bottleWorldBrowse(token: String, keyword: String?)
+
+    // 챌린지
+    case challengeOpenPreview(token: String)
+    case challengeOpen(
+        convenienceString: String,
+        inconvenienceString: String,
+        isFromToday: Bool,
+        token: String
+    )
+
+    // 설정
+    case userInfo(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -31,16 +46,24 @@ extension APITarget: TargetType {
             return "/auth"
         case .userPrivate:
             return "/user/private"
+        case .challengeOpenPreview, .challengeOpen:
+            return "/my-challenge/add"
+        case .bottleWorldBrowse:
+            return "/bottleworld/browse"
+        case .userInfo:
+            return "/user/setting"
         }
     }
 
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick, .auth:
+        case .userNick, .auth, .challengeOpen:
             return .post
         case .userPrivate:
             return .put
+        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo:
+            return .get
         }
     }
 
@@ -58,11 +81,25 @@ extension APITarget: TargetType {
 
         case .userNick(let nick, _):
             return .requestParameters(parameters: ["name": nick], encoding: JSONEncoding.default)
-        case .auth(let id, let email, let provider):
-            return .requestParameters(parameters: ["snsId": id, "email": email, "provider": provider],
+        case .auth(let idKey, let token, let provider):
+            return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
                                       encoding: JSONEncoding.default)
         case .userPrivate:
                 return .requestPlain
+        case .bottleWorldBrowse(_, let keyword):
+            guard let keyword = keyword else {
+                return .requestPlain
+            }
+            return .requestParameters(parameters: ["keyword": keyword],
+                                      encoding: URLEncoding.queryString)
+        case .challengeOpenPreview, .userInfo:
+            return .requestPlain
+        case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
+            return .requestParameters(parameters: ["convenienceString": convenienceString,
+                                                   "inconvenienceString": inconvenienceString,
+                                                   "isfromToday": isFromToday],
+                                      encoding: JSONEncoding.default
+            )
         }
     }
     var validationType: Moya.ValidationType {
@@ -73,8 +110,14 @@ extension APITarget: TargetType {
     var headers: [String: String]? {
         // headers - HTTP header
         switch self {
-        case .userNick(_, let token), .userPrivate(let token) :
-            return ["Content-Type": "application/json", "Authorization": token]
+        case .userNick(_, let token),
+                .userPrivate(let token)
+                .challengeOpenPreview(let token),
+                .challengeOpen(_, _, _, let token),
+                .bottleWorldBrowse(let token, _),
+                .userInfo(let token):
+            return ["Content-Type": "application/json",
+                    "Authorization": token]
         default:
             return ["Content-Type": "application/json"]
         }

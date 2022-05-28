@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+protocol BottleWorldUsersDelegate: AnyObject {
+    func presentEmptyUserView()
+    func presentUserListView()
+}
+
 class BottleWorldListCell: UICollectionViewCell {
 
     // MARK: - IBOutlet
@@ -21,30 +26,25 @@ class BottleWorldListCell: UICollectionViewCell {
 
     @IBAction func searchButtonDidTap(_ sender: Any) {
         if let text = searchTextField.text {
-            if text.count > 0 {
-                userListView.filteringText = text // 필터링 할 글자 넘겨주기
-            }
+            userListView.filteringText = text
         }
     }
     // MARK: - Override Fucntion
     override func awakeFromNib() {
         super.awakeFromNib()
         setView()
-        setResultView()
+        setUserListView()
+        searchTextField.delegate = self
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         endEditing(true)
     }
+
     // MARK: - Style Set Function
     private func setView() {
         self.backgroundColor = .white
         searchView.makeRounded(cornerRadius: 10)
         searchButton.setTitle("", for: .normal)
-    }
-    private func setResultView() {
-        // if 구조체.count == 0 이라면 setEmptyView()
-        // else 라면 
-        setUserListView()
     }
     func setEmptyView() {
         searchResultView.addSubview(emptyView)
@@ -61,6 +61,30 @@ class BottleWorldListCell: UICollectionViewCell {
             $0.height.equalTo(searchResultView.snp.height)
             $0.width.equalTo(searchResultView.snp.width)
         }
+        userListView.delegate = self
     }
+}
 
+extension BottleWorldListCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            userListView.filteringText = text
+        }
+        endEditing(true)
+        return true
+    }
+}
+
+// MARK: - BottleWorldUsersDelegate
+extension BottleWorldListCell: BottleWorldUsersDelegate {
+    func presentEmptyUserView() {
+        userListView.removeFromSuperview()
+        emptyView.removeFromSuperview()
+        setEmptyView()
+    }
+    func presentUserListView() {
+        emptyView.removeFromSuperview()
+        userListView.removeFromSuperview()
+        setUserListView()
+    }
 }

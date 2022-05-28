@@ -13,10 +13,13 @@ class AccountSettingVC: UIViewController {
     @IBOutlet var settingListView: [UIView]!
 
     @IBAction func backButtonDidTap(_ sender: UIButton) {
+        deliveryChangeInfo()
         navigationController?.popViewController(animated: true)
     }
     // MARK: - Property
     let settingListText = ["계정 공개 범위", "계정 관리"]
+    var userInfo: UserInfo?
+    var changeUserInfoClosure: ((UserInfo) -> Void)?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -24,7 +27,8 @@ class AccountSettingVC: UIViewController {
         setSettingList()
     }
 
-    func setSettingList() {
+    // MARK: - Set Propety Data
+    private func setSettingList() {
         settingListView.enumerated().forEach {
             let settingLineView = SettingLineView(frame: CGRect(x: 0,
                                                                 y: 0,
@@ -46,18 +50,35 @@ class AccountSettingVC: UIViewController {
 
         }
     }
-
-    @objc func firstListDidTap(sender: UITapGestureRecognizer) {
+    @objc private func firstListDidTap(sender: UITapGestureRecognizer) {
         guard let privacyVC = storyboard?.instantiateViewController(
             withIdentifier: "AccountPrivacyVC"
-        ) as? AccountPrivacyVC else { return }
+        ) as? AccountPrivacyVC,
+              let userInfo = userInfo else { return }
+        privacyVC.originIsPrivate = userInfo.isPrivate
+        privacyVC.changePrivateClosure = { privacy in
+            self.userInfo = UserInfo(id: userInfo.id,
+                                     name: userInfo.name,
+                                     isPrivate: privacy)
+        }
         self.navigationController?.pushViewController(privacyVC, animated: true)
     }
-
-    @objc func secondListDidTap(sender: UITapGestureRecognizer) {
+    @objc private func secondListDidTap(sender: UITapGestureRecognizer) {
         guard let accountVC = storyboard?.instantiateViewController(
             withIdentifier: "AccountNickVC"
-        ) as? AccountNickVC else { return }
+        ) as? AccountNickVC,
+              let userInfo = userInfo else { return }
+        accountVC.originNickname = userInfo.name
+        accountVC.changeNickClosure = { nick in
+            self.userInfo = UserInfo(id: userInfo.id,
+                                     name: nick,
+                                     isPrivate: userInfo.isPrivate)
+        }
         self.navigationController?.pushViewController(accountVC, animated: true)
+    }
+    private func deliveryChangeInfo() {
+        guard let userInfo = userInfo,
+              let changeUserInfoClosure = changeUserInfoClosure else { return }
+        changeUserInfoClosure(userInfo)
     }
 }
