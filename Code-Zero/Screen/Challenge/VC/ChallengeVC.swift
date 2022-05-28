@@ -249,7 +249,7 @@ extension ChallengeVC {
         // swiftlint:disable line_length
         let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
         // swiftlint:enable line_length
-        UserInfoService.shared.requestLogin(token: token) { [weak self] result in
+        UserSettingService.shared.requestUserInfo(token: token) { [weak self] result in
             switch result {
             case .success(let info):
                 self?.userInfo = info.user

@@ -111,7 +111,7 @@ extension APITarget: TargetType {
         // headers - HTTP header
         switch self {
         case .userNick(_, let token),
-                .userPrivate(let token)
+                .userPrivate(let token),
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
                 .bottleWorldBrowse(let token, _),

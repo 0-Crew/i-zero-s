@@ -51,8 +51,8 @@ extension AccountPrivacyVC {
             switch result {
             case .success(let data):
                 self?.privacySwitch.isOn = data.isPrivate
-                originIsPrivate = data.isPrivate
-                deliveryChangeNickname(state: data.isPrivate)
+                self?.originIsPrivate = data.isPrivate
+                self?.deliveryChangeNickname(state: data.isPrivate)
             case .serverErr:
                 // 토큰 만료(자동 로그아웃 느낌..)
                 print("serverErr")
