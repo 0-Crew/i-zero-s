@@ -50,7 +50,7 @@ extension SettingVC {
                                                     width: userInfoView.frame.width,
                                                     height: userInfoView.frame.height))
             userInfoView.addSubview(isUserView)
-            isUserView.setUserInfo(nick: userInfo.name)
+            isUserView.setUserInfo(info: userInfo)
             isUserView.moveViewController = navigationClosure
         case false:
             let isNotUserView = NotUserView(frame: CGRect(x: 0,
@@ -65,7 +65,7 @@ extension SettingVC {
         versionLabel.text = "버전 \(version ?? "1.0.0")"
     }
 
-    func setSettingList() {
+    private func setSettingList() {
         settingListView.enumerated().forEach {
             let settingLineView = SettingLineView(frame: CGRect(x: 0,
                                                                 y: 0,
@@ -77,7 +77,7 @@ extension SettingVC {
         setListTouchGesture()
     }
 
-    func setAppVersion() {
+    private func setAppVersion() {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
         versionLabel.text = "버전 \(version ?? "1.0.0")"
     }
