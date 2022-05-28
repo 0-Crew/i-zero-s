@@ -14,22 +14,30 @@ class AccountPrivacyVC: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func privacySwitchDidTap(_ sender: UISwitch) {
-        isPrivateSwitchOn = sender.isOn
+        originIsPrivate = sender.isOn
+        deliveryChangeNickname(state: sender.isOn)
     }
     @IBAction func backButtonDidTap(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Property
-    var isPrivateSwitchOn: Bool = true {
-        didSet {
-            // TODO: 서버 연결 해서 계정 범위 수정
-        }
-    }
+    var originIsPrivate: Bool?
+    var changePrivateClosure: ((Bool) -> Void)?
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        privacySwitch.isOn = isPrivateSwitchOn
+        setoriginData()
+    }
+
+    // MARK: - Set Propety Data
+    private func setoriginData() {
+        guard let originIsPrivate = originIsPrivate else { return }
+        privacySwitch.isOn = originIsPrivate
+    }
+    private func deliveryChangeNickname(state: Bool) {
+        guard let changePrivateClosure = changePrivateClosure else { return }
+        changePrivateClosure(state)
     }
 }
