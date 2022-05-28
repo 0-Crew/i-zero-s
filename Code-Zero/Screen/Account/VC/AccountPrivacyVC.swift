@@ -38,11 +38,8 @@ class AccountPrivacyVC: UIViewController {
 extension AccountPrivacyVC {
     func requestToggleAccountPrivate() {
         // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImVtYWlsIjoiZGRkZGRAbGRhc2tmai5jb20iLCJuYW1lIjoi7JWI64WV7ZWY7IqIIiwiaWRGaXJlYmFzZSI6IkRqZUZyS2tXWG5nS3lVc0JNVDdNa2E3TFlORTMiLCJpYXQiOjE2NDU0NDQzMDAsImV4cCI6MTY0ODAzNjMwMCwiaXNzIjoiV1lCIn0.7uraZqel7I0DVPX1El2I1gS2Hq13MdYJrrLSYPOsOvY"
-        UserDefaults.standard.set(token, forKey: "userToken")
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
         // swiftlint:enable line_length
-
-        guard let token = UserDefaults.standard.string(forKey: "userToken") else { return }
         UserPrivateService.shared.toggleAccountPrivate(token: token) { [weak self] result in
             switch result {
             case .success(let data):
