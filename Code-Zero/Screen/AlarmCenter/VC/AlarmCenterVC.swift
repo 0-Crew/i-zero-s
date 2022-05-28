@@ -63,6 +63,25 @@ class AlarmCenterVC: UIViewController {
 
         return view
     }()
+
+    lazy var eventToastView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray2
+        view.addSubview(toastTitleLabel)
+
+        toastTitleLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+
+        return view
+    }()
+    lazy var toastTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .spoqaHanSansNeo(size: 14, family: .medium)
+        label.textColor = .white
+        return label
+    }()
+
     // alarms가 빈배열일 경우 emptyView 노출
     var alarms: [(String, AlarmType)] = [
         ("박수빈빈님이 챌린지를 성공했어요!", .celebrate),
@@ -91,6 +110,31 @@ class AlarmCenterVC: UIViewController {
         emptyView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalTo(view)
         }
+    }
+
+    private func presentToastView(text: String) {
+        eventToastView.alpha = 0
+        toastTitleLabel.text = text
+        view.addSubview(eventToastView)
+        eventToastView.snp.makeConstraints {
+
+            $0.bottom.equalToSuperview().offset(-60)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.height.equalTo(57)
+        }
+
+        UIView.animateKeyframes(withDuration: 2, delay: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/20, animations: {
+                self.eventToastView.alpha = 1
+            })
+            UIView.addKeyframe(withRelativeStartTime: 19/20, relativeDuration: 1/20, animations: {
+                self.eventToastView.alpha = 0
+            })
+
+        }, completion: { _ in
+            self.eventToastView.removeFromSuperview()
+        })
     }
 }
 
@@ -129,10 +173,13 @@ extension AlarmCenterVC: UITableViewDelegate {
 
 extension AlarmCenterVC: AlarmCellDelegate {
     func subActionButtonDidTap(cellType: AlarmType, offset: Int) {
+        // TODO: AlarmCenter 서버 연결 후 다시 작업
         switch cellType {
         case .cheerUp:
+            presentToastView(text: "박수빈님에게 챌린지 응원을 보냈어요!")
             print("cheerUp")
         case .celebrate:
+            presentToastView(text: "celebrate")
             print("celebrate")
         default:
             break
