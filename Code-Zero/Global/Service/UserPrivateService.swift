@@ -33,9 +33,16 @@ class UserPrivateService {
                     debugPrint(error)
                 }
             case .failure(let error):
-                if error.errorCode == 400 {
-                    completion(.requestErr("존재하지 않는 회원"))
+                let errorCode = error.response?.statusCode
+                switch errorCode {
+                case 400, 401:
+                    completion(.serverErr)
+                case 500:
+                    completion(.networkFail)
+                default:
+                    completion(.requestErr(error.response?.description ?? ""))
                 }
+                debugPrint(error)
             }
         }
     }
