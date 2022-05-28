@@ -11,6 +11,7 @@ import Moya
 enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
+    case userPrivate(token: String)
     case auth(idKey: String, token: String, provider: String)
 
     // 보틀월드
@@ -45,6 +46,8 @@ extension APITarget: TargetType {
             return "/user/name"
         case .auth:
             return "/auth"
+        case .userPrivate:
+            return "/user/private"
         case .challengeOpenPreview, .challengeOpen:
             return "/my-challenge/add"
         case .bottleWorldBrowse:
@@ -63,7 +66,9 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .challengeOpenPreview, .bottleWorldBrowse, .bottleWorldFollower, .bottleWorldFollowing, .userInfo:
+        case .userPrivate:
+            return .put
+        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo:
             return .get
         }
     }
@@ -85,6 +90,8 @@ extension APITarget: TargetType {
         case .auth(let idKey, let token, let provider):
             return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
                                       encoding: JSONEncoding.default)
+        case .userPrivate:
+                return .requestPlain
         case .bottleWorldBrowse(_, let keyword),
                 .bottleWorldFollower(_, let keyword),
                 .bottleWorldFollowing(_, let keyword):
@@ -112,6 +119,7 @@ extension APITarget: TargetType {
         // headers - HTTP header
         switch self {
         case .userNick(_, let token),
+                .userPrivate(let token),
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
                 .bottleWorldBrowse(let token, _),
