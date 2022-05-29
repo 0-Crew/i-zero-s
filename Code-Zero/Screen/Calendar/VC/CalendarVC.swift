@@ -40,6 +40,7 @@ class CalendarVC: UIViewController {
     private let gregorian = Calendar(identifier: .gregorian)
     private var challengeDates: [(String, Int)] = []
     private var challengeContext: [ChallengeData] = []
+    private var testData: CalendarData?
     private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
         didSet {
             selectedChallege != [] ? setChallengeListView() : setChallengeJoinView()
@@ -355,5 +356,35 @@ extension CalendarVC {
            ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 3),
            ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3), ("2021-11-26", 3),
            ("2021-11-27", 3)]
+    }
+    private func fetchCalendar(id: Int) {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
+        // swiftlint:enable line_length
+        CalendarService.shared.requestCalendar(myChallengeId: id,
+                                               token: token) { [weak self] result in
+            switch result {
+            case .success(let calendar):
+                self?.testData = calendar
+                self?.findTodayIsChallengeTest()
+            case .requestErr(let error):
+                print(error)
+            case .serverErr:
+                // 토큰 만료(자동 로그아웃 느낌..)
+                self?.changeRootViewToHome()
+            case .networkFail:
+                // TODO: 서버 자체 에러 - 서버 점검 중 popup 제작?
+                break
+            }
+        }
+    }
+    private func changeRootViewToHome() {
+        let storybard = UIStoryboard(name: "Home", bundle: nil)
+        let homeNavigationVC = storybard.instantiateViewController(withIdentifier: "Home")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            homeNavigationVC,
+            animated: true,
+            completion: nil
+        )
     }
 }
