@@ -83,7 +83,8 @@ extension APITarget: TargetType {
             return .post
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
-        case .challengeOpenPreview, .calendar, .bottleWorldBrowse, .userInfo, .myChallengeFetch, .myChallengeUser:
+        case .challengeOpenPreview, .calendar, .bottleWorldBrowse,
+                .userInfo, .myChallengeFetch, .myChallengeUser:
             return .get
         case .deleteAuth:
             return .delete
@@ -139,6 +140,9 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default)
         case .myChallengeUser(_, let userId):
             return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.queryString)
+        case .calendar(let id, _):
+            return .requestParameters(parameters: ["myChallengeId": id],
+                                      encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {
