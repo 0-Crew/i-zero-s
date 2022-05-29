@@ -19,7 +19,6 @@ class EmptyChallengeView: LoadXibView {
 
     weak var delegate: EmptyChallengeViewDelegate?
 
-
     // MARK: - Lifecycle Method
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,9 +38,13 @@ class EmptyChallengeView: LoadXibView {
         startChallengeView.isUserInteractionEnabled = true
         presentCalendarView.isUserInteractionEnabled = true
 
-        let tapGesture = UITapGestureRecognizer()
-        tapGesture.addTarget(self, action: #selector(startChallengeViewDidTap))
-        startChallengeView.addGestureRecognizer(tapGesture)
+        let startChallengeViewTapGesture = UITapGestureRecognizer()
+        startChallengeViewTapGesture.addTarget(self, action: #selector(startChallengeViewDidTap))
+        startChallengeView.addGestureRecognizer(startChallengeViewTapGesture)
+
+        let presentCalendarViewTapGesture = UITapGestureRecognizer()
+        presentCalendarViewTapGesture.addTarget(self, action: #selector(presentCalendarViewDidTap))
+        presentCalendarView.addGestureRecognizer(presentCalendarViewTapGesture)
     }
 
     @objc func startChallengeViewDidTap() {

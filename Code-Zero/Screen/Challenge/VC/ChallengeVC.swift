@@ -110,6 +110,7 @@ class ChallengeVC: UIViewController {
         followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         setFollowingListStackView()
         setChallengeViewList()
+        emptyView.delegate = self
         scrollView.delegate = self
         scrollView.addSubview(optionsTableView)
         lineView.setGradient(
@@ -241,9 +242,13 @@ extension ChallengeVC: UITableViewDataSource {
     }
 }
 
+// MARK: - EmptyChallengeViewDelegate
 extension ChallengeVC: EmptyChallengeViewDelegate {
     func didPresentCalendarViewDidTap() {
         // TODO: 캘린더 뷰 여는 부분 연결
+        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
+        let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+        present(calendarVC, animated: true, completion: nil)
     }
 
     func didStartChallengeViewTap() {
