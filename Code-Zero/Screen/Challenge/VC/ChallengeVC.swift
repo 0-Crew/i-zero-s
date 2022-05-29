@@ -55,7 +55,7 @@ class ChallengeVC: UIViewController {
     internal var isMine: Bool! = true
 
     // MARK: - UI Components
-    lazy var optionsTableView: UITableView = {
+    private lazy var optionsTableView: UITableView = {
         let width = view.bounds.width - 81 - 20
         let tableView = UITableView(frame: .init(x: 81, y: 0, width: width, height: 134))
         // tableView setting
@@ -85,7 +85,7 @@ class ChallengeVC: UIViewController {
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
     }()
-
+    private lazy var emptyView: EmptyChallengeView = EmptyChallengeView(frame: .zero)
     private var challengeViewList: [ChallengeView?] {
         return challengeListStackView.arrangedSubviews.map { $0 as? ChallengeView }
     }
@@ -95,6 +95,7 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var followingListStackView: UIStackView!
     @IBOutlet weak var cheerUpButton: UIButton!
     @IBOutlet weak var followingButton: UIButton!
+    @IBOutlet weak var challengeBackgroundView: UIView!
     @IBOutlet weak var bottleImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var initialLineView: UIView!
@@ -108,7 +109,7 @@ class ChallengeVC: UIViewController {
         fetchFollowingPeopleFirstNameList()
         followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         setFollowingListStackView()
-        setChallengeListCell()
+        setChallengeViewList()
         scrollView.delegate = self
         scrollView.addSubview(optionsTableView)
         lineView.setGradient(
@@ -121,6 +122,7 @@ class ChallengeVC: UIViewController {
         navigationController?.isNavigationBarHidden = false
         fetchUserInfoData()
         registerForKeyboardNotifications()
+        setEmptyView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -239,7 +241,11 @@ extension ChallengeVC: UITableViewDataSource {
     }
 }
 
-extension ChallengeVC: EmptyChallengeCellDelegate {
+extension ChallengeVC: EmptyChallengeViewDelegate {
+    func didPresentCalendarViewDidTap() {
+        // TODO: 캘린더 뷰 여는 부분 연결
+    }
+
     func didStartChallengeViewTap() {
         let challengeOpenStoryboard = UIStoryboard(name: "ChallengeOpen", bundle: nil)
         guard let challengeOpenVC = challengeOpenStoryboard.instantiateViewController(
@@ -315,7 +321,7 @@ extension ChallengeVC {
         }()
         return followingPersonButton
     }
-    private func setChallengeListCell() {
+    private func setChallengeViewList() {
         challengeViewList.enumerated().forEach {
             let challengView = $0.element
             challengView?.delegate = isMine ? self : nil
@@ -330,7 +336,13 @@ extension ChallengeVC {
             button?.setTitle(names[offset], for: .normal)
         }
     }
-
+    private func setEmptyView() {
+        view.addSubview(emptyView)
+        emptyView.snp.makeConstraints {
+            $0.top.equalTo(followingListStackView.snp.bottom)
+            $0.bottom.leading.trailing.equalToSuperview()
+        }
+    }
     private func updateSocialButtons() {
         let isChallenging = true
 //        let isChallenging = followingPeopleChallengingLists[offset].isChallenging

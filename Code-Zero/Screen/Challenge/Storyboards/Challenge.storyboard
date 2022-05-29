@@ -306,6 +306,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottleImageView" destination="O9F-rm-Hoa" id="MYx-kn-hsW"/>
+                        <outlet property="challengeBackgroundView" destination="2kW-It-5Wh" id="qfK-nZ-NrY"/>
                         <outlet property="challengeListStackView" destination="cnj-h3-2eG" id="dRu-Qk-xQu"/>
                         <outlet property="cheerUpButton" destination="Q89-Ae-y0z" id="9c3-xd-hLH"/>
                         <outlet property="followingButton" destination="cD2-kI-bZf" id="Ttf-XZ-V4W"/>
