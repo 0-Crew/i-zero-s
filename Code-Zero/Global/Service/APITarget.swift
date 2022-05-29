@@ -25,6 +25,7 @@ enum APITarget {
         isFromToday: Bool,
         token: String
     )
+    case calendar(id: Int, token: String)
 
     // 설정
     case userInfo(token: String)
@@ -48,6 +49,8 @@ extension APITarget: TargetType {
             return "/user/private"
         case .challengeOpenPreview, .challengeOpen:
             return "/my-challenge/add"
+        case .calendar:
+            return "/my-challenge/calendar"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
         case .userInfo:
@@ -62,7 +65,7 @@ extension APITarget: TargetType {
             return .post
         case .userPrivate:
             return .put
-        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo:
+        case .challengeOpenPreview, .calendar, .bottleWorldBrowse, .userInfo:
             return .get
         }
     }
@@ -100,6 +103,9 @@ extension APITarget: TargetType {
                                                    "isfromToday": isFromToday],
                                       encoding: JSONEncoding.default
             )
+        case .calendar(let id, _):
+            return .requestParameters(parameters: ["myChallengeId": id],
+                                      encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {
@@ -114,6 +120,7 @@ extension APITarget: TargetType {
                 .userPrivate(let token),
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
+                .calendar(_, let token),
                 .bottleWorldBrowse(let token, _),
                 .userInfo(let token):
             return ["Content-Type": "application/json",
