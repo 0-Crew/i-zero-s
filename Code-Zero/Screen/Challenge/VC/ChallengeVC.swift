@@ -123,7 +123,7 @@ class ChallengeVC: UIViewController {
         navigationController?.isNavigationBarHidden = false
         fetchUserInfoData()
         registerForKeyboardNotifications()
-        setEmptyView()
+//        setEmptyView() Empty view 세팅
     }
 
     override func viewWillDisappear(_ animated: Bool) {
