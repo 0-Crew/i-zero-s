@@ -11,6 +11,7 @@ class UserView: UIView {
 
     // MARK: - Property
     var moveViewController: ((UIViewController) -> Void)?
+    var userInfo: UserInfo?
 
     // MARK: - IBOutlet
     @IBOutlet weak var nickBackView: UIView!
@@ -27,6 +28,7 @@ class UserView: UIView {
         super.init(coder: coder)
     }
 
+    // MARK: - Set View
     private func loadView() {
         guard let view = Bundle.main.loadNibNamed("UserView",
                                                   owner: self,
@@ -41,15 +43,21 @@ class UserView: UIView {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(moveAccountViewController))
         view.addGestureRecognizer(gesture)
     }
-
-    @objc func moveAccountViewController() {
+    @objc private func moveAccountViewController() {
         guard let moveViewController = moveViewController else { return }
         let storybard = UIStoryboard(name: "Account", bundle: nil)
-        let accountVC = storybard.instantiateViewController(withIdentifier: "AccountSettingVC")
+        guard let accountVC = storybard.instantiateViewController(withIdentifier: "AccountSettingVC")
+                as? AccountSettingVC else { return }
+        accountVC.userInfo = userInfo
+        accountVC.changeUserInfoClosure = { info in
+            self.userInfo = info
+            self.setUserInfo(info: info)
+        }
         moveViewController(accountVC)
     }
-
-    func setUserInfo(nick: String) {
+    func setUserInfo(info: UserInfo) {
+        userInfo = info
+        let nick = info.name
         nickLabel.text = nick
         let firstIndex = nick.index(nick.startIndex, offsetBy: 0)
         let first = String(nick[firstIndex])
