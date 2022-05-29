@@ -103,6 +103,11 @@ class AlarmCenterVC: UIViewController {
 
     private func setNavigationBar() {
         self.navigationItem.title = "알림"
+        let backButtonImage = UIImage(named: "icArrowLeftDark")?.withAlignmentRectInsets(
+            UIEdgeInsets(top: 0.0, left: -10.0, bottom: 0.0, right: 0.0)
+        )
+        self.navigationController?.navigationBar.backIndicatorImage = backButtonImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
     }
 
     private func setEmptyView() {
