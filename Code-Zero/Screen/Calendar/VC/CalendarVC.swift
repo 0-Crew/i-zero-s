@@ -46,6 +46,7 @@ class CalendarVC: UIViewController {
             selectedChallege != [] ? setChallengeListView() : setChallengeJoinView()
         }
     }
+    private var selectedList: [String] = []
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -59,6 +60,7 @@ class CalendarVC: UIViewController {
         setChallengeJoinView()
         makeButton()
         makeDumyData()
+        fetchCalendar(id: 22)
         findTodayIsChallenge()
         // Do any additional setup after loading the view.
     }
@@ -74,8 +76,22 @@ extension CalendarVC {
         if challengeDates.contains(where: { $0.0 == stringToDate }) {
             if let challengeColor = challengeDates.filter({ $0.0 == stringToDate }).map({ $0.1 }).first {
                 selectedChallege = challengeDates.filter { $0.1 == challengeColor }.map { $0.0 }
+                print(selectedChallege)
             }
         }
+    }
+
+    private func findTodayIsChallengeTest() {
+        guard let testData = testData,
+              let selected = testData.selectedChallenge else { return }
+        guard let today = selected.myChallenge.createdAt?.toDate() else { return }
+        selectedList = selected.myInconveniences.map {
+            today.getDateIntervalBy(
+                intervalDay: ($0.day ?? 0) - 1
+            )?.datePickerToString(format: "yyyy-MM-dd") ?? ""
+        }
+        print(selectedList)
+
     }
 
 }
@@ -351,9 +367,9 @@ extension CalendarVC {
 
         challengeContext = [challenge1, challenge2, challenge3]
         challengeDates
-        = [("2021-11-01", 1), ("2021-11-02", 1), ("2021-11-03", 1), ("2021-11-04", 1), ("2021-11-05", 1),
-           ("2021-11-06", 1), ("2021-11-07", 1), ("2021-11-11", 2), ("2021-11-12", 2), ("2021-11-13", 2),
-           ("2021-11-14", 2), ("2021-11-15", 2), ("2021-11-16", 2), ("2021-11-17", 2), ("2021-11-21", 3),
+        = [("2022-05-27", 1), ("2022-05-28", 1), ("2022-05-29", 1), ("2022-05-30", 1), ("2022-05-31", 1),
+           ("2022-06-01", 1), ("2022-06-02", 1), ("2022-05-11", 2), ("2022-05-12", 2), ("2022-05-13", 2),
+           ("2022-05-14", 2), ("2022-05-15", 2), ("2022-05-16", 2), ("2022-05-17", 2), ("2021-11-21", 3),
            ("2021-11-22", 3), ("2021-11-23", 3), ("2021-11-24", 3), ("2021-11-25", 3), ("2021-11-26", 3),
            ("2021-11-27", 3)]
     }
