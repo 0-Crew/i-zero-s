@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eBR-uL-ZiN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eBR-uL-ZiN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -76,19 +76,27 @@ Bottle</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z4-Ug-XYv">
                                                 <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWc-le-3gQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="49.5"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="카카오톡 로그인"/>
-                                                    </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icKakaoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="hYT-11-Ijt">
+                                                        <rect key="frame" x="16" y="14" width="23" height="22.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="hYT-11-Ijt" secondAttribute="height" multiplier="1:1" id="CTw-4r-vtd"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7l7-Wv-Fet">
+                                                        <rect key="frame" x="134" y="16" width="80.5" height="17"/>
+                                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                        <color key="textColor" red="0.24313725490196078" green="0.15294117647058825" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="separatorColor"/>
+                                                <color key="backgroundColor" red="0.99607843137254903" green="0.89803921568627454" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="hYT-11-Ijt" firstAttribute="leading" secondItem="3z4-Ug-XYv" secondAttribute="leading" constant="16" id="0qD-ws-OPy"/>
                                                     <constraint firstAttribute="width" secondItem="3z4-Ug-XYv" secondAttribute="height" multiplier="315:45" id="1gI-6i-cha"/>
-                                                    <constraint firstItem="qWc-le-3gQ" firstAttribute="leading" secondItem="3z4-Ug-XYv" secondAttribute="leading" id="Hxh-bZ-Ha4"/>
-                                                    <constraint firstItem="qWc-le-3gQ" firstAttribute="top" secondItem="3z4-Ug-XYv" secondAttribute="top" id="K48-7q-5R6"/>
-                                                    <constraint firstAttribute="bottom" secondItem="qWc-le-3gQ" secondAttribute="bottom" id="yBG-ub-pO7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="qWc-le-3gQ" secondAttribute="trailing" id="zM5-m5-bj8"/>
+                                                    <constraint firstItem="hYT-11-Ijt" firstAttribute="top" secondItem="3z4-Ug-XYv" secondAttribute="top" constant="14" id="8Bb-dy-m0M"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hYT-11-Ijt" secondAttribute="bottom" constant="13" id="F5v-ez-EYj"/>
+                                                    <constraint firstItem="7l7-Wv-Fet" firstAttribute="centerX" secondItem="3z4-Ug-XYv" secondAttribute="centerX" id="GQm-bg-krB"/>
+                                                    <constraint firstItem="7l7-Wv-Fet" firstAttribute="centerY" secondItem="3z4-Ug-XYv" secondAttribute="centerY" id="VXy-k9-ozD"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ2-KF-D44">
@@ -147,6 +155,7 @@ Bottle</string>
                     <connections>
                         <outlet property="appleLoginView" destination="oZ2-KF-D44" id="8sS-YG-ATi"/>
                         <outlet property="backButton" destination="yFQ-T2-tBf" id="nyt-FF-YCl"/>
+                        <outlet property="kakaoLoginView" destination="3z4-Ug-XYv" id="po8-mt-Qlo"/>
                         <outlet property="subtitleLabel" destination="wQK-CP-JlJ" id="UgN-sO-0Gr"/>
                         <outlet property="titleLabel" destination="gaE-i4-KG2" id="QEa-Bh-njZ"/>
                     </connections>
@@ -253,6 +262,7 @@ Bottle</string>
     </scenes>
     <resources>
         <image name="icArrowLeftDart" width="24" height="24"/>
+        <image name="icKakaoLogo" width="19" height="18"/>
         <image name="logoAppleBlack" width="44" height="44"/>
         <namedColor name="gray3">
             <color red="0.53299999237060547" green="0.51399999856948853" blue="0.48600000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -266,9 +276,6 @@ Bottle</string>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
