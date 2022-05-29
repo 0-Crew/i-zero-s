@@ -19,16 +19,17 @@ class AlarmCenterVC: UIViewController {
 
         let titleLabel: UILabel = {
             let label = UILabel()
-            label.text = "오늘은 알림이 없습니다"
-            label.font = .spoqaHanSansNeo(size: 16, family: .bold)
-            label.textColor = .gray4
+            label.setLabel(text: "오늘은 알림이 없습니다",
+                           color: .gray4,
+                           font: .spoqaHanSansNeo(size: 16, family: .bold))
             label.textAlignment = .center
             return label
         }()
         let subtitleLabel: UILabel = {
             let label = UILabel()
-            label.text = "새로운 소식이 생기면 알려드릴게요!"
-            label.font = .spoqaHanSansNeo(size: 14, family: .medium)
+            label.setLabel(text: "새로운 소식이 생기면 알려드릴게요!",
+                           color: .gray4,
+                           font: .spoqaHanSansNeo(size: 14, family: .medium))
             label.textColor = .gray4
             label.textAlignment = .center
             return label
