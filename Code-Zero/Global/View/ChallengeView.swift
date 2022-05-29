@@ -227,6 +227,7 @@ class ChallengeView: UIView {
         if challengeTextField.isEditing {
             challengeTextField.isEnabled = false
             challengeTextField.endEditing(false)
+            delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
             return
         }
         delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)

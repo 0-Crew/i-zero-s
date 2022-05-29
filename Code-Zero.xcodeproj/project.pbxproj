@@ -87,6 +87,7 @@
 		6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97230275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift */; };
 		6EB97233275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97232275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift */; };
 		6EB97236275B86CD00AB8349 /* LoadXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB97235275B86CD00AB8349 /* LoadXibView.swift */; };
+		6EBECCF6284232E00007FED5 /* EmptyChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EBECCF5284232E00007FED5 /* EmptyChallengeView.xib */; };
 		6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5AC9E275517EF007CCC67 /* ChallengeOpen.storyboard */; };
 		6EE5ACA227592F35007CCC67 /* ChallengeOpenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5ACA127592F35007CCC67 /* ChallengeOpenVC.swift */; };
 		6EF7D9C12794324300651DDC /* OnboardingStepThreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7D9C02794324300651DDC /* OnboardingStepThreeVC.swift */; };
@@ -229,6 +230,7 @@
 		6EB97230275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenSecondStepView.swift; sourceTree = "<group>"; };
 		6EB97232275B3B1F00AB8349 /* ChallengeOpenThirdStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenThirdStepView.swift; sourceTree = "<group>"; };
 		6EB97235275B86CD00AB8349 /* LoadXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadXibView.swift; sourceTree = "<group>"; };
+		6EBECCF5284232E00007FED5 /* EmptyChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyChallengeView.xib; sourceTree = "<group>"; };
 		6EE5AC9E275517EF007CCC67 /* ChallengeOpen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeOpen.storyboard; sourceTree = "<group>"; };
 		6EE5ACA127592F35007CCC67 /* ChallengeOpenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenVC.swift; sourceTree = "<group>"; };
 		6EF7D9C02794324300651DDC /* OnboardingStepThreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepThreeVC.swift; sourceTree = "<group>"; };
@@ -793,6 +795,7 @@
 			children = (
 				6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */,
 				A2FC304D273695ED00B29296 /* Challenge.storyboard */,
+				6EBECCF5284232E00007FED5 /* EmptyChallengeView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				1998752F274FB81F004CD747 /* ChallengedListView.xib in Resources */,
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
 				6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */,
+				6EBECCF6284232E00007FED5 /* EmptyChallengeView.xib in Resources */,
 				1933FE9627A01C8200BD0CA6 /* SettingLineView.xib in Resources */,
 				6EB97228275B384800AB8349 /* ChallengeOpenFirstStepView.xib in Resources */,
 				A2696D69272D163D001A2C60 /* FuturaStd-Bold.otf in Resources */,
