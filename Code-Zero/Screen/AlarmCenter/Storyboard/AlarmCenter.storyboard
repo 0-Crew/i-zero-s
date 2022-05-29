@@ -37,7 +37,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PVd-We-iMN">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PVd-We-iMN">
                                                     <rect key="frame" x="20" y="10" width="36" height="36"/>
                                                     <color key="backgroundColor" name="lightGray1"/>
                                                     <constraints>
@@ -72,8 +72,8 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="박" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djk-Ri-KFk">
-                                                    <rect key="frame" x="32.666666666666664" y="21" width="10.666666666666664" height="14"/>
-                                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                                    <rect key="frame" x="31.666666666666671" y="19.666666666666668" width="13" height="17.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                     <color key="textColor" name="gray2"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -94,9 +94,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="alarmImageView" destination="PVd-We-iMN" id="cPZ-Ff-V8K"/>
                                             <outlet property="alarmTextLabel" destination="90y-Qb-5mj" id="V5D-hh-cBL"/>
                                             <outlet property="defaultProfileLabel" destination="Djk-Ri-KFk" id="vXQ-V7-3RY"/>
-                                            <outlet property="profileImageView" destination="PVd-We-iMN" id="cPZ-Ff-V8K"/>
                                             <outlet property="subActionButton" destination="hoT-Hb-Kim" id="Ne4-1b-70a"/>
                                             <outlet property="timelineLabel" destination="XCe-hu-vRO" id="Uiz-AJ-BEz"/>
                                         </connections>

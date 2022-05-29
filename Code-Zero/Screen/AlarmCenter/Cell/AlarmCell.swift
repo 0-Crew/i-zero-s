@@ -18,6 +18,16 @@ enum AlarmType {
 }
 
 extension AlarmType {
+    var alarmImage: UIImage? {
+        switch self {
+        case .cheerUp, .beCheered:
+            return UIImage(named: "icAlarmCheer")
+        case .celebrate, .beCelebrated:
+            return UIImage(named: "icAlarmCeleb")
+        default:
+            return nil
+        }
+    }
     var subActionButtonIsHidden: Bool {
         switch self {
         case .cheerUp, .celebrate:
@@ -50,7 +60,7 @@ class AlarmCell: UITableViewCell {
     internal var offset: Int! = 0
     internal weak var delegate: AlarmCellDelegate?
 
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var alarmImageView: UIImageView!
     @IBOutlet weak var defaultProfileLabel: UILabel!
     @IBOutlet weak var alarmTextLabel: UILabel!
     @IBOutlet weak var timelineLabel: UILabel!
@@ -65,11 +75,13 @@ class AlarmCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) { }
 
     private func configureCell() {
-        profileImageView.makeRounded(cornerRadius: 36 / 2)
+        alarmImageView.makeRounded(cornerRadius: 36 / 2)
     }
 
     internal func bindData(type: AlarmType = .normal, text: String) {
         cellType = type
+        alarmImageView.image = type.alarmImage
+        defaultProfileLabel.text = type == .normal ? "박" : ""
         subActionButton.isHidden = type.subActionButtonIsHidden
         subActionButton.setTitle(type.subActionButtonTitle, for: .normal)
         alarmTextLabel.text = text
