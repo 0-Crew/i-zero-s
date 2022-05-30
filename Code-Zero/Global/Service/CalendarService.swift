@@ -11,11 +11,27 @@ import Moya
 struct CalendarData: Codable {
     let myChallenges: [UserChallenge]
     let selectedChallenge: SelectedChallenge?
+    
+    var challengeContext: [ChallengeData] {
+        return myChallenges.map {
+            var list: [DayChallengeState]?
+            if $0.id == selectedChallenge?.myChallenge.id {
+                list = selectedChallenge?.dayChallengeStateList
+            } else {
+                list = nil
+            }
+            return ChallengeData(subject: $0.name, list: list, id: $0.id)
+        }
+    }
 }
 
 struct SelectedChallenge: Codable {
     let myChallenge: UserChallenge
     let myInconveniences: [Convenience]
+    
+    var dayChallengeStateList: [DayChallengeState] {
+        return myInconveniences.map { $0.dayChallengeState }
+    }
 }
 
 class CalendarService {

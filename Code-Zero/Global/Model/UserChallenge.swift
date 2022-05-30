@@ -21,4 +21,14 @@ struct UserChallenge: Codable {
         case userID = "userId"
         case name, count
     }
+    
+    var dates: [(String)] {
+        var arrays: [(String)] = []
+        guard let days = startedAt.toDate() else { return arrays }
+        for i in Range(0...6) {
+            guard let one = days.getDateIntervalBy(intervalDay: i)?.datePickerToString(format: "yyyy-MM-dd") else { return arrays }
+            arrays.append(one)
+        }
+        return arrays
+    }
 }

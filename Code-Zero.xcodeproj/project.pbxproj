@@ -129,6 +129,7 @@
 		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
 		A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FC304D273695ED00B29296 /* Challenge.storyboard */; };
 		D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664C283DCCDF00AB3E98 /* SettingData.swift */; };
+		D20A6666284449DF00AB3E98 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = D20A6665284449DF00AB3E98 /* test.json */; };
 		D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */; };
 		D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */; };
 		D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */; };
@@ -274,6 +275,7 @@
 		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A2FC304D273695ED00B29296 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
 		D20A664C283DCCDF00AB3E98 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
+		D20A6665284449DF00AB3E98 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldVC.swift; sourceTree = "<group>"; };
 		D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldListCell.swift; sourceTree = "<group>"; };
 		D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleWorldListCell.xib; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				190448DC27CB6274004E8A10 /* BottleWorldService.swift */,
 				195A0F0327CCF266009F0FFD /* UserSettingService.swift */,
 				19082CB72843A7DC00934D96 /* CalendarService.swift */,
+				D20A6665284449DF00AB3E98 /* test.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -956,6 +959,7 @@
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
 				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
+				D20A6666284449DF00AB3E98 /* test.json in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */,
 				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,

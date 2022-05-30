@@ -1,0 +1,135 @@
+{
+    "status": 200,
+    "success": true,
+    "message": "성공",
+    "data": {
+        "myChallenges": [
+            {
+                "id": 3,
+                "isDeleted": false,
+                "createdAt": "2022-04-01T19:13:14.582Z",
+                "updatedAt": "2022-04-01T19:13:14.582Z",
+                "startedAt": "2022-04-01T19:13:14.582Z",
+                "userId": 14,
+                "name": "💧인공 눈물 사용하기"
+            },
+            {
+                "id": 4,
+                "isDeleted": true,
+                "createdAt": "2022-04-16T19:13:43.219Z",
+                "updatedAt": "2022-04-16T19:13:43.219Z",
+                "startedAt": "2022-04-17T19:13:43.219Z",
+                "userId": 14,
+                "name": "🕶원데이 렌즈 끼기"
+            },
+            {
+                "id": 5,
+                "isDeleted": false,
+                "createdAt": "2022-05-07T19:15:32.706Z",
+                "updatedAt": "2022-05-07T19:15:32.706Z",
+                "startedAt": "2022-05-07T19:15:32.706Z",
+                "userId": 14,
+                "name": "🏢회사에서 물티슈 사용하기"
+            },
+            {
+                "id": 6,
+                "isDeleted": false,
+                "createdAt": "2022-05-28T19:16:52.094Z",
+                "updatedAt": "2022-05-28T19:16:52.094Z",
+                "startedAt": "2022-05-28T19:16:52.094Z",
+                "userId": 14,
+                "name": "🧼손씻고 휴지로 닦기"
+            }
+        ],
+        "selectedChallenge": {
+            "myChallenge": {
+                "id": 6,
+                "isDeleted": false,
+                "createdAt": "2022-05-28T19:16:52.094Z",
+                "updatedAt": "2022-05-28T19:16:52.094Z",
+                "startedAt": "2022-05-28T19:16:52.094Z",
+                "userId": 14,
+                "name": "🧼손씻고 휴지로 닦기기"
+            },
+            "myInconveniences": [
+                {
+                    "id": 8,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 1,
+                    "isFinished": true,
+                    "userId": 14
+                },
+                {
+                    "id": 9,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 2,
+                    "isFinished": true,
+                    "userId": 14
+                },
+                {
+                    "id": 10,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 3,
+                    "isFinished": true,
+                    "userId": 14
+                },
+                {
+                    "id": 11,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 4,
+                    "isFinished": false,
+                    "userId": 14
+                },
+                {
+                    "id": 12,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 5,
+                    "isFinished": false,
+                    "userId": 14
+                },
+                {
+                    "id": 13,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 6,
+                    "isFinished": false,
+                    "userId": 14
+                },
+                {
+                    "id": 14,
+                    "name": "☕️일회용 컵 사용하지 않기",
+                    "createdAt": "2022-05-28T19:16:52.094Z",
+                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "isDeleted": false,
+                    "myChallengeId": 7,
+                    "day": 7,
+                    "isFinished": false,
+                    "userId": 14
+                }
+            ]
+        }
+    }
+}

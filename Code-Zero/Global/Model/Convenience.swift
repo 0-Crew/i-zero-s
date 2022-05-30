@@ -23,4 +23,8 @@ struct Convenience: Codable {
         case day, isFinished
         case userID = "userId"
     }
+    
+    var dayChallengeState: DayChallengeState {
+        return DayChallengeState(title: name, sucess: isFinished ?? false)
+    }
 }
