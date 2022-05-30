@@ -11,7 +11,7 @@ import Moya
 struct CalendarData: Codable {
     let myChallenges: [UserChallenge]
     let selectedChallenge: SelectedChallenge?
-    
+
     var challengeContext: [ChallengeData] {
         return myChallenges.map {
             var list: [DayChallengeState]?
@@ -28,7 +28,7 @@ struct CalendarData: Codable {
 struct SelectedChallenge: Codable {
     let myChallenge: UserChallenge
     let myInconveniences: [Convenience]
-    
+
     var dayChallengeStateList: [DayChallengeState] {
         return myInconveniences.map { $0.dayChallengeState }
     }
@@ -39,7 +39,7 @@ class CalendarService {
     private lazy var service = MoyaProvider<APITarget>(plugins: [MoyaLoggingPlugin()])
 
     public func requestCalendar(
-        myChallengeId: Int,
+        myChallengeId: Int?,
         token: String,
         completion: @escaping (NetworkResult<CalendarData>) -> Void
     ) {

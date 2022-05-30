@@ -25,7 +25,7 @@ enum APITarget {
         isFromToday: Bool,
         token: String
     )
-    case calendar(id: Int, token: String)
+    case calendar(id: Int?, token: String)
 
     // 설정
     case userInfo(token: String)
@@ -104,6 +104,9 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default
             )
         case .calendar(let id, _):
+            guard let id = id else {
+                return .requestPlain
+            }
             return .requestParameters(parameters: ["myChallengeId": id],
                                       encoding: URLEncoding.queryString)
         }
