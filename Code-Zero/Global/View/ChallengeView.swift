@@ -225,9 +225,10 @@ class ChallengeView: UIView {
     // MARK: - IBAction Method
     @IBAction func editButtonDidTap(sender: UIButton) {
         if challengeTextField.isEditing {
+            delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
             challengeTextField.isEnabled = false
             challengeTextField.endEditing(false)
-            delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
+
             return
         }
         delegate?.didEditButtonTap(challengeOffset: challengeOffset, yPosition: frame.minY)
@@ -369,5 +370,11 @@ extension ChallengeView: UITextFieldDelegate {
             return
         }
         delegate?.didChallengeTextFieldEdit(challengeOffset: challengeOffset, text: text)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(false)
+        textField.isEnabled = false
+        return true
     }
 }
