@@ -83,20 +83,16 @@ extension CalendarVC {
             }
         }
     }
-
     private func findTodayIsChallengeTest() {
-        guard let testData = testData,
-              let selected = testData.selectedChallenge else { return }
-        guard let today = selected.myChallenge.createdAt?.toDate() else { return }
+        guard let serverData = serverData,
+              let selected = serverData.selectedChallenge else { return }
+        guard let today = selected.myChallenge.startedAt.toDate() else { return }
         selectedChallege = selected.myInconveniences.map {
             today.getDateIntervalBy(
                 intervalDay: ($0.day ?? 0) - 1
             )?.datePickerToString(format: "yyyy-MM-dd") ?? ""
         }
-        print(selectedChallege)
-
     }
-
 }
 
 // MARK: - FSCalendar Delegate
