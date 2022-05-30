@@ -337,47 +337,7 @@ extension CalendarVC {
 
 // MARK: - Server
 extension CalendarVC {
-    // 서버 연결 전 더미데이터 생성
-    private func makeDumyData() {
-        let data1 = DayChallengeState(title: "종이 컵홀더 안 쓰기", sucess: true)
-        let data2 = DayChallengeState(title: "종이 컵홀더 안 쓰기종이 컵", sucess: true)
-        let data3 = DayChallengeState(title: "종이 컵홀더 안 쓰기종이 컵홀더 안 쓰기", sucess: false)
-        let data4 = DayChallengeState(title: "종이 컵홀더", sucess: true)
-        let data5 = DayChallengeState(title: "종이 컵홀더 안 쓰기 종이", sucess: true)
-        let data6 = DayChallengeState(title: "민희", sucess: true)
-        let data7 = DayChallengeState(title: "종이 쇼핑백 사용하기", sucess: false)
-        let firstChallenge: [DayChallengeState] = [data1, data2, data3, data4, data5, data6, data7]
-
-        let data8 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅅ'", sucess: true)
-        let data9 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅇ'", sucess: true)
-        let data10 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅁ'", sucess: true)
-        let data11 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅋ'", sucess: true)
-        let data12 = DayChallengeState(title: "휴지대신 손수건 사용하기", sucess: true)
-        let data13 = DayChallengeState(title: "텀블러 가져가서 사용하기 'ㅆ'", sucess: true)
-        let data14 = DayChallengeState(title: "텀블러 가져가서 사용하기 'w '", sucess: true)
-        let secondeChallenge: [DayChallengeState] = [data8, data9, data10, data11, data12, data13, data14]
-
-        let data15 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
-        let data16 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
-        let data17 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
-        let data18 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: true)
-        let data19 = DayChallengeState(title: "😏 빨대 안받기", sucess: false)
-        let data20 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: false)
-        let data21 = DayChallengeState(title: "☁️ 영수증 안받기(전자 영수증)", sucess: false)
-        let thirdChallenge: [DayChallengeState] = [data15, data16, data17, data18, data19, data20, data21]
-
-        let challenge1 = ChallengeData(subject: "오늘도 화이팅", list: firstChallenge, id: 3)
-        let challenge2 = ChallengeData(subject: "빨대는 포기 못해", list: secondeChallenge, id: 4)
-        let challenge3 = ChallengeData(subject: "인공눈물.. 눈 건조해요..", list: thirdChallenge, id: 5)
-
-        challengeContext = [challenge1, challenge2, challenge3]
-        challengeDates = [
-            ChallengeList(date: "2022-04-02", id: 3, color: 1), ChallengeList(date: "2022-04-03", id: 3, color: 1), ChallengeList(date: "2022-04-04", id: 3, color: 1), ChallengeList(date: "2022-04-05", id: 3, color: 1), ChallengeList(date: "2022-04-06", id: 3, color: 1), ChallengeList(date: "2022-04-07", id: 3, color: 1), ChallengeList(date: "2022-04-08", id: 3, color: 1),
-            ChallengeList(date: "2022-04-18", id: 4, color: 2), ChallengeList(date: "2022-04-19", id: 4, color: 2), ChallengeList(date: "2022-04-20", id: 4, color: 2), ChallengeList(date: "2022-04-21", id: 4, color: 2), ChallengeList(date: "2022-04-22", id: 4, color: 2), ChallengeList(date: "2022-04-23", id: 4, color: 2), ChallengeList(date: "2022-04-24", id: 4, color: 2),
-            ChallengeList(date: "2022-05-28", id: 5, color: 3), ChallengeList(date: "2022-05-29", id: 5, color: 3), ChallengeList(date: "2022-05-30", id: 5, color: 3), ChallengeList(date: "2022-05-31", id: 5, color: 3), ChallengeList(date: "2022-06-01", id: 5, color: 3), ChallengeList(date: "2022-06-02", id: 5, color: 3), ChallengeList(date: "2022-06-03", id: 5, color: 3)
-        ]
-    }
-    private func fetchCalendar(id: Int) {
+    private func fetchCalendar(id: Int?) {
         // swiftlint:disable line_length
         let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
         // swiftlint:enable line_length
