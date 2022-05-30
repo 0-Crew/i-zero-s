@@ -46,7 +46,7 @@ class CalendarVC: UIViewController {
     private let gregorian = Calendar(identifier: .gregorian)
     private var challengeDates: [ChallengeList] = []
     private var challengeContext: [ChallengeData] = []
-    private var testData: CalendarData?
+    private var serverData: CalendarData?
     private var selectedChallege: [(String)] = [] { // 현재 선택 되어있는 챌린지
         didSet {
             selectedChallege != [] ? setChallengeListView() : setChallengeJoinView()
@@ -64,9 +64,9 @@ class CalendarVC: UIViewController {
         setView()
         setChallengeJoinView()
         makeButton()
-        jsonData()
-        findTodayIsChallenge()
-        // Do any additional setup after loading the view.
+//        fetchCalendar(id: nil)
+        jsonData(name: "test")
+        findTodayIsChallengeTest()
     }
 }
 
