@@ -43,93 +43,94 @@
         ],
         "selectedChallenge": {
             "myChallenge": {
-                "id": 22,
+                "id": 30,
                 "isDeleted": false,
-                "createdAt": "2022-05-29T10:38:28.984Z",
-                "updatedAt": "2022-05-29T10:38:28.984Z",
-                "startedAt": "2022-05-30T10:38:28.984Z",
+                "createdAt": "2022-03-19T10:11:23.406Z",
+                "updatedAt": "2022-03-19T10:11:23.406Z",
+                "startedAt": "2022-03-20T10:11:23.406Z",
                 "userId": 20,
-                "name": "렌즈 사용하기"
+                "name": "일회용 컵에 커피 마시기"
             },
             "myInconveniences": [
                 {
                     "id": 101,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-20T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 1,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 },
                 {
                     "id": 102,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-21T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 2,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 },
                 {
                     "id": 103,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-22T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 3,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 },
                 {
                     "id": 104,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-20T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 4,
                     "isFinished": false,
                     "userId": 20
                 },
                 {
                     "id": 105,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-24T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 5,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 },
                 {
                     "id": 106,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-20T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 6,
                     "isFinished": false,
                     "userId": 20
                 },
                 {
                     "id": 107,
-                    "name": "종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "name": "💦인공눈물을 사용하지 않기",
+                    "createdAt": "2022-03-19T10:11:23.406Z",
+                    "updatedAt": "2022-03-26T10:11:23.406Z",
                     "isDeleted": false,
-                    "myChallengeId": 22,
+                    "myChallengeId": 30,
                     "day": 7,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 }
             ]
         }
     }
 }
+

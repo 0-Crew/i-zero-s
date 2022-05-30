@@ -5,129 +5,129 @@
     "data": {
         "myChallenges": [
             {
-                "id": 3,
+                "id": 23,
                 "isDeleted": false,
-                "createdAt": "2022-04-01T19:13:14.582Z",
-                "updatedAt": "2022-04-01T19:13:14.582Z",
-                "startedAt": "2022-04-01T19:13:14.582Z",
-                "userId": 14,
-                "name": "💧인공 눈물 사용하기"
+                "createdAt": "2022-02-21T11:54:46.094Z",
+                "updatedAt": "2022-02-21T11:54:46.094Z",
+                "startedAt": "2022-02-22T11:54:46.094Z",
+                "userId": 20,
+                "name": "일회용 컵에 커피 마시기"
             },
             {
-                "id": 4,
-                "isDeleted": true,
-                "createdAt": "2022-04-16T19:13:43.219Z",
-                "updatedAt": "2022-04-16T19:13:43.219Z",
-                "startedAt": "2022-04-17T19:13:43.219Z",
-                "userId": 14,
-                "name": "🕶원데이 렌즈 끼기"
+                "id": 25,
+                "isDeleted": false,
+                "createdAt": "2022-02-29T14:30:24.575Z",
+                "updatedAt": "2022-02-29T14:30:24.575Z",
+                "startedAt": "2022-03-01T14:30:24.575Z",
+                "userId": 20,
+                "name": "물티슈 쓰기"
             },
             {
-                "id": 5,
+                "id": 30,
                 "isDeleted": false,
-                "createdAt": "2022-05-07T19:15:32.706Z",
-                "updatedAt": "2022-05-07T19:15:32.706Z",
-                "startedAt": "2022-05-07T19:15:32.706Z",
-                "userId": 14,
-                "name": "🏢회사에서 물티슈 사용하기"
+                "createdAt": "2022-03-19T10:11:23.406Z",
+                "updatedAt": "2022-03-19T10:11:23.406Z",
+                "startedAt": "2022-03-20T10:11:23.406Z",
+                "userId": 20,
+                "name": "일회용 컵에 커피 마시기"
             },
             {
-                "id": 6,
+                "id": 22,
                 "isDeleted": false,
-                "createdAt": "2022-05-28T19:16:52.094Z",
-                "updatedAt": "2022-05-28T19:16:52.094Z",
-                "startedAt": "2022-05-28T19:16:52.094Z",
-                "userId": 14,
-                "name": "🧼손씻고 휴지로 닦기"
+                "createdAt": "2022-05-29T10:38:28.984Z",
+                "updatedAt": "2022-05-29T10:38:28.984Z",
+                "startedAt": "2022-05-30T10:38:28.984Z",
+                "userId": 20,
+                "name": "렌즈 사용하기"
             }
         ],
         "selectedChallenge": {
             "myChallenge": {
-                "id": 6,
+                "id": 22,
                 "isDeleted": false,
-                "createdAt": "2022-05-28T19:16:52.094Z",
-                "updatedAt": "2022-05-28T19:16:52.094Z",
-                "startedAt": "2022-05-28T19:16:52.094Z",
-                "userId": 14,
-                "name": "🧼손씻고 휴지로 닦기기"
+                "createdAt": "2022-05-29T10:38:28.984Z",
+                "updatedAt": "2022-05-29T10:38:28.984Z",
+                "startedAt": "2022-05-30T10:38:28.984Z",
+                "userId": 20,
+                "name": "렌즈 사용하기"
             },
             "myInconveniences": [
                 {
-                    "id": 8,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 101,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 1,
-                    "isFinished": true,
-                    "userId": 14
+                    "isFinished": false,
+                    "userId": 20
                 },
                 {
-                    "id": 9,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 102,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 2,
-                    "isFinished": true,
-                    "userId": 14
+                    "isFinished": false,
+                    "userId": 20
                 },
                 {
-                    "id": 10,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 103,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 3,
-                    "isFinished": true,
-                    "userId": 14
+                    "isFinished": false,
+                    "userId": 20
                 },
                 {
-                    "id": 11,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 104,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 4,
                     "isFinished": false,
-                    "userId": 14
+                    "userId": 20
                 },
                 {
-                    "id": 12,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 105,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 5,
                     "isFinished": false,
-                    "userId": 14
+                    "userId": 20
                 },
                 {
-                    "id": 13,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 106,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 6,
                     "isFinished": false,
-                    "userId": 14
+                    "userId": 20
                 },
                 {
-                    "id": 14,
-                    "name": "☕️일회용 컵 사용하지 않기",
-                    "createdAt": "2022-05-28T19:16:52.094Z",
-                    "updatedAt": "2022-05-28T19:16:52.094Z",
+                    "id": 107,
+                    "name": "종이컵 쓰지 않기",
+                    "createdAt": "2022-05-29T10:38:28.984Z",
+                    "updatedAt": "2022-05-29T10:38:28.984Z",
                     "isDeleted": false,
-                    "myChallengeId": 7,
+                    "myChallengeId": 22,
                     "day": 7,
                     "isFinished": false,
-                    "userId": 14
+                    "userId": 20
                 }
             ]
         }
