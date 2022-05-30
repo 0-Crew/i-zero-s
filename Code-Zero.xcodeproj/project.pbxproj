@@ -840,6 +840,7 @@
 				6E7919382861B63B00041201 /* MainChallengeService.swift */,
 				6E2CA57728677D400000AACF /* UserDefaultManager.swift */,
 				19082CB72843A7DC00934D96 /* CalendarService.swift */,
+				D20A6665284449DF00AB3E98 /* test.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
