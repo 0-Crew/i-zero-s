@@ -116,9 +116,14 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
+        // 서버 통신 한번 더 id 값 넣어서 (근데 먼저 list 있나 확인 한 후 해도 좋을듯?)
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         if let challengeId = challengeDates.filter({ $0.date == stringToDate }).map({ $0.id }).first {
             selectedChallege = challengeDates.filter { $0.id == challengeId }.map { $0.date }
+            if challengeContext.filter({ $0.id == challengeId })[0].list == nil {
+                // 서버 통신 한번 더 (왜냐면 이미 있으면 다시 안불러두 됩니다..!!
+                jsonData(name: "beforeData")
+            }
         }
         selectedChallege = date == calendar.today && !challengeDates.contains { $0.date == stringToDate } ?
         [] : selectedChallege
@@ -187,7 +192,8 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         let todayChallengeId = challengeDates.filter {
             $0.date == calendar.today?.datePickerToString(format: "yyyy-MM-dd")
         }.first?.id // 현재 날짜(오늘)의 id 추출 (없다면 nil)
-        let colorChip = (challengeId == todayChallengeId ? -1 : challengeDates.filter { $0.date == stringToDate }.map { $0.color }.first) ?? -1
+        let colorChip = (challengeId == todayChallengeId ?
+                         -1 : challengeDates.filter { $0.date == stringToDate }.map { $0.color }.first) ?? -1
         let previousDate = gregorian.date(byAdding: .day, value: -1, to: date)!
             .datePickerToString(format: "yyyy-MM-dd") // 이전 날짜
         let nextDate = gregorian.date(byAdding: .day, value: 1, to: date)!
@@ -218,7 +224,9 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                     challengeDates.contains(where: { $0.date == nextDate && $0.id == challengeId }) {
                     // 이전, 다음날이 선택된 날의 다음날로 들어가 있다면
                     return returnType(border: .middle(color: colorChip), findDate: date) // 중간 취급
-                } else if challengeDates.contains(where: { $0.date == previousDate && $0.id == challengeId }) {
+                } else if challengeDates.contains(where: {
+                    $0.date == previousDate && $0.id == challengeId
+                }) {
                     // 이전날만 존재한다면
                     return returnType(border: .rightBorder(color: colorChip), findDate: date) // 오른쪽 라운드 담당
                 } else { // 다음날만 존재한다면
@@ -341,9 +349,8 @@ extension CalendarVC {
                                                token: token) { [weak self] result in
             switch result {
             case .success(let calendar):
-                self?.testData = calendar
-                print(self?.testData?.myChallenges[0].dates)
-                self?.findTodayIsChallengeTest()
+                self?.serverData = calendar
+                self?.makeCalendarData(data: calendar)
             case .requestErr(let error):
                 print(error)
             case .serverErr:
@@ -370,18 +377,29 @@ extension CalendarVC {
             print(error.localizedDescription)
         }
     }
+    private func makeCalendarData(data: CalendarData) {
+        let contextCount = challengeContext.count
+        switch contextCount {
+        case 0: // 캘린더 서버 연결 첫번째 일 때
+            challengeContext = data.challengeContext
+            var challengeDatesTest: [ChallengeList] = []
+            for index in Range(0...data.myChallenges.count-1) {
+                let multiArray: [ChallengeList] = data.myChallenges[index].dates.map({
+                    return ChallengeList(date: $0, id: data.myChallenges[index].id, color: (index+1)%6)
                 })
                 challengeDatesTest += multiArray
             }
             challengeDates = challengeDatesTest
-            challengeContext = data.challengeContext
-            
-        } catch let error {
-            print(error.localizedDescription)
+        default: // 캘린더 서버 연결 2번째 이상
+            let validData = data.challengeContext.filter { $0.list != nil }
+            for index in 0...challengeContext.count-1 {
+                if challengeContext[index].id == validData[0].id {
+                    challengeContext[index].list = validData[0].list
+                    break
+                }
+            }
         }
-        
     }
-    
     private func changeRootViewToHome() {
         let storybard = UIStoryboard(name: "Home", bundle: nil)
         let homeNavigationVC = storybard.instantiateViewController(withIdentifier: "Home")
