@@ -359,23 +359,21 @@ extension CalendarVC {
             }
         }
     }
-    
-    private func jsonData() {
-        var challengeDatesTest: [ChallengeList] = []
+    private func jsonData(name: String) {
         do {
             let decoder = JSONDecoder()
-            guard let response: NSDataAsset = NSDataAsset(name: "test") else { return }
+            guard let response: NSDataAsset = NSDataAsset(name: name) else { return }
             let body = try decoder.decode(
                 GenericResponse<CalendarData>.self,
                 from: response.data
             )
             guard let data = body.data else { return }
-            self.testData = data
-            
-            
-            for i in Range(0...data.myChallenges.count-1) {
-                let multiArray: [ChallengeList] = data.myChallenges[i].dates.map({
-                    return ChallengeList(date: $0, id: data.myChallenges[i].id, color: (i+1)%6)
+            self.serverData = data
+            makeCalendarData(data: data)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
                 })
                 challengeDatesTest += multiArray
             }
