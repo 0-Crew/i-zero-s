@@ -141,6 +141,9 @@ extension APITarget: TargetType {
         case .myChallengeUser(_, let userId):
             return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.queryString)
         case .calendar(let id, _):
+            guard let id = id else {
+                return .requestPlain
+            }
             return .requestParameters(parameters: ["myChallengeId": id],
                                       encoding: URLEncoding.queryString)
         }
