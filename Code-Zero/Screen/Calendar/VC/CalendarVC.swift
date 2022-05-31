@@ -86,7 +86,7 @@ extension CalendarVC {
     private func findTodayIsChallengeTest() {
         guard let serverData = serverData,
               let selected = serverData.selectedChallenge else { return }
-        guard let today = selected.myChallenge.startedAt.toDate() else { return }
+        guard let today = selected.myChallenge.startedAt.toKoreaData() else { return }
         selectedChallege = selected.myInconveniences.map {
             today.getDateIntervalBy(
                 intervalDay: ($0.day ?? 0) - 1

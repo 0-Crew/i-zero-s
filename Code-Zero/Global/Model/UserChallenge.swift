@@ -24,7 +24,7 @@ struct UserChallenge: Codable {
 
     var dates: [(String)] {
         var arrays: [(String)] = []
-        guard let days = startedAt.toDate() else { return arrays }
+        guard let days = startedAt.toKoreaData() else { return arrays }
         for index in Range(0...6) {
             guard let day = days.getDateIntervalBy(intervalDay: index)?
                 .datePickerToString(format: "yyyy-MM-dd")
