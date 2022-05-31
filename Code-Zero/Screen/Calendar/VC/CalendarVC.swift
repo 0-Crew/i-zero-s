@@ -26,6 +26,11 @@ struct ChallengeList {
     let color: Int
 }
 
+enum CalendarUser {
+    case user
+    case follower
+}
+
 class CalendarVC: UIViewController {
 
     // MARK: - Property
