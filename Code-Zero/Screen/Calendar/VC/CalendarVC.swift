@@ -314,8 +314,13 @@ extension CalendarVC {
         let challengeSubject = challengeContext.filter { $0.id == challengeId }[0]
         // 챌린지 주제 목록에서 현재 챌린지 날짜의 아이디를 통해 어떤 주제인지 찾아줌
         let challengeDateList = challengeDates.filter { $0.id == challengeId }.map { $0.date }
-        let challengeWeek = challengeDateList.map { $0.components(separatedBy: "-")[2] }.sorted()
+        let challengeWeek = challengeDateList.map { $0.components(separatedBy: "-")[2] }
         // 챌린지 날짜 구하기(기간 표시를 위해)
+        let challengeFirstMonth = challengeDateList[0].components(separatedBy: "-")[1]
+        let challengeLastMonth = challengeDateList[6].components(separatedBy: "-")[1]
+        let challengeDate = challengeFirstMonth == challengeLastMonth
+        ? "\(challengeFirstMonth).\(challengeWeek.first!) - \(challengeWeek.last!)"
+        : "\(challengeFirstMonth).\(challengeWeek.first!) - \(challengeLastMonth).\(challengeWeek.last!)"
         let stringToDate = calendar.today?.datePickerToString(format: "yyyy-MM-dd") // 오늘 날짜(String화)
         let color = challengeDates.filter({ $0.id == challengeId }).map({ $0.color }).first ?? -1
         let challengeColor = challengeDateList.contains { $0 == stringToDate }
@@ -327,7 +332,7 @@ extension CalendarVC {
                                                                 width: view.frame.width-40,
                                                                 height: 273),
                                                   color: challengeColor,
-                                                  date: "11.\(challengeWeek.first!) - \(challengeWeek.last!)",
+                                                  date: challengeDate,
                                                   subject: challengeSubject.subject,
                                                   list: list)
         challengeView.subviews[0].removeFromSuperview()
