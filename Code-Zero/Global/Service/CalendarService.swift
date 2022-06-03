@@ -10,13 +10,13 @@ import Moya
 
 struct CalendarData: Codable {
     let myChallenges: [UserChallenge]
-    let selectedChallenge: SelectedChallenge?
+    let selectedChallenge: SelectedChallenge
 
     var challengeContext: [ChallengeData] {
         return myChallenges.map {
             var list: [DayChallengeState]?
-            if $0.id == selectedChallenge?.myChallenge.id {
-                list = selectedChallenge?.dayChallengeStateList
+            if $0.id == selectedChallenge.myChallenge?.id {
+                list = selectedChallenge.dayChallengeStateList
             } else {
                 list = nil
             }
@@ -26,10 +26,13 @@ struct CalendarData: Codable {
 }
 
 struct SelectedChallenge: Codable {
-    let myChallenge: UserChallenge
-    let myInconveniences: [Convenience]
+    let myChallenge: UserChallenge?
+    let myInconveniences: [Convenience]?
 
-    var dayChallengeStateList: [DayChallengeState] {
+    var dayChallengeStateList: [DayChallengeState]? {
+        guard let myInconveniences = myInconveniences else {
+            return nil
+        }
         return myInconveniences.map { $0.dayChallengeState }
     }
 }

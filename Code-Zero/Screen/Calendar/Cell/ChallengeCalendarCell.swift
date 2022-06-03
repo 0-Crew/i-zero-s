@@ -34,12 +34,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             }
         }
     }
-    var isClick: Bool = false {
-        didSet {
-            selectionFillLayer.isHidden = !isClick
-            underLine.backgroundColor = isClick ? .darkGray2 : .white
-        }
-    }
+    var isClick: Bool = false
     private var fillColor: UIColor = .clear {
         didSet {
             selectionFillLayer.fillColor = fillColor.cgColor
@@ -101,11 +96,12 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .days(let border):
             setBorderType(border: border)
             setLayerHidden(border: border)
+            setDayTextColor(border: border)
         case .today(let border):
             setBorderType(border: border)
             setLayerHidden(border: border)
+            setDayTextColor(border: border)
         }
-        setDayTextColor()
     }
 
     // MARK: - Style Setting Function
@@ -123,20 +119,34 @@ class ChallengeCalendarCell: FSCalendarCell {
             bottomBorderLayer.isHidden = true
         }
     }
-    private func setDayTextColor() {
+    private func setDayTextColor(border: CalendarBoarderType) {
+        selectionFillLayer.isHidden = !isClick
         switch cellDayType {
         case .today:
-            titleLabel.textColor = isClick ? .darkGray2 : .gray1
+            switch border {
+            case .none:
+                titleLabel.font = isClick ? .spoqaHanSansNeo(size: 14, family: .bold) : .spoqaHanSansNeo(size: 14, family: .medium)
+                titleLabel.textColor = isClick ? .darkGray2 : .gray1
+                underLine.backgroundColor = isClick ? .darkGray2 : .white
+            default:
+                titleLabel.font = .spoqaHanSansNeo(size: 14, family: .bold)
+                titleLabel.textColor = .white
+                underLine.backgroundColor = .white
+                
+            }
         case .days(let border):
             switch border {
             case .none:
                 titleLabel.textColor = .gray3
+                if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
+                    self.titleLabel.textColor = isClick ? .white : .gray4
+                }
             default:
                 titleLabel.textColor = isClick ? .white : .gray1
+                if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
+                    self.titleLabel.textColor = isClick ? .white : .gray1
+                }
             }
-        }
-        if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
-            self.titleLabel.textColor = .gray4
         }
     }
     private func setChallengeColor(colorNumber: Int) -> UIColor {
@@ -200,7 +210,8 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        cornerRadii: cornerRadii).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 1, strokeColor: fillColor)
-        case .none: break
+        case .none:
+            fillColor = .clear
         }
     }
 }

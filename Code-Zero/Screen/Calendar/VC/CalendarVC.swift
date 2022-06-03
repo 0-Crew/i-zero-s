@@ -57,6 +57,8 @@ class CalendarVC: UIViewController {
             selectedChallege != [] ? setChallengeListView() : setChallengeJoinView()
         }
     }
+    var hasSetPointOrigin = false
+    var pointOrigin: CGPoint?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -65,14 +67,45 @@ class CalendarVC: UIViewController {
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
+        view.addGestureRecognizer(panGesture)
         setView()
         setChallengeJoinView()
         makeButton()
-//        fetchCalendar(id: nil)
-        jsonData(name: "test")
+        //        fetchCalendar(id: nil)
+        jsonData(name: "test2")
         findTodayIsChallengeTest()
     }
+    override func viewDidLayoutSubviews() {
+        if !hasSetPointOrigin {
+            hasSetPointOrigin = true
+            pointOrigin = self.view.frame.origin
+        }
+    }
+    @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
+            let translation = sender.translation(in: view)
+            
+            // Not allowing the user to drag the view upward
+            guard translation.y >= 0 else { return }
+            
+            // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
+            view.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
+            
+            if sender.state == .ended {
+                let dragVelocity = sender.velocity(in: view)
+                if dragVelocity.y >= 1300 {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    // Set back to original position of the view controller
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
+                    }
+                }
+            }
+        }
 }
 
 // MARK: - View Function
@@ -89,10 +122,11 @@ extension CalendarVC {
         }
     }
     private func findTodayIsChallengeTest() {
-        guard let serverData = serverData,
-              let selected = serverData.selectedChallenge else { return }
-        guard let today = selected.myChallenge.startedAt.toKoreaData() else { return }
-        selectedChallege = selected.myInconveniences.map {
+        guard let serverData = serverData else { return }
+        let selected = serverData.selectedChallenge
+        guard let today = selected.myChallenge?.startedAt.toKoreaData() else { return }
+        guard let conveninces = selected.myInconveniences else { return }
+        selectedChallege = conveninces.map {
             today.getDateIntervalBy(
                 intervalDay: ($0.day ?? 0) - 1
             )?.datePickerToString(format: "yyyy-MM-dd") ?? ""
@@ -108,6 +142,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   for date: Date,
                   at position: FSCalendarMonthPosition) {
         // willDisplay: cell 이 화면에 처음 표시될 때 call (달이 바뀔 때 마다도 호출)
+        // 크기 변환?
         configure(cell: cell, for: date, at: position)
     }
     func calendar(_ calendar: FSCalendar,
@@ -127,6 +162,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             selectedChallege = challengeDates.filter { $0.id == challengeId }.map { $0.date }
             if challengeContext.filter({ $0.id == challengeId })[0].list == nil {
                 // 서버 통신 한번 더 (왜냐면 이미 있으면 다시 안불러두 됩니다..!!
+//                fetchCalendar(id: challengeId)
                 jsonData(name: "beforeData")
             }
         }
@@ -181,13 +217,12 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
         }
     }
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
-
         let challengeCell = (cell as? ChallengeCalendarCell)
-
-        guard position == .current else {
-            challengeCell?.cellDayType = .days(.none)
-            return
-        }
+//        guard position == .current else {
+//            // 요기다!!!!
+//            challengeCell?.cellDayType = .days(.none)
+//            return
+//        }
 
         challengeCell?.cellDayType = date == calendar.today ? .today(.none) : .days(.none)
 
@@ -291,10 +326,10 @@ extension CalendarVC {
         }
     }
     override func updateViewConstraints() {
-        var height: CGFloat = 0.0
-        height += calendar.frame.height
-        view.frame.size.height = 800 // 추상적인 숫자 변경 필요
-        view.frame.origin.y = UIScreen.main.bounds.height - height - 450
+//        var height: CGFloat = 0.0
+//        height += calendar.frame.height
+//        view.frame.size.height = 800 // 추상적인 숫자 변경 필요
+//        view.frame.origin.y = UIScreen.main.bounds.height - height - 450
 
         view.clipsToBounds = true
         view.layer.cornerRadius = 25

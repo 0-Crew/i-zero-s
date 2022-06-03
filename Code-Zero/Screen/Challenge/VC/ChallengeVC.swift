@@ -138,6 +138,8 @@ extension ChallengeVC: ChallengeListCellDelegate {
     func didCalendarButtonTap() {
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
         let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+        calendarVC.modalPresentationStyle = .custom
+        calendarVC.transitioningDelegate = self
         present(calendarVC, animated: true, completion: nil)
     }
 }
@@ -265,4 +267,10 @@ extension ChallengeVC {
             }
         }
     }
+}
+
+extension ChallengeVC: UIViewControllerTransitioningDelegate {
+       func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+           return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
+       }
 }
