@@ -21,7 +21,6 @@ class EmptyChallengeView: LoadXibView {
 
     @IBOutlet weak var presentCalendarViewTopConstraint: NSLayoutConstraint!
 
-
     weak var delegate: EmptyChallengeViewDelegate?
 
     // MARK: - Lifecycle Method

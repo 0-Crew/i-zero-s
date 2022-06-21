@@ -28,6 +28,9 @@ enum APITarget {
 
     // 설정
     case userInfo(token: String)
+
+    // 메인 챌린지
+    case myChallengeFetch(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -52,6 +55,8 @@ extension APITarget: TargetType {
             return "/bottleworld/browse"
         case .userInfo:
             return "/user/setting"
+        case .myChallengeFetch:
+            return "/my-challenge/main"
         }
     }
 
@@ -62,8 +67,9 @@ extension APITarget: TargetType {
             return .post
         case .userPrivate:
             return .put
-        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo:
+        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch:
             return .get
+            
         }
     }
 
@@ -92,7 +98,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview, .userInfo:
+        case .challengeOpenPreview, .userInfo, .myChallengeFetch(_):
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
@@ -115,7 +121,8 @@ extension APITarget: TargetType {
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
                 .bottleWorldBrowse(let token, _),
-                .userInfo(let token):
+                .userInfo(let token),
+                .myChallengeFetch(let token):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:

@@ -74,6 +74,7 @@
 		6E6E4A4A27AFCCEB00390493 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6E4A4927AFCCEB00390493 /* Constants.swift */; };
 		6E6E4A5027B1251700390493 /* ChallengeFinal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6E4A4F27B1251700390493 /* ChallengeFinal.storyboard */; };
 		6E6E4A5227B12E4200390493 /* ChallengeFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6E4A5127B12E4200390493 /* ChallengeFinalVC.swift */; };
+		6E7919392861B63B00041201 /* MainChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7919382861B63B00041201 /* MainChallengeService.swift */; };
 		6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E85751C276F1967008CDFD7 /* Onboarding.storyboard */; };
 		6E857522276F7296008CDFD7 /* OnboardingStepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E857521276F7296008CDFD7 /* OnboardingStepOneVC.swift */; };
 		6E857524276F76FA008CDFD7 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E857523276F76FA008CDFD7 /* UIWindow+Extension.swift */; };
@@ -217,6 +218,7 @@
 		6E6E4A4927AFCCEB00390493 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6E6E4A4F27B1251700390493 /* ChallengeFinal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeFinal.storyboard; sourceTree = "<group>"; };
 		6E6E4A5127B12E4200390493 /* ChallengeFinalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFinalVC.swift; sourceTree = "<group>"; };
+		6E7919382861B63B00041201 /* MainChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChallengeService.swift; sourceTree = "<group>"; };
 		6E85751C276F1967008CDFD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		6E857521276F7296008CDFD7 /* OnboardingStepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepOneVC.swift; sourceTree = "<group>"; };
 		6E857523276F76FA008CDFD7 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */,
 				190448DC27CB6274004E8A10 /* BottleWorldService.swift */,
 				195A0F0327CCF266009F0FFD /* UserSettingService.swift */,
+				6E7919382861B63B00041201 /* MainChallengeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				6E6E4A5227B12E4200390493 /* ChallengeFinalVC.swift in Sources */,
 				A25C8BFA2731417800D2BA78 /* UILabel+Extension.swift in Sources */,
 				6E6C1E942751216C007488AD /* OptionCell.swift in Sources */,
+				6E7919392861B63B00041201 /* MainChallengeService.swift in Sources */,
 				195A0F0427CCF266009F0FFD /* UserSettingService.swift in Sources */,
 				19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */,
 				6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */,

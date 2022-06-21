@@ -309,6 +309,8 @@
                         <outlet property="challengeBackgroundView" destination="2kW-It-5Wh" id="qfK-nZ-NrY"/>
                         <outlet property="challengeListStackView" destination="cnj-h3-2eG" id="dRu-Qk-xQu"/>
                         <outlet property="cheerUpButton" destination="Q89-Ae-y0z" id="9c3-xd-hLH"/>
+                        <outlet property="convenienceTextLabel" destination="sEG-rS-BRW" id="cyj-qe-xdG"/>
+                        <outlet property="dateTermLabel" destination="gM1-5E-Gv6" id="jPc-Ms-5m1"/>
                         <outlet property="followingButton" destination="cD2-kI-bZf" id="Ttf-XZ-V4W"/>
                         <outlet property="followingListStackView" destination="Ab9-3r-yJD" id="XYc-Gf-tJn"/>
                         <outlet property="initialLineView" destination="ulj-Lc-AcM" id="9Vm-sJ-FV9"/>

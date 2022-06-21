@@ -12,9 +12,12 @@ class ChallengeVC: UIViewController {
 
     // MARK: - Property
     private var userInfo: UserInfo?
-    private var followingPeopleList: [String] = [
-        "김", "이", "박"
-    ]
+    private var challengeData: MyChallengeData?
+    private var followingPeopleList: [User] = [] {
+        didSet {
+            setFollowingListStackView()
+        }
+    }
     // MARK: UI Data Property
     private var bottleImageLists: [UIImage?] = (0...7)
         .map { "icBottleMain\($0)" }
@@ -49,10 +52,14 @@ class ChallengeVC: UIViewController {
         "선택지5",
         "선택지6",
         "직접입력"
-    ]
+    ]  {
+        didSet {
+            optionsTableView.reloadData()
+        }
+    }
     private var editingChallengeOffset: Int?
     // 내 챌린지인지 체크
-    internal var isMine: Bool! = true
+    internal var isMine: Bool! = false
 
     // MARK: - UI Components
     private lazy var optionsTableView: UITableView = {
@@ -95,6 +102,8 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var followingListStackView: UIStackView!
     @IBOutlet weak var cheerUpButton: UIButton!
     @IBOutlet weak var followingButton: UIButton!
+    @IBOutlet weak var dateTermLabel: UILabel!
+    @IBOutlet weak var convenienceTextLabel: UILabel!
     @IBOutlet weak var challengeBackgroundView: UIView!
     @IBOutlet weak var bottleImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -106,7 +115,6 @@ class ChallengeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItems()
-        fetchFollowingPeopleFirstNameList()
         followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         setFollowingListStackView()
         setChallengeViewList()
@@ -121,6 +129,7 @@ class ChallengeVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
+        fetchMyChallenge()
         fetchUserInfoData()
         registerForKeyboardNotifications()
         // Empty view 세팅
@@ -160,10 +169,73 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - Field Method
-    private func fetchFollowingPeopleFirstNameList() {
-        followingPeopleList = [
-//            "김", "나"
-        ]
+
+    internal func fetchMyChallenge() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
+        // swiftlint:enable line_length
+        MainChallengeService
+            .shared
+            .requestMyChallenge(token: token) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.challengeData = data
+                    let challenge = data.myChallenge
+                    let myInconveniences = data.myInconveniences
+                    let inconveniences = data.inconvenience
+
+                    self?.followingPeopleList = data.myFollowings
+                    self?.bindChallenge(
+                        challenge: challenge,
+                        inconveniences: myInconveniences,
+                        conveniences: inconveniences
+                    )
+                case .requestErr(let message):
+                    print(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
+
+    internal func bindChallenge(
+        challenge: UserChallenge?,
+        inconveniences: [Convenience],
+        conveniences: [Convenience]
+    ) {
+        guard
+            let challenge = challenge
+        else {
+            setEmptyView()
+            return
+        }
+
+        guard
+            let startDate = challenge.startedAt.toDate(),
+            let endDate = challenge.startedAt.toDate()?.getDateIntervalBy(intervalDay: 6)
+        else {
+            return
+        }
+        let startDateText = startDate.datePickerToString(format: "MM.dd")
+        let endDateText = endDate.datePickerToString(format: "dd")
+        dateTermLabel.text = "\(startDateText) - \(endDateText)"
+        convenienceTextLabel.text = challenge.name
+
+        optionsList = conveniences.map { $0.name } + ["직접입력"]
+        challengeTextList = inconveniences.map { $0.name }
+        challengeStateList = inconveniences.compactMap {
+            $0.mapChallengeState(challengeStartDate: startDate)
+        }
+        inconveniences
+            .map { $0.getDueDate(challengeStartDate: startDate) }
+            .enumerated()
+            .forEach {
+                setChallengeDate(offset: $0.offset, dueDate: $0.element)
+            }
+        setChallengeViewList()
+
     }
 }
 
@@ -272,7 +344,7 @@ extension ChallengeVC {
         )
     }
     private func setFollowingListStackView() {
-        switch followingPeopleList.count {
+        switch followingPeopleList.map({ $0.name }).count {
         case 0:
             let button = UIButton(type: .custom)
             button.setButton(text: "다른 보틀보기", font: .spoqaHanSansNeo(size: 12, family: .medium))
@@ -283,7 +355,8 @@ extension ChallengeVC {
             followingPeopleList
                 .enumerated()
                 .map { (offset, element) -> UIButton in
-                    let button = makeFollowingListButton(text: element)
+                    let text = element.name.map { "\($0)" }.first ?? ""
+                    let button = makeFollowingListButton(text: text)
                     button.tag = offset
                     return button
                 }
@@ -298,7 +371,8 @@ extension ChallengeVC {
             followingPeopleList[0..<3]
                 .enumerated()
                 .map { (offset, element) -> UIButton in
-                    let button = makeFollowingListButton(text: element)
+                    let text = element.name.map { "\($0)" }.first ?? ""
+                    let button = makeFollowingListButton(text: text)
                     button.tag = offset
                     return button
                 }
@@ -344,8 +418,10 @@ extension ChallengeVC {
     }
     private func setEmptyView() {
         view.addSubview(emptyView)
+        emptyView.backgroundColor = .gray3
         emptyView.snp.makeConstraints {
-            $0.top.bottom.leading.trailing.equalTo(challengeBackgroundView)
+            $0.top.equalTo(followingButton.snp.bottom)
+            $0.bottom.leading.trailing.equalTo(challengeBackgroundView)
         }
     }
     private func updateSocialButtons() {
@@ -365,6 +441,10 @@ extension ChallengeVC {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
         challengeTextList[offset] = text
+    }
+    private func setChallengeDate(offset: Int, dueDate: Date?) {
+        let challengeView = challengeViewList[offset]
+        challengeView?.setChallengeDate(date: dueDate)
     }
     private func setChallengeTextFieldState(offset: Int) {
         let challengeView = challengeViewList[offset]
