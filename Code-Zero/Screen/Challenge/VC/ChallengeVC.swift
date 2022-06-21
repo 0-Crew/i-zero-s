@@ -85,7 +85,7 @@ class ChallengeVC: UIViewController {
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
     }()
-    private lazy var emptyView: EmptyChallengeView = EmptyChallengeView(frame: .zero)
+    private lazy var emptyView: EmptyChallengeView = EmptyChallengeView(frame: .zero, isMine: isMine)
     private var challengeViewList: [ChallengeView?] {
         return challengeListStackView.arrangedSubviews.map { $0 as? ChallengeView }
     }
@@ -123,7 +123,8 @@ class ChallengeVC: UIViewController {
         navigationController?.isNavigationBarHidden = false
         fetchUserInfoData()
         registerForKeyboardNotifications()
-//        setEmptyView() Empty view 세팅
+        // Empty view 세팅
+//        setEmptyView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -344,8 +345,7 @@ extension ChallengeVC {
     private func setEmptyView() {
         view.addSubview(emptyView)
         emptyView.snp.makeConstraints {
-            $0.top.equalTo(followingListStackView.snp.bottom)
-            $0.bottom.leading.trailing.equalToSuperview()
+            $0.top.bottom.leading.trailing.equalTo(challengeBackgroundView)
         }
     }
     private func updateSocialButtons() {
@@ -364,6 +364,7 @@ extension ChallengeVC {
     private func setChallengeTextByOptionSelected(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
+        challengeTextList[offset] = text
     }
     private func setChallengeTextFieldState(offset: Int) {
         let challengeView = challengeViewList[offset]
@@ -376,6 +377,7 @@ extension ChallengeVC {
     private func setChallengeText(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
+        challengeTextList[offset] = text
     }
     private func presentOptionTableView(yPosition: CGFloat) {
         var mutableYPosition = yPosition + 43 + 8

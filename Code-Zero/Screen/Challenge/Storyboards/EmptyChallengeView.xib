@@ -20,7 +20,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyChallengeView" customModule="Code_Zero" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionLabel" destination="8if-0v-Fjp" id="cee-yv-qJ7"/>
                 <outlet property="presentCalendarView" destination="7gg-hv-Gjp" id="JZn-2f-QOu"/>
+                <outlet property="presentCalendarViewTopConstraint" destination="psx-Jo-C8Q" id="b6t-yS-nfR"/>
                 <outlet property="startChallengeView" destination="7LG-GS-Gtq" id="BFS-vm-z2c"/>
             </connections>
         </placeholder>
