@@ -22,28 +22,50 @@ class ChallengeVC: UIViewController {
     private var bottleImageLists: [UIImage?] = (0...7)
         .map { "icBottleMain\($0)" }
         .map { UIImage(named: $0) }
-    private var challengeStateList: [ChallengeState] = [
-        .didChallengeCompleted,
-        .didChallengeCompleted,
-        .didChallengeNotCompleted,
-        .didChallengeCompleted,
-        .didChallengeNotCompleted,
-        .didChallengeNotCompleted,
-        .challengingNotCompleted
-    ] {
+
+    private var inconveniences: [Convenience] = [] {
         didSet {
-            updateBottleImageView(stateList: challengeStateList)
+            updateBottleImageView()
         }
     }
-    internal var challengeTextList: [String] = [
-        "음식 남기지 않기1",
-        "음식 남기지 않기2",
-        "음식 남기지 않기3",
-        "음식 남기지 않기4",
-        "음식 남기지 않기5",
-        "음식 남기지 않기6",
-        "음식 남기지 않기7"
-    ]
+    private var challengeStateList: [ChallengeState] {
+        return inconveniences.compactMap {
+            guard
+                let challengeData = challengeData,
+                let startDate = challengeData.myChallenge?.startedAt.toDate()
+            else {
+                return .didChallengeNotCompleted
+            }
+
+            return $0.mapChallengeState(challengeStartDate: startDate)
+        }
+    }
+    private var challengeTextList: [String] {
+        return inconveniences.map { $0.name }
+    }
+
+//    private var challengeStateList: [ChallengeState] = [
+//        .didChallengeCompleted,
+//        .didChallengeCompleted,
+//        .didChallengeNotCompleted,
+//        .didChallengeCompleted,
+//        .didChallengeNotCompleted,
+//        .didChallengeNotCompleted,
+//        .challengingNotCompleted
+//    ] {
+//        didSet {
+//            updateBottleImageView(stateList: challengeStateList)
+//        }
+//    }
+//    internal var challengeTextList: [String] = [
+//        "음식 남기지 않기1",
+//        "음식 남기지 않기2",
+//        "음식 남기지 않기3",
+//        "음식 남기지 않기4",
+//        "음식 남기지 않기5",
+//        "음식 남기지 않기6",
+//        "음식 남기지 않기7"
+//    ]
     private var optionsList: [String] = [
         "선택지1",
         "선택지2",
@@ -59,7 +81,7 @@ class ChallengeVC: UIViewController {
     }
     private var editingChallengeOffset: Int?
     // 내 챌린지인지 체크
-    internal var isMine: Bool! = false
+    internal var isMine: Bool! = true
 
     // MARK: - UI Components
     private lazy var optionsTableView: UITableView = {
@@ -116,8 +138,6 @@ class ChallengeVC: UIViewController {
         super.viewDidLoad()
         setNavigationItems()
         followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
-        setFollowingListStackView()
-        setChallengeViewList()
         emptyView.delegate = self
         scrollView.delegate = self
         scrollView.addSubview(optionsTableView)
@@ -125,15 +145,13 @@ class ChallengeVC: UIViewController {
             startColor: .orangeMain,
             endColor: UIColor(red: 70, green: 65, blue: 57)
         )
-        updateSocialButtons()
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
         fetchMyChallenge()
         fetchUserInfoData()
+        updateSocialButtons()
         registerForKeyboardNotifications()
-        // Empty view 세팅
-//        setEmptyView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -169,74 +187,6 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - Field Method
-
-    internal func fetchMyChallenge() {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
-        // swiftlint:enable line_length
-        MainChallengeService
-            .shared
-            .requestMyChallenge(token: token) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.challengeData = data
-                    let challenge = data.myChallenge
-                    let myInconveniences = data.myInconveniences
-                    let inconveniences = data.inconvenience
-
-                    self?.followingPeopleList = data.myFollowings
-                    self?.bindChallenge(
-                        challenge: challenge,
-                        inconveniences: myInconveniences,
-                        conveniences: inconveniences
-                    )
-                case .requestErr(let message):
-                    print(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-
-    internal func bindChallenge(
-        challenge: UserChallenge?,
-        inconveniences: [Convenience],
-        conveniences: [Convenience]
-    ) {
-        guard
-            let challenge = challenge
-        else {
-            setEmptyView()
-            return
-        }
-
-        guard
-            let startDate = challenge.startedAt.toDate(),
-            let endDate = challenge.startedAt.toDate()?.getDateIntervalBy(intervalDay: 6)
-        else {
-            return
-        }
-        let startDateText = startDate.datePickerToString(format: "MM.dd")
-        let endDateText = endDate.datePickerToString(format: "dd")
-        dateTermLabel.text = "\(startDateText) - \(endDateText)"
-        convenienceTextLabel.text = challenge.name
-
-        optionsList = conveniences.map { $0.name } + ["직접입력"]
-        challengeTextList = inconveniences.map { $0.name }
-        challengeStateList = inconveniences.compactMap {
-            $0.mapChallengeState(challengeStartDate: startDate)
-        }
-        inconveniences
-            .map { $0.getDueDate(challengeStartDate: startDate) }
-            .enumerated()
-            .forEach {
-                setChallengeDate(offset: $0.offset, dueDate: $0.element)
-            }
-        setChallengeViewList()
-
-    }
 }
 
 // MARK: - ChallengeViewDelegate
@@ -270,7 +220,8 @@ extension ChallengeVC: ChallengeViewDelegate {
     }
     // 챌린지 완료 상태 toggle 이벤트 delegate
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
-        challengeStateList[challengeOffset] = currentState
+//        TODO: - 챌린지 토글 이벤트 설정
+//        challengeStateList[challengeOffset] = currentState
     }
 }
 
@@ -344,6 +295,7 @@ extension ChallengeVC {
         )
     }
     private func setFollowingListStackView() {
+        resetFollowingListStackView()
         switch followingPeopleList.map({ $0.name }).count {
         case 0:
             let button = UIButton(type: .custom)
@@ -401,6 +353,46 @@ extension ChallengeVC {
         }()
         return followingPersonButton
     }
+    private func resetFollowingListStackView() {
+        followingListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        let plusButton = UIButton(type: .custom)
+        plusButton.setImage(.init(named: "icPlus"), for: .normal)
+
+        followingListStackView.addArrangedSubview(plusButton)
+    }
+    internal func bindChallenge(
+        challenge: UserChallenge?,
+        inconveniences: [Convenience],
+        conveniences: [Convenience]
+    ) {
+        guard
+            let challenge = challenge
+        else {
+            setEmptyView()
+            return
+        }
+        emptyView.removeFromSuperview()
+
+        guard
+            let startDate = challenge.startedAt.toDate(),
+            let endDate = challenge.startedAt.toDate()?.getDateIntervalBy(intervalDay: 6)
+        else {
+            return
+        }
+        let startDateText = startDate.datePickerToString(format: "MM.dd")
+        let endDateText = endDate.datePickerToString(format: "dd")
+        dateTermLabel.text = "\(startDateText) - \(endDateText)"
+        convenienceTextLabel.text = challenge.name
+        self.inconveniences = inconveniences
+        optionsList = conveniences.map { $0.name } + ["직접입력"]
+        inconveniences
+            .map { $0.getDueDate(challengeStartDate: startDate) }
+            .enumerated()
+            .forEach {
+                setChallengeDate(offset: $0.offset, dueDate: $0.element)
+            }
+        setChallengeViewList()
+    }
     private func setChallengeViewList() {
         challengeViewList.enumerated().forEach {
             let challengView = $0.element
@@ -426,12 +418,12 @@ extension ChallengeVC {
     }
     private func updateSocialButtons() {
         let isChallenging = true
-//        let isChallenging = followingPeopleChallengingLists[offset].isChallenging
         cheerUpButton.isHidden = (isChallenging == false) || isMine
         followingButton.isHidden = isMine
     }
-    private func updateBottleImageView(stateList: [ChallengeState]) {
-        let remainCount = 7 - stateList.filter {
+    private func updateBottleImageView() {
+
+        let remainCount = 7 - challengeStateList.filter {
                 $0 == .willChallenge || $0 == .challengingNotCompleted || $0 == .didChallengeNotCompleted
             }.count
 
@@ -440,7 +432,8 @@ extension ChallengeVC {
     private func setChallengeTextByOptionSelected(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
-        challengeTextList[offset] = text
+//        TODO: - 챌린지 텍스트 수정하는 방법
+//        challengeTextList[offset] = text
     }
     private func setChallengeDate(offset: Int, dueDate: Date?) {
         let challengeView = challengeViewList[offset]
@@ -457,7 +450,8 @@ extension ChallengeVC {
     private func setChallengeText(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
-        challengeTextList[offset] = text
+//        TODO: - 챌린지 텍스트 수정하는 작업
+//        challengeTextList[offset] = text
     }
     private func presentOptionTableView(yPosition: CGFloat) {
         var mutableYPosition = yPosition + 43 + 8
@@ -561,5 +555,35 @@ extension ChallengeVC {
                 break
             }
         }
+    }
+
+    internal func fetchMyChallenge() {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
+        // swiftlint:enable line_length
+        MainChallengeService
+            .shared
+            .requestMyChallenge(token: token) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.challengeData = data
+                    let challenge = data.myChallenge
+                    let myInconveniences = data.myInconveniences
+                    let inconveniences = data.inconvenience
+
+                    self?.followingPeopleList = data.myFollowings
+                    self?.bindChallenge(
+                        challenge: challenge,
+                        inconveniences: myInconveniences,
+                        conveniences: inconveniences
+                    )
+                case .requestErr(let message):
+                    print(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
     }
 }
