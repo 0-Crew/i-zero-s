@@ -15,6 +15,10 @@ struct MyChallengeData: Codable {
     let inconvenience: [Convenience]
 }
 
+struct MyInconvenienceFinishData: Codable {
+    let myInconvenience: Convenience
+}
+
 class MainChallengeService {
     static let shared = MainChallengeService()
     private lazy var service = MoyaProvider<APITarget>(plugins: [MoyaLoggingPlugin()])
@@ -37,6 +41,38 @@ class MainChallengeService {
                     }
                 } catch let error {
                     debugPrint(error)
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
+
+    public func requestCompleteMyInconvenience(
+        token: String,
+        inconvenience: Convenience,
+        completion: @escaping (NetworkResult<(Bool, Convenience)>) -> Void
+    ) {
+        let request: APITarget = .myInconvenienceFinish(
+            token: token,
+            myInconvenienceId: inconvenience.id
+        )
+        service.request(request) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<MyInconvenienceFinishData>.self,
+                        from: response.data
+                    )
+                    if let data = body.data {
+                        completion(.success((body.success, data.myInconvenience)))
+                    }
+                } catch let error {
+                    debugPrint(error)
+                    completion(.serverErr)
                 }
             case .failure(let error):
                 completion(.serverErr)

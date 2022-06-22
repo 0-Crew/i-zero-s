@@ -220,8 +220,16 @@ extension ChallengeVC: ChallengeViewDelegate {
     }
     // 챌린지 완료 상태 toggle 이벤트 delegate
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
-//        TODO: - 챌린지 토글 이벤트 설정
-//        challengeStateList[challengeOffset] = currentState
+        let inconvenience = inconveniences[challengeOffset]
+        Indicator.shared.show()
+        toggleInconvenienceComplete(inconvenience: inconvenience) { [weak self] (isSuccess, inconvenience) in
+            if isSuccess {
+                self?.inconveniences[challengeOffset] = inconvenience
+            } else {
+                self?.setChallengeViewChangingState(offset: challengeOffset)
+            }
+            Indicator.shared.dismiss()
+        }
     }
 }
 
@@ -585,5 +593,30 @@ extension ChallengeVC {
                     break
                 }
             }
+    }
+
+    internal func toggleInconvenienceComplete(
+        inconvenience: Convenience,
+        completion: @escaping (Bool, Convenience) -> Void
+    ) {
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
+        // swiftlint:enable line_length
+        MainChallengeService
+            .shared
+            .requestCompleteMyInconvenience(
+                token: token,
+                inconvenience: inconvenience) { result in
+                    switch result {
+                    case .success((let isSuccess, let inconvenience)):
+                        completion(isSuccess, inconvenience)
+                    case .requestErr(let message):
+                        print(message)
+                    case .serverErr:
+                        break
+                    case .networkFail:
+                        break
+                    }
+                }
     }
 }

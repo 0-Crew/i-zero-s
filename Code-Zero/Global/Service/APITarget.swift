@@ -17,6 +17,10 @@ enum APITarget {
     // 보틀월드
     case bottleWorldBrowse(token: String, keyword: String?)
 
+    // 메인 챌린지
+    case myChallengeFetch(token: String)
+    case myInconvenienceFinish(token: String, myInconvenienceId: Int)
+
     // 챌린지
     case challengeOpenPreview(token: String)
     case challengeOpen(
@@ -29,8 +33,6 @@ enum APITarget {
     // 설정
     case userInfo(token: String)
 
-    // 메인 챌린지
-    case myChallengeFetch(token: String)
 }
 
 // MARK: TargetType Protocol 구현
@@ -57,6 +59,8 @@ extension APITarget: TargetType {
             return "/user/setting"
         case .myChallengeFetch:
             return "/my-challenge/main"
+        case .myInconvenienceFinish:
+            return "/my-inconvenience/finish"
         }
     }
 
@@ -65,11 +69,11 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .userPrivate:
+        case .userPrivate, .myInconvenienceFinish:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch:
             return .get
-            
+
         }
     }
 
@@ -106,6 +110,9 @@ extension APITarget: TargetType {
                                                    "isfromToday": isFromToday],
                                       encoding: JSONEncoding.default
             )
+        case .myInconvenienceFinish(_, let myInconvenienceId):
+            return .requestParameters(parameters: ["myInconvenienceId" : myInconvenienceId],
+                                      encoding: JSONEncoding.default)
         }
     }
     var validationType: Moya.ValidationType {
@@ -122,7 +129,8 @@ extension APITarget: TargetType {
                 .challengeOpen(_, _, _, let token),
                 .bottleWorldBrowse(let token, _),
                 .userInfo(let token),
-                .myChallengeFetch(let token):
+                .myChallengeFetch(let token),
+                .myInconvenienceFinish(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
