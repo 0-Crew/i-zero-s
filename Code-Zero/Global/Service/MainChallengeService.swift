@@ -8,11 +8,13 @@
 import Foundation
 import Moya
 
-struct MyChallengeData: Codable {
-    let myFollowings: [User]
+struct MainChallengeData: Codable {
+    let user: UserInfo?
+    let myFollowings: [User]?
+    let isFollowing: Bool?
     let myChallenge: UserChallenge?
     let myInconveniences: [Convenience]
-    let inconvenience: [Convenience]
+    let inconvenience: [Convenience]?
 }
 
 struct MyInconvenienceFinishData: Codable {
@@ -29,7 +31,7 @@ class MainChallengeService {
 
     public func requestMyChallenge(
         token: String,
-        completion: @escaping (NetworkResult<MyChallengeData>) -> Void
+        completion: @escaping (NetworkResult<MainChallengeData>) -> Void
     ) {
         service.request(.myChallengeFetch(token: token)) { result in
             switch result {
@@ -37,7 +39,7 @@ class MainChallengeService {
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<MyChallengeData>.self,
+                        GenericResponse<MainChallengeData>.self,
                         from: response.data
                     )
                     if let data = body.data {
@@ -110,6 +112,33 @@ class MainChallengeService {
                     }
                 } catch let error {
                     completion(.serverErr)
+                    debugPrint(error)
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
+
+    public func requestUserChallenge(
+        token: String,
+        userId: Int,
+        completion: @escaping (NetworkResult<MainChallengeData>) -> Void
+    ) {
+        service.request(.myChallengeUser(token: token, userId: userId)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<MainChallengeData>.self,
+                        from: response.data
+                    )
+                    if let data = body.data {
+                        completion(.success(data))
+                    }
+                } catch let error {
                     debugPrint(error)
                 }
             case .failure(let error):

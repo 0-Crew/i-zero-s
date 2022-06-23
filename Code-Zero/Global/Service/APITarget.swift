@@ -21,6 +21,7 @@ enum APITarget {
     case myChallengeFetch(token: String)
     case myInconvenienceFinish(token: String, myInconvenienceId: Int)
     case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
+    case myChallengeUser(token: String ,userId: Int)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -60,6 +61,8 @@ extension APITarget: TargetType {
             return "/user/setting"
         case .myChallengeFetch:
             return "/my-challenge/main"
+        case .myChallengeUser:
+            return "/my-challenge/user"
         case .myInconvenienceFinish:
             return "/my-inconvenience/finish"
         case .myInconvenienceUpdate:
@@ -74,7 +77,7 @@ extension APITarget: TargetType {
             return .post
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
-        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch:
+        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch, .myChallengeUser:
             return .get
 
         }
@@ -120,6 +123,8 @@ extension APITarget: TargetType {
             return .requestParameters(parameters: ["myInconvenienceId": myInconvenienceId,
                                                    "inconvenienceString": inconvenienceString],
                                       encoding: JSONEncoding.default)
+        case .myChallengeUser(_, let userId):
+            return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {
@@ -138,7 +143,8 @@ extension APITarget: TargetType {
                 .userInfo(let token),
                 .myChallengeFetch(let token),
                 .myInconvenienceFinish(let token, _),
-                .myInconvenienceUpdate(let token, _, _):
+                .myInconvenienceUpdate(let token, _, _),
+                .myChallengeUser(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:

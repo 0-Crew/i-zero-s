@@ -24,7 +24,7 @@
         <!--ChallengeVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="ChallengeVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChallengeVC" id="Y6W-OH-hqX" customClass="ChallengeVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="height" constant="24" id="Ocf-6M-zRe"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD2-kI-bZf">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD2-kI-bZf">
                                 <rect key="frame" x="302" y="54" width="53" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9J8-8U-kC3"/>
@@ -72,7 +72,7 @@
                                     <action selector="followingButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6vu-Oq-bHQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q89-Ae-y0z">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q89-Ae-y0z">
                                 <rect key="frame" x="231" y="54" width="63" height="30"/>
                                 <color key="backgroundColor" name="orangeMain"/>
                                 <constraints>
@@ -302,7 +302,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="FzL-gT-qpg"/>
+                    <navigationItem key="navigationItem" id="Gee-GP-8Nk">
+                        <barButtonItem key="backBarButtonItem" title=" " id="fB1-wa-ak2"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottleImageView" destination="O9F-rm-Hoa" id="MYx-kn-hsW"/>
