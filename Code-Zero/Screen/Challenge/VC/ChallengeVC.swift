@@ -111,6 +111,7 @@ class ChallengeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItems()
+        challengeBackgroundView.alpha = 0
         followingButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         emptyView.delegate = self
         scrollView.delegate = self
@@ -505,6 +506,7 @@ extension ChallengeVC {
             .requestMyChallenge(token: token) { [weak self] result in
                 switch result {
                 case .success(let data):
+                    self?.challengeBackgroundView.alpha = 1
                     self?.challengeData = data
                     let challenge = data.myChallenge
                     let myInconveniences = data.myInconveniences
