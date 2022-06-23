@@ -48,7 +48,7 @@ class ChallengeVC: UIViewController {
         return inconveniences.map { $0.name }
     }
 
-    private var optionsList: [String] = []  {
+    private var optionsList: [String] = [] {
         didSet {
             optionsTableView.reloadData()
         }
@@ -167,13 +167,14 @@ class ChallengeVC: UIViewController {
 extension ChallengeVC: ChallengeViewDelegate {
     // 텍스트 필드 편집 완료 이벤트 delegate
     func didChallengeTextFieldEdit(challengeOffset: Int, text: String) {
-        editingChallengeOffset = nil
-        optionsTableView.isHidden = true
         let inconvenience = inconveniences[challengeOffset]
         updateInconvenience(
             inconvenience: inconvenience,
-            willChangingText: text) { [weak self] (isSuccess, inconvenince) in
-                if isSuccess {
+            willChangingText: text) { [weak self] (isSuccess, changedInconvenince) in
+                if isSuccess, let changedInconvenince = changedInconvenince {
+                    self?.editingChallengeOffset = nil
+                    self?.optionsTableView.isHidden = true
+                    self?.inconveniences[challengeOffset] = changedInconvenince
                     self?.setChallengeViewChangingState(offset: challengeOffset)
                     self?.setChallengeTextFieldState(offset: challengeOffset)
                     self?.setChallengeText(offset: challengeOffset, text: text)
@@ -430,8 +431,6 @@ extension ChallengeVC {
     private func setChallengeTextByOptionSelected(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
-//        TODO: - 챌린지 텍스트 수정하는 방법
-//        challengeTextList[offset] = text
     }
     private func setChallengeDate(offset: Int, dueDate: Date?) {
         let challengeView = challengeViewList[offset]
@@ -448,8 +447,6 @@ extension ChallengeVC {
     private func setChallengeText(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
-//        TODO: - 챌린지 텍스트 수정하는 작업
-//        challengeTextList[offset] = text
     }
     private func presentOptionTableView(yPosition: CGFloat) {
         var mutableYPosition = yPosition + 43 + 8
