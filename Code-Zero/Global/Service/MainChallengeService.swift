@@ -16,7 +16,11 @@ struct MyChallengeData: Codable {
 }
 
 struct MyInconvenienceFinishData: Codable {
-    let myInconvenience: Convenience
+    let myInconvenience: Convenience?
+}
+
+struct MyInconvenienceUpdateData: Codable {
+    let myInconvenience: [Convenience]
 }
 
 class MainChallengeService {
@@ -52,7 +56,7 @@ class MainChallengeService {
     public func requestCompleteMyInconvenience(
         token: String,
         inconvenience: Convenience,
-        completion: @escaping (NetworkResult<(Bool, Convenience)>) -> Void
+        completion: @escaping (NetworkResult<(Bool, Convenience?)>) -> Void
     ) {
         let request: APITarget = .myInconvenienceFinish(
             token: token,
@@ -73,6 +77,40 @@ class MainChallengeService {
                 } catch let error {
                     debugPrint(error)
                     completion(.serverErr)
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
+
+    public func requestUpdateMyInconvenienceText(
+        token: String,
+        inconvenience: Convenience,
+        willChangingText: String,
+        completion: @escaping (NetworkResult<(Bool, Convenience?)>) -> Void
+    ) {
+        let request: APITarget = .myInconvenienceUpdate(
+            token: token,
+            myInconvenienceId: inconvenience.id,
+            inconvenienceString: willChangingText
+        )
+        service.request(request) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<MyInconvenienceUpdateData>.self,
+                        from: response.data
+                    )
+                    if let data = body.data {
+                        completion(.success((body.success, data.myInconvenience.first)))
+                    }
+                } catch let error {
+                    completion(.serverErr)
+                    debugPrint(error)
                 }
             case .failure(let error):
                 completion(.serverErr)

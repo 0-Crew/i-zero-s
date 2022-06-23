@@ -10,6 +10,10 @@ import SnapKit
 
 class ChallengeVC: UIViewController {
 
+    // swiftlint:disable line_length
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
+    // swiftlint:enable line_length
+
     // MARK: - Property
     private var userInfo: UserInfo?
     private var challengeData: MyChallengeData?
@@ -44,42 +48,12 @@ class ChallengeVC: UIViewController {
         return inconveniences.map { $0.name }
     }
 
-//    private var challengeStateList: [ChallengeState] = [
-//        .didChallengeCompleted,
-//        .didChallengeCompleted,
-//        .didChallengeNotCompleted,
-//        .didChallengeCompleted,
-//        .didChallengeNotCompleted,
-//        .didChallengeNotCompleted,
-//        .challengingNotCompleted
-//    ] {
-//        didSet {
-//            updateBottleImageView(stateList: challengeStateList)
-//        }
-//    }
-//    internal var challengeTextList: [String] = [
-//        "음식 남기지 않기1",
-//        "음식 남기지 않기2",
-//        "음식 남기지 않기3",
-//        "음식 남기지 않기4",
-//        "음식 남기지 않기5",
-//        "음식 남기지 않기6",
-//        "음식 남기지 않기7"
-//    ]
-    private var optionsList: [String] = [
-        "선택지1",
-        "선택지2",
-        "선택지3",
-        "선택지4",
-        "선택지5",
-        "선택지6",
-        "직접입력"
-    ]  {
+    private var optionsList: [String] = []  {
         didSet {
             optionsTableView.reloadData()
         }
     }
-    private var editingChallengeOffset: Int?
+    internal var editingChallengeOffset: Int?
     // 내 챌린지인지 체크
     internal var isMine: Bool! = true
 
@@ -115,7 +89,7 @@ class ChallengeVC: UIViewController {
         return barButtonItem
     }()
     private lazy var emptyView: EmptyChallengeView = EmptyChallengeView(frame: .zero, isMine: isMine)
-    private var challengeViewList: [ChallengeView?] {
+    internal var challengeViewList: [ChallengeView?] {
         return challengeListStackView.arrangedSubviews.map { $0 as? ChallengeView }
     }
 
@@ -195,9 +169,16 @@ extension ChallengeVC: ChallengeViewDelegate {
     func didChallengeTextFieldEdit(challengeOffset: Int, text: String) {
         editingChallengeOffset = nil
         optionsTableView.isHidden = true
-        setChallengeViewChangingState(offset: challengeOffset)
-        setChallengeTextFieldState(offset: challengeOffset)
-        setChallengeText(offset: challengeOffset, text: text)
+        let inconvenience = inconveniences[challengeOffset]
+        updateInconvenience(
+            inconvenience: inconvenience,
+            willChangingText: text) { [weak self] (isSuccess, inconvenince) in
+                if isSuccess {
+                    self?.setChallengeViewChangingState(offset: challengeOffset)
+                    self?.setChallengeTextFieldState(offset: challengeOffset)
+                    self?.setChallengeText(offset: challengeOffset, text: text)
+                }
+            }
     }
     // 편집, 취소, 완료 버튼 이벤트 delegate
     func didEditButtonTap(challengeOffset: Int, yPosition: CGFloat) {
@@ -221,14 +202,12 @@ extension ChallengeVC: ChallengeViewDelegate {
     // 챌린지 완료 상태 toggle 이벤트 delegate
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
         let inconvenience = inconveniences[challengeOffset]
-        Indicator.shared.show()
         toggleInconvenienceComplete(inconvenience: inconvenience) { [weak self] (isSuccess, inconvenience) in
-            if isSuccess {
+            if isSuccess, let inconvenience = inconvenience {
                 self?.inconveniences[challengeOffset] = inconvenience
             } else {
                 self?.setChallengeViewChangingState(offset: challengeOffset)
             }
-            Indicator.shared.dismiss()
         }
     }
 }
@@ -243,20 +222,31 @@ extension ChallengeVC: UIScrollViewDelegate {
 // MARK: - UITableViewDelegate
 extension ChallengeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        guard let offset = editingChallengeOffset else { return }
+        guard
+            let offset = editingChallengeOffset,
+            let editingChallengeOffset = editingChallengeOffset
+        else { return }
 
         if indexPath.row == optionsList.count - 1 {
             setChallengeTextFieldState(offset: offset)
             tableView.isHidden = true
             return
         }
-
         let willChangeText = optionsList[indexPath.row]
-        editingChallengeOffset = nil
-        tableView.isHidden = true
-        setChallengeTextByOptionSelected(offset: offset, text: willChangeText)
-        setChallengeViewChangingState(offset: offset)
+        let inconvenience = inconveniences[editingChallengeOffset]
+
+        updateInconvenience(
+            inconvenience: inconvenience,
+            willChangingText: willChangeText
+        ) { [weak self] (isSuccess, inconvenience) in
+                if isSuccess, let inconvenience = inconvenience {
+                    self?.inconveniences[editingChallengeOffset] = inconvenience
+                    self?.editingChallengeOffset = nil
+                    tableView.isHidden = true
+                    self?.setChallengeTextByOptionSelected(offset: offset, text: willChangeText)
+                    self?.setChallengeViewChangingState(offset: offset)
+                }
+            }
     }
 }
 
@@ -472,56 +462,6 @@ extension ChallengeVC {
     }
 }
 
-// MARK: - Keyboard Notification Setting
-extension ChallengeVC {
-
-    // keyboard가 보여질 때 어떤 동작을 수행
-    @objc func keyboardWillShow(_ notification: NSNotification) {
-        guard
-            let offset = editingChallengeOffset,
-            let challengeView = challengeViewList[offset]
-        else { return }
-
-        let contentOffset: CGPoint = .init(x: 0, y: challengeView.frame.minY)
-        scrollView.setContentOffset(contentOffset, animated: true)
-    }
-
-    // keyboard가 사라질 때 어떤 동작을 수행
-    @objc func keyboardWillHide(_ notification: NSNotification) {
-        let contentOffset: CGPoint = .init(x: 0, y: 0)
-        scrollView.setContentOffset(contentOffset, animated: true)
-    }
-
-    // observer
-    func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow(_:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide(_:)),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
-    }
-
-    func unregisterForKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
-    }
-}
-
 // MARK: - Move Controller
 extension ChallengeVC {
     @objc private func menuButtonDidTap() {
@@ -545,9 +485,6 @@ extension ChallengeVC {
 // MARK: - Network
 extension ChallengeVC {
     private func fetchUserInfoData() {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
-        // swiftlint:enable line_length
         UserSettingService.shared.requestUserInfo(token: token) { [weak self] result in
             switch result {
             case .success(let info):
@@ -566,9 +503,6 @@ extension ChallengeVC {
     }
 
     internal func fetchMyChallenge() {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
-        // swiftlint:enable line_length
         MainChallengeService
             .shared
             .requestMyChallenge(token: token) { [weak self] result in
@@ -597,26 +531,49 @@ extension ChallengeVC {
 
     internal func toggleInconvenienceComplete(
         inconvenience: Convenience,
-        completion: @escaping (Bool, Convenience) -> Void
+        completion: @escaping (Bool, Convenience?) -> Void
     ) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
-        // swiftlint:enable line_length
         MainChallengeService
             .shared
             .requestCompleteMyInconvenience(
                 token: token,
-                inconvenience: inconvenience) { result in
-                    switch result {
-                    case .success((let isSuccess, let inconvenience)):
-                        completion(isSuccess, inconvenience)
-                    case .requestErr(let message):
-                        print(message)
-                    case .serverErr:
-                        break
-                    case .networkFail:
-                        break
-                    }
+                inconvenience: inconvenience
+            ) { result in
+                switch result {
+                case .success((let isSuccess, let inconvenience)):
+                    completion(isSuccess, inconvenience)
+                case .requestErr(let message):
+                    print(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
                 }
+            }
+    }
+
+    internal func updateInconvenience(
+        inconvenience: Convenience,
+        willChangingText: String,
+        completion: @escaping (Bool, Convenience?) -> Void
+    ) {
+        MainChallengeService
+            .shared
+            .requestUpdateMyInconvenienceText(
+                token: token,
+                inconvenience: inconvenience,
+                willChangingText: willChangingText
+            ) { result in
+                switch result {
+                case .success((let isSuccess, let inconvenience)):
+                    completion(isSuccess, inconvenience)
+                case .requestErr(let message):
+                    print(message)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
     }
 }
