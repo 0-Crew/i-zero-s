@@ -20,6 +20,7 @@ enum APITarget {
     // 메인 챌린지
     case myChallengeFetch(token: String)
     case myInconvenienceFinish(token: String, myInconvenienceId: Int)
+    case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -61,6 +62,8 @@ extension APITarget: TargetType {
             return "/my-challenge/main"
         case .myInconvenienceFinish:
             return "/my-inconvenience/finish"
+        case .myInconvenienceUpdate:
+            return "/my-inconvenience/update"
         }
     }
 
@@ -69,7 +72,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .userPrivate, .myInconvenienceFinish:
+        case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch:
             return .get
@@ -111,7 +114,11 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default
             )
         case .myInconvenienceFinish(_, let myInconvenienceId):
-            return .requestParameters(parameters: ["myInconvenienceId" : myInconvenienceId],
+            return .requestParameters(parameters: ["myInconvenienceId": myInconvenienceId],
+                                      encoding: JSONEncoding.default)
+        case .myInconvenienceUpdate(_, let myInconvenienceId, let inconvenienceString):
+            return .requestParameters(parameters: ["myInconvenienceId": myInconvenienceId,
+                                                   "inconvenienceString": inconvenienceString],
                                       encoding: JSONEncoding.default)
         }
     }
@@ -130,7 +137,8 @@ extension APITarget: TargetType {
                 .bottleWorldBrowse(let token, _),
                 .userInfo(let token),
                 .myChallengeFetch(let token),
-                .myInconvenienceFinish(let token, _):
+                .myInconvenienceFinish(let token, _),
+                .myInconvenienceUpdate(let token, _, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
