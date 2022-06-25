@@ -50,7 +50,9 @@ extension APITarget: TargetType {
         switch self {
         case .userNick:
             return "/user/name"
-        case .auth, .deleteAuth:
+        case .deleteAuth:
+            return "/user"
+        case .auth:
             return "/auth"
         case .userPrivate:
             return "/user/private"
