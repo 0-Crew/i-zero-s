@@ -13,6 +13,7 @@ enum APITarget {
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
     case userPrivate(token: String)
     case auth(idKey: String, token: String, provider: String)
+    case deleteAuth(token: String)
 
     // 보틀월드
     case bottleWorldBrowse(token: String, keyword: String?)
@@ -21,7 +22,7 @@ enum APITarget {
     case myChallengeFetch(token: String)
     case myInconvenienceFinish(token: String, myInconvenienceId: Int)
     case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
-    case myChallengeUser(token: String ,userId: Int)
+    case myChallengeUser(token: String, userId: Int)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -49,6 +50,8 @@ extension APITarget: TargetType {
         switch self {
         case .userNick:
             return "/user/name"
+        case .deleteAuth:
+            return "/user"
         case .auth:
             return "/auth"
         case .userPrivate:
@@ -79,6 +82,8 @@ extension APITarget: TargetType {
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch, .myChallengeUser:
             return .get
+        case .deleteAuth:
+            return .delete
 
         }
     }
@@ -100,7 +105,7 @@ extension APITarget: TargetType {
         case .auth(let idKey, let token, let provider):
             return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
                                       encoding: JSONEncoding.default)
-        case .userPrivate:
+        case .userPrivate, .deleteAuth:
                 return .requestPlain
         case .bottleWorldBrowse(_, let keyword):
             guard let keyword = keyword else {
@@ -108,7 +113,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview, .userInfo, .myChallengeFetch(_):
+        case .challengeOpenPreview, .userInfo, .myChallengeFetch:
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
@@ -144,7 +149,8 @@ extension APITarget: TargetType {
                 .myChallengeFetch(let token),
                 .myInconvenienceFinish(let token, _),
                 .myInconvenienceUpdate(let token, _, _),
-                .myChallengeUser(let token, _):
+                .myChallengeUser(let token, _),
+                .deleteAuth(let token):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
