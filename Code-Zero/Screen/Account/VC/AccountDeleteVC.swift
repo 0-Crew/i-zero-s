@@ -14,10 +14,11 @@ class AccountDeleteVC: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func okButtonDidTap(_ sender: UIButton) {
-        // TODO: 계정 탈퇴 서버 연결
-        self.dismiss(animated: true) {
-            self.changeRootViewToHome()
-        }
+        // swiftlint:disable line_length
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjpudWxsLCJpYXQiOjE2NTYxNzUyMzQsImV4cCI6MTY1NjE5NjgzNCwiaXNzIjoiV1lCIn0.w8ZoXG2nltbVHONMRAG_pIIiO5PkZsjZW-rupWQfWI0"
+        // swiftlint:enable line_length
+        deleteUser(token: token)
+
     }
     @IBAction func cancleButtonDidTap(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -41,5 +42,21 @@ class AccountDeleteVC: UIViewController {
             animated: true,
             completion: nil
         )
+    }
+    private func deleteUser(token: String) {
+        UserLoginService.shared.deleteUser(token: token) { [weak self] result in
+            switch result {
+            case .success:
+                self?.dismiss(animated: true) {
+                    self?.changeRootViewToHome()
+                }
+            case .requestErr:
+                print("requestErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }

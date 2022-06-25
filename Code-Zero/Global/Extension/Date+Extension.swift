@@ -13,7 +13,7 @@ extension Date {
         let todayDate = Date().datePickerToString(format: "yyyy-MM-dd")
         return todayDate == datePickerToString(format: "yyyy-MM-dd")
     }
-    
+
     func datePickerToString(format: String) -> String {
         // date 타입을 string으로 바꾸기
 
