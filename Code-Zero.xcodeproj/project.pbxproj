@@ -1379,7 +1379,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DUQE66MABG;
+				DEVELOPMENT_TEAM = HAWSBW2KW5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "워시유어보틀";
@@ -1393,7 +1393,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1409,7 +1409,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DUQE66MABG;
+				DEVELOPMENT_TEAM = HAWSBW2KW5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "워시유어보틀";
@@ -1423,7 +1423,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamZero.WYB1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

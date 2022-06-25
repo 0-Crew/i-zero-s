@@ -23,7 +23,7 @@ class UserDefaultManager {
         UserDefaults.standard.set(token, forKey: "accessToken")
     }
 
-    internal func removeAccessToken(accessToken token: String?) {
+    internal func removeAccessToken() {
         if accessToken != nil {
             UserDefaults.standard.removeObject(forKey: "accessToken")
         }
