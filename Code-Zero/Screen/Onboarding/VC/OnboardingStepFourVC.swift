@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 import Lottie
 import SnapKit
 
@@ -14,50 +15,90 @@ class OnboardingStepFourVC: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
-    @IBOutlet weak var linkLabel: UILabel!
-    @IBOutlet weak var startChallengeButton: UIButton!
+
+    @IBOutlet weak var appleLoginView: UIView!
 
     override func viewDidLoad() {
         initView()
     }
     private func initView() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(appleLoginViewDidTap(sender:)))
+        appleLoginView.addGestureRecognizer(tapGesture)
         animationView.play()
-        linkLabel.setUnderLineBoldFont(in: ["이용약관", "개인정보정책"])
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(linkLabelDidTap(_:))
-        )
-        linkLabel.addGestureRecognizer(tapGestureRecognizer)
-        animationView.snp.makeConstraints {
-            $0.top.equalTo(subtitleLabel.snp.bottom).offset(76*deviceHeightRatio)
-        }
-        startChallengeButton.snp.makeConstraints {
-            $0.top.equalTo(animationView.snp.bottom).offset(74*deviceHeightRatio)
-        }
     }
 
-    // MARK: - IBAction
-    @IBAction func linkLabelDidTap(_ sender: UITapGestureRecognizer) {
-        let point = sender.location(in: linkLabel)
-
-        // fixedLabel 내에서 문자열 google이 차지하는 CGRect값을 구해, 그 안에 point가 포함되는지를 판단합니다.
-        if let useTermRect = linkLabel.boundingRectForCharacterRange(subText: "이용약관"),
-           useTermRect.contains(point) {
-            presentSafariWebVC(url: Constants.userTermURL)
-        }
-        if let privacyTermRect = linkLabel.boundingRectForCharacterRange(subText: "개인정보정책"),
-           privacyTermRect.contains(point) {
-            presentSafariWebVC(url: Constants.privacyTermURL)
-        }
+    @objc func appleLoginViewDidTap(sender: UITapGestureRecognizer) {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        as? ASAuthorizationControllerPresentationContextProviding
+        controller.performRequests()
     }
 
-    @IBAction func startChallengeButtonDidTap(_ sender: Any) {
+    private func requestLogin(id: String, token: String, provider: String) {
+        UserLoginService.shared.requestLogin(id: id,
+                                             token: token,
+                                             provider: provider) { [weak self] result in
+            switch result {
+            case .success(let data):
+                data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
+            case .requestErr(let error):
+                print(error)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("serverErr")
+            }
+        }
+    }
+    func moveChallengeVC() {
         let storybard = UIStoryboard(name: "Challenge", bundle: nil)
-        let challengeNavigationVC = storybard.instantiateViewController(withIdentifier: "Challenge")
+        let challengeVC = storybard.instantiateViewController(withIdentifier: "Challenge")
         UIApplication.shared.windows.first?.replaceRootViewController(
-            challengeNavigationVC,
+            challengeVC,
             animated: true,
             completion: nil
         )
+    }
+    func moveNickSettingVC() {
+        guard let nickSettingVC = storyboard?.instantiateViewController(withIdentifier: "NickSettingVC")
+        else { return }
+        navigationController?.pushViewController(nickSettingVC, animated: true)
+    }
+}
+
+// MARK: - ASAuthorizationControllerDelegate
+extension OnboardingStepFourVC: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+           let identityToken = credential.identityToken,
+           let tokenString = String(data: identityToken, encoding: .utf8) {
+            requestLogin(id: credential.user,
+                         token: tokenString,
+                         provider: "apple")
+            UserDefaults.standard.set(credential.user,
+                                      forKey: "appleId")
+        }
+    }
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        guard let error = error as? ASAuthorizationError else {return}
+             switch error.code {
+             case .canceled:
+                 print("Canceled")
+             case .unknown:
+                 print("Unknow")
+             case .invalidResponse:
+                 print("invalid Respone")
+             case .notHandled:
+                 print("Not Handled")
+             case .failed:
+                 print("Failed")
+             default:
+                 print("Default")
+             }
     }
 }
