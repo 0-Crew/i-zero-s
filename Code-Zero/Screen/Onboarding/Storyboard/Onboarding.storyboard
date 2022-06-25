@@ -553,19 +553,27 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ui2-bk-w3V">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtW-Vf-cAC">
-                                                <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="카카오 로그인"/>
-                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2T-mq-mAM">
+                                                <rect key="frame" x="117.5" y="14" width="80.5" height="17"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                <color key="textColor" red="0.24313725489999999" green="0.1529411765" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icKakaoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tty-77-Dmq">
+                                                <rect key="frame" x="16" y="14" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="tty-77-Dmq" secondAttribute="height" multiplier="1:1" id="hfO-xq-QJJ"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <color key="backgroundColor" red="0.99607843137254903" green="0.89803921568627454" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="WtW-Vf-cAC" secondAttribute="trailing" id="Eyc-hz-eex"/>
-                                            <constraint firstAttribute="bottom" secondItem="WtW-Vf-cAC" secondAttribute="bottom" id="Rza-9O-2dd"/>
-                                            <constraint firstItem="WtW-Vf-cAC" firstAttribute="top" secondItem="Ui2-bk-w3V" secondAttribute="top" id="ZWz-gj-Djh"/>
+                                            <constraint firstAttribute="bottom" secondItem="tty-77-Dmq" secondAttribute="bottom" constant="13" id="BOU-FJ-kM3"/>
                                             <constraint firstAttribute="width" secondItem="Ui2-bk-w3V" secondAttribute="height" multiplier="315:45" id="chQ-nj-BQM"/>
-                                            <constraint firstItem="WtW-Vf-cAC" firstAttribute="leading" secondItem="Ui2-bk-w3V" secondAttribute="leading" id="wo9-Vb-zyr"/>
+                                            <constraint firstItem="S2T-mq-mAM" firstAttribute="centerY" secondItem="Ui2-bk-w3V" secondAttribute="centerY" id="g7u-Yh-zgj"/>
+                                            <constraint firstItem="S2T-mq-mAM" firstAttribute="centerX" secondItem="Ui2-bk-w3V" secondAttribute="centerX" id="m5Y-G7-lDM"/>
+                                            <constraint firstItem="tty-77-Dmq" firstAttribute="leading" secondItem="Ui2-bk-w3V" secondAttribute="leading" constant="16" id="plG-09-HbE"/>
+                                            <constraint firstItem="tty-77-Dmq" firstAttribute="top" secondItem="Ui2-bk-w3V" secondAttribute="top" constant="14" id="z1y-9D-01e"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxY-JM-gOu">
@@ -628,6 +636,7 @@
     <resources>
         <image name="icBottleMain1" width="41" height="90"/>
         <image name="icCalendar" width="24" height="24"/>
+        <image name="icKakaoLogo" width="19" height="18"/>
         <image name="icStarWhite" width="20" height="20"/>
         <image name="imgOnboarding2" width="230" height="230"/>
         <image name="logoAppleBlack" width="44" height="44"/>
@@ -649,9 +658,6 @@
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
