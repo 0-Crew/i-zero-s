@@ -1402,6 +1402,7 @@
 				DEVELOPMENT_TEAM = DUQE66MABG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "워시유어보틀";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Home;
@@ -1431,6 +1432,7 @@
 				DEVELOPMENT_TEAM = DUQE66MABG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "워시유어보틀";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Home;
