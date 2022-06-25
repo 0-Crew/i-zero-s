@@ -32,12 +32,10 @@ class HomeVC: UIViewController {
     }
 
     @IBAction func kakaoSignInButtonDidTap() {
-//        kakaoLoginViewDidTap()
-        moveChallengeVC()
+        kakaoLoginViewDidTap()
     }
     @IBAction func appleSignInButtonDidTap() {
-//        appleLoginViewDidTap()
-        moveChallengeVC()
+        appleLoginViewDidTap()
     }
 
 }
