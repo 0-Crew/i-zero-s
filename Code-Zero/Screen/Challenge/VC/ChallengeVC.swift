@@ -82,6 +82,7 @@ class ChallengeVC: UIViewController {
         let button: UIButton = .init(type: .custom)
         button.frame = .init(x: 0, y: 0, width: 24, height: 24)
         button.setImage(UIImage(named: "icAlarm"), for: .normal)
+        button.addTarget(self, action: #selector(alarmButtonDidTap), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
     }()
@@ -496,6 +497,16 @@ extension ChallengeVC {
                 as? SettingVC else { return }
         settingVC.userInfo = userInfo
         navigationController?.pushViewController(settingVC, animated: true)
+    }
+    @objc func alarmButtonDidTap() {
+        let storyboard = UIStoryboard(name: "AlarmCenter", bundle: nil)
+        guard
+            let viewController = storyboard
+                .instantiateViewController(withIdentifier: "AlarmCenterVC") as? AlarmCenterVC
+        else {
+            return
+        }
+        self.show(viewController, sender: nil)
     }
     private func changeRootViewToHome() {
         let storybard = UIStoryboard(name: "Home", bundle: nil)

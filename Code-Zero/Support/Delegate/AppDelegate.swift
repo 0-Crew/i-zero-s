@@ -7,6 +7,8 @@
 
 import UIKit
 import Gedatsu
+import KakaoSDKCommon
+import KakaoSDKAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? ) -> Bool {
             // Override point for customization after application launch.
+            KakaoSDK.initSDK(appKey: "1b3058f008a0eba54e65e705780593f2")
             Gedatsu.open()
             return true
         }

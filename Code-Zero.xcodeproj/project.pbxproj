@@ -15,9 +15,16 @@
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
 		1906C40327C240270020185C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserLoginService.swift */; };
 		1906C40527C241330020185C /* SimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40427C241330020185C /* SimpleData.swift */; };
+		1911150328422F4800438FF0 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150228422F4800438FF0 /* KakaoSDK */; };
+		1911150528422F4800438FF0 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150428422F4800438FF0 /* KakaoSDKAuth */; };
+		1911150728422F4800438FF0 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150628422F4800438FF0 /* KakaoSDKUser */; };
+		1911150A28422F9600438FF0 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150928422F9600438FF0 /* FSCalendar */; };
+		19111511284231AC00438FF0 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 19111510284231AC00438FF0 /* Moya */; };
+		19111514284231E500438FF0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 19111513284231E500438FF0 /* SnapKit */; };
+		191115172842321000438FF0 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191115162842321000438FF0 /* Gedatsu */; };
+		1911151A2842323500438FF0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 191115192842323500438FF0 /* Lottie */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
-		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
 		191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA427650A41005D0525 /* FollowEmptyView.swift */; };
 		191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA6276652DB005D0525 /* UserListCell.swift */; };
 		191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EA7276652DB005D0525 /* UserListCell.xib */; };
@@ -27,7 +34,6 @@
 		1923D91927AFC22A00FE2C87 /* AccountSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91827AFC22A00FE2C87 /* AccountSettingVC.swift */; };
 		1923D91B27AFC94B00FE2C87 /* AccountPrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91A27AFC94B00FE2C87 /* AccountPrivacyVC.swift */; };
 		1923D91D27AFD4CE00FE2C87 /* AccountNickVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91C27AFD4CE00FE2C87 /* AccountNickVC.swift */; };
-		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
 		1927B80A27673F7A00E72F61 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927B80927673F7A00E72F61 /* loading.json */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		1933FE82279FEC0400BD0CA6 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE81279FEC0400BD0CA6 /* Setting.storyboard */; };
@@ -58,12 +64,18 @@
 		19BF8DE327474B6D00776E1A /* JoinChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */; };
 		19BF8DE527474BBD00776E1A /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */; };
 		19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */; };
+		6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A66AC281810B8008D3DA1 /* AlarmCenter.storyboard */; };
+		6E1A66AF2818158A008D3DA1 /* AlarmCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */; };
+		6E1A66B2281815DF008D3DA1 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A66B1281815DF008D3DA1 /* AlarmCell.swift */; };
 		6E1D336B27C2051800746CD5 /* FinalChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */; };
 		6E1D336D27C2053C00746CD5 /* FinalChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */; };
 		6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */; };
 		6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337227C2B30C00746CD5 /* UserChallenge.swift */; };
 		6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337427C2B35000746CD5 /* Convenience.swift */; };
 		6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A58E927C3A0D500C84D7E /* Indicator.swift */; };
+		6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E533C1B28292985004F36F8 /* challenge_cheerup.json */; };
+		6E533C1E28292998004F36F8 /* challenge_congratulate.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E533C1D28292998004F36F8 /* challenge_congratulate.json */; };
+		6E533C2028292F2B004F36F8 /* AlarmReactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E533C1F28292F2B004F36F8 /* AlarmReactionVC.swift */; };
 		6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */; };
 		6E5B24AD27480E060071C9F2 /* ChallengeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */; };
 		6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */; };
@@ -96,9 +108,6 @@
 		6EF7D9C427A023A000651DDC /* onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EF7D9C327A023A000651DDC /* onboarding.json */; };
 		6EF7D9C627A0242500651DDC /* OnboardingStepFourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7D9C527A0242500651DDC /* OnboardingStepFourVC.swift */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
-		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
-		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
-		9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6F272E8BD20008A5C3 /* SnapKit */; };
 		A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */; };
 		A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */; };
 		A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */; };
@@ -204,12 +213,18 @@
 		19BF8DE227474B6D00776E1A /* JoinChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinChallengeView.xib; sourceTree = "<group>"; };
 		19BF8DE427474BBD00776E1A /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
 		19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCalendarCell.swift; sourceTree = "<group>"; };
+		6E1A66AC281810B8008D3DA1 /* AlarmCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmCenter.storyboard; sourceTree = "<group>"; };
+		6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCenterVC.swift; sourceTree = "<group>"; };
+		6E1A66B1281815DF008D3DA1 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		6E1D336A27C2051800746CD5 /* FinalChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinalChallengeView.xib; sourceTree = "<group>"; };
 		6E1D336C27C2053C00746CD5 /* FinalChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChallengeView.swift; sourceTree = "<group>"; };
 		6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenService.swift; sourceTree = "<group>"; };
 		6E1D337227C2B30C00746CD5 /* UserChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallenge.swift; sourceTree = "<group>"; };
 		6E1D337427C2B35000746CD5 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		6E3A58E927C3A0D500C84D7E /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		6E533C1B28292985004F36F8 /* challenge_cheerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = challenge_cheerup.json; sourceTree = "<group>"; };
+		6E533C1D28292998004F36F8 /* challenge_congratulate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = challenge_congratulate.json; sourceTree = "<group>"; };
+		6E533C1F28292F2B004F36F8 /* AlarmReactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmReactionVC.swift; sourceTree = "<group>"; };
 		6E5B24AA27480E060071C9F2 /* ChallengeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListCell.swift; sourceTree = "<group>"; };
 		6E5B24AB27480E060071C9F2 /* ChallengeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListCell.xib; sourceTree = "<group>"; };
 		6E5B24AE2748BDAA0071C9F2 /* ChallengeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeView.xib; sourceTree = "<group>"; };
@@ -288,11 +303,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1927B80827673DBD00E72F61 /* Lottie in Frameworks */,
-				191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */,
-				9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */,
-				9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */,
-				9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */,
+				1911150328422F4800438FF0 /* KakaoSDK in Frameworks */,
+				1911150A28422F9600438FF0 /* FSCalendar in Frameworks */,
+				1911150528422F4800438FF0 /* KakaoSDKAuth in Frameworks */,
+				19111514284231E500438FF0 /* SnapKit in Frameworks */,
+				19111511284231AC00438FF0 /* Moya in Frameworks */,
+				1911150728422F4800438FF0 /* KakaoSDKUser in Frameworks */,
+				191115172842321000438FF0 /* Gedatsu in Frameworks */,
+				1911151A2842323500438FF0 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +372,8 @@
 			children = (
 				1927B80927673F7A00E72F61 /* loading.json */,
 				6EF7D9C327A023A000651DDC /* onboarding.json */,
+				6E533C1B28292985004F36F8 /* challenge_cheerup.json */,
+				6E533C1D28292998004F36F8 /* challenge_congratulate.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -431,6 +451,41 @@
 			isa = PBXGroup;
 			children = (
 				19DE9220273FD0FD001B0C30 /* ChallengeCalendarCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6E1A66A728181056008D3DA1 /* AlarmCenter */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66B0281815C8008D3DA1 /* Cell */,
+				6E1A66A828181060008D3DA1 /* VC */,
+				6E1A66A928181064008D3DA1 /* Storyboard */,
+			);
+			path = AlarmCenter;
+			sourceTree = "<group>";
+		};
+		6E1A66A828181060008D3DA1 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66AE2818158A008D3DA1 /* AlarmCenterVC.swift */,
+				6E533C1F28292F2B004F36F8 /* AlarmReactionVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		6E1A66A928181064008D3DA1 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66AC281810B8008D3DA1 /* AlarmCenter.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		6E1A66B0281815C8008D3DA1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A66B1281815DF008D3DA1 /* AlarmCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -687,6 +742,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				6E1A66A728181056008D3DA1 /* AlarmCenter */,
 				1923D91127AFC1C600FE2C87 /* Account */,
 				197A654B276F740600166255 /* SignUp */,
 				1933FE7E279FEBEB00BD0CA6 /* Setting */,
@@ -864,11 +920,14 @@
 			);
 			name = "Code-Zero";
 			packageProductDependencies = (
-				9BF5EA69272E8A590008A5C3 /* FSCalendar */,
-				9BF5EA6C272E8B6D0008A5C3 /* Moya */,
-				9BF5EA6F272E8BD20008A5C3 /* SnapKit */,
-				191A4EA22764FADF005D0525 /* Gedatsu */,
-				1927B80727673DBD00E72F61 /* Lottie */,
+				1911150228422F4800438FF0 /* KakaoSDK */,
+				1911150428422F4800438FF0 /* KakaoSDKAuth */,
+				1911150628422F4800438FF0 /* KakaoSDKUser */,
+				1911150928422F9600438FF0 /* FSCalendar */,
+				19111510284231AC00438FF0 /* Moya */,
+				19111513284231E500438FF0 /* SnapKit */,
+				191115162842321000438FF0 /* Gedatsu */,
+				191115192842323500438FF0 /* Lottie */,
 			);
 			productName = "Code-Zero";
 			productReference = A2B7BDCD2714214300F1DB1F /* Code-Zero.app */;
@@ -943,11 +1002,12 @@
 			);
 			mainGroup = A2B7BDC42714214300F1DB1F;
 			packageReferences = (
-				9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */,
-				9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */,
-				1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				1911150828422F9600438FF0 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				1911150F284231AC00438FF0 /* XCRemoteSwiftPackageReference "Moya" */,
+				19111512284231E500438FF0 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				191115152842321000438FF0 /* XCRemoteSwiftPackageReference "Gedatsu" */,
+				191115182842323500438FF0 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A2B7BDCE2714214300F1DB1F /* Products */;
 			projectDirPath = "";
@@ -971,7 +1031,9 @@
 				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
 				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
+				6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */,
 				6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */,
+				6E533C1E28292998004F36F8 /* challenge_congratulate.json in Resources */,
 				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
 				A2B7BDDD2714214600F1DB1F /* LaunchScreen.storyboard in Resources */,
@@ -996,6 +1058,7 @@
 				6E6E4A5027B1251700390493 /* ChallengeFinal.storyboard in Resources */,
 				A2B7BDD82714214300F1DB1F /* Home.storyboard in Resources */,
 				19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */,
+				6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
 				6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */,
 				6EB9722C275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib in Resources */,
@@ -1058,6 +1121,7 @@
 				D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */,
+				6E1A66B2281815DF008D3DA1 /* AlarmCell.swift in Sources */,
 				6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */,
 				6EB9722F275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift in Sources */,
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
@@ -1112,6 +1176,7 @@
 				1906C40327C240270020185C /* UserLoginService.swift in Sources */,
 				A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */,
 				D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */,
+				6E1A66AF2818158A008D3DA1 /* AlarmCenterVC.swift in Sources */,
 				6E5B24AC27480E060071C9F2 /* ChallengeListCell.swift in Sources */,
 				1923D91D27AFD4CE00FE2C87 /* AccountNickVC.swift in Sources */,
 				6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */,
@@ -1130,6 +1195,7 @@
 				1906C3FB27C239DD0020185C /* APITarget.swift in Sources */,
 				1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */,
 				D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */,
+				6E533C2028292F2B004F36F8 /* AlarmReactionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1497,23 +1563,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+		1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 1.2.0;
+				version = 2.9.1;
 			};
 		};
-		1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = exactVersion;
-				version = 3.2.3;
-			};
-		};
-		9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+		1911150828422F9600438FF0 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
 			requirement = {
@@ -1521,49 +1579,80 @@
 				version = 2.8.2;
 			};
 		};
-		9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */ = {
+		1911150F284231AC00438FF0 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
 				kind = exactVersion;
-				version = 13.0.0;
+				version = 15.0.0;
 			};
 		};
-		9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		19111512284231E500438FF0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = exactVersion;
-				version = 5.0.1;
+				version = 5.6.0;
+			};
+		};
+		191115152842321000438FF0 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			requirement = {
+				kind = exactVersion;
+				version = 1.2.0;
+			};
+		};
+		191115182842323500438FF0 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 3.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		191A4EA22764FADF005D0525 /* Gedatsu */ = {
+		1911150228422F4800438FF0 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */;
-			productName = Gedatsu;
+			package = 1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
 		};
-		1927B80727673DBD00E72F61 /* Lottie */ = {
+		1911150428422F4800438FF0 /* KakaoSDKAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
 		};
-		9BF5EA69272E8A590008A5C3 /* FSCalendar */ = {
+		1911150628422F4800438FF0 /* KakaoSDKUser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			package = 1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		1911150928422F9600438FF0 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1911150828422F9600438FF0 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
-		9BF5EA6C272E8B6D0008A5C3 /* Moya */ = {
+		19111510284231AC00438FF0 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */;
+			package = 1911150F284231AC00438FF0 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		9BF5EA6F272E8BD20008A5C3 /* SnapKit */ = {
+		19111513284231E500438FF0 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 19111512284231E500438FF0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		191115162842321000438FF0 /* Gedatsu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 191115152842321000438FF0 /* XCRemoteSwiftPackageReference "Gedatsu" */;
+			productName = Gedatsu;
+		};
+		191115192842323500438FF0 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 191115182842323500438FF0 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
