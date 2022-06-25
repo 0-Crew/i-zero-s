@@ -22,7 +22,7 @@ enum APITarget {
     case myChallengeFetch(token: String)
     case myInconvenienceFinish(token: String, myInconvenienceId: Int)
     case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
-    case myChallengeUser(token: String ,userId: Int)
+    case myChallengeUser(token: String, userId: Int)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -111,7 +111,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview, .userInfo, .myChallengeFetch(_):
+        case .challengeOpenPreview, .userInfo, .myChallengeFetch:
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
