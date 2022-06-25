@@ -13,6 +13,7 @@ enum APITarget {
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
     case userPrivate(token: String)
     case auth(idKey: String, token: String, provider: String)
+    case deleteAuth(token: String)
 
     // 보틀월드
     case bottleWorldBrowse(token: String, keyword: String?)
@@ -49,7 +50,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick:
             return "/user/name"
-        case .auth:
+        case .auth, .deleteAuth:
             return "/auth"
         case .userPrivate:
             return "/user/private"
@@ -79,6 +80,8 @@ extension APITarget: TargetType {
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch, .myChallengeUser:
             return .get
+        case .deleteAuth:
+            return .delete
 
         }
     }
@@ -100,7 +103,7 @@ extension APITarget: TargetType {
         case .auth(let idKey, let token, let provider):
             return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
                                       encoding: JSONEncoding.default)
-        case .userPrivate:
+        case .userPrivate, .deleteAuth:
                 return .requestPlain
         case .bottleWorldBrowse(_, let keyword):
             guard let keyword = keyword else {
@@ -144,7 +147,8 @@ extension APITarget: TargetType {
                 .myChallengeFetch(let token),
                 .myInconvenienceFinish(let token, _),
                 .myInconvenienceUpdate(let token, _, _),
-                .myChallengeUser(let token, _):
+                .myChallengeUser(let token, _),
+                .deleteAuth(let token):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
