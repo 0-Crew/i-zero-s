@@ -7,6 +7,7 @@
 
 import UIKit
 import AuthenticationServices
+import KakaoSDKUser
 import Lottie
 import SnapKit
 
@@ -15,27 +16,20 @@ class OnboardingStepFourVC: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
-
+    @IBOutlet weak var kakaoLoginView: UIView!
     @IBOutlet weak var appleLoginView: UIView!
 
     override func viewDidLoad() {
         initView()
     }
     private func initView() {
-        let tapGesture = UITapGestureRecognizer(target: self,
+        let appleTapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(appleLoginViewDidTap(sender:)))
-        appleLoginView.addGestureRecognizer(tapGesture)
+        let kakaoTapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(kakaoLoginViewDidTap(sender:)))
+        appleLoginView.addGestureRecognizer(appleTapGesture)
+        kakaoLoginView.addGestureRecognizer(kakaoTapGesture)
         animationView.play()
-    }
-
-    @objc func appleLoginViewDidTap(sender: UITapGestureRecognizer) {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        as? ASAuthorizationControllerPresentationContextProviding
-        controller.performRequests()
     }
 
     private func requestLogin(id: String, token: String, provider: String) {
@@ -72,6 +66,15 @@ class OnboardingStepFourVC: UIViewController {
 
 // MARK: - ASAuthorizationControllerDelegate
 extension OnboardingStepFourVC: ASAuthorizationControllerDelegate {
+    @objc func appleLoginViewDidTap(sender: UITapGestureRecognizer) {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        as? ASAuthorizationControllerPresentationContextProviding
+        controller.performRequests()
+    }
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
@@ -100,5 +103,38 @@ extension OnboardingStepFourVC: ASAuthorizationControllerDelegate {
              default:
                  print("Default")
              }
+    }
+}
+
+// MARK: - KaKao
+extension OnboardingStepFourVC {
+    @objc func kakaoLoginViewDidTap(sender: UITapGestureRecognizer) {
+        switch UserApi.isKakaoTalkLoginAvailable() {
+        case true:
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error) }
+                if let oauthToken = oauthToken {
+                    self.kakaoLoginSuccess(token: oauthToken.accessToken)
+                }
+            }
+        case false:
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error) }
+                if let oauthToken = oauthToken {
+                    self.kakaoLoginSuccess(token: oauthToken.accessToken)
+                }
+            }
+        }
+    }
+    func kakaoLoginSuccess(token: String) {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error) }
+            if let user = user {
+                self.requestLogin(id: "\(user.id ?? 0)", token: token, provider: "kakao")
+            }
+        }
     }
 }
