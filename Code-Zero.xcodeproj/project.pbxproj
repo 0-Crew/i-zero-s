@@ -15,9 +15,16 @@
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
 		1906C40327C240270020185C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserLoginService.swift */; };
 		1906C40527C241330020185C /* SimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40427C241330020185C /* SimpleData.swift */; };
+		1911150328422F4800438FF0 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150228422F4800438FF0 /* KakaoSDK */; };
+		1911150528422F4800438FF0 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150428422F4800438FF0 /* KakaoSDKAuth */; };
+		1911150728422F4800438FF0 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150628422F4800438FF0 /* KakaoSDKUser */; };
+		1911150A28422F9600438FF0 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150928422F9600438FF0 /* FSCalendar */; };
+		19111511284231AC00438FF0 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 19111510284231AC00438FF0 /* Moya */; };
+		19111514284231E500438FF0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 19111513284231E500438FF0 /* SnapKit */; };
+		191115172842321000438FF0 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191115162842321000438FF0 /* Gedatsu */; };
+		1911151A2842323500438FF0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 191115192842323500438FF0 /* Lottie */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
-		191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191A4EA22764FADF005D0525 /* Gedatsu */; };
 		191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA427650A41005D0525 /* FollowEmptyView.swift */; };
 		191A4EA8276652DB005D0525 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA6276652DB005D0525 /* UserListCell.swift */; };
 		191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4EA7276652DB005D0525 /* UserListCell.xib */; };
@@ -27,7 +34,6 @@
 		1923D91927AFC22A00FE2C87 /* AccountSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91827AFC22A00FE2C87 /* AccountSettingVC.swift */; };
 		1923D91B27AFC94B00FE2C87 /* AccountPrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91A27AFC94B00FE2C87 /* AccountPrivacyVC.swift */; };
 		1923D91D27AFD4CE00FE2C87 /* AccountNickVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923D91C27AFD4CE00FE2C87 /* AccountNickVC.swift */; };
-		1927B80827673DBD00E72F61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1927B80727673DBD00E72F61 /* Lottie */; };
 		1927B80A27673F7A00E72F61 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927B80927673F7A00E72F61 /* loading.json */; };
 		1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933C68A274FD0D500E0842D /* ChallengeListView.swift */; };
 		1933FE82279FEC0400BD0CA6 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1933FE81279FEC0400BD0CA6 /* Setting.storyboard */; };
@@ -99,9 +105,6 @@
 		6EF7D9C427A023A000651DDC /* onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EF7D9C327A023A000651DDC /* onboarding.json */; };
 		6EF7D9C627A0242500651DDC /* OnboardingStepFourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7D9C527A0242500651DDC /* OnboardingStepFourVC.swift */; };
 		9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9927D92733DED200A180CB /* CalendarVC.swift */; };
-		9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA69272E8A590008A5C3 /* FSCalendar */; };
-		9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6C272E8B6D0008A5C3 /* Moya */; };
-		9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF5EA6F272E8BD20008A5C3 /* SnapKit */; };
 		A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BEF272E8ABB00D2BA78 /* UIView+Extension.swift */; };
 		A25C8BF2272E929F00D2BA78 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF1272E929F00D2BA78 /* UIViewController+Extension.swift */; };
 		A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25C8BF3272E9E6500D2BA78 /* UITableView+Extension.swift */; };
@@ -294,11 +297,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1927B80827673DBD00E72F61 /* Lottie in Frameworks */,
-				191A4EA32764FADF005D0525 /* Gedatsu in Frameworks */,
-				9BF5EA70272E8BD20008A5C3 /* SnapKit in Frameworks */,
-				9BF5EA6D272E8B6D0008A5C3 /* Moya in Frameworks */,
-				9BF5EA6A272E8A590008A5C3 /* FSCalendar in Frameworks */,
+				1911150328422F4800438FF0 /* KakaoSDK in Frameworks */,
+				1911150A28422F9600438FF0 /* FSCalendar in Frameworks */,
+				1911150528422F4800438FF0 /* KakaoSDKAuth in Frameworks */,
+				19111514284231E500438FF0 /* SnapKit in Frameworks */,
+				19111511284231AC00438FF0 /* Moya in Frameworks */,
+				1911150728422F4800438FF0 /* KakaoSDKUser in Frameworks */,
+				191115172842321000438FF0 /* Gedatsu in Frameworks */,
+				1911151A2842323500438FF0 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,11 +903,14 @@
 			);
 			name = "Code-Zero";
 			packageProductDependencies = (
-				9BF5EA69272E8A590008A5C3 /* FSCalendar */,
-				9BF5EA6C272E8B6D0008A5C3 /* Moya */,
-				9BF5EA6F272E8BD20008A5C3 /* SnapKit */,
-				191A4EA22764FADF005D0525 /* Gedatsu */,
-				1927B80727673DBD00E72F61 /* Lottie */,
+				1911150228422F4800438FF0 /* KakaoSDK */,
+				1911150428422F4800438FF0 /* KakaoSDKAuth */,
+				1911150628422F4800438FF0 /* KakaoSDKUser */,
+				1911150928422F9600438FF0 /* FSCalendar */,
+				19111510284231AC00438FF0 /* Moya */,
+				19111513284231E500438FF0 /* SnapKit */,
+				191115162842321000438FF0 /* Gedatsu */,
+				191115192842323500438FF0 /* Lottie */,
 			);
 			productName = "Code-Zero";
 			productReference = A2B7BDCD2714214300F1DB1F /* Code-Zero.app */;
@@ -976,11 +985,12 @@
 			);
 			mainGroup = A2B7BDC42714214300F1DB1F;
 			packageReferences = (
-				9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */,
-				9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */,
-				1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				1911150828422F9600438FF0 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				1911150F284231AC00438FF0 /* XCRemoteSwiftPackageReference "Moya" */,
+				19111512284231E500438FF0 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				191115152842321000438FF0 /* XCRemoteSwiftPackageReference "Gedatsu" */,
+				191115182842323500438FF0 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A2B7BDCE2714214300F1DB1F /* Products */;
 			projectDirPath = "";
@@ -1533,23 +1543,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+		1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 1.2.0;
+				version = 2.9.1;
 			};
 		};
-		1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = exactVersion;
-				version = 3.2.3;
-			};
-		};
-		9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+		1911150828422F9600438FF0 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
 			requirement = {
@@ -1557,49 +1559,80 @@
 				version = 2.8.2;
 			};
 		};
-		9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */ = {
+		1911150F284231AC00438FF0 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
 				kind = exactVersion;
-				version = 13.0.0;
+				version = 15.0.0;
 			};
 		};
-		9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		19111512284231E500438FF0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = exactVersion;
-				version = 5.0.1;
+				version = 5.6.0;
+			};
+		};
+		191115152842321000438FF0 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			requirement = {
+				kind = exactVersion;
+				version = 1.2.0;
+			};
+		};
+		191115182842323500438FF0 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 3.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		191A4EA22764FADF005D0525 /* Gedatsu */ = {
+		1911150228422F4800438FF0 /* KakaoSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 191A4EA12764FADF005D0525 /* XCRemoteSwiftPackageReference "Gedatsu" */;
-			productName = Gedatsu;
+			package = 1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
 		};
-		1927B80727673DBD00E72F61 /* Lottie */ = {
+		1911150428422F4800438FF0 /* KakaoSDKAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1927B80627673DBD00E72F61 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
 		};
-		9BF5EA69272E8A590008A5C3 /* FSCalendar */ = {
+		1911150628422F4800438FF0 /* KakaoSDKUser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BF5EA68272E8A580008A5C3 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			package = 1911150128422F4800438FF0 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+		1911150928422F9600438FF0 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1911150828422F9600438FF0 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
-		9BF5EA6C272E8B6D0008A5C3 /* Moya */ = {
+		19111510284231AC00438FF0 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BF5EA6B272E8B6D0008A5C3 /* XCRemoteSwiftPackageReference "Moya" */;
+			package = 1911150F284231AC00438FF0 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		9BF5EA6F272E8BD20008A5C3 /* SnapKit */ = {
+		19111513284231E500438FF0 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BF5EA6E272E8BD20008A5C3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 19111512284231E500438FF0 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		191115162842321000438FF0 /* Gedatsu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 191115152842321000438FF0 /* XCRemoteSwiftPackageReference "Gedatsu" */;
+			productName = Gedatsu;
+		};
+		191115192842323500438FF0 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 191115182842323500438FF0 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

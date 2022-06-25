@@ -7,12 +7,14 @@
 
 import UIKit
 import AuthenticationServices
+import KakaoSDKUser
 
 class SignInVC: UIViewController {
 
     // MARK: - @IBOutlet
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var kakaoLoginView: UIView!
     @IBOutlet weak var appleLoginView: UIView!
     @IBOutlet weak var subtitleLabel: UILabel!
 
@@ -38,18 +40,12 @@ extension SignInVC {
 // MARK: - Login Function
 extension SignInVC {
     func socialLoginSetting() {
-        let tapGesture = UITapGestureRecognizer(target: self,
+        let appleTapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(appleLoginViewDidTap(sender:)))
-        appleLoginView.addGestureRecognizer(tapGesture)
-    }
-    @objc func appleLoginViewDidTap(sender: UITapGestureRecognizer) {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        as? ASAuthorizationControllerPresentationContextProviding
-        controller.performRequests()
+        let kakaoTapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(kakaoLoginViewDidTap(sender:)))
+        appleLoginView.addGestureRecognizer(appleTapGesture)
+        kakaoLoginView.addGestureRecognizer(kakaoTapGesture)
     }
     func requestLogin(id: String, token: String, provider: String) {
         UserLoginService.shared.requestLogin(id: id,
@@ -82,8 +78,51 @@ extension SignInVC {
         navigationController?.pushViewController(nickSettingVC, animated: true)
     }
 }
-// MARK: - ASAuthorizationControllerDelegate
+
+// MARK: - KaKao
+extension SignInVC {
+    @objc func kakaoLoginViewDidTap(sender: UITapGestureRecognizer) {
+        switch UserApi.isKakaoTalkLoginAvailable() {
+        case true:
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error) }
+                if let oauthToken = oauthToken {
+                    self.kakaoLoginSuccess(token: oauthToken.accessToken)
+                }
+            }
+        case false:
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error) }
+                if let oauthToken = oauthToken {
+                    self.kakaoLoginSuccess(token: oauthToken.accessToken)
+                }
+            }
+        }
+    }
+    func kakaoLoginSuccess(token: String) {
+        UserApi.shared.me() {(user, error) in
+            if let error = error {
+                print(error) }
+            if let user = user {
+                self.requestLogin(id: "\(user.id ?? 0)", token: token, provider: "kakao")
+            }
+        }
+    }
+}
+
+// MARK: - ASAuthorizationControllerDelegate & Apple
 extension SignInVC: ASAuthorizationControllerDelegate {
+    @objc func appleLoginViewDidTap(sender: UITapGestureRecognizer) {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        as? ASAuthorizationControllerPresentationContextProviding
+        controller.performRequests()
+    }
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
@@ -98,19 +137,19 @@ extension SignInVC: ASAuthorizationControllerDelegate {
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         guard let error = error as? ASAuthorizationError else {return}
-             switch error.code {
-             case .canceled:
-                 print("Canceled")
-             case .unknown:
-                 print("Unknow")
-             case .invalidResponse:
-                 print("invalid Respone")
-             case .notHandled:
-                 print("Not Handled")
-             case .failed:
-                 print("Failed")
-             default:
-                 print("Default")
-             }
+        switch error.code {
+        case .canceled:
+            print("Canceled")
+        case .unknown:
+            print("Unknow")
+        case .invalidResponse:
+            print("invalid Respone")
+        case .notHandled:
+            print("Not Handled")
+        case .failed:
+            print("Failed")
+        default:
+            print("Default")
+        }
     }
 }
