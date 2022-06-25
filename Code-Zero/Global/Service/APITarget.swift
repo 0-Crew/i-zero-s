@@ -17,6 +17,12 @@ enum APITarget {
     // 보틀월드
     case bottleWorldBrowse(token: String, keyword: String?)
 
+    // 메인 챌린지
+    case myChallengeFetch(token: String)
+    case myInconvenienceFinish(token: String, myInconvenienceId: Int)
+    case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
+    case myChallengeUser(token: String ,userId: Int)
+
     // 챌린지
     case challengeOpenPreview(token: String)
     case challengeOpen(
@@ -28,6 +34,7 @@ enum APITarget {
 
     // 설정
     case userInfo(token: String)
+
 }
 
 // MARK: TargetType Protocol 구현
@@ -52,6 +59,14 @@ extension APITarget: TargetType {
             return "/bottleworld/browse"
         case .userInfo:
             return "/user/setting"
+        case .myChallengeFetch:
+            return "/my-challenge/main"
+        case .myChallengeUser:
+            return "/my-challenge/user"
+        case .myInconvenienceFinish:
+            return "/my-inconvenience/finish"
+        case .myInconvenienceUpdate:
+            return "/my-inconvenience/update"
         }
     }
 
@@ -60,10 +75,11 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen:
             return .post
-        case .userPrivate:
+        case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
-        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo:
+        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch, .myChallengeUser:
             return .get
+
         }
     }
 
@@ -92,7 +108,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview, .userInfo:
+        case .challengeOpenPreview, .userInfo, .myChallengeFetch(_):
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
@@ -100,6 +116,15 @@ extension APITarget: TargetType {
                                                    "isfromToday": isFromToday],
                                       encoding: JSONEncoding.default
             )
+        case .myInconvenienceFinish(_, let myInconvenienceId):
+            return .requestParameters(parameters: ["myInconvenienceId": myInconvenienceId],
+                                      encoding: JSONEncoding.default)
+        case .myInconvenienceUpdate(_, let myInconvenienceId, let inconvenienceString):
+            return .requestParameters(parameters: ["myInconvenienceId": myInconvenienceId,
+                                                   "inconvenienceString": inconvenienceString],
+                                      encoding: JSONEncoding.default)
+        case .myChallengeUser(_, let userId):
+            return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {
@@ -115,7 +140,11 @@ extension APITarget: TargetType {
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
                 .bottleWorldBrowse(let token, _),
-                .userInfo(let token):
+                .userInfo(let token),
+                .myChallengeFetch(let token),
+                .myInconvenienceFinish(let token, _),
+                .myInconvenienceUpdate(let token, _, _),
+                .myChallengeUser(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa Han Sans Neo Bold.otf">
+            <string>SpoqaHanSansNeo-Bold</string>
+        </array>
+        <array key="Spoqa Han Sans Neo Medium.otf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyChallengeView" customModule="Code_Zero" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="8if-0v-Fjp" id="cee-yv-qJ7"/>
+                <outlet property="presentCalendarView" destination="7gg-hv-Gjp" id="JZn-2f-QOu"/>
+                <outlet property="presentCalendarViewTopConstraint" destination="psx-Jo-C8Q" id="b6t-yS-nfR"/>
+                <outlet property="startChallengeView" destination="7LG-GS-Gtq" id="BFS-vm-z2c"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="955"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ypd-uS-EgH">
+                    <rect key="frame" x="103.5" y="352" width="207.5" height="251.5"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icEmptyChallenge" translatesAutoresizingMaskIntoConstraints="NO" id="jk1-IC-qR1">
+                            <rect key="frame" x="83.5" y="9" width="40" height="89"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="i4A-bY-iH3"/>
+                                <constraint firstAttribute="height" constant="89" id="tmc-mT-Llq"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8if-0v-Fjp">
+                            <rect key="frame" x="0.0" y="110" width="207.5" height="31.5"/>
+                            <string key="text">현재 진행 중인 챌린지가 없어요
+보틀을 씻고 새 챌린지를 시작해보세요!</string>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                            <color key="textColor" name="gray2"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LG-GS-Gtq">
+                            <rect key="frame" x="4" y="171.5" width="199.5" height="36"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icStarWhite" translatesAutoresizingMaskIntoConstraints="NO" id="d23-nQ-GhE">
+                                    <rect key="frame" x="10" y="8" width="20" height="20"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 챌린지 참여하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jV-yC-Kjt">
+                                    <rect key="frame" x="35" y="10.5" width="154.5" height="19"/>
+                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                    <color key="textColor" name="white"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="orangeMain"/>
+                            <constraints>
+                                <constraint firstItem="0jV-yC-Kjt" firstAttribute="centerY" secondItem="7LG-GS-Gtq" secondAttribute="centerY" constant="2" id="DXF-4g-jvY"/>
+                                <constraint firstAttribute="trailing" secondItem="0jV-yC-Kjt" secondAttribute="trailing" constant="10" id="J4Y-tf-WVl"/>
+                                <constraint firstItem="d23-nQ-GhE" firstAttribute="centerY" secondItem="7LG-GS-Gtq" secondAttribute="centerY" id="QfS-AR-kgh"/>
+                                <constraint firstAttribute="height" constant="36" id="Xad-vk-45H"/>
+                                <constraint firstItem="0jV-yC-Kjt" firstAttribute="leading" secondItem="d23-nQ-GhE" secondAttribute="trailing" constant="5" id="dlQ-zO-3hW"/>
+                                <constraint firstItem="d23-nQ-GhE" firstAttribute="leading" secondItem="7LG-GS-Gtq" secondAttribute="leading" constant="10" id="uBt-xa-SLU"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gg-hv-Gjp">
+                            <rect key="frame" x="51.5" y="215.5" width="104" height="36"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCalendarOrange" translatesAutoresizingMaskIntoConstraints="NO" id="MTJ-Ce-ahF">
+                                    <rect key="frame" x="10" y="8" width="20" height="20"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="달력보기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvU-xV-0Sl">
+                                    <rect key="frame" x="35" y="8.5" width="59" height="19"/>
+                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                    <color key="textColor" name="orangeMain"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="MTJ-Ce-ahF" firstAttribute="leading" secondItem="7gg-hv-Gjp" secondAttribute="leading" constant="10" id="6eW-al-btW"/>
+                                <constraint firstItem="MTJ-Ce-ahF" firstAttribute="centerY" secondItem="7gg-hv-Gjp" secondAttribute="centerY" id="CDi-ov-mBR"/>
+                                <constraint firstItem="AvU-xV-0Sl" firstAttribute="leading" secondItem="MTJ-Ce-ahF" secondAttribute="trailing" constant="5" id="H8j-lX-h6N"/>
+                                <constraint firstAttribute="height" constant="36" id="V9d-WM-YBs"/>
+                                <constraint firstItem="AvU-xV-0Sl" firstAttribute="centerY" secondItem="7gg-hv-Gjp" secondAttribute="centerY" id="WYJ-ak-9ac"/>
+                                <constraint firstAttribute="trailing" secondItem="AvU-xV-0Sl" secondAttribute="trailing" constant="10" id="fxQ-hM-BU5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="7LG-GS-Gtq" firstAttribute="centerX" secondItem="Ypd-uS-EgH" secondAttribute="centerX" id="3HW-fC-wJv"/>
+                        <constraint firstAttribute="trailing" secondItem="8if-0v-Fjp" secondAttribute="trailing" id="9F0-kt-Dj0"/>
+                        <constraint firstItem="7gg-hv-Gjp" firstAttribute="centerX" secondItem="Ypd-uS-EgH" secondAttribute="centerX" id="BNx-i6-mD6"/>
+                        <constraint firstItem="7LG-GS-Gtq" firstAttribute="top" secondItem="8if-0v-Fjp" secondAttribute="bottom" constant="30" id="ENp-fn-sLq"/>
+                        <constraint firstItem="jk1-IC-qR1" firstAttribute="centerX" secondItem="Ypd-uS-EgH" secondAttribute="centerX" id="bBb-kL-fIW"/>
+                        <constraint firstItem="8if-0v-Fjp" firstAttribute="top" secondItem="jk1-IC-qR1" secondAttribute="bottom" constant="12" id="eaE-iK-8gn"/>
+                        <constraint firstItem="jk1-IC-qR1" firstAttribute="top" secondItem="Ypd-uS-EgH" secondAttribute="top" constant="9" id="hTl-11-8F7"/>
+                        <constraint firstItem="7gg-hv-Gjp" firstAttribute="top" secondItem="7LG-GS-Gtq" secondAttribute="bottom" constant="8" id="psx-Jo-C8Q"/>
+                        <constraint firstItem="8if-0v-Fjp" firstAttribute="leading" secondItem="Ypd-uS-EgH" secondAttribute="leading" id="rTO-f3-q1D"/>
+                        <constraint firstAttribute="bottom" secondItem="7gg-hv-Gjp" secondAttribute="bottom" id="syo-zs-Nhb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Ypd-uS-EgH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZX8-XL-v8T"/>
+                <constraint firstItem="Ypd-uS-EgH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nna-eJ-hmS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="43.861607142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icCalendarOrange" width="20" height="20"/>
+        <image name="icEmptyChallenge" width="41" height="90"/>
+        <image name="icStarWhite" width="20" height="20"/>
+        <namedColor name="gray2">
+            <color red="0.68599998950958252" green="0.66699999570846558" blue="0.63899999856948853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="orangeMain">
+            <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

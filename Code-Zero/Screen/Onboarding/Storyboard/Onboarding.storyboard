@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -547,27 +547,54 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="onboarding"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ME-Vg-l5c">
-                                <rect key="frame" x="30" y="554" width="315" height="45"/>
-                                <color key="backgroundColor" name="orangeMain"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="0ME-Vg-l5c" secondAttribute="height" multiplier="7:1" id="N3u-29-iMo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title=" 첫 챌린지 시작하기" image="icStarWhite"/>
-                                <connections>
-                                    <action selector="startChallengeButtonDidTap:" destination="PdR-Gp-cNd" eventType="touchUpInside" id="QrD-5W-xri"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRI-UW-h26">
-                                <rect key="frame" x="78.5" y="611" width="218" height="29"/>
-                                <string key="text">시작하기 버튼 클릭 시
-이용약관과 개인정보정책에 동의하게 됩니다</string>
-                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
-                                <color key="textColor" name="gray3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="43N-Qp-Duc">
+                                <rect key="frame" x="30" y="521" width="315" height="104"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ui2-bk-w3V">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtW-Vf-cAC">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="카카오 로그인"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="WtW-Vf-cAC" secondAttribute="trailing" id="Eyc-hz-eex"/>
+                                            <constraint firstAttribute="bottom" secondItem="WtW-Vf-cAC" secondAttribute="bottom" id="Rza-9O-2dd"/>
+                                            <constraint firstItem="WtW-Vf-cAC" firstAttribute="top" secondItem="Ui2-bk-w3V" secondAttribute="top" id="ZWz-gj-Djh"/>
+                                            <constraint firstAttribute="width" secondItem="Ui2-bk-w3V" secondAttribute="height" multiplier="315:45" id="chQ-nj-BQM"/>
+                                            <constraint firstItem="WtW-Vf-cAC" firstAttribute="leading" secondItem="Ui2-bk-w3V" secondAttribute="leading" id="wo9-Vb-zyr"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxY-JM-gOu">
+                                        <rect key="frame" x="0.0" y="59" width="315" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple로 로그인" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gB-pm-SOx">
+                                                <rect key="frame" x="111" y="14" width="93" height="17"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoAppleBlack" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-00-7Wh">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="IcK-00-7Wh" secondAttribute="height" id="uKc-gr-inr"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="IcK-00-7Wh" firstAttribute="top" secondItem="PxY-JM-gOu" secondAttribute="top" id="JmL-6C-CEb"/>
+                                            <constraint firstItem="0gB-pm-SOx" firstAttribute="centerX" secondItem="PxY-JM-gOu" secondAttribute="centerX" id="Min-bl-VtN"/>
+                                            <constraint firstAttribute="bottom" secondItem="IcK-00-7Wh" secondAttribute="bottom" id="Mt5-0h-lfw"/>
+                                            <constraint firstItem="IcK-00-7Wh" firstAttribute="leading" secondItem="PxY-JM-gOu" secondAttribute="leading" id="klf-T5-nKH"/>
+                                            <constraint firstItem="0gB-pm-SOx" firstAttribute="centerY" secondItem="PxY-JM-gOu" secondAttribute="centerY" id="yb9-ZT-WcK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7kh-Xb-OZu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -575,24 +602,21 @@
                             <constraint firstItem="MFh-Sc-g1W" firstAttribute="height" secondItem="7AT-Bg-q3i" secondAttribute="height" multiplier="0.406297" id="1mV-rO-dj5"/>
                             <constraint firstItem="0ue-nB-MTP" firstAttribute="top" secondItem="cgf-lF-Jhn" secondAttribute="bottom" id="3Ev-2q-wvB"/>
                             <constraint firstItem="MFh-Sc-g1W" firstAttribute="centerX" secondItem="7AT-Bg-q3i" secondAttribute="centerX" id="8g2-G6-dDo"/>
-                            <constraint firstItem="7kh-Xb-OZu" firstAttribute="trailing" secondItem="0ME-Vg-l5c" secondAttribute="trailing" constant="30" id="Ecg-2Y-PpB"/>
+                            <constraint firstItem="7kh-Xb-OZu" firstAttribute="bottom" secondItem="43N-Qp-Duc" secondAttribute="bottom" constant="42" id="8vb-Li-tZO"/>
                             <constraint firstItem="cgf-lF-Jhn" firstAttribute="top" secondItem="7kh-Xb-OZu" secondAttribute="top" constant="40" id="JRb-6e-SLc"/>
                             <constraint firstItem="cgf-lF-Jhn" firstAttribute="leading" secondItem="7kh-Xb-OZu" secondAttribute="leading" constant="30" id="JXi-Lp-DZZ"/>
+                            <constraint firstItem="7kh-Xb-OZu" firstAttribute="trailing" secondItem="43N-Qp-Duc" secondAttribute="trailing" constant="30" id="JzO-Qc-3eU"/>
                             <constraint firstItem="uxU-fa-uaf" firstAttribute="leading" secondItem="0ue-nB-MTP" secondAttribute="leading" id="MdD-Em-PKu"/>
-                            <constraint firstItem="0ME-Vg-l5c" firstAttribute="top" secondItem="MFh-Sc-g1W" secondAttribute="bottom" priority="250" constant="74" id="MiI-Xg-HQa"/>
-                            <constraint firstItem="0ME-Vg-l5c" firstAttribute="leading" secondItem="7kh-Xb-OZu" secondAttribute="leading" constant="30" id="SAh-oy-x8A"/>
                             <constraint firstItem="uxU-fa-uaf" firstAttribute="top" secondItem="0ue-nB-MTP" secondAttribute="bottom" constant="12" id="Stw-Ii-cOC"/>
-                            <constraint firstItem="lRI-UW-h26" firstAttribute="centerX" secondItem="7AT-Bg-q3i" secondAttribute="centerX" id="Wbh-YC-Uo3"/>
                             <constraint firstItem="MFh-Sc-g1W" firstAttribute="top" secondItem="uxU-fa-uaf" secondAttribute="bottom" priority="250" constant="76" id="a29-me-dE9"/>
-                            <constraint firstItem="lRI-UW-h26" firstAttribute="top" secondItem="0ME-Vg-l5c" secondAttribute="bottom" constant="12" id="hrP-9z-eBA"/>
+                            <constraint firstItem="43N-Qp-Duc" firstAttribute="leading" secondItem="7kh-Xb-OZu" secondAttribute="leading" constant="30" id="tbp-lO-lV6"/>
                             <constraint firstItem="0ue-nB-MTP" firstAttribute="leading" secondItem="cgf-lF-Jhn" secondAttribute="leading" id="ulo-8p-C4a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aRi-9c-nXw"/>
                     <connections>
                         <outlet property="animationView" destination="MFh-Sc-g1W" id="UDr-S4-aNa"/>
-                        <outlet property="linkLabel" destination="lRI-UW-h26" id="UKc-Yo-pP7"/>
-                        <outlet property="startChallengeButton" destination="0ME-Vg-l5c" id="ilo-w4-Y5w"/>
+                        <outlet property="appleLoginView" destination="PxY-JM-gOu" id="UaG-sm-BO7"/>
                         <outlet property="subtitleLabel" destination="uxU-fa-uaf" id="BiG-ug-cAL"/>
                     </connections>
                 </viewController>
@@ -606,6 +630,7 @@
         <image name="icCalendar" width="24" height="24"/>
         <image name="icStarWhite" width="20" height="20"/>
         <image name="imgOnboarding2" width="230" height="230"/>
+        <image name="logoAppleBlack" width="44" height="44"/>
         <namedColor name="darkGray1">
             <color red="0.3059999942779541" green="0.27799999713897705" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -624,6 +649,9 @@
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

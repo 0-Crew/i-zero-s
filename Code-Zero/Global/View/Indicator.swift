@@ -37,10 +37,10 @@ class Indicator {
     func show() {
         DispatchQueue.main.async {
             self.indicatorView.startAnimating()
-            if var topViewController = self.keyWindow?.rootViewController,
-               let presentedViewController = topViewController.presentedViewController {
-                topViewController = presentedViewController
-
+            if var topViewController = self.keyWindow?.rootViewController {
+                while let presentedViewController = topViewController.presentedViewController {
+                    topViewController = presentedViewController
+                }
                 topViewController.view.addSubview(self.backgorundView)
                 topViewController.view.addSubview(self.indicatorView)
             }
