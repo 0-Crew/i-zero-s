@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFb-tZ-FmX">
-                                <rect key="frame" x="30" y="40" width="315" height="108"/>
+                                <rect key="frame" x="30" y="40" width="315" height="70"/>
                                 <string key="text">누구나 포기하기 
 어려운 편리함이 있습니다</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnX-e4-dqB">
-                                <rect key="frame" x="30" y="188" width="312" height="38.5"/>
+                                <rect key="frame" x="30" y="150" width="312" height="37.5"/>
                                 <string key="text">카페에서 
 플라스틱 빨대를 포기하기 어렵다면</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMJ-vX-NIe">
-                                <rect key="frame" x="30" y="250.5" width="312" height="38.5"/>
+                                <rect key="frame" x="30" y="211.5" width="312" height="37.5"/>
                                 <string key="text">대신 텀블러 사용부터 
 도전해보는 건 어떨까요?</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="보틀 선물 드려요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aG5-Pk-w9R">
-                                <rect key="frame" x="30" y="40" width="207" height="38"/>
+                                <rect key="frame" x="30" y="40" width="198.5" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="vLS-8H-yWb"/>
                                 </constraints>
@@ -120,7 +120,7 @@
                                 <rect key="frame" x="30" y="357" width="315" height="188"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일간 참아볼 수 있는 불편함을 적을 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-PW-CKf">
-                                        <rect key="frame" x="0.0" y="26" width="300" height="24"/>
+                                        <rect key="frame" x="0.0" y="26" width="289.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="Rb1-HR-AlE"/>
                                         </constraints>
@@ -144,7 +144,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-JS-Beg">
-                                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                                        <rect key="frame" x="14" y="8" width="26" height="13"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="13" id="kZA-Fq-ugA"/>
                                                         </constraints>
@@ -176,7 +176,7 @@
                                                 <rect key="frame" x="0.0" y="69" width="315" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-0k-HC8">
-                                                        <rect key="frame" x="14" y="8" width="28" height="13"/>
+                                                        <rect key="frame" x="14" y="8" width="26" height="13"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="13" id="WcP-1V-Iia"/>
                                                         </constraints>
@@ -272,7 +272,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQh-nZ-OjU">
-                                <rect key="frame" x="30" y="40" width="200.5" height="72"/>
+                                <rect key="frame" x="30" y="40" width="190" height="70"/>
                                 <string key="text">물방울을 하나씩
 체크해 보세요</string>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="30"/>
@@ -280,13 +280,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일 동안 매일 불편함을 참으면 주스가 줄어들어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-WM-tJe">
-                                <rect key="frame" x="30" y="124" width="315" height="17"/>
+                                <rect key="frame" x="30" y="122" width="315" height="16.5"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
                                 <color key="textColor" name="gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00 - 00 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ge2-il-HQ9">
-                                <rect key="frame" x="81" y="206" width="80" height="24"/>
+                                <rect key="frame" x="81" y="203.5" width="77.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="jdc-cF-l4z"/>
                                 </constraints>
@@ -295,25 +295,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icBottleMain1" translatesAutoresizingMaskIntoConstraints="NO" id="AY0-fk-xhy">
-                                <rect key="frame" x="22" y="187" width="40" height="89"/>
+                                <rect key="frame" x="22" y="184.5" width="40" height="89"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="89" id="5ce-N7-FBR"/>
                                     <constraint firstAttribute="width" constant="40" id="XBJ-Cu-H1k"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-kk-XAe">
-                                <rect key="frame" x="167" y="206" width="24" height="24"/>
+                                <rect key="frame" x="164.5" y="203.5" width="24" height="24"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="icCalendar"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0c-UP-kEy">
-                                <rect key="frame" x="81" y="237" width="228" height="36"/>
+                                <rect key="frame" x="81" y="234.5" width="228" height="36"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icStarWhite" translatesAutoresizingMaskIntoConstraints="NO" id="1l5-tQ-sZc">
                                         <rect key="frame" x="10" y="8" width="20" height="20"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리함" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXS-MW-QLz">
-                                        <rect key="frame" x="35" y="9" width="39" height="20"/>
+                                        <rect key="frame" x="35" y="9" width="36.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="ZtL-QP-Faf"/>
                                         </constraints>
@@ -322,7 +322,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" | " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQG-pt-idZ">
-                                        <rect key="frame" x="74" y="8" width="18" height="20"/>
+                                        <rect key="frame" x="71.5" y="8" width="11" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="ffb-Wc-oPc"/>
                                         </constraints>
@@ -331,7 +331,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="플라스틱 빨대 사용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zz-eZ-1Ak">
-                                        <rect key="frame" x="92" y="9" width="109.5" height="20"/>
+                                        <rect key="frame" x="82.5" y="9" width="105" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="NHk-2X-zqR"/>
                                         </constraints>
@@ -354,7 +354,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uth-zq-RmW">
-                                <rect key="frame" x="41.5" y="276" width="1" height="180"/>
+                                <rect key="frame" x="41.5" y="273.5" width="1" height="180"/>
                                 <viewLayoutGuide key="safeArea" id="GGr-7V-7kS"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
@@ -363,7 +363,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbn-lz-RGZ">
-                                <rect key="frame" x="0.0" y="293" width="375" height="312"/>
+                                <rect key="frame" x="0.0" y="290.5" width="375" height="314.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-jD-fVe">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
@@ -520,25 +520,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7일이 지나면" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgf-lF-Jhn">
-                                <rect key="frame" x="30" y="40" width="152" height="34"/>
+                                <rect key="frame" x="30" y="40" width="144.5" height="33"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="28"/>
                                 <color key="textColor" name="darkGray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wash Your Bottle!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ue-nB-MTP">
-                                <rect key="frame" x="30" y="74" width="230" height="30"/>
+                                <rect key="frame" x="30" y="73" width="238.5" height="35"/>
                                 <fontDescription key="fontDescription" name="FuturaStd-Heavy" family="Futura Std" pointSize="30"/>
                                 <color key="textColor" name="darkGray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보틀을 씻고 새로운 챌린지를 시작할 수 있어요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxU-fa-uaf">
-                                <rect key="frame" x="30" y="116" width="264" height="17"/>
+                                <rect key="frame" x="30" y="120" width="253.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
                                 <color key="textColor" name="gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-Sc-g1W" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="126.5" y="209" width="122" height="271"/>
+                                <rect key="frame" x="126.5" y="212.5" width="122" height="271"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MFh-Sc-g1W" secondAttribute="height" multiplier="152:339" id="4JH-Jp-knP"/>
@@ -554,7 +554,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2T-mq-mAM">
-                                                <rect key="frame" x="117.5" y="14" width="80.5" height="17"/>
+                                                <rect key="frame" x="119" y="14.5" width="77" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <color key="textColor" red="0.24313725489999999" green="0.1529411765" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -580,7 +580,7 @@
                                         <rect key="frame" x="0.0" y="59" width="315" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple로 로그인" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gB-pm-SOx">
-                                                <rect key="frame" x="111" y="14" width="93" height="17"/>
+                                                <rect key="frame" x="113" y="14.5" width="89" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
@@ -625,6 +625,7 @@
                     <connections>
                         <outlet property="animationView" destination="MFh-Sc-g1W" id="UDr-S4-aNa"/>
                         <outlet property="appleLoginView" destination="PxY-JM-gOu" id="UaG-sm-BO7"/>
+                        <outlet property="kakaoLoginView" destination="Ui2-bk-w3V" id="l5q-qv-Yzz"/>
                         <outlet property="subtitleLabel" destination="uxU-fa-uaf" id="BiG-ug-cAL"/>
                     </connections>
                 </viewController>
