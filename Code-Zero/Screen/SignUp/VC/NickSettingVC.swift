@@ -56,11 +56,18 @@ extension NickSettingVC {
     }
 
     @objc func checkDuplicateNick() {
-        guard let text = nickTextField.text else { return }
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi7JWg7ZSM6rmA66-87Z2sIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDU5NDcwNzksImV4cCI6MTY0ODUzOTA3OSwiaXNzIjoiV1lCIn0.4c_MKEolk5Mv5GOjJbQxcAkwpJLyyOTX_fVptT_0sO4"
-        // swiftlint:enable line_length
+        guard let text = nickTextField.text, let token = accessToken else { return }
         requestUserNick(token: token, nick: text)
+    }
+
+    func moveChallengeVC() {
+        let storybard = UIStoryboard(name: "Challenge", bundle: nil)
+        let challengeVC = storybard.instantiateViewController(withIdentifier: "Challenge")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            challengeVC,
+            animated: true,
+            completion: nil
+        )
     }
 }
 
@@ -72,7 +79,7 @@ extension NickSettingVC {
             switch result {
             case .success(let response):
                 if response.message == "유저 이름 세팅 성공" {
-                    self?.navigationPopBack(3)
+                    self?.moveChallengeVC()
                 }
             case .requestErr(let error):
                 if error == "duplicateNick" {

@@ -96,7 +96,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="white"/>
                     <constraints>
                         <constraint firstItem="7LG-GS-Gtq" firstAttribute="centerX" secondItem="Ypd-uS-EgH" secondAttribute="centerX" id="3HW-fC-wJv"/>
                         <constraint firstAttribute="trailing" secondItem="8if-0v-Fjp" secondAttribute="trailing" id="9F0-kt-Dj0"/>

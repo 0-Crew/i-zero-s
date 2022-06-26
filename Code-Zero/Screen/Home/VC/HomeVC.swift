@@ -58,6 +58,7 @@ extension HomeVC {
                                              provider: provider) { [weak self] result in
             switch result {
             case .success(let data):
+                UserDefaultManager.shared.saveAccessToken(accessToken: data.accesstoken)
                 data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
             case .requestErr(let error):
                 print(error)
@@ -78,8 +79,8 @@ extension HomeVC {
         )
     }
     private func moveNickSettingVC() {
-        guard let nickSettingVC = storyboard?.instantiateViewController(withIdentifier: "NickSettingVC")
-        else { return }
+        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+        let nickSettingVC = storyboard.instantiateViewController(withIdentifier: "NickSettingVC")
         navigationController?.pushViewController(nickSettingVC, animated: true)
     }
 }
