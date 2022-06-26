@@ -59,6 +59,16 @@ extension NickSettingVC {
         guard let text = nickTextField.text, let token = accessToken else { return }
         requestUserNick(token: token, nick: text)
     }
+
+    func moveChallengeVC() {
+        let storybard = UIStoryboard(name: "Challenge", bundle: nil)
+        let challengeVC = storybard.instantiateViewController(withIdentifier: "Challenge")
+        UIApplication.shared.windows.first?.replaceRootViewController(
+            challengeVC,
+            animated: true,
+            completion: nil
+        )
+    }
 }
 
 // MARK: - Network Function
@@ -69,7 +79,7 @@ extension NickSettingVC {
             switch result {
             case .success(let response):
                 if response.message == "유저 이름 세팅 성공" {
-                    self?.navigationPopBack(3)
+                    self?.moveChallengeVC()
                 }
             case .requestErr(let error):
                 if error == "duplicateNick" {
