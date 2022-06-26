@@ -75,10 +75,7 @@ extension AccountNickVC {
         } else if nickname == originNickname {
             view.endEditing(true)
             editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
-        } else if nickname.count > 0 && nickname.count <= 5 {
-            // swiftlint:disable line_length
-            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM1NzA0NTIsImV4cCI6MTY1NjE2MjQ1MiwiaXNzIjoiV1lCIn0.JOson17TpIuMlbL435hfW27pQnTbD8gNRMRjC8gA1So"
-             // swiftlint:enable line_length
+        } else if nickname.count > 0 && nickname.count <= 5, let token = accessToken {
             requestUserNick(token: token, nick: nickname)
         }
     }

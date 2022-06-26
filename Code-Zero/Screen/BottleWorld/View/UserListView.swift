@@ -91,6 +91,54 @@ extension UserListView: UITableViewDataSource {
     }
 }
 
+// MARK: - Network Function
+extension UserListView {
+    private func makeDumyData() {
+        let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "플라스틱 빨대사용하기플라스틱 빨대사용",
+                             term: "12/8-13", follow: true)
+        let data2 = UserData(name: "주혁이", bottleLevel: 0, subject: "일회용컵으로 커피 마시기",
+                             term: "12/1-8", follow: false)
+        let data3 = UserData(name: "민희", bottleLevel: 3, subject: "텀블러 가지고 다니기",
+                             term: "12/12-19", follow: false)
+        let data4 = UserData(name: "환경지키자", bottleLevel: 4, subject: "물티슈 쓰기",
+                             term: "12/11-18", follow: true)
+        let data5 = UserData(name: "삐뽀", bottleLevel: 2, subject: "로션 구매하기",
+                             term: "12/5-12", follow: true)
+        let data6 = UserData(name: "보틀월드", bottleLevel: 1, subject: "종이 컵홀더 안 쓰기종이 컵",
+                             term: "12/3-10", follow: false)
+        let data7 = UserData(name: "워유보갓", bottleLevel: 3, subject: "종이 컵홀더 안 쓰기종이 컵",
+                             term: "12/13-20", follow: true)
+        let data8 = UserData(name: "미니테스트중", bottleLevel: 7, subject: nil,
+                             term: nil, follow: true)
+        follower = [data1, data4, data5, data7, data8]
+        following = [data2, data3, data6]
+    }
+    private func fetchBrowserData(keyword: String?) {
+        guard let token = UserDefaultManager.shared.accessToken else { return }
+        
+        BottleWorldService
+            .shared
+            .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
+                switch result {
+                case .success(let userData):
+                    self?.lookAroundUser = userData
+                    if userData.count == 0 {
+                        self?.delegate?.presentEmptyUserView()
+                        break
+                    }
+                    self?.delegate?.presentUserListView()
+                    self?.userListTableView.reloadData()
+                case .requestErr(let error):
+                    print(error)
+                case .serverErr:
+                    break
+                case .networkFail:
+                    break
+                }
+            }
+    }
+}
+
 // MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
     func didFollowButtonTap(id index: Int) {

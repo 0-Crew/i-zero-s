@@ -10,10 +10,6 @@ import SnapKit
 
 class ChallengeVC: UIViewController {
 
-    // swiftlint:disable line_length
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
-    // swiftlint:enable line_length
-
     // MARK: - Property
     private var userInfo: UserInfo?
     private var challengeData: MainChallengeData?
@@ -522,6 +518,7 @@ extension ChallengeVC {
 // MARK: - Network
 extension ChallengeVC {
     private func fetchUserInfoData() {
+        guard let token = accessToken else { return }
         UserSettingService.shared.requestUserInfo(token: token) { [weak self] result in
             switch result {
             case .success(let info):
@@ -540,6 +537,7 @@ extension ChallengeVC {
     }
 
     internal func fetchMyChallenge() {
+        guard let token = accessToken else { return }
         Indicator.shared.show()
         MainChallengeService
             .shared
@@ -573,7 +571,7 @@ extension ChallengeVC {
     }
 
     internal func fetchUserChallenge(userId: Int?) {
-        guard let userId = userId else { return }
+        guard let token = accessToken, let userId = userId else { return }
         Indicator.shared.show()
         MainChallengeService
             .shared
@@ -614,6 +612,7 @@ extension ChallengeVC {
         inconvenience: Convenience,
         completion: @escaping (Bool, Convenience?) -> Void
     ) {
+        guard let token = accessToken else { return }
         MainChallengeService
             .shared
             .requestCompleteMyInconvenience(token: token, inconvenience: inconvenience) { result in
@@ -637,6 +636,7 @@ extension ChallengeVC {
         willChangingText: String,
         completion: @escaping (Bool, Convenience?) -> Void
     ) {
+        guard let token = accessToken else { return }
         MainChallengeService
             .shared
             .requestUpdateMyInconvenienceText(

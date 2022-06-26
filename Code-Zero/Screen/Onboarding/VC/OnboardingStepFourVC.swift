@@ -33,11 +33,14 @@ class OnboardingStepFourVC: UIViewController {
     }
 
     private func requestLogin(id: String, token: String, provider: String) {
-        UserLoginService.shared.requestLogin(id: id,
-                                             token: token,
-                                             provider: provider) { [weak self] result in
+        UserLoginService.shared.requestLogin(
+            id: id,
+            token: token,
+            provider: provider
+        ) { [weak self] result in
             switch result {
             case .success(let data):
+                UserDefaultManager.shared.saveAccessToken(accessToken: data.accesstoken)
                 data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
             case .requestErr(let error):
                 print(error)
@@ -58,8 +61,8 @@ class OnboardingStepFourVC: UIViewController {
         )
     }
     func moveNickSettingVC() {
-        guard let nickSettingVC = storyboard?.instantiateViewController(withIdentifier: "NickSettingVC")
-        else { return }
+        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+        let nickSettingVC = storyboard.instantiateViewController(withIdentifier: "NickSettingVC")
         navigationController?.pushViewController(nickSettingVC, animated: true)
     }
 }
