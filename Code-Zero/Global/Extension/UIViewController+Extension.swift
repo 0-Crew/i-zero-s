@@ -18,6 +18,12 @@ extension UIViewController {
     var deviceWidthRatio: CGFloat {
         return UIScreen.main.bounds.width / 375.0
     }
+
+    /// Access Token
+    var accessToken: String? {
+        return UserDefaultManager.shared.accessToken
+    }
+
 }
 
 extension UIViewController {

@@ -14,9 +14,7 @@ class AccountDeleteVC: UIViewController {
 
     // MARK: - @IBAction
     @IBAction func okButtonDidTap(_ sender: UIButton) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjpudWxsLCJpYXQiOjE2NTYxNzUyMzQsImV4cCI6MTY1NjE5NjgzNCwiaXNzIjoiV1lCIn0.w8ZoXG2nltbVHONMRAG_pIIiO5PkZsjZW-rupWQfWI0"
-        // swiftlint:enable line_length
+        guard let token = accessToken else { return }
         deleteUser(token: token)
 
     }
@@ -47,6 +45,7 @@ class AccountDeleteVC: UIViewController {
         UserLoginService.shared.deleteUser(token: token) { [weak self] result in
             switch result {
             case .success:
+                UserDefaultManager.shared.removeAccessToken()
                 self?.dismiss(animated: true) {
                     self?.changeRootViewToHome()
                 }
