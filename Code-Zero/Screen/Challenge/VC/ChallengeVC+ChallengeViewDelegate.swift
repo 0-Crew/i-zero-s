@@ -56,3 +56,21 @@ extension ChallengeVC: ChallengeViewDelegate {
         }
     }
 }
+
+// MARK: - EmptyChallengeViewDelegate
+extension ChallengeVC: EmptyChallengeViewDelegate {
+    func didPresentCalendarViewDidTap() {
+        // TODO: 캘린더 뷰 여는 부분 연결
+        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
+        let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+        present(calendarVC, animated: true, completion: nil)
+    }
+
+    func didStartChallengeViewTap() {
+        let challengeOpenStoryboard = UIStoryboard(name: "ChallengeOpen", bundle: nil)
+        guard let challengeOpenVC = challengeOpenStoryboard.instantiateViewController(
+            withIdentifier: "ChallengeOpenVC"
+        ) as? ChallengeOpenVC else { return }
+        present(challengeOpenVC, animated: true, completion: nil)
+    }
+}

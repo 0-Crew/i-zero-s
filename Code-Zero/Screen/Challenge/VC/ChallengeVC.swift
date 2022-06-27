@@ -11,9 +11,9 @@ import SnapKit
 class ChallengeVC: UIViewController {
 
     // MARK: - Property
-    private var userInfo: UserInfo?
-    private var challengeData: MainChallengeData?
-    private var followingPeopleList: [User] = [] {
+    internal var userInfo: UserInfo?
+    internal var challengeData: MainChallengeData?
+    internal var followingPeopleList: [User] = [] {
         didSet {
             setFollowingListStackView()
         }
@@ -195,76 +195,6 @@ class ChallengeVC: UIViewController {
     // MARK: - Field Method
 }
 
-// MARK: - UIScrollViewDelegate
-extension ChallengeVC: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.initialLineView.isHidden = scrollView.contentOffset.y > 4.0
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension ChallengeVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard
-            let offset = editingChallengeOffset,
-            let editingChallengeOffset = editingChallengeOffset
-        else { return }
-
-        if indexPath.row == optionsList.count - 1 {
-            setChallengeTextFieldState(offset: offset)
-            tableView.isHidden = true
-            return
-        }
-        let willChangeText = optionsList[indexPath.row]
-        let inconvenience = inconveniences[editingChallengeOffset]
-
-        updateInconvenience(
-            inconvenience: inconvenience,
-            willChangingText: willChangeText
-        ) { [weak self] (isSuccess, inconvenience) in
-                if isSuccess, let inconvenience = inconvenience {
-                    self?.inconveniences[editingChallengeOffset] = inconvenience
-                    self?.editingChallengeOffset = nil
-                    tableView.isHidden = true
-                    self?.setChallengeTextByOptionSelected(offset: offset, text: willChangeText)
-                    self?.setChallengeViewChangingState(offset: offset)
-                }
-            }
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension ChallengeVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return optionsList.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: OptionCell = tableView.dequeueCell(indexPath: indexPath)
-        cell.setCellType(type: .challenge)
-        cell.optionTextLabel.text = optionsList[indexPath.row]
-        return cell
-    }
-}
-
-// MARK: - EmptyChallengeViewDelegate
-extension ChallengeVC: EmptyChallengeViewDelegate {
-    func didPresentCalendarViewDidTap() {
-        // TODO: 캘린더 뷰 여는 부분 연결
-        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
-        let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
-        present(calendarVC, animated: true, completion: nil)
-    }
-
-    func didStartChallengeViewTap() {
-        let challengeOpenStoryboard = UIStoryboard(name: "ChallengeOpen", bundle: nil)
-        guard let challengeOpenVC = challengeOpenStoryboard.instantiateViewController(
-            withIdentifier: "ChallengeOpenVC"
-        ) as? ChallengeOpenVC else { return }
-        present(challengeOpenVC, animated: true, completion: nil)
-    }
-}
-
 // MARK: - UI Setting
 extension ChallengeVC {
     private func setNavigationItems() {
@@ -413,7 +343,7 @@ extension ChallengeVC {
             $0.bottom.leading.trailing.equalTo(challengeBackgroundView)
         }
     }
-    private func updateSocialButtons(isFollowing: Bool) {
+    internal func updateSocialButtons(isFollowing: Bool) {
         let isChallenging = challengeData?.myChallenge != nil
         cheerUpButton.isHidden = (isChallenging == false) || isMine
         followingButton.isHidden = isMine && isFollowing
@@ -426,7 +356,7 @@ extension ChallengeVC {
 
         bottleImageView.image = bottleImageLists[remainCount]
     }
-    private func setChallengeTextByOptionSelected(offset: Int, text: String) {
+    internal func setChallengeTextByOptionSelected(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
     }
@@ -500,7 +430,7 @@ extension ChallengeVC {
         }
         self.show(viewController, sender: nil)
     }
-    private func changeRootViewToHome() {
+    internal func changeRootViewToHome() {
         let storybard = UIStoryboard(name: "Home", bundle: nil)
         let homeNavigationVC = storybard.instantiateViewController(withIdentifier: "Home")
         UIApplication.shared.windows.first?.replaceRootViewController(
@@ -510,177 +440,3 @@ extension ChallengeVC {
         )
     }
 }
-
-// MARK: - Network
-extension ChallengeVC {
-    private func fetchUserInfoData() {
-        guard let token = accessToken else { return }
-        UserSettingService.shared.requestUserInfo(token: token) { [weak self] result in
-            switch result {
-            case .success(let info):
-                self?.userInfo = info.user
-                self?.nickNameLabel.text = info.user.name
-            case .requestErr(let error):
-                print(error)
-            case .serverErr:
-                // 토큰 만료(자동 로그아웃 느낌..)
-                self?.changeRootViewToHome()
-            case .networkFail:
-                // TODO: 서버 자체 에러 - 서버 점검 중 popup 제작?
-                break
-            }
-        }
-    }
-
-    internal func fetchMyChallenge() {
-        guard let token = accessToken else { return }
-        Indicator.shared.show()
-        MainChallengeService
-            .shared
-            .requestMyChallenge(token: token) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        self?.challengeBackgroundView.alpha = 1
-                        self?.challengeData = data
-
-                        let challenge = data.myChallenge
-                        let myInconveniences = data.myInconveniences
-                        let inconveniences = data.inconvenience ?? []
-
-                        self?.followingPeopleList = data.myFollowings ?? []
-                        self?.bindChallenge(
-                            challenge: challenge,
-                            inconveniences: myInconveniences,
-                            conveniences: inconveniences
-                        )
-                        Indicator.shared.dismiss()
-                    }
-                case .requestErr(let message):
-                    print(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-
-    internal func fetchUserChallenge(userId: Int?) {
-        guard let token = accessToken, let userId = userId else { return }
-        Indicator.shared.show()
-        MainChallengeService
-            .shared
-            .requestUserChallenge(token: token, userId: userId) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        self?.challengeBackgroundView.alpha = 1
-                        self?.challengeData = data
-                        let userInfo = data.user
-                        let challenge = data.myChallenge
-                        let myInconveniences = data.myInconveniences
-                        let isFollowing = data.isFollowing ?? false
-                        let inconveniences = data.inconvenience ?? []
-
-                        self?.userInfo = userInfo
-                        self?.nickNameLabel.text = userInfo?.name ?? ""
-                        self?.followingPeopleList = data.myFollowings ?? []
-                        self?.updateSocialButtons(isFollowing: isFollowing)
-                        self?.bindChallenge(
-                            challenge: challenge,
-                            inconveniences: myInconveniences,
-                            conveniences: inconveniences
-                        )
-                        Indicator.shared.dismiss()
-                    }
-                case .requestErr(let message):
-                    print(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-
-    internal func toggleInconvenienceComplete(
-        inconvenience: Convenience,
-        completion: @escaping (Bool, Convenience?) -> Void
-    ) {
-        guard let token = accessToken else { return }
-        MainChallengeService
-            .shared
-            .requestCompleteMyInconvenience(token: token, inconvenience: inconvenience) { result in
-                switch result {
-                case .success((let isSuccess, let inconvenience)):
-                    DispatchQueue.main.async {
-                        completion(isSuccess, inconvenience)
-                    }
-                case .requestErr(let message):
-                    print(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-
-    internal func updateInconvenience(
-        inconvenience: Convenience,
-        willChangingText: String,
-        completion: @escaping (Bool, Convenience?) -> Void
-    ) {
-        guard let token = accessToken else { return }
-        MainChallengeService
-            .shared
-            .requestUpdateMyInconvenienceText(
-                token: token,
-                inconvenience: inconvenience,
-                willChangingText: willChangingText
-            ) { result in
-                switch result {
-                case .success((let isSuccess, let inconvenience)):
-                    DispatchQueue.main.async {
-                        completion(isSuccess, inconvenience)
-                    }
-                case .requestErr(let message):
-                    print(message)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
-    }
-
-    internal func cheerUpUser(completion: @escaping (Bool) -> Void) {
-
-        guard let token = accessToken, let userId = fetchedUserId else { return }
-
-        AlarmCenterService
-            .shared
-            .requestNotificationButton(
-                token: token,
-                type: .cheer,
-                receiverUserId: userId
-            ) { result in
-                switch result {
-                case .success(let isSuccess):
-                    completion(isSuccess)
-                    print("응원하기 성공")
-                case .requestErr(let message):
-                    completion(false)
-                    print(message)
-                case .serverErr:
-                    completion(false)
-                    print("serverErr")
-                case .networkFail:
-                    completion(false)
-                    print("networkFail")
-                }
-            }
-    }
-}
-
