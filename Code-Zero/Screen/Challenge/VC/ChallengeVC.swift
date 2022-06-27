@@ -57,7 +57,6 @@ class ChallengeVC: UIViewController {
     }
     internal var editingChallengeOffset: Int?
 
-
     // MARK: - UI Components
     private lazy var optionsTableView: UITableView = {
         let width = view.bounds.width - 81 - 20
@@ -143,6 +142,7 @@ class ChallengeVC: UIViewController {
 
     @IBAction func cheerUpButtonDidTap(_ sender: Any) {
         // TODO: 응원하기 버튼 액션
+        cheerUpUser()
     }
 
     @IBAction func followingButtonDidTap(_ sender: Any) {
@@ -151,7 +151,10 @@ class ChallengeVC: UIViewController {
 
     @IBAction private func moveBottleWorldButtonDidTap() {
         // TODO: Bottle World로 연결하는 부분
-        print("move to bottle world")
+        let storyboard = UIStoryboard(name: "BottleWorld", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "BottleWorldVC")
+        navigationController?.pushViewController(viewController, animated: true)
+//        print("move to bottle world")
     }
 
     @IBAction func didCalendarButtonTap() {
@@ -169,9 +172,6 @@ class ChallengeVC: UIViewController {
         viewController.isMine = false
         viewController.fetchedUserId = user.id
         navigationController?.pushViewController(viewController, animated: true)
-//        let indexPath = IndexPath(item: sender.tag, section: 0)
-//        selectedPersonIndex = sender.tag
-//        challengeListCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
 
     // MARK: - Field Method
@@ -382,7 +382,11 @@ extension ChallengeVC {
         followingListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         let plusButton = UIButton(type: .custom)
         plusButton.setImage(.init(named: "icPlus"), for: .normal)
-
+        plusButton.addTarget(
+            self,
+            action: #selector(moveBottleWorldButtonDidTap),
+            for: .touchUpInside
+        )
         followingListStackView.addArrangedSubview(plusButton)
     }
     internal func bindChallenge(
@@ -658,4 +662,29 @@ extension ChallengeVC {
                 }
             }
     }
+
+    internal func cheerUpUser() {
+
+        guard let token = accessToken, let userId = fetchedUserId else { return }
+
+        AlarmCenterService
+            .shared
+            .requestNotificationButton(
+                token: token,
+                type: .cheer,
+                receiverUserId: userId
+            ) { result in
+                switch result {
+                case .success(let isSuccess):
+                    print("응원하기 성공")
+                case .requestErr(let message):
+                    print(message)
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
+            }
+    }
 }
+

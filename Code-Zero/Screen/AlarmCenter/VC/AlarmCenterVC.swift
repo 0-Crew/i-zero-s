@@ -85,13 +85,13 @@ class AlarmCenterVC: UIViewController {
     // alarms가 빈배열일 경우 emptyView 노출
     var alarms: [(String, AlarmType)] = [
         ("박수빈빈빈님의 보틀을 팔로우합니다.", .normal),
-        ("박수빈빈님이 챌린지를 성공했어요!", .celebrate),
-        ("가니가니가님이 내 챌린지 성공을 축하해요!", .beCelebrated),
+        ("박수빈빈님이 챌린지를 성공했어요!", .congrats),
+        ("가니가니가님이 내 챌린지 성공을 축하해요!", .beCongratulated),
         ("가니가니가님이 내 챌린지를 응원해요!", .beCheered),
         ("가니가니가님이 내 챌린지를 응원해요!", .beCheered),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheerUp),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheerUp),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheerUp)
+        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
+        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
+        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer)
     ]
 
     override func viewDidLoad() {
@@ -161,7 +161,7 @@ extension AlarmCenterVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType = alarms[indexPath.item].1
         switch cellType {
-        case .beCheered, .beCelebrated:
+        case .beCheered, .beCongratulated:
             guard
                 let viewController = storyboard?.instantiateViewController(
                     withIdentifier: "AlarmReactionVC"
@@ -181,10 +181,10 @@ extension AlarmCenterVC: AlarmCellDelegate {
     func subActionButtonDidTap(cellType: AlarmType, offset: Int) {
         // TODO: AlarmCenter 서버 연결 후 다시 작업
         switch cellType {
-        case .cheerUp:
+        case .cheer:
             presentToastView(text: "박수빈님에게 챌린지 응원을 보냈어요!")
             print("cheerUp")
-        case .celebrate:
+        case .congrats:
             presentToastView(text: "celebrate")
             print("celebrate")
         default:
