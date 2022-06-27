@@ -73,6 +73,7 @@
 		6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337227C2B30C00746CD5 /* UserChallenge.swift */; };
 		6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337427C2B35000746CD5 /* Convenience.swift */; };
 		6E27317E286A176100AC5E2B /* AlarmCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E27317D286A176100AC5E2B /* AlarmCenterService.swift */; };
+		6E273180286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E27317F286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift */; };
 		6E2CA57828677D400000AACF /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA57728677D400000AACF /* UserDefaultManager.swift */; };
 		6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A58E927C3A0D500C84D7E /* Indicator.swift */; };
 		6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E533C1B28292985004F36F8 /* challenge_cheerup.json */; };
@@ -224,6 +225,7 @@
 		6E1D337227C2B30C00746CD5 /* UserChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallenge.swift; sourceTree = "<group>"; };
 		6E1D337427C2B35000746CD5 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
 		6E27317D286A176100AC5E2B /* AlarmCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCenterService.swift; sourceTree = "<group>"; };
+		6E27317F286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeVC+ChallengeViewDelegate.swift"; sourceTree = "<group>"; };
 		6E2CA57728677D400000AACF /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		6E3A58E927C3A0D500C84D7E /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		6E533C1B28292985004F36F8 /* challenge_cheerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = challenge_cheerup.json; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 			children = (
 				A29574DD273AB2570056CC93 /* ChallengeVC.swift */,
 				6E8C8062286485CA002F6E35 /* ChallengeVC+KeyboardNotificationSetting.swift */,
+				6E27317F286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
 				190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */,
+				6E273180286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift in Sources */,
 				6E8C8063286485CA002F6E35 /* ChallengeVC+KeyboardNotificationSetting.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,

@@ -18,7 +18,7 @@ class ChallengeVC: UIViewController {
             setFollowingListStackView()
         }
     }
-    private var inconveniences: [Convenience] = [] {
+    internal var inconveniences: [Convenience] = [] {
         didSet {
             updateBottleImageView()
         }
@@ -50,7 +50,7 @@ class ChallengeVC: UIViewController {
         return inconveniences.map { $0.name }
     }
 
-    private var optionsList: [String] = [] {
+    internal var optionsList: [String] = [] {
         didSet {
             optionsTableView.reloadData()
         }
@@ -58,7 +58,7 @@ class ChallengeVC: UIViewController {
     internal var editingChallengeOffset: Int?
 
     // MARK: - UI Components
-    private lazy var optionsTableView: UITableView = {
+    internal lazy var optionsTableView: UITableView = {
         let width = view.bounds.width - 81 - 20
         let tableView = UITableView(frame: .init(x: 81, y: 0, width: width, height: 134))
         // tableView setting
@@ -90,6 +90,23 @@ class ChallengeVC: UIViewController {
         return barButtonItem
     }()
     private lazy var emptyView: EmptyChallengeView = EmptyChallengeView(frame: .zero, isMine: isMine)
+    lazy var eventToastView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray2
+        view.addSubview(toastTitleLabel)
+
+        toastTitleLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+
+        return view
+    }()
+    lazy var toastTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .spoqaHanSansNeo(size: 14, family: .medium)
+        label.textColor = .white
+        return label
+    }()
     internal var challengeViewList: [ChallengeView?] {
         return challengeListStackView.arrangedSubviews.map { $0 as? ChallengeView }
     }
@@ -141,8 +158,12 @@ class ChallengeVC: UIViewController {
     // MARK: - IBAction Method
 
     @IBAction func cheerUpButtonDidTap(_ sender: Any) {
-        // TODO: 응원하기 버튼 액션
-        cheerUpUser()
+        guard let userName = userInfo?.name else { return }
+        cheerUpUser { [weak self] isSuccess in
+            if isSuccess {
+                self?.presentToastView(text: "\(userName)님에게 챌린지 응원을 보냈어요!")
+            }
+        }
     }
 
     @IBAction func followingButtonDidTap(_ sender: Any) {
@@ -150,11 +171,9 @@ class ChallengeVC: UIViewController {
     }
 
     @IBAction private func moveBottleWorldButtonDidTap() {
-        // TODO: Bottle World로 연결하는 부분
         let storyboard = UIStoryboard(name: "BottleWorld", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "BottleWorldVC")
         navigationController?.pushViewController(viewController, animated: true)
-//        print("move to bottle world")
     }
 
     @IBAction func didCalendarButtonTap() {
@@ -164,7 +183,6 @@ class ChallengeVC: UIViewController {
     }
 
     @objc private func followingListButtonsDidTab(sender: UIButton) {
-        // TODO: 해당 유저에 대한 챌린지 정보로 이동하는 버튼 넣기
         let user = followingPeopleList[sender.tag]
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: "ChallengeVC")
                 as? ChallengeVC else { return }
@@ -175,56 +193,6 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - Field Method
-}
-
-// MARK: - ChallengeViewDelegate
-extension ChallengeVC: ChallengeViewDelegate {
-    // 텍스트 필드 편집 완료 이벤트 delegate
-    func didChallengeTextFieldEdit(challengeOffset: Int, text: String) {
-        let inconvenience = inconveniences[challengeOffset]
-        updateInconvenience(
-            inconvenience: inconvenience,
-            willChangingText: text) { [weak self] (isSuccess, changedInconvenince) in
-                if isSuccess, let changedInconvenince = changedInconvenince {
-                    self?.editingChallengeOffset = nil
-                    self?.optionsTableView.isHidden = true
-                    self?.inconveniences[challengeOffset] = changedInconvenince
-                    self?.setChallengeViewChangingState(offset: challengeOffset)
-                    self?.setChallengeTextFieldState(offset: challengeOffset)
-                    self?.setChallengeText(offset: challengeOffset, text: text)
-                }
-            }
-    }
-    // 편집, 취소, 완료 버튼 이벤트 delegate
-    func didEditButtonTap(challengeOffset: Int, yPosition: CGFloat) {
-        // 편집 중인 챌린지가 없을 경우
-        guard editingChallengeOffset != nil else {
-            editingChallengeOffset = challengeOffset
-            setChallengeViewChangingState(offset: challengeOffset)
-            presentOptionTableView(yPosition: yPosition)
-            return
-        }
-        // 편집을 취소 하거나 완료한 경우
-        if challengeOffset == editingChallengeOffset {
-            editingChallengeOffset = nil
-            optionsTableView.isHidden = true
-            setChallengeViewChangingState(offset: challengeOffset)
-            return
-        }
-        // 현재 편집중인 경우
-        return
-    }
-    // 챌린지 완료 상태 toggle 이벤트 delegate
-    func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
-        let inconvenience = inconveniences[challengeOffset]
-        toggleInconvenienceComplete(inconvenience: inconvenience) { [weak self] (isSuccess, inconvenience) in
-            if isSuccess, let inconvenience = inconvenience {
-                self?.inconveniences[challengeOffset] = inconvenience
-            } else {
-                self?.setChallengeViewChangingState(offset: challengeOffset)
-            }
-        }
-    }
 }
 
 // MARK: - UIScrollViewDelegate
@@ -466,19 +434,19 @@ extension ChallengeVC {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeDate(date: dueDate)
     }
-    private func setChallengeTextFieldState(offset: Int) {
+    internal func setChallengeTextFieldState(offset: Int) {
         let challengeView = challengeViewList[offset]
         challengeView?.toggleTextEditingState(to: offset == editingChallengeOffset)
     }
-    private func setChallengeViewChangingState(offset: Int) {
+    internal func setChallengeViewChangingState(offset: Int) {
         let challengeView = challengeViewList[offset]
         challengeView?.toggleIsChangingState(to: offset == editingChallengeOffset)
     }
-    private func setChallengeText(offset: Int, text: String) {
+    internal func setChallengeText(offset: Int, text: String) {
         let challengeView = challengeViewList[offset]
         challengeView?.setChallengeText(text: text)
     }
-    private func presentOptionTableView(yPosition: CGFloat) {
+    internal func presentOptionTableView(yPosition: CGFloat) {
         var mutableYPosition = yPosition + 43 + 8
         let isOver = mutableYPosition + 134 > challengeListStackView.bounds.maxY
         let width = view.bounds.width - 81 - 20
@@ -486,6 +454,30 @@ extension ChallengeVC {
         mutableYPosition = isOver ? yPosition - 8 - 134 : mutableYPosition
         optionsTableView.frame = .init(x: 81, y: mutableYPosition, width: width, height: 134)
         optionsTableView.isHidden = false
+    }
+    private func presentToastView(text: String) {
+        eventToastView.alpha = 0
+        toastTitleLabel.text = text
+        view.addSubview(eventToastView)
+        eventToastView.snp.makeConstraints {
+
+            $0.bottom.equalToSuperview().offset(-60)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.height.equalTo(57)
+        }
+
+        UIView.animateKeyframes(withDuration: 2, delay: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/20, animations: {
+                self.eventToastView.alpha = 1
+            })
+            UIView.addKeyframe(withRelativeStartTime: 19/20, relativeDuration: 1/20, animations: {
+                self.eventToastView.alpha = 0
+            })
+
+        }, completion: { _ in
+            self.eventToastView.removeFromSuperview()
+        })
     }
 }
 
@@ -663,7 +655,7 @@ extension ChallengeVC {
             }
     }
 
-    internal func cheerUpUser() {
+    internal func cheerUpUser(completion: @escaping (Bool) -> Void) {
 
         guard let token = accessToken, let userId = fetchedUserId else { return }
 
@@ -676,12 +668,16 @@ extension ChallengeVC {
             ) { result in
                 switch result {
                 case .success(let isSuccess):
+                    completion(isSuccess)
                     print("응원하기 성공")
                 case .requestErr(let message):
+                    completion(false)
                     print(message)
                 case .serverErr:
+                    completion(false)
                     print("serverErr")
                 case .networkFail:
+                    completion(false)
                     print("networkFail")
                 }
             }
