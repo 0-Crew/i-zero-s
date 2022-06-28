@@ -1,2 +1,12 @@
-#  <#Title#>
-
+{
+    "status": 200,
+    "success": true,
+    "message": "세팅 뷰 유저 정보 조회 성공",
+    "data": {
+        "user": {
+            "id": 13,
+            "name": "할리갈리왁",
+            "isPrivate": false
+        }
+    }
+}
