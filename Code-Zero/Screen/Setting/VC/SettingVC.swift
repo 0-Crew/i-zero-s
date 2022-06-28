@@ -30,25 +30,10 @@ class SettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        jsonData(name: "userInfo")
         setUserInfoView()
         setSettingList()
         setAppVersion()
     }
-    private func jsonData(name: String) {
-            do {
-                let decoder = JSONDecoder()
-                guard let response: NSDataAsset = NSDataAsset(name: name) else { return }
-                let body = try decoder.decode(
-                    GenericResponse<SettingData>.self,
-                    from: response.data
-                )
-                guard let data = body.data else { return }
-                userInfo = data.user
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
 }
 
 // MARK: - Set View Info
