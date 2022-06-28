@@ -116,8 +116,13 @@ extension NickSettingVC: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        checkDuplicateNick()
-        return true
+        if let count = textField.text?.count {
+            if count > 0 && count < 6 {
+                checkDuplicateNick()
+                return true
+            }
+        }
+        return false
     }
 
     func textField(_ textField: UITextField,
