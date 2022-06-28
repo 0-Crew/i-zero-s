@@ -7,22 +7,22 @@
 
 import UIKit
 
-enum AlarmType {
+enum AlarmType: String {
     case normal
-    case cheerUp
-    case celebrate
+    case cheer
+    case congrats
     case beCheered
-    case beCelebrated
-    case totalCheeredUp
-    case totalCelebrated
+    case beCongratulated
+    case totalCheered
+    case totalCongratulated
 }
 
 extension AlarmType {
     var alarmImage: UIImage? {
         switch self {
-        case .cheerUp, .beCheered:
+        case .cheer, .beCheered:
             return UIImage(named: "icAlarmCheer")
-        case .celebrate, .beCelebrated:
+        case .congrats, .beCongratulated:
             return UIImage(named: "icAlarmCeleb")
         default:
             return nil
@@ -30,7 +30,7 @@ extension AlarmType {
     }
     var subActionButtonIsHidden: Bool {
         switch self {
-        case .cheerUp, .celebrate:
+        case .cheer, .congrats:
             return false
         default:
             return true
@@ -39,9 +39,9 @@ extension AlarmType {
 
     var subActionButtonTitle: String {
         switch self {
-        case .cheerUp:
+        case .cheer:
             return "응원하기"
-        case .celebrate:
+        case .congrats:
             return "축하하기"
         default:
             return ""

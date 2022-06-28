@@ -72,6 +72,10 @@
 		6E1D336F27C2AC9D00746CD5 /* ChallengeOpenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */; };
 		6E1D337327C2B30C00746CD5 /* UserChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337227C2B30C00746CD5 /* UserChallenge.swift */; };
 		6E1D337527C2B35000746CD5 /* Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D337427C2B35000746CD5 /* Convenience.swift */; };
+		6E27317E286A176100AC5E2B /* AlarmCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E27317D286A176100AC5E2B /* AlarmCenterService.swift */; };
+		6E273180286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E27317F286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift */; };
+		6E273182286A311C00AC5E2B /* ChallengeVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E273181286A311C00AC5E2B /* ChallengeVC+UITableView.swift */; };
+		6E273184286A315C00AC5E2B /* ChallengeVC+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E273183286A315C00AC5E2B /* ChallengeVC+Network.swift */; };
 		6E2CA57828677D400000AACF /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CA57728677D400000AACF /* UserDefaultManager.swift */; };
 		6E3A58EA27C3A0D500C84D7E /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3A58E927C3A0D500C84D7E /* Indicator.swift */; };
 		6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E533C1B28292985004F36F8 /* challenge_cheerup.json */; };
@@ -222,6 +226,10 @@
 		6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeOpenService.swift; sourceTree = "<group>"; };
 		6E1D337227C2B30C00746CD5 /* UserChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallenge.swift; sourceTree = "<group>"; };
 		6E1D337427C2B35000746CD5 /* Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenience.swift; sourceTree = "<group>"; };
+		6E27317D286A176100AC5E2B /* AlarmCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCenterService.swift; sourceTree = "<group>"; };
+		6E27317F286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeVC+ChallengeViewDelegate.swift"; sourceTree = "<group>"; };
+		6E273181286A311C00AC5E2B /* ChallengeVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeVC+UITableView.swift"; sourceTree = "<group>"; };
+		6E273183286A315C00AC5E2B /* ChallengeVC+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeVC+Network.swift"; sourceTree = "<group>"; };
 		6E2CA57728677D400000AACF /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		6E3A58E927C3A0D500C84D7E /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		6E533C1B28292985004F36F8 /* challenge_cheerup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = challenge_cheerup.json; sourceTree = "<group>"; };
@@ -820,6 +828,7 @@
 				195A0F0327CCF266009F0FFD /* UserSettingService.swift */,
 				6E7919382861B63B00041201 /* MainChallengeService.swift */,
 				6E2CA57728677D400000AACF /* UserDefaultManager.swift */,
+				6E27317D286A176100AC5E2B /* AlarmCenterService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -859,6 +868,9 @@
 			children = (
 				A29574DD273AB2570056CC93 /* ChallengeVC.swift */,
 				6E8C8062286485CA002F6E35 /* ChallengeVC+KeyboardNotificationSetting.swift */,
+				6E27317F286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift */,
+				6E273181286A311C00AC5E2B /* ChallengeVC+UITableView.swift */,
+				6E273183286A315C00AC5E2B /* ChallengeVC+Network.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1121,6 +1133,7 @@
 				1933C68B274FD0D500E0842D /* ChallengeListView.swift in Sources */,
 				1923D91B27AFC94B00FE2C87 /* AccountPrivacyVC.swift in Sources */,
 				6E5B24B12748C8460071C9F2 /* UICollectionView+Extension.swift in Sources */,
+				6E273182286A311C00AC5E2B /* ChallengeVC+UITableView.swift in Sources */,
 				D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */,
 				A25C8BF4272E9E6500D2BA78 /* UITableView+Extension.swift in Sources */,
 				6EB97231275B3B0400AB8349 /* ChallengeOpenSecondStepView.swift in Sources */,
@@ -1162,15 +1175,18 @@
 				1933FE9827A01D2300BD0CA6 /* SettingLineView.swift in Sources */,
 				6EBECCF92843CACE0007FED5 /* EmptyChallengeView.swift in Sources */,
 				195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */,
+				6E273184286A315C00AC5E2B /* ChallengeVC+Network.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				1933FE9027A0174700BD0CA6 /* NotUserView.swift in Sources */,
 				1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
 				190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */,
+				6E273180286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift in Sources */,
 				6E8C8063286485CA002F6E35 /* ChallengeVC+KeyboardNotificationSetting.swift in Sources */,
 				19A142C6274FC0E100E8DC45 /* ChallengingListView.swift in Sources */,
 				9B9927DA2733DED200A180CB /* CalendarVC.swift in Sources */,
+				6E27317E286A176100AC5E2B /* AlarmCenterService.swift in Sources */,
 				19B74643276F7BC30038367C /* NickSettingVC.swift in Sources */,
 				1906C40527C241330020185C /* SimpleData.swift in Sources */,
 				195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */,
