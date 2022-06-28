@@ -62,19 +62,26 @@ extension AccountNickVC {
         } else {
             nickTextField.text = "워시유어보틀"
         }
+        editButton.tag = 0
         duplicateCheckLabel.text = ""
         nickTextField.delegate = self
         nickTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     private func checkNickname() {
+        guard editButton.tag == 1 else {
+            nickTextField.becomeFirstResponder()
+            return
+        }
         guard let nickname = nickTextField.text else { return }
         if nickname.count == 0 {
             self.view.endEditing(true)
             editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
-            nickTextField.text = nickname
+            editButton.tag = 0
+            nickTextField.text = originNickname
         } else if nickname == originNickname {
             view.endEditing(true)
             editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
+            editButton.tag = 0
         } else if nickname.count > 0 && nickname.count <= 5, let token = accessToken {
             requestUserNick(token: token, nick: nickname)
         }
@@ -104,6 +111,7 @@ extension AccountNickVC {
                     self?.view.endEditing(true)
                     self?.originNickname = nick
                     self?.editButton.setImage(UIImage(named: "icEditOrange"), for: .normal)
+                    self?.editButton.tag = 0
                 }
             case .requestErr(let error):
                 if error == "duplicateNick" {
@@ -122,6 +130,7 @@ extension AccountNickVC {
 extension AccountNickVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         editButton.setImage(UIImage(named: "icCheckOrange"), for: .normal)
+        editButton.tag = 1
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
