@@ -35,6 +35,9 @@ enum APITarget {
         token: String
     )
 
+    // 알람센터
+    case notificationButton(token: String, alarmType: AlarmType, receiverUserId: Int)
+
     // 설정
     case userInfo(token: String)
 
@@ -76,13 +79,15 @@ extension APITarget: TargetType {
             return "/my-inconvenience/finish"
         case .myInconvenienceUpdate:
             return "/my-inconvenience/update"
+        case .notificationButton:
+            return "/notification/button"
         }
     }
 
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick, .auth, .challengeOpen:
+        case .userNick, .auth, .challengeOpen, .notificationButton:
             return .post
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
@@ -138,6 +143,10 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default)
         case .myChallengeUser(_, let userId):
             return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.queryString)
+        case .notificationButton(_, let alarmType, let receiverUserId):
+            return .requestParameters(parameters: ["type": alarmType.rawValue,
+                                                   "receiverUserId": receiverUserId],
+                                      encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {
@@ -160,7 +169,8 @@ extension APITarget: TargetType {
                 .myInconvenienceFinish(let token, _),
                 .myInconvenienceUpdate(let token, _, _),
                 .myChallengeUser(let token, _),
-                .deleteAuth(let token):
+                .deleteAuth(let token),
+                .notificationButton(let token, _, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
