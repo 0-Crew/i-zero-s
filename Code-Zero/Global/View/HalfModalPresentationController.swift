@@ -10,11 +10,16 @@ import UIKit
 class HalfModalPresentationController: UIPresentationController {
     
     let blurEffectView: UIView!
+    let swipeBar: UIView!
     var check: Bool = false
+    var height: CGFloat = 0
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         blurEffectView = UIView()
         blurEffectView.backgroundColor = .white
+        swipeBar = UIView()
+        swipeBar.backgroundColor = .black
+        swipeBar.makeRounded(cornerRadius: 5)
         super.init(presentedViewController: presentedViewController, presenting: presentedViewController)
         
         let backTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissController))
@@ -29,18 +34,29 @@ class HalfModalPresentationController: UIPresentationController {
     
     override var frameOfPresentedViewInContainerView: CGRect {
         
-        CGRect(origin: CGPoint(x: 0,
-                               y: self.containerView!.frame.height * 181 / 800),
-               size: CGSize(width: self.containerView!.frame.width,
-                            height: self.containerView!.frame.height * 619 / 800))
+        height = (self.containerView!.frame.width * 323 / 327) + 308.5
+        if height > self.containerView!.frame.height - 80 {
+            height = self.containerView!.frame.height - 80
+            return CGRect(origin: CGPoint(x: 0,
+                                          y: self.containerView!.frame.height - height),
+                          size: CGSize(width: self.containerView!.frame.width,
+                                       height: height))
+        }
+        return CGRect(origin: CGPoint(x: 0,
+                                      y: self.containerView!.frame.height - height),
+                      size: CGSize(width: self.containerView!.frame.width,
+                                   height: height))
     } 
     
     override func presentationTransitionWillBegin() {
         self.containerView!.addSubview(blurEffectView)
+        setSwipeBarFrame()
     }
     
-    // 모달이 없어질 때 검은색 배경을 슈퍼뷰에서 제거
     override func dismissalTransitionWillBegin() {
+        UIView.animate(withDuration: 0.29) {
+            self.swipeBar.removeFromSuperview()
+        }
         self.presentedViewController.transitionCoordinator?.animate(
             alongsideTransition: { _ in
                 self.blurEffectView.alpha = 0 },
@@ -49,13 +65,20 @@ class HalfModalPresentationController: UIPresentationController {
             })
     }
     
-    // 모달의 크기가 조절됐을 때 호출되는 함수
     override func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
         blurEffectView.frame = containerView!.bounds
+        UIView.animate(withDuration: 0.29) {
+            self.swipeBar.frame.origin.y = self.containerView!.frame.height - self.height - 20
+        }
     }
     
     @objc func dismissController() {
         self.presentedViewController.dismiss(animated: true, completion: nil)
+    }
+    func setSwipeBarFrame() {
+        containerView!.addSubview(swipeBar)
+        swipeBar.frame = CGRect(origin: CGPoint(x: self.containerView!.frame.width/2 - 20, y: self.containerView!.frame.height+10),
+                           size: CGSize(width: 40, height: 10))
     }
 }
