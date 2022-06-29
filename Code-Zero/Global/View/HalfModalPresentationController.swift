@@ -9,7 +9,6 @@ import UIKit
 
 class HalfModalPresentationController: UIPresentationController {
     
-    var backTapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer()
     let blurEffectView: UIView!
     var check: Bool = false
     
@@ -17,10 +16,15 @@ class HalfModalPresentationController: UIPresentationController {
         blurEffectView = UIView()
         blurEffectView.backgroundColor = .white
         super.init(presentedViewController: presentedViewController, presenting: presentedViewController)
-        backTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissController))
+        
+        let backTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissController))
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissController))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.blurEffectView.isUserInteractionEnabled = true
         self.blurEffectView.addGestureRecognizer(backTapGestureRecognizer)
+        self.blurEffectView.addGestureRecognizer(swipeDown)
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
