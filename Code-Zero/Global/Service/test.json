@@ -25,9 +25,9 @@
             {
                 "id": 22,
                 "isDeleted": false,
-                "createdAt": "2022-05-29T10:38:28.984Z",
-                "updatedAt": "2022-05-29T10:38:28.984Z",
-                "startedAt": "2022-05-30T10:38:28.984Z",
+                "createdAt": "2022-06-27T10:11:23.406Z",
+                "updatedAt": "2022-06-27T10:11:23.406Z",
+                "startedAt": "2022-06-28T10:11:23.406Z",
                 "userId": 20,
                 "name": "원데이 렌즈 사용하기"
             }
@@ -36,9 +36,9 @@
             "myChallenge": {
                 "id": 22,
                 "isDeleted": false,
-                "createdAt": "2022-05-29T10:38:28.984Z",
-                "updatedAt": "2022-05-29T10:38:28.984Z",
-                "startedAt": "2022-05-30T10:38:28.984Z",
+                "createdAt": "2022-06-27T10:11:23.406Z",
+                "updatedAt": "2022-06-27T10:11:23.406Z",
+                "startedAt": "2022-06-28T10:11:23.406Z",
                 "userId": 20,
                 "name": "원데이 렌즈 사용하기"
             },
@@ -46,30 +46,30 @@
                 {
                     "id": 101,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 1,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 },
                 {
                     "id": 102,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 2,
-                    "isFinished": false,
+                    "isFinished": true,
                     "userId": 20
                 },
                 {
                     "id": 103,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 3,
@@ -79,8 +79,8 @@
                 {
                     "id": 104,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 4,
@@ -90,8 +90,8 @@
                 {
                     "id": 105,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 5,
@@ -101,8 +101,8 @@
                 {
                     "id": 106,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 6,
@@ -112,8 +112,8 @@
                 {
                     "id": 107,
                     "name": "🥤 종이컵 쓰지 않기",
-                    "createdAt": "2022-05-29T10:38:28.984Z",
-                    "updatedAt": "2022-05-29T10:38:28.984Z",
+                    "createdAt": "2022-06-27T10:11:23.406Z",
+                    "updatedAt": "2022-06-28T10:38:28.984Z",
                     "isDeleted": false,
                     "myChallengeId": 22,
                     "day": 7,

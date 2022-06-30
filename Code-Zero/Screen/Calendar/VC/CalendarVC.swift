@@ -67,16 +67,14 @@ class CalendarVC: UIViewController {
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         view.addGestureRecognizer(panGesture)
         setView()
         setChallengeJoinView()
         makeButton()
         //        fetchCalendar(id: nil)
-        jsonData(name: "test2")
+        jsonData(name: "test")
         findTodayIsChallengeTest()
     }
     override func viewDidLayoutSubviews() {
@@ -326,11 +324,6 @@ extension CalendarVC {
         }
     }
     override func updateViewConstraints() {
-//        var height: CGFloat = 0.0
-//        height += calendar.frame.height
-//        view.frame.size.height = 800 // 추상적인 숫자 변경 필요
-//        view.frame.origin.y = UIScreen.main.bounds.height - height - 450
-
         view.clipsToBounds = true
         view.layer.cornerRadius = 25
         view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
