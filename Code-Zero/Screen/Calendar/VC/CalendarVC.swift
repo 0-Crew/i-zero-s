@@ -380,9 +380,10 @@ extension CalendarVC {
 // MARK: - Server
 extension CalendarVC {
     private func fetchCalendar(id: Int?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NTM0ODk4MTAsImV4cCI6MTY1NjA4MTgxMCwiaXNzIjoiV1lCIn0.5oevdqhJA_NhURaD3-OOCwbUE92GvcXDndAFPW3vOHE"
-        // swiftlint:enable line_length
+        guard let token = UserDefaultManager.shared.accessToken else {
+            self.changeRootViewToHome()
+            return
+        }
         CalendarService.shared.requestCalendar(myChallengeId: id,
                                                token: token) { [weak self] result in
             switch result {
