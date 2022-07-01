@@ -26,6 +26,11 @@ class ChallengeOpenFirstStepView: LoadXibView, ChallengeOpenStepViewType {
         initView()
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        convenientInputTextField.endEditing(false)
+    }
+
     // MARK: - IBAction
     @IBAction func convenientInputTextFieldEditingChanged(_ sender: UITextField) {
         guard let text = sender.text else {
