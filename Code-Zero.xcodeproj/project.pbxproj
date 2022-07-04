@@ -48,6 +48,7 @@
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
 		195A0F0427CCF266009F0FFD /* UserSettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A0F0327CCF266009F0FFD /* UserSettingService.swift */; };
+		195A8DC028733AD900BEA2EF /* Splash in Resources */ = {isa = PBXBuildFile; fileRef = 195A8DBF28733AD900BEA2EF /* Splash */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
 		195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC717275BD5E500BDECB6 /* SwipeBarView.swift */; };
 		195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */; };
@@ -201,6 +202,7 @@
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
 		195A0F0327CCF266009F0FFD /* UserSettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingService.swift; sourceTree = "<group>"; };
+		195A8DBF28733AD900BEA2EF /* Splash */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Splash; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				195A8DBF28733AD900BEA2EF /* Splash */,
 				6E1A66A728181056008D3DA1 /* AlarmCenter */,
 				1923D91127AFC1C600FE2C87 /* Account */,
 				197A654B276F740600166255 /* SignUp */,
@@ -1048,6 +1051,7 @@
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */,
 				6E85751D276F1967008CDFD7 /* Onboarding.storyboard in Resources */,
+				195A8DC028733AD900BEA2EF /* Splash in Resources */,
 				6E533C1E28292998004F36F8 /* challenge_congratulate.json in Resources */,
 				191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */,
 				6E5B24AF2748BDAA0071C9F2 /* ChallengeView.xib in Resources */,
