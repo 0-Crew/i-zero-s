@@ -9,10 +9,9 @@ import UIKit
 
 class HalfModalPresentationController: UIPresentationController {
     
-    let blurEffectView: UIView!
-    let swipeBar: UIView!
-    var check: Bool = false
-    var height: CGFloat = 0
+    let blurEffectView: UIView
+    let swipeBar: UIView
+    var modalHeight: CGFloat = 0
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         blurEffectView = UIView()
@@ -27,25 +26,25 @@ class HalfModalPresentationController: UIPresentationController {
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.blurEffectView.isUserInteractionEnabled = true
-        self.blurEffectView.addGestureRecognizer(backTapGestureRecognizer)
-        self.blurEffectView.addGestureRecognizer(swipeDown)
+        blurEffectView.isUserInteractionEnabled = true
+        blurEffectView.addGestureRecognizer(backTapGestureRecognizer)
+        blurEffectView.addGestureRecognizer(swipeDown)
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
         
-        height = (self.containerView!.frame.width * 323 / 327) + 308.5
-        if height > self.containerView!.frame.height - 80 {
-            height = self.containerView!.frame.height - 80
+        modalHeight = (self.containerView!.frame.width * 323 / 327) + 308.5
+        if modalHeight > self.containerView!.frame.height - 80 {
+            modalHeight = self.containerView!.frame.height - 80
             return CGRect(origin: CGPoint(x: 0,
-                                          y: self.containerView!.frame.height - height),
+                                          y: self.containerView!.frame.height - modalHeight),
                           size: CGSize(width: self.containerView!.frame.width,
-                                       height: height))
+                                       height: modalHeight))
         }
         return CGRect(origin: CGPoint(x: 0,
-                                      y: self.containerView!.frame.height - height),
+                                      y: self.containerView!.frame.height - modalHeight),
                       size: CGSize(width: self.containerView!.frame.width,
-                                   height: height))
+                                   height: modalHeight))
     } 
     
     override func presentationTransitionWillBegin() {
@@ -69,7 +68,7 @@ class HalfModalPresentationController: UIPresentationController {
         super.containerViewDidLayoutSubviews()
         blurEffectView.frame = containerView!.bounds
         UIView.animate(withDuration: 0.29) {
-            self.swipeBar.frame.origin.y = self.containerView!.frame.height - self.height - 20
+            self.swipeBar.frame.origin.y = self.containerView!.frame.height - self.modalHeight - 20
         }
     }
     
