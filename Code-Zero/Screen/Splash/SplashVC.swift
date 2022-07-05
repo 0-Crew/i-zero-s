@@ -12,7 +12,7 @@ import SnapKit
 class SplashVC: UIViewController {
 
     // MARK: - Property
-    private let animationView = AnimationView(name: "loading")
+    private let animationView = AnimationView(name: "splash")
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class SplashVC: UIViewController {
             $0.height.equalTo(120)
             $0.centerX.centerY.equalToSuperview()
         }
+        runSplashLottie()
     }
     private func runSplashLottie() {
         animationView.play(fromProgress: 0,
