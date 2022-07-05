@@ -50,6 +50,7 @@
 		195A8DC328733BD900BEA2EF /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A8DC228733BD900BEA2EF /* SplashVC.swift */; };
 		195A8DC528733BEE00BEA2EF /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195A8DC428733BEE00BEA2EF /* Splash.storyboard */; };
 		195A8DC728733CE500BEA2EF /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 195A8DC628733CE500BEA2EF /* loading.json */; };
+		195A8DC928745A4200BEA2EF /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 195A8DC828745A4200BEA2EF /* splash.json */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
 		195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC717275BD5E500BDECB6 /* SwipeBarView.swift */; };
 		195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */; };
@@ -205,6 +206,7 @@
 		195A8DC228733BD900BEA2EF /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		195A8DC428733BEE00BEA2EF /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		195A8DC628733CE500BEA2EF /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		195A8DC828745A4200BEA2EF /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				195A8DC228733BD900BEA2EF /* SplashVC.swift */,
+				195A8DC828745A4200BEA2EF /* splash.json */,
 				195A8DC428733BEE00BEA2EF /* Splash.storyboard */,
 			);
 			path = Splash;
@@ -1055,6 +1058,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
+				195A8DC928745A4200BEA2EF /* splash.json in Resources */,
 				191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
