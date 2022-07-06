@@ -9,6 +9,7 @@ import UIKit
 import FSCalendar
 import SnapKit
 
+// MARK: - Chalender Struct (CalendarVC, CalendarCell)
 struct ChallengeData {
     let subject: String
     var list: [DayChallengeState]?
@@ -72,8 +73,7 @@ class CalendarVC: UIViewController {
         setView()
         setChallengeJoinView()
         makeButton()
-        //        fetchCalendar(id: nil)
-        jsonData(name: "test")
+        fetchCalendar(id: nil)
         findTodayIsChallengeTest()
     }
     override func viewDidLayoutSubviews() {
@@ -118,7 +118,6 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                   for date: Date,
                   at position: FSCalendarMonthPosition) {
         // willDisplay: cell 이 화면에 처음 표시될 때 call (달이 바뀔 때 마다도 호출)
-        // 크기 변환?
         configure(cell: cell, for: date, at: position)
     }
     func calendar(_ calendar: FSCalendar,
@@ -132,14 +131,12 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
-        // 서버 통신 한번 더 id 값 넣어서 (근데 먼저 list 있나 확인 한 후 해도 좋을듯?)
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         if let challengeId = challengeDates.filter({ $0.date == stringToDate }).map({ $0.id }).first {
             selectedChallege = challengeDates.filter { $0.id == challengeId }.map { $0.date }
             if challengeContext.filter({ $0.id == challengeId })[0].list == nil {
                 // 서버 통신 한번 더 (왜냐면 이미 있으면 다시 안불러두 됩니다..!!
-//                fetchCalendar(id: challengeId)
-                jsonData(name: "beforeData")
+                fetchCalendar(id: challengeId)
             }
         }
         selectedChallege = date == calendar.today && !challengeDates.contains { $0.date == stringToDate } ?
@@ -194,11 +191,6 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
         let challengeCell = (cell as? ChallengeCalendarCell)
-//        guard position == .current else {
-//            // 요기다!!!!
-//            challengeCell?.cellDayType = .days(.none)
-//            return
-//        }
 
         challengeCell?.cellDayType = date == calendar.today ? .today(.none) : .days(.none)
 
@@ -380,27 +372,13 @@ extension CalendarVC {
             }
         }
     }
-    private func jsonData(name: String) {
-        do {
-            let decoder = JSONDecoder()
-            guard let response: NSDataAsset = NSDataAsset(name: name) else { return }
-            let body = try decoder.decode(
-                GenericResponse<CalendarData>.self,
-                from: response.data
-            )
-            guard let data = body.data else { return }
-            self.serverData = data
-            makeCalendarData(data: data)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
     private func makeCalendarData(data: CalendarData) {
         let contextCount = challengeContext.count
         switch contextCount {
         case 0: // 캘린더 서버 연결 첫번째 일 때
             challengeContext = data.challengeContext
             var challengeDatesTest: [ChallengeList] = []
+            guard data.myChallenges.count > 0 else { return }
             for index in Range(0...data.myChallenges.count-1) {
                 let multiArray: [ChallengeList] = data.myChallenges[index].dates.map({
                     return ChallengeList(date: $0, id: data.myChallenges[index].id, color: (index+1)%6)

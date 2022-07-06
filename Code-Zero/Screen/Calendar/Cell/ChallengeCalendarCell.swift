@@ -125,14 +125,14 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .today:
             switch border {
             case .none:
-                titleLabel.font = isClick ? .spoqaHanSansNeo(size: 14, family: .bold) : .spoqaHanSansNeo(size: 14, family: .medium)
+                titleLabel.font = isClick ?
+                    .spoqaHanSansNeo(size: 14, family: .bold) : .spoqaHanSansNeo(size: 14, family: .medium)
                 titleLabel.textColor = isClick ? .darkGray2 : .gray1
                 underLine.backgroundColor = isClick ? .darkGray2 : .white
             default:
                 titleLabel.font = .spoqaHanSansNeo(size: 14, family: .bold)
                 titleLabel.textColor = .white
                 underLine.backgroundColor = .white
-                
             }
         case .days(let border):
             switch border {
@@ -169,7 +169,7 @@ class ChallengeCalendarCell: FSCalendarCell {
     private func setBorderType(border: CalendarBoarderType) {
         switch border {
         case .leftBorder(let color):
-            let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -3)
+            let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -6)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
@@ -182,13 +182,13 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .middle(let color):
             fillColor = color == -1 ? UIColor.orangeMain : colorChip[color]
             [topBorderLayer, bottomBorderLayer, selectionFillLayer].forEach {
-                $0.frame = getLayerFrame(xPoint: 0, yPoint: 0, width: 2, height: -3)
+                $0.frame = getLayerFrame(xPoint: 0, yPoint: 0, width: 4, height: -6)
                 $0.path = UIBezierPath(rect: $0.bounds).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.29, strokeColor: fillColor)
             setStrokeStyle(layer: bottomBorderLayer, startPoint: 0.5, endPoint: 0.79, strokeColor: fillColor)
         case .rightBorder(let color):
-            let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -3)
+            let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -6)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
@@ -199,7 +199,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.77, strokeColor: fillColor)
         case .bothBorder(let color):
-            let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -3)
+            let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -6)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
