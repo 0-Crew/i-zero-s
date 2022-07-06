@@ -13,10 +13,15 @@ class SplashVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orangeMain
+        checkIsUser()
     }
 
     // MARK: - Check User
     private func checkIsUser() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            let isUser: Bool = UserDefaultManager.shared.accessToken != nil
+            self.changeRootViewController(isUser)
+        })
     }
     private func changeRootViewController(_ isUser: Bool) {
         let root: String = isUser ? "Challenge" : "Home"
