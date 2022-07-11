@@ -38,8 +38,9 @@
                             <rect key="frame" x="0.0" y="105" width="194" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="4Oc-FP-jCB"/>
                                 <constraint firstAttribute="width" constant="194" id="AGW-xi-nn3"/>
-                                <constraint firstAttribute="width" secondItem="rl2-oS-BUP" secondAttribute="height" multiplier="194:36" id="s9f-ih-bKw"/>
+                                <constraint firstAttribute="height" constant="36" id="JpT-ZN-jLR"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="16"/>
                             <color key="tintColor" systemColor="systemPurpleColor"/>
