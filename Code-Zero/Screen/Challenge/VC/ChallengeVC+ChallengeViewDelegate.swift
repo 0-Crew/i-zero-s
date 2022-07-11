@@ -63,6 +63,8 @@ extension ChallengeVC: EmptyChallengeViewDelegate {
         // TODO: 캘린더 뷰 여는 부분 연결
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
         let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+        calendarVC.modalPresentationStyle = .custom
+        calendarVC.transitioningDelegate = self
         present(calendarVC, animated: true, completion: nil)
     }
 
