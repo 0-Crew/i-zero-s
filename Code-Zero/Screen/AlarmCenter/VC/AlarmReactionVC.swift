@@ -13,9 +13,9 @@ import SnapKit
 extension AlarmType {
     var reactionBackgroundViewColor: UIColor? {
         switch self {
-        case .totalCheeredUp, .beCheered:
+        case .totalCheered, .beCheered:
             return .black
-        case .totalCelebrated, .beCelebrated:
+        case .totalCongratulated, .beCongratulated:
             return .white
         default:
             return nil
@@ -24,9 +24,9 @@ extension AlarmType {
 
     var reactionAnimationJsonFileName: String {
         switch self {
-        case .totalCheeredUp, .beCheered:
+        case .totalCheered, .beCheered:
             return "challenge_cheerup"
-        case .totalCelebrated, .beCelebrated:
+        case .totalCongratulated, .beCongratulated:
             return "challenge_congratulate"
         default:
             return ""
@@ -35,9 +35,9 @@ extension AlarmType {
 
     var reactionExplainText: String {
         switch self {
-        case .totalCheeredUp, .beCheered:
+        case .totalCheered, .beCheered:
             return "내 챌린지를 응원해요!"
-        case .totalCelebrated, .beCelebrated:
+        case .totalCongratulated, .beCongratulated:
             return "챌린지 성공을 축하해줬어요!"
         default:
             return ""
@@ -46,9 +46,9 @@ extension AlarmType {
 
     var reactionLabelTextColor: UIColor? {
         switch self {
-        case .totalCheeredUp, .beCheered:
+        case .totalCheered, .beCheered:
             return .white
-        case .totalCelebrated, .beCelebrated:
+        case .totalCongratulated, .beCongratulated:
             return .black
         default:
             return nil
@@ -57,7 +57,7 @@ extension AlarmType {
 
     var totalLookButtonIsHidden: Bool {
         switch self {
-        case .totalCheeredUp, .totalCelebrated:
+        case .totalCheered, .totalCongratulated:
             return false
         default:
             return true
@@ -66,9 +66,9 @@ extension AlarmType {
 
     var totalLookButtonBackgroundColor: UIColor? {
         switch self {
-        case .totalCelebrated:
+        case .totalCongratulated:
             return .white
-        case .totalCheeredUp:
+        case .totalCheered:
             return .orangeMain
         default:
             return nil
@@ -77,9 +77,9 @@ extension AlarmType {
 
     var totalLookButtonTextColor: UIColor? {
         switch self {
-        case .totalCelebrated:
+        case .totalCongratulated:
             return .orangeMain
-        case .totalCheeredUp:
+        case .totalCheered:
             return .white
         default:
             return nil
@@ -88,9 +88,9 @@ extension AlarmType {
 
     var totalLookButtonText: String {
         switch self {
-        case .totalCelebrated:
+        case .totalCongratulated:
             return "축하해 준 친구들 모두보기"
-        case .totalCheeredUp:
+        case .totalCheered:
             return "응원해 준 친구들 모두보기"
         default:
             return ""

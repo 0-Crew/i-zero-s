@@ -59,3 +59,34 @@ extension Convenience {
         return .willChallenge
     }
 }
+
+extension Convenience {
+
+    func getDueDate(challengeStartDate: Date) -> Date? {
+        guard let day = day else { return nil }
+        return challengeStartDate.getDateIntervalBy(intervalDay: day - 1)
+    }
+
+    func isToday(challengeStartDate: Date) -> Bool {
+        guard let dueDate = getDueDate(challengeStartDate: challengeStartDate) else {
+            return false
+        }
+
+        return dueDate.isToday
+    }
+    func mapChallengeState(challengeStartDate: Date) -> ChallengeState? {
+        guard
+            let isFinished = isFinished,
+            let dueDate = getDueDate(challengeStartDate: challengeStartDate)
+        else { return nil }
+        if isToday(challengeStartDate: challengeStartDate) {
+            return isFinished ? .challengingCompleted : .challengingNotCompleted
+        }
+
+        if Date() > dueDate {
+            return isFinished ? .didChallengeCompleted : .didChallengeNotCompleted
+        }
+
+        return .willChallenge
+    }
+}
