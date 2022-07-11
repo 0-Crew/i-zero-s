@@ -26,9 +26,6 @@
 		19111514284231E500438FF0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 19111513284231E500438FF0 /* SnapKit */; };
 		191115172842321000438FF0 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 191115162842321000438FF0 /* Gedatsu */; };
 		1911151A2842323500438FF0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 191115192842323500438FF0 /* Lottie */; };
-		19082CB82843A7DC00934D96 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19082CB72843A7DC00934D96 /* CalendarService.swift */; };
-		19082CBA28451BDD00934D96 /* beforeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 19082CB928451BDD00934D96 /* beforeData.json */; };
-		19082CBC2845249200934D96 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 19082CBB2845249200934D96 /* empty.json */; };
 		191A4E9D27637A12005D0525 /* BottleWorld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9C27637A12005D0525 /* BottleWorld.storyboard */; };
 		191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191A4E9F276450EC005D0525 /* FollowEmptyView.xib */; };
 		191A4EA527650A41005D0525 /* FollowEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191A4EA427650A41005D0525 /* FollowEmptyView.swift */; };
@@ -834,11 +831,6 @@
 				6E1D336E27C2AC9D00746CD5 /* ChallengeOpenService.swift */,
 				190448DC27CB6274004E8A10 /* BottleWorldService.swift */,
 				195A0F0327CCF266009F0FFD /* UserSettingService.swift */,
-				19082CB72843A7DC00934D96 /* CalendarService.swift */,
-				D20A6665284449DF00AB3E98 /* test.json */,
-				19082CB928451BDD00934D96 /* beforeData.json */,
-				19082CBB2845249200934D96 /* empty.json */,
-				D2E3C98528488A0500866903 /* test2.json */,
 				6E7919382861B63B00041201 /* MainChallengeService.swift */,
 				6E2CA57728677D400000AACF /* UserDefaultManager.swift */,
 				19082CB72843A7DC00934D96 /* CalendarService.swift */,
