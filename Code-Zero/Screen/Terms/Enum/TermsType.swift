@@ -382,14 +382,43 @@ extension TermsType {
             """
         case .openSource:
             return """
-            The White Rabbit put on his spectacles.  "Where shall I begin,
-            please your Majesty?" he asked.
+            FSCalendar
+            https://github.com/WenchaoD/FSCalendar
+            ・ Copyright (c) 2013-2016 FSCalendar (https://github.com/WenchaoD/FSCalendar)
+            ・ MIT License
 
-            "Begin at the beginning," the King said gravely, "and go on
-            till you come to the end; then stop."
+            Gedatsu
+            https://github.com/bannzai/Gedatsu
+            ・ Copyright (c) 2020 bannzai
+            ・ MIT License
+
+            Kakao SDK
+            https://github.com/kakao/kakao-ios-sdk
+            ・ Copyright 2014-2016 Kakao Corp.
+            ・ Apache License 2.0
+
+            Lottie
+            https://github.com/airbnb/lottie-ios
+            ・ Copyright 2018 Airbnb, Inc.
+            ・ Apache License 2.0
+
+            Moya
+            https://github.com/Moya/Moya
+            ・ Copyright (c) 2014-present Artsy, Ash Furrow
+            ・ MIT License
+
+            SnapKit
+            https://github.com/SnapKit/SnapKit
+            ・ Copyright (c) 2011-Present SnapKit Team - https://github.com/SnapKit
+            ・ MIT License
+
+            SwiftLint
+            https://github.com/realm/SwiftLint
+            ・ Copyright (c) 2020 Realm Inc.
+            ・ MIT License
+
             """
         }
     }
-
-
+    // swiftlint:enable line_length
 }
