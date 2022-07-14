@@ -8,35 +8,36 @@
 import Foundation
 
 enum TermsType {
-    case PrivacyPolicy
-    case TermsOfService
-    case OpenSource
+    case privacyPolicy
+    case termsOfService
+    case openSource
 }
 
 extension TermsType {
     var title: String {
         switch self {
-        case .PrivacyPolicy:
+        case .privacyPolicy:
             return "이용약관"
-        case .TermsOfService:
+        case .termsOfService:
             return "개인정보정책"
-        case .OpenSource:
+        case .openSource:
             return "오픈소스"
         }
     }
     var contentTitle: String {
         switch self {
-        case .PrivacyPolicy:
+        case .privacyPolicy:
             return "워시유어보틀 서비스 이용약관"
-        case .TermsOfService:
+        case .termsOfService:
             return "개인정보 처리 방침"
-        case .OpenSource:
-            return "워시유어보틀 오픈소스"
+        case .openSource:
+            return "오픈소스 라이선스"
         }
     }
+    // swiftlint:disable line_length
     var message: String {
         switch self {
-        case .PrivacyPolicy:
+        case .privacyPolicy:
             return """
             제1장 총칙
             제1조 (목적)
@@ -248,7 +249,7 @@ extension TermsType {
             제1조 (개정일)
             이 약관은 2021년 12월 1일부터 시행합니다.
             """
-        case .TermsOfService:
+        case .termsOfService:
             return """
             < 워시유어보틀 >('[https://blog.naver.com/heey1792'이하](https://blog.naver.com/heey1792'%EC%9D%B4%ED%95%98) '워시유어보틀')은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
             ○ 이 개인정보처리방침은 2021년 12월 1부터 적용됩니다.
@@ -379,7 +380,7 @@ extension TermsType {
 
             ① 이 개인정보처리방침은 2021년 12월 1부터 적용됩니다.
             """
-        case .OpenSource:
+        case .openSource:
             return """
             The White Rabbit put on his spectacles.  "Where shall I begin,
             please your Majesty?" he asked.
