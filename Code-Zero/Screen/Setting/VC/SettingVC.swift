@@ -88,22 +88,25 @@ extension SettingVC {
 
     @objc func touchUpToTOS() {
         let storyboard = UIStoryboard(name: "Terms", bundle: nil)
-        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC") as? TermsVC else { return }
-        serviceVC.type = .TermsOfService
+        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC")
+                as? TermsVC else { return }
+        serviceVC.type = .termsOfService
         navigationController?.pushViewController(serviceVC, animated: true)
     }
 
     @objc func touchUpToPrivacyPolicy() {
         let storyboard = UIStoryboard(name: "Terms", bundle: nil)
-        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC") as? TermsVC else { return }
-        serviceVC.type = .PrivacyPolicy
+        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC")
+                as? TermsVC else { return }
+        serviceVC.type = .privacyPolicy
         navigationController?.pushViewController(serviceVC, animated: true)
     }
 
     @objc func touchUpToOpenSource() {
         let storyboard = UIStoryboard(name: "Terms", bundle: nil)
-        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC") as? TermsVC else { return }
-        serviceVC.type = .OpenSource
+        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC")
+                as? TermsVC else { return }
+        serviceVC.type = .openSource
         navigationController?.pushViewController(serviceVC, animated: true)
     }
 
@@ -121,7 +124,7 @@ extension SettingVC {
         settingListView[2].addGestureRecognizer(privatePolicy)
 
         let openSource = UITapGestureRecognizer(target: self,
-                                                   action: #selector(touchUpToPrivacyPolicy))
+                                                   action: #selector(touchUpToOpenSource))
         settingListView[3].addGestureRecognizer(openSource)
     }
 }
