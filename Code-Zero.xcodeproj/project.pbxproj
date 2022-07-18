@@ -48,6 +48,7 @@
 		194251A7274A3694007E86B8 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */; };
 		19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19494258274FC5FB007CAD63 /* ChallengeListView.xib */; };
 		195A0F0427CCF266009F0FFD /* UserSettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A0F0327CCF266009F0FFD /* UserSettingService.swift */; };
+		195A8DCB287C501500BEA2EF /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A8DCA287C501500BEA2EF /* DeleteUser.swift */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
 		195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC717275BD5E500BDECB6 /* SwipeBarView.swift */; };
 		195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */; };
@@ -201,6 +202,7 @@
 		194251A6274A3694007E86B8 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		19494258274FC5FB007CAD63 /* ChallengeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeListView.xib; sourceTree = "<group>"; };
 		195A0F0327CCF266009F0FFD /* UserSettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingService.swift; sourceTree = "<group>"; };
+		195A8DCA287C501500BEA2EF /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 				6E1D337427C2B35000746CD5 /* Convenience.swift */,
 				6E1D337227C2B30C00746CD5 /* UserChallenge.swift */,
 				190448DE27CB63EE004E8A10 /* BottleWorldUser.swift */,
+				195A8DCA287C501500BEA2EF /* DeleteUser.swift */,
 				D20A664C283DCCDF00AB3E98 /* SettingData.swift */,
 			);
 			path = Model;
@@ -1145,6 +1148,7 @@
 				A2B7BDD52714214300F1DB1F /* HomeVC.swift in Sources */,
 				A2B7BDD12714214300F1DB1F /* AppDelegate.swift in Sources */,
 				A25C8BF0272E8ABB00D2BA78 /* UIView+Extension.swift in Sources */,
+				195A8DCB287C501500BEA2EF /* DeleteUser.swift in Sources */,
 				6EF7D9C627A0242500651DDC /* OnboardingStepFourVC.swift in Sources */,
 				A25C8BF6272E9F9C00D2BA78 /* Date+Extension.swift in Sources */,
 				A25C8BF8272E9FCB00D2BA78 /* String+Extension.swift in Sources */,
@@ -1395,7 +1399,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = HAWSBW2KW5;
+				DEVELOPMENT_TEAM = DUQE66MABG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "워시유어보틀";
@@ -1426,7 +1430,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Code-Zero/Code-Zero.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = HAWSBW2KW5;
+				DEVELOPMENT_TEAM = DUQE66MABG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Code-Zero/Support/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "워시유어보틀";
