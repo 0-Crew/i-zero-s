@@ -54,6 +54,7 @@
 		195A8DC328733BD900BEA2EF /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A8DC228733BD900BEA2EF /* SplashVC.swift */; };
 		195A8DC528733BEE00BEA2EF /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195A8DC428733BEE00BEA2EF /* Splash.storyboard */; };
 		195A8DC728733CE500BEA2EF /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 195A8DC628733CE500BEA2EF /* loading.json */; };
+		195A8DCB287C501500BEA2EF /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A8DCA287C501500BEA2EF /* DeleteUser.swift */; };
 		195AC716275BCBC500BDECB6 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC715275BCBC500BDECB6 /* Array+Extension.swift */; };
 		195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC717275BD5E500BDECB6 /* SwipeBarView.swift */; };
 		195AC71C275BD71F00BDECB6 /* TopTabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */; };
@@ -216,6 +217,7 @@
 		195A8DC228733BD900BEA2EF /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		195A8DC428733BEE00BEA2EF /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		195A8DC628733CE500BEA2EF /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		195A8DCA287C501500BEA2EF /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		195AC715275BCBC500BDECB6 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		195AC717275BD5E500BDECB6 /* SwipeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBarView.swift; sourceTree = "<group>"; };
 		195AC71A275BD71F00BDECB6 /* TopTabBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCell.swift; sourceTree = "<group>"; };
