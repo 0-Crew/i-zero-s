@@ -166,6 +166,7 @@ class ChallengeCalendarCell: FSCalendarCell {
         layer.strokeStart = startPoint
         layer.strokeEnd = endPoint
     }
+    // swiftlint:disable function_body_length
     private func setBorderType(border: CalendarBoarderType) {
         switch border {
         case .leftBorder(let color):
@@ -214,4 +215,5 @@ class ChallengeCalendarCell: FSCalendarCell {
             fillColor = .clear
         }
     }
+    // swiftlint:enable function_body_length
 }

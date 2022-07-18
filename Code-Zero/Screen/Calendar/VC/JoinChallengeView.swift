@@ -9,25 +9,27 @@ import UIKit
 
 class JoinChallengeView: UIView { // 새로운 챌린지 참여하기 View
 
+    // MARK: - Property
     var user: Bool = true
-    
+
+    // MARK: - @IBOutlet
     @IBOutlet weak var joinButton: UIButton!
-    
+
+    // MARK: - init Function
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
     }
-
     init(frame: CGRect, isUser: Bool) {
         self.user = isUser
         super.init(frame: frame)
         loadView()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
+    // MARK: - View Layout Function
     private func loadView() {
         guard let view = Bundle.main.loadNibNamed("JoinChallengeView",
                                                   owner: self,
