@@ -44,12 +44,22 @@ class UserLoginService {
         }
     }
     public func deleteUser(token: String,
-                           completion: @escaping (NetworkResult<Bool>) -> Void) {
+                           completion: @escaping (NetworkResult<String>) -> Void) {
         service.request(.deleteAuth(token: token)) {
             result in
             switch result {
-            case .success:
-                completion(.success(true))
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<DeleteUser>.self,
+                        from: response.data
+                    )
+                    guard let data = body.data?.user.provider else { return }
+                    completion(.success(data))
+                } catch let error {
+                    debugPrint(error)
+                }
             case .failure(let error):
                 completion(.serverErr)
                 debugPrint(error)
