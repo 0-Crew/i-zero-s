@@ -41,13 +41,50 @@ class CalendarService {
     static let shared = CalendarService()
     private lazy var service = MoyaProvider<APITarget>(plugins: [MoyaLoggingPlugin()])
 
-    public func requestCalendar(
+    public func requestMyCalendar(
         myChallengeId: Int?,
         token: String,
         completion: @escaping (NetworkResult<CalendarData>) -> Void
     ) {
-        service.request(.calendar(id: myChallengeId,
+        service.request(.myCalendar(challengeId: myChallengeId,
                                   token: token)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<CalendarData>.self,
+                        from: response.data
+                    )
+                    guard let data = body.data else { return }
+                    completion(.success(data))
+                } catch let error {
+                    debugPrint(error)
+                }
+            case .failure(let error):
+                let errorCode = error.response?.statusCode
+                switch errorCode {
+                case 400:
+                    completion(.requestErr("duplicateNick"))
+                case 500:
+                    completion(.networkFail)
+                default:
+                    completion(.serverErr)
+                }
+                debugPrint(error)
+            }
+        }
+    }
+
+    public func requestFollowerCalendar(
+        myChallendgeId: Int?,
+        userId: Int,
+        token: String,
+        completion: @escaping (NetworkResult<CalendarData>) -> Void
+    ) {
+        service.request(.userCalendar(challengeId: myChallendgeId,
+                                      userId: userId,
+                                      token: token)) { result in
             switch result {
             case .success(let response):
                 do {

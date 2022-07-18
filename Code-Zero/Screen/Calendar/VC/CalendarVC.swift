@@ -27,9 +27,9 @@ struct ChallengeList {
     let color: Int
 }
 
-enum CalendarUser {
+enum CalendarUser: Equatable {
     case user
-    case follower
+    case follower(id: Int)
 }
 
 class CalendarVC: UIViewController {
@@ -73,8 +73,6 @@ class CalendarVC: UIViewController {
         setView()
         setChallengeJoinView()
         makeButton()
-        fetchCalendar(id: nil)
-        findTodayIsChallengeTest()
     }
     override func viewDidLayoutSubviews() {
         if !hasSetPointOrigin {
@@ -95,17 +93,6 @@ extension CalendarVC {
             if let challengeId = challengeDates.filter({ $0.date == stringToDate }).map({ $0.id }).first {
                 selectedChallege = challengeDates.filter { $0.id == challengeId }.map { $0.date }
             }
-        }
-    }
-    private func findTodayIsChallengeTest() {
-        guard let serverData = serverData else { return }
-        let selected = serverData.selectedChallenge
-        guard let today = selected.myChallenge?.startedAt.toKoreaData() else { return }
-        guard let conveninces = selected.myInconveniences else { return }
-        selectedChallege = conveninces.map {
-            today.getDateIntervalBy(
-                intervalDay: ($0.day ?? 0) - 1
-            )?.datePickerToString(format: "yyyy-MM-dd") ?? ""
         }
     }
 }
@@ -136,7 +123,12 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
             selectedChallege = challengeDates.filter { $0.id == challengeId }.map { $0.date }
             if challengeContext.filter({ $0.id == challengeId })[0].list == nil {
                 // 서버 통신 한번 더 (왜냐면 이미 있으면 다시 안불러두 됩니다..!!
-                fetchCalendar(id: challengeId)
+                switch user {
+                case .user:
+                    fetchMyCalendar(challengeId: challengeId)
+                case .follower(let id):
+                    fetchFollowerCalendar(challengeId: challengeId, id: id)
+                }
             }
         }
         selectedChallege = date == calendar.today && !challengeDates.contains { $0.date == stringToDate } ?
@@ -278,6 +270,13 @@ extension CalendarVC {
         calendar.appearance.todayColor = .clear
         calendar.appearance.todaySelectionColor = .none
         calendar.select(calendar.today) // 처음 view open 시 오늘 날짜 선택
+
+        switch user {
+        case .user:
+            fetchMyCalendar(challengeId: nil)
+        case .follower(let id):
+            fetchFollowerCalendar(challengeId: nil, id: id)
+        }
     }
     private func makeButton() {
         view.addSubview(leftMonthButton)
@@ -350,13 +349,36 @@ extension CalendarVC {
 
 // MARK: - Server
 extension CalendarVC {
-    private func fetchCalendar(id: Int?) {
+    private func fetchMyCalendar(challengeId: Int?) {
         guard let token = UserDefaultManager.shared.accessToken else {
             self.changeRootViewToHome()
             return
         }
-        CalendarService.shared.requestCalendar(myChallengeId: id,
-                                               token: token) { [weak self] result in
+        CalendarService.shared.requestMyCalendar(myChallengeId: challengeId,
+                                                 token: token) { [weak self] result in
+            switch result {
+            case .success(let calendar):
+                self?.serverData = calendar
+                self?.makeCalendarData(data: calendar)
+            case .requestErr(let error):
+                print(error)
+            case .serverErr:
+                // 토큰 만료(자동 로그아웃 느낌..)
+                self?.changeRootViewToHome()
+            case .networkFail:
+                // TODO: 서버 자체 에러 - 서버 점검 중 popup 제작?
+                break
+            }
+        }
+    }
+    private func fetchFollowerCalendar(challengeId: Int?, id: Int) {
+        guard let token = UserDefaultManager.shared.accessToken else {
+            self.changeRootViewToHome()
+            return
+        }
+        CalendarService.shared.requestFollowerCalendar(myChallendgeId: challengeId,
+                                                       userId: id,
+                                                       token: token) { [weak self] result in
             switch result {
             case .success(let calendar):
                 self?.serverData = calendar
@@ -388,11 +410,9 @@ extension CalendarVC {
             challengeDates = challengeDatesTest
         default: // 캘린더 서버 연결 2번째 이상
             let validData = data.challengeContext.filter { $0.list != nil }
-            for index in 0...challengeContext.count-1 {
-                if challengeContext[index].id == validData[0].id {
-                    challengeContext[index].list = validData[0].list
-                    break
-                }
+            for index in 0...challengeContext.count-1 where challengeContext[index].id == validData[0].id {
+                challengeContext[index].list = validData[0].list
+                break
             }
         }
     }
