@@ -178,7 +178,8 @@ class ChallengeVC: UIViewController {
 
     @IBAction func didCalendarButtonTap() {
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
-        let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+        guard let calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC")
+                as? CalendarVC else { return }
         calendarVC.modalPresentationStyle = .custom
         calendarVC.transitioningDelegate = self
         present(calendarVC, animated: true, completion: nil)
