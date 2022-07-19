@@ -11,17 +11,25 @@ class JoinChallengeView: UIView { // 새로운 챌린지 참여하기 View
 
     // MARK: - Property
     var user: Bool = true
+    var joinChallenge: (() -> Void)?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var joinButton: UIButton!
 
+    @IBAction func joinButtonDidTap(_ sender: UIButton) {
+        guard let joinChallenge = joinChallenge else {
+            return
+        }
+        joinChallenge()
+    }
     // MARK: - init Function
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
     }
-    init(frame: CGRect, isUser: Bool) {
+    init(frame: CGRect, isUser: Bool, join: (() -> Void)?) {
         self.user = isUser
+        self.joinChallenge = join
         super.init(frame: frame)
         loadView()
     }

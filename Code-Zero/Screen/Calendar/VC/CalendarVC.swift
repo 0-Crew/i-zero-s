@@ -341,7 +341,8 @@ extension CalendarVC {
                                                                      y: 0,
                                                                      width: view.frame.width-40,
                                                                      height: 167),
-                                                       isUser: user == .user)
+                                                       isUser: user == .user,
+                                                       join: joinButtonDidTap)
 
         challengeView.subviews[safe: 0]?.removeFromSuperview()
         challengeView.addSubview(todayJoinChallengeView)
