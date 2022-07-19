@@ -358,7 +358,7 @@ extension CalendarVC {
 // MARK: - Server
 extension CalendarVC {
     private func fetchMyCalendar(challengeId: Int?) {
-        guard let token = UserDefaultManager.shared.accessToken else {
+        guard let token = accessToken else {
             self.changeRootViewToHome()
             return
         }
@@ -380,7 +380,7 @@ extension CalendarVC {
         }
     }
     private func fetchFollowerCalendar(challengeId: Int?, id: Int) {
-        guard let token = UserDefaultManager.shared.accessToken else {
+        guard let token = accessToken else {
             self.changeRootViewToHome()
             return
         }
