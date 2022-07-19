@@ -61,6 +61,7 @@ class CalendarVC: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     var user: CalendarUser = .user
+    var challengeJoin: (() -> Void)?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var scrollView: UIView!
@@ -344,6 +345,12 @@ extension CalendarVC {
 
         challengeView.subviews[safe: 0]?.removeFromSuperview()
         challengeView.addSubview(todayJoinChallengeView)
+    }
+    @objc private func joinButtonDidTap() {
+        guard let challengeJoin = challengeJoin else { return }
+        self.dismiss(animated: true) {
+            challengeJoin()
+        }
     }
 }
 
