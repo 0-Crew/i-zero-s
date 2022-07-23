@@ -32,7 +32,7 @@ class UserDefaultManager {
 
     // MARK: - Provider
     internal var provider: String? {
-        return  UserDefaults.standard.string(forKey: "provider")
+        return UserDefaults.standard.string(forKey: "provider")
     }
 
     internal func saveProvider(provider: String) {
