@@ -108,7 +108,7 @@ extension HomeVC {
         }
     }
     private func kakaoLoginSuccess(token: String) {
-        UserApi.shared.me() {(user, error) in
+        UserApi.shared.me {(user, error) in
             if let error = error {
                 print(error) }
             if let user = user {
