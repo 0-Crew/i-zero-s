@@ -58,6 +58,7 @@ class CalendarVC: UIViewController {
             selectedChallege != [] ? setChallengeListView() : setChallengeJoinView()
         }
     }
+    private var selectedDate: Date?
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     var user: CalendarUser = .user
@@ -119,6 +120,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // didSelect : cell 미선택 -> 선택 시 호출
+        selectedDate = date
         let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
         if let challengeId = challengeDates.filter({ $0.date == stringToDate }).map({ $0.id }).first {
             selectedChallege = challengeDates.filter { $0.id == challengeId }.map { $0.date }
@@ -132,9 +134,7 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                 }
             }
         }
-        selectedChallege = date == calendar.today && !challengeDates.contains { $0.date == stringToDate } ?
-        [] : selectedChallege
-        configureVisibleCells()
+        setSelectedChallenge(date: date)
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date) {
         // didDeselect : cell 선택 -> 미선택 시 호출
@@ -181,6 +181,12 @@ extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelega
                 configure(cell: cell, for: date, at: position)
             }
         }
+    }
+    func setSelectedChallenge(date: Date) {
+        let stringToDate = date.datePickerToString(format: "yyyy-MM-dd")
+        selectedChallege = date == calendar.today && !challengeDates.contains { $0.date == stringToDate } ?
+        [] : selectedChallege
+        configureVisibleCells()
     }
     private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
         let challengeCell = (cell as? ChallengeCalendarCell)
@@ -423,6 +429,10 @@ extension CalendarVC {
                 break
             }
         }
+        calendar.reloadData()
+        calendar.reloadInputViews()
+        guard let selectedDate = selectedDate else { return }
+        setSelectedChallenge(date: selectedDate)
     }
     private func changeRootViewToHome() {
         let storybard = UIStoryboard(name: "Home", bundle: nil)
