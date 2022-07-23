@@ -20,23 +20,14 @@ class SplashVC: UIViewController {
 
     // MARK: - Check User
     private func kakaoTokenRefresh() {
-        guard let provider = provider,
-              provider == "kakao" else {
-            checkIsUser()
-            return
-        }
         if AuthApi.hasToken() {
             UserApi.shared.accessTokenInfo { (_, error) in
                 if error != nil {
                     UserDefaultManager.shared.removeAccessToken()
-                    UserDefaultManager.shared.removeProvider()
-                    self.checkIsUser()
-                } else {
-                    // 토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-                    self.checkIsUser()
                 }
             }
         }
+        self.checkIsUser()
     }
     private func checkIsUser() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {

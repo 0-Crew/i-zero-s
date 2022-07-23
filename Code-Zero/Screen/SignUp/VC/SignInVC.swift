@@ -54,7 +54,6 @@ extension SignInVC {
             switch result {
             case .success(let data):
                 data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
-                UserDefaultManager.shared.saveProvider(provider: data.type)
             case .requestErr(let error):
                 print(error)
             case .serverErr:

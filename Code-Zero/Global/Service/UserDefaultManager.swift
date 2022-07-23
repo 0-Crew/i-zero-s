@@ -29,19 +29,4 @@ class UserDefaultManager {
             UserDefaults.standard.removeObject(forKey: "accessToken")
         }
     }
-
-    // MARK: - Provider
-    internal var provider: String? {
-        return UserDefaults.standard.string(forKey: "provider")
-    }
-
-    internal func saveProvider(provider: String) {
-        UserDefaults.standard.set(provider, forKey: "provider")
-    }
-
-    internal func removeProvider() {
-        if provider != nil {
-            UserDefaults.standard.removeObject(forKey: "provider")
-        }
-    }
 }

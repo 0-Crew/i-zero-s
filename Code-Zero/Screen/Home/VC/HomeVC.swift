@@ -59,7 +59,6 @@ extension HomeVC {
             switch result {
             case .success(let data):
                 UserDefaultManager.shared.saveAccessToken(accessToken: data.accesstoken)
-                UserDefaultManager.shared.saveProvider(provider: provider)
                 data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
             case .requestErr(let error):
                 print(error)

@@ -23,12 +23,6 @@ extension UIViewController {
     var accessToken: String? {
         return UserDefaultManager.shared.accessToken
     }
-
-    /// Provider
-    var provider: String? {
-        return UserDefaultManager.shared.provider
-    }
-
 }
 
 extension UIViewController {

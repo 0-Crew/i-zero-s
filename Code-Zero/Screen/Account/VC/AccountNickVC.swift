@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KakaoSDKAuth
 import KakaoSDKUser
 
 class AccountNickVC: UIViewController {
@@ -24,11 +25,7 @@ class AccountNickVC: UIViewController {
         checkNickname()
     }
     @IBAction func logoutButtonDidTap(_ sender: UIButton) {
-        if provider == "kakao" {
-            kakaoLogout()
-        } else {
-            changeRootViewToHome()
-        }
+        providerLogout()
     }
     @IBAction func deleteAccountButton(_ sender: UIButton) {
         guard let popUpVC = storyboard?.instantiateViewController(identifier: "AccountDeleteVC")
@@ -94,7 +91,6 @@ extension AccountNickVC {
     }
     private func changeRootViewToHome() {
         UserDefaultManager.shared.removeAccessToken()
-        UserDefaultManager.shared.removeProvider()
         let storybard = UIStoryboard(name: "Home", bundle: nil)
         let homeNavigationVC = storybard.instantiateViewController(withIdentifier: "Home")
         UIApplication.shared.windows.first?.replaceRootViewController(
@@ -138,13 +134,17 @@ extension AccountNickVC {
             }
         }
     }
-    private func kakaoLogout() {
-        UserApi.shared.logout {(error) in
-            if let error = error {
-                print(error)
-            } else {
-                self.changeRootViewToHome()
+    private func providerLogout() {
+        if AuthApi.hasToken() {
+            UserApi.shared.logout {(error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    self.changeRootViewToHome()
+                }
             }
+        } else {
+            changeRootViewToHome()
         }
     }
 }

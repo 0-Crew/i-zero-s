@@ -72,7 +72,6 @@ class AccountDeleteVC: UIViewController {
     }
     private func goRootHome() {
         UserDefaultManager.shared.removeAccessToken()
-        UserDefaultManager.shared.removeProvider()
         self.dismiss(animated: true) {
             self.changeRootViewToHome()
         }
