@@ -34,8 +34,16 @@ extension String {
             return date
         } else {
             return nil
-
         }
-
+    }
+    func toKoreaData() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.locale = Locale(identifier: "ko")
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
     }
 }

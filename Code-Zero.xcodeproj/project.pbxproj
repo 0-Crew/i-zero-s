@@ -15,6 +15,9 @@
 		1906C3FD27C23BD20020185C /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */; };
 		1906C40327C240270020185C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40227C240270020185C /* UserLoginService.swift */; };
 		1906C40527C241330020185C /* SimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906C40427C241330020185C /* SimpleData.swift */; };
+		19082CB82843A7DC00934D96 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19082CB72843A7DC00934D96 /* CalendarService.swift */; };
+		19082CBA28451BDD00934D96 /* beforeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 19082CB928451BDD00934D96 /* beforeData.json */; };
+		19082CBC2845249200934D96 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 19082CBB2845249200934D96 /* empty.json */; };
 		1911150328422F4800438FF0 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150228422F4800438FF0 /* KakaoSDK */; };
 		1911150528422F4800438FF0 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150428422F4800438FF0 /* KakaoSDKAuth */; };
 		1911150728422F4800438FF0 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 1911150628422F4800438FF0 /* KakaoSDKUser */; };
@@ -150,9 +153,12 @@
 		D205F40D287EBD4800224379 /* Terms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D205F40C287EBD4800224379 /* Terms.storyboard */; };
 		D205F410287EBF3600224379 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205F40F287EBF3600224379 /* TermsType.swift */; };
 		D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664C283DCCDF00AB3E98 /* SettingData.swift */; };
+		D20A6666284449DF00AB3E98 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = D20A6665284449DF00AB3E98 /* test.json */; };
 		D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */; };
 		D256B8F2275A0A1C006D3CFD /* BottleWorldListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */; };
 		D256B8F3275A0A1C006D3CFD /* BottleWorldListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */; };
+		D2E3C9842848583C00866903 /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3C9832848583C00866903 /* HalfModalPresentationController.swift */; };
+		D2E3C98628488A0500866903 /* test2.json in Resources */ = {isa = PBXBuildFile; fileRef = D2E3C98528488A0500866903 /* test2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +187,9 @@
 		1906C3FC27C23BD20020185C /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
 		1906C40227C240270020185C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
 		1906C40427C241330020185C /* SimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleData.swift; sourceTree = "<group>"; };
+		19082CB72843A7DC00934D96 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		19082CB928451BDD00934D96 /* beforeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = beforeData.json; sourceTree = "<group>"; };
+		19082CBB2845249200934D96 /* empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		191A4E9C27637A12005D0525 /* BottleWorld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottleWorld.storyboard; sourceTree = "<group>"; };
 		191A4E9F276450EC005D0525 /* FollowEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowEmptyView.xib; sourceTree = "<group>"; };
 		191A4EA427650A41005D0525 /* FollowEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowEmptyView.swift; sourceTree = "<group>"; };
@@ -313,9 +322,12 @@
 		D205F40C287EBD4800224379 /* Terms.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Terms.storyboard; sourceTree = "<group>"; };
 		D205F40F287EBF3600224379 /* TermsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
 		D20A664C283DCCDF00AB3E98 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
+		D20A6665284449DF00AB3E98 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldVC.swift; sourceTree = "<group>"; };
 		D256B8F0275A0A1C006D3CFD /* BottleWorldListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldListCell.swift; sourceTree = "<group>"; };
 		D256B8F1275A0A1C006D3CFD /* BottleWorldListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleWorldListCell.xib; sourceTree = "<group>"; };
+		D2E3C9832848583C00866903 /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		D2E3C98528488A0500866903 /* test2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test2.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -616,6 +628,15 @@
 				6E5B24B42749402B0071C9F2 /* ChallengeView.swift */,
 				6EB97235275B86CD00AB8349 /* LoadXibView.swift */,
 				6E3A58E927C3A0D500C84D7E /* Indicator.swift */,
+				D2E3C9832848583C00866903 /* HalfModalPresentationController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6EBECCF72843CAAD0007FED5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6EBECCF82843CACD0007FED5 /* EmptyChallengeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -849,6 +870,11 @@
 				195A0F0327CCF266009F0FFD /* UserSettingService.swift */,
 				6E7919382861B63B00041201 /* MainChallengeService.swift */,
 				6E2CA57728677D400000AACF /* UserDefaultManager.swift */,
+				19082CB72843A7DC00934D96 /* CalendarService.swift */,
+				D20A6665284449DF00AB3E98 /* test.json */,
+				19082CB928451BDD00934D96 /* beforeData.json */,
+				19082CBB2845249200934D96 /* empty.json */,
+				D2E3C98528488A0500866903 /* test2.json */,
 				6E27317D286A176100AC5E2B /* AlarmCenterService.swift */,
 			);
 			path = Service;
@@ -1095,12 +1121,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19082CBA28451BDD00934D96 /* beforeData.json in Resources */,
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
 				191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */,
 				D205F40D287EBD4800224379 /* Terms.storyboard in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
 				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
+				D20A6666284449DF00AB3E98 /* test.json in Resources */,
 				A2696D64272D163D001A2C60 /* FuturaStd-Medium.otf in Resources */,
 				195A8DC728733CE500BEA2EF /* loading.json in Resources */,
 				6E1A66AD281810B8008D3DA1 /* AlarmCenter.storyboard in Resources */,
@@ -1129,11 +1157,13 @@
 				191A4EA9276652DB005D0525 /* UserListCell.xib in Resources */,
 				6E1D336B27C2051800746CD5 /* FinalChallengeView.xib in Resources */,
 				6E6E4A5027B1251700390493 /* ChallengeFinal.storyboard in Resources */,
+				19082CBC2845249200934D96 /* empty.json in Resources */,
 				A2B7BDD82714214300F1DB1F /* Home.storyboard in Resources */,
 				19A142C8274FC0EA00E8DC45 /* ChallengingListView.xib in Resources */,
 				6E533C1C28292985004F36F8 /* challenge_cheerup.json in Resources */,
 				A2696D66272D163D001A2C60 /* FuturaStd-Heavy.otf in Resources */,
 				6EE5AC9F275517EF007CCC67 /* ChallengeOpen.storyboard in Resources */,
+				D2E3C98628488A0500866903 /* test2.json in Resources */,
 				6EB9722C275B3A6C00AB8349 /* ChallengeOpenThirdStepView.xib in Resources */,
 				1998752F274FB81F004CD747 /* ChallengedListView.xib in Resources */,
 				A2696D67272D163D001A2C60 /* Spoqa Han Sans Neo Medium.otf in Resources */,
@@ -1197,6 +1227,7 @@
 				6E1A66B2281815DF008D3DA1 /* AlarmCell.swift in Sources */,
 				6EAD29EB2764EDF0004BAD6B /* ChallengeOpenStep.swift in Sources */,
 				6EB9722F275B3AE700AB8349 /* ChallengeOpenFirstStepView.swift in Sources */,
+				D2E3C9842848583C00866903 /* HalfModalPresentationController.swift in Sources */,
 				A2DC88D1271C11EB0099438A /* UIFont+Extension.swift in Sources */,
 				6EB97236275B86CD00AB8349 /* LoadXibView.swift in Sources */,
 				A2B7BDD52714214300F1DB1F /* HomeVC.swift in Sources */,
@@ -1240,6 +1271,7 @@
 				1906C3F927C227140020185C /* AccountDeleteVC.swift in Sources */,
 				195AC718275BD5E500BDECB6 /* SwipeBarView.swift in Sources */,
 				197A6551276F784900166255 /* SignInVC.swift in Sources */,
+				19082CB82843A7DC00934D96 /* CalendarService.swift in Sources */,
 				190448D027C79D56004E8A10 /* UserLoginData.swift in Sources */,
 				6E273180286A302400AC5E2B /* ChallengeVC+ChallengeViewDelegate.swift in Sources */,
 				6E8C8063286485CA002F6E35 /* ChallengeVC+KeyboardNotificationSetting.swift in Sources */,
