@@ -115,7 +115,7 @@ extension UserListView {
     }
     private func fetchBrowserData(keyword: String?) {
         guard let token = UserDefaultManager.shared.accessToken else { return }
-        
+
         BottleWorldService
             .shared
             .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in

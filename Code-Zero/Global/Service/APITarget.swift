@@ -34,6 +34,8 @@ enum APITarget {
         isFromToday: Bool,
         token: String
     )
+    case myCalendar(challengeId: Int?, token: String)
+    case userCalendar(challengeId: Int?, userId: Int, token: String)
 
     // 알람센터
     case notificationButton(token: String, alarmType: AlarmType, receiverUserId: Int)
@@ -63,6 +65,10 @@ extension APITarget: TargetType {
             return "/user/private"
         case .challengeOpenPreview, .challengeOpen:
             return "/my-challenge/add"
+        case .myCalendar:
+            return "/my-challenge/calendar"
+        case .userCalendar:
+            return "/my-challenge/user/calendar"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
         case .bottleWorldFollower:
@@ -91,7 +97,8 @@ extension APITarget: TargetType {
             return .post
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
-        case .challengeOpenPreview, .bottleWorldBrowse, .userInfo, .myChallengeFetch, .myChallengeUser:
+        case .challengeOpenPreview, .bottleWorldBrowse, .myCalendar, .userCalendar,
+                .userInfo, .myChallengeFetch, .myChallengeUser:
             return .get
         case .deleteAuth:
             return .delete
@@ -134,6 +141,21 @@ extension APITarget: TargetType {
                                                    "isfromToday": isFromToday],
                                       encoding: JSONEncoding.default
             )
+        case .myCalendar(let challengeId, _):
+            guard let challengeId = challengeId else {
+                return .requestPlain
+            }
+            return .requestParameters(parameters: ["myChallengeId": challengeId],
+                                      encoding: URLEncoding.queryString)
+        case .userCalendar(let challengeId, let userId, _):
+            guard let challengeId = challengeId else {
+                return .requestParameters(parameters: ["userId": userId],
+                                          encoding: URLEncoding.queryString)
+            }
+
+            return .requestParameters(parameters: ["myChallengeId": challengeId,
+                                                   "userId": userId],
+                                      encoding: URLEncoding.queryString)
         case .myInconvenienceFinish(_, let myInconvenienceId):
             return .requestParameters(parameters: ["myInconvenienceId": myInconvenienceId],
                                       encoding: JSONEncoding.default)
@@ -161,6 +183,8 @@ extension APITarget: TargetType {
                 .userPrivate(let token),
                 .challengeOpenPreview(let token),
                 .challengeOpen(_, _, _, let token),
+                .myCalendar(_, let token),
+                .userCalendar(_, _, let token),
                 .bottleWorldBrowse(let token, _),
                 .bottleWorldFollower(let token, _),
                 .bottleWorldFollowing(let token, _):

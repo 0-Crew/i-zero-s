@@ -1,0 +1,9 @@
+{
+    "status": 200,
+    "success": true,
+    "message": "성공",
+    "data": {
+        "myChallenges": [],
+        "selectedChallenge": {}
+    }
+}

@@ -178,5 +178,3 @@ extension ChallengeVC {
             }
     }
 }
-
-

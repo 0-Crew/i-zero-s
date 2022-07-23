@@ -23,7 +23,7 @@ class AccountNickVC: UIViewController {
         checkNickname()
     }
     @IBAction func logoutButtonDidTap(_ sender: UIButton) {
-        // TODO: 로그아웃(토큰 삭제?)
+        UserDefaultManager.shared.removeAccessToken()
         changeRootViewToHome()
     }
     @IBAction func deleteAccountButton(_ sender: UIButton) {
