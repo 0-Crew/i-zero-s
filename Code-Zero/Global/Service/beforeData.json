@@ -1,0 +1,126 @@
+{
+    "status": 200,
+    "success": true,
+    "message": "성공",
+    "data": {
+        "myChallenges": [
+            {
+                "id": 33,
+                "isDeleted": false,
+                "createdAt": "2022-04-10T10:11:23.406Z",
+                "updatedAt": "2022-05-31T01:27:51.262Z",
+                "startedAt": "2022-04-11T10:11:23.406Z",
+                "userId": 20,
+                "name": "일회용 빨대 쓰기"
+            },
+            {
+                "id": 32,
+                "isDeleted": false,
+                "createdAt": "2022-04-20T10:11:23.406Z",
+                "updatedAt": "2022-05-31T01:27:51.262Z",
+                "startedAt": "2022-04-20T10:11:23.406Z",
+                "userId": 20,
+                "name": "일회용 컵에 커피 마시기"
+            },
+            {
+                "id": 22,
+                "isDeleted": false,
+                "createdAt": "2022-05-29T10:38:28.984Z",
+                "updatedAt": "2022-05-29T10:38:28.984Z",
+                "startedAt": "2022-05-30T10:38:28.984Z",
+                "userId": 20,
+                "name": "원데이 렌즈 사용하기"
+            }
+        ],
+        "selectedChallenge": {
+            "myChallenge": {
+                "id": 33,
+                "isDeleted": false,
+                "createdAt": "2022-04-10T10:11:23.406Z",
+                "updatedAt": "2022-05-31T01:27:51.262Z",
+                "startedAt": "2022-04-11T10:11:23.406Z",
+                "userId": 20,
+                "name": "일회용 빨대 쓰기"
+            },
+            "myInconveniences": [
+                {
+                    "id": 101,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-111T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": true,
+                    "userId": 20
+                },
+                {
+                    "id": 102,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-121T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": true,
+                    "userId": 20
+                },
+                {
+                    "id": 103,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-131T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": false,
+                    "userId": 20
+                },
+                {
+                    "id": 104,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-141T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": true,
+                    "userId": 20
+                },
+                {
+                    "id": 105,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-151T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": false,
+                    "userId": 20
+                },
+                {
+                    "id": 106,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-161T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": true,
+                    "userId": 20
+                },
+                {
+                    "id": 107,
+                    "name": "🥣 포장 용기 사용하지 않기",
+                    "createdAt": "2022-04-10T10:11:23.406Z",
+                    "updatedAt": "2022-04-171T01:27:51.262Z",
+                    "isDeleted": false,
+                    "myChallengeId": 22,
+                    "day": 1,
+                    "isFinished": true,
+                    "userId": 20
+                }
+            ]
+        }
+    }
+}

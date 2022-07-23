@@ -34,12 +34,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             }
         }
     }
-    var isClick: Bool = false {
-        didSet {
-            selectionFillLayer.isHidden = !isClick
-            underLine.backgroundColor = isClick ? .darkGray2 : .white
-        }
-    }
+    var isClick: Bool = false
     private var fillColor: UIColor = .clear {
         didSet {
             selectionFillLayer.fillColor = fillColor.cgColor
@@ -101,11 +96,12 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .days(let border):
             setBorderType(border: border)
             setLayerHidden(border: border)
+            setDayTextColor(border: border)
         case .today(let border):
             setBorderType(border: border)
             setLayerHidden(border: border)
+            setDayTextColor(border: border)
         }
-        setDayTextColor()
     }
 
     // MARK: - Style Setting Function
@@ -123,20 +119,34 @@ class ChallengeCalendarCell: FSCalendarCell {
             bottomBorderLayer.isHidden = true
         }
     }
-    private func setDayTextColor() {
+    private func setDayTextColor(border: CalendarBoarderType) {
+        selectionFillLayer.isHidden = !isClick
         switch cellDayType {
         case .today:
-            titleLabel.textColor = isClick ? .darkGray2 : .gray1
+            switch border {
+            case .none:
+                titleLabel.font = isClick ?
+                    .spoqaHanSansNeo(size: 14, family: .bold) : .spoqaHanSansNeo(size: 14, family: .medium)
+                titleLabel.textColor = isClick ? .darkGray2 : .gray1
+                underLine.backgroundColor = isClick ? .darkGray2 : .white
+            default:
+                titleLabel.font = .spoqaHanSansNeo(size: 14, family: .bold)
+                titleLabel.textColor = .white
+                underLine.backgroundColor = .white
+            }
         case .days(let border):
             switch border {
             case .none:
                 titleLabel.textColor = .gray3
+                if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
+                    self.titleLabel.textColor = isClick ? .white : .gray4
+                }
             default:
                 titleLabel.textColor = isClick ? .white : .gray1
+                if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
+                    self.titleLabel.textColor = isClick ? .white : .gray1
+                }
             }
-        }
-        if self.isPlaceholder { // 현재 달력에 보이는 이전 달, 다음 달 날짜들
-            self.titleLabel.textColor = .gray4
         }
     }
     private func setChallengeColor(colorNumber: Int) -> UIColor {
@@ -156,10 +166,11 @@ class ChallengeCalendarCell: FSCalendarCell {
         layer.strokeStart = startPoint
         layer.strokeEnd = endPoint
     }
+    // swiftlint:disable function_body_length
     private func setBorderType(border: CalendarBoarderType) {
         switch border {
         case .leftBorder(let color):
-            let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -3)
+            let layerFrame = getLayerFrame(xPoint: 3, yPoint: 0, width: 13, height: -6)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
@@ -172,13 +183,13 @@ class ChallengeCalendarCell: FSCalendarCell {
         case .middle(let color):
             fillColor = color == -1 ? UIColor.orangeMain : colorChip[color]
             [topBorderLayer, bottomBorderLayer, selectionFillLayer].forEach {
-                $0.frame = getLayerFrame(xPoint: 0, yPoint: 0, width: 2, height: -3)
+                $0.frame = getLayerFrame(xPoint: 0, yPoint: 0, width: 4, height: -6)
                 $0.path = UIBezierPath(rect: $0.bounds).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.29, strokeColor: fillColor)
             setStrokeStyle(layer: bottomBorderLayer, startPoint: 0.5, endPoint: 0.79, strokeColor: fillColor)
         case .rightBorder(let color):
-            let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -3)
+            let layerFrame = getLayerFrame(xPoint: -5, yPoint: 0, width: 0, height: -6)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
@@ -189,7 +200,7 @@ class ChallengeCalendarCell: FSCalendarCell {
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 0.77, strokeColor: fillColor)
         case .bothBorder(let color):
-            let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -3)
+            let layerFrame = getLayerFrame(xPoint: 4, yPoint: 0, width: -8, height: -6)
             let cornerRadii: CGSize = CGSize(width: layerFrame.width / 2, height: layerFrame.width / 2)
             fillColor = setChallengeColor(colorNumber: color)
             [topBorderLayer, selectionFillLayer].forEach {
@@ -200,7 +211,9 @@ class ChallengeCalendarCell: FSCalendarCell {
                                        cornerRadii: cornerRadii).cgPath
             }
             setStrokeStyle(layer: topBorderLayer, startPoint: 0, endPoint: 1, strokeColor: fillColor)
-        case .none: break
+        case .none:
+            fillColor = .clear
         }
     }
+    // swiftlint:enable function_body_length
 }
