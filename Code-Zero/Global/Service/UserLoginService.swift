@@ -45,8 +45,7 @@ class UserLoginService {
     }
     public func deleteUser(token: String,
                            completion: @escaping (NetworkResult<Bool>) -> Void) {
-        service.request(.deleteAuth(token: token)) {
-            result in
+        service.request(.deleteAuth(token: token)) { result in
             switch result {
             case .success:
                 completion(.success(true))

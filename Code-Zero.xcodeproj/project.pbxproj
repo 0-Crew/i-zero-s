@@ -149,6 +149,9 @@
 		A2DC88D4271C122F0099438A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D3271C122F0099438A /* Home.swift */; };
 		A2DC88D8271C12A90099438A /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC88D7271C12A90099438A /* NetworkResult.swift */; };
 		A2FC304E273695ED00B29296 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FC304D273695ED00B29296 /* Challenge.storyboard */; };
+		D205F40A287EBCFD00224379 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205F409287EBCFD00224379 /* TermsVC.swift */; };
+		D205F40D287EBD4800224379 /* Terms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D205F40C287EBD4800224379 /* Terms.storyboard */; };
+		D205F410287EBF3600224379 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205F40F287EBF3600224379 /* TermsType.swift */; };
 		D20A664D283DCCDF00AB3E98 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A664C283DCCDF00AB3E98 /* SettingData.swift */; };
 		D20A6666284449DF00AB3E98 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = D20A6665284449DF00AB3E98 /* test.json */; };
 		D256B8E82759EC57006D3CFD /* BottleWorldVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */; };
@@ -315,6 +318,9 @@
 		A2DC88D3271C122F0099438A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		A2DC88D7271C12A90099438A /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A2FC304D273695ED00B29296 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
+		D205F409287EBCFD00224379 /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		D205F40C287EBD4800224379 /* Terms.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Terms.storyboard; sourceTree = "<group>"; };
+		D205F40F287EBF3600224379 /* TermsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
 		D20A664C283DCCDF00AB3E98 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
 		D20A6665284449DF00AB3E98 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		D256B8E72759EC57006D3CFD /* BottleWorldVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleWorldVC.swift; sourceTree = "<group>"; };
@@ -786,6 +792,7 @@
 		A2DC88C9271C113B0099438A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				D205F408287EBCC700224379 /* Terms */,
 				195A8DC128733BCD00BEA2EF /* Splash */,
 				6E1A66A728181056008D3DA1 /* AlarmCenter */,
 				1923D91127AFC1C600FE2C87 /* Account */,
@@ -923,6 +930,40 @@
 				6EBECCF5284232E00007FED5 /* EmptyChallengeView.xib */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D205F408287EBCC700224379 /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				D205F411287ECA5700224379 /* Enum */,
+				D205F40E287EBD4F00224379 /* Storyboard */,
+				D205F40B287EBD0600224379 /* VC */,
+			);
+			path = Terms;
+			sourceTree = "<group>";
+		};
+		D205F40B287EBD0600224379 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D205F409287EBCFD00224379 /* TermsVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		D205F40E287EBD4F00224379 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D205F40C287EBD4800224379 /* Terms.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		D205F411287ECA5700224379 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				D205F40F287EBF3600224379 /* TermsType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		D256B8E52759E70B006D3CFD /* BottleWorld */ = {
@@ -1083,6 +1124,7 @@
 				19082CBA28451BDD00934D96 /* beforeData.json in Resources */,
 				19494259274FC5FB007CAD63 /* ChallengeListView.xib in Resources */,
 				191A4EA0276450EC005D0525 /* FollowEmptyView.xib in Resources */,
+				D205F40D287EBD4800224379 /* Terms.storyboard in Resources */,
 				A2DC88C7271C05030099438A /* .swiftlint.yml in Resources */,
 				1933FE8E27A016B100BD0CA6 /* NotUserView.xib in Resources */,
 				6EB9722A275B38BE00AB8349 /* ChallengeOpenSecondStepView.xib in Resources */,
@@ -1203,7 +1245,9 @@
 				19DE9221273FD0FD001B0C30 /* ChallengeCalendarCell.swift in Sources */,
 				A25C8BFC2731423000D2BA78 /* UIButton+Extension.swift in Sources */,
 				6E6E4A5227B12E4200390493 /* ChallengeFinalVC.swift in Sources */,
+				D205F410287EBF3600224379 /* TermsType.swift in Sources */,
 				A25C8BFA2731417800D2BA78 /* UILabel+Extension.swift in Sources */,
+				D205F40A287EBCFD00224379 /* TermsVC.swift in Sources */,
 				6E6C1E942751216C007488AD /* OptionCell.swift in Sources */,
 				6E7919392861B63B00041201 /* MainChallengeService.swift in Sources */,
 				195A0F0427CCF266009F0FFD /* UserSettingService.swift in Sources */,
