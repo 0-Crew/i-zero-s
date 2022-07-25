@@ -98,9 +98,7 @@ class BottleWorldListCell: UICollectionViewCell {
 // MARK: - Network Function
 extension BottleWorldListCell {
     private func fetchBrowserData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDg4ODUxNTEsImV4cCI6MTY1MTQ3NzE1MSwiaXNzIjoiV1lCIn0.0jdFo280vOl0zxU0BMqYRH8ztY1vWI75dOVyiKhGNsI"
-        // swiftlint:enable line_length
+        guard let token = UserDefaultManager.shared.accessToken else { return }
         BottleWorldService
             .shared
             .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
@@ -120,9 +118,7 @@ extension BottleWorldListCell {
     }
 
     private func fetchFollowerData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDg4ODUxNTEsImV4cCI6MTY1MTQ3NzE1MSwiaXNzIjoiV1lCIn0.0jdFo280vOl0zxU0BMqYRH8ztY1vWI75dOVyiKhGNsI"
-        // swiftlint:enable line_length
+        guard let token = UserDefaultManager.shared.accessToken else { return }
         BottleWorldService
             .shared
             .requestBottleWoldFollower(token: token, keyword: keyword) { [weak self] result in
@@ -141,9 +137,7 @@ extension BottleWorldListCell {
             }
     }
     private func fetchFollowingData(keyword: String?) {
-        // swiftlint:disable line_length
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoieTR1cnRpam5makBwcml2YXRlcmVsYXkuYXBwbGVpZC5jb20iLCJuYW1lIjoi67SJ6rWs7Iqk67Cl66mNIiwiaWRGaXJlYmFzZSI6IkpoaW16VDdaUUxWcDhmakx3c1U5eWw1ZTNaeDIiLCJpYXQiOjE2NDg4ODUxNTEsImV4cCI6MTY1MTQ3NzE1MSwiaXNzIjoiV1lCIn0.0jdFo280vOl0zxU0BMqYRH8ztY1vWI75dOVyiKhGNsI"
-        // swiftlint:enable line_length
+        guard let token = UserDefaultManager.shared.accessToken else { return }
         BottleWorldService
             .shared
             .requestBottleWoldFollowing(token: token, keyword: keyword) { [weak self] result in
