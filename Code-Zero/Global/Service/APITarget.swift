@@ -191,15 +191,15 @@ extension APITarget: TargetType {
                 .userCalendar(_, _, let token),
                 .bottleWorldBrowse(let token, _),
                 .bottleWorldFollower(let token, _),
-                .bottleWorldFollowing(let token, _):
-                .userInfo(let token):
+                .bottleWorldFollowing(let token, _),
+                .userInfo(let token),
                 .myChallengeFetch(let token),
                 .myInconvenienceFinish(let token, _),
                 .myInconvenienceUpdate(let token, _, _),
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
-                .notificationButton(let token, _, _):
-                .bottleWorldFollower(let token, _):
+                .notificationButton(let token, _, _),
+                .bottleWorldFollower(let token, _),
                 .bottleWorldFollowing(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
