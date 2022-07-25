@@ -46,16 +46,26 @@ extension UserListCell {
         selectionStyle = .none
     }
     func fetchUserData(data: BottleWorldUser) {
-        challengeTermLabel.isHidden = false
-        let challengeTerm = getChallengeWeek(startDate: data.challenge.startedAt)
-        challengeTermLabel.text = challengeTerm
-        challengeLabel.text = data.challenge.name
         challengeLabel.textColor = .orangeMain
-        bottleImage.image = UIImage(named: "icBottleMain\(data.challenge.count ?? "0")")
         data.follow ? setFollowingButton() : setFollowButton()
         userNameLabel.text = "\(data.user.name)의 보틀"
         userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [data.user.name])
 
+        if let challenge = data.challenge {
+            let challengeTerm = getChallengeWeek(startDate: challenge.startedAt)
+            challengeTermLabel.setLabel(text: challengeTerm,
+                                        color: .gray4,
+                                        font: .spoqaHanSansNeo(size: 12, family: .medium))
+            challengeLabel.isHidden = false
+            challengeLabel.text = challenge.name
+            bottleImage.image = UIImage(named: "icBottleMain\(challenge.count ?? "0")")
+        } else {
+            challengeLabel.isHidden = true
+            challengeTermLabel.setLabel(text: "보틀 씻는 중",
+                                        color: .gray2,
+                                        font: .spoqaHanSansNeo(size: 13, family: .bold))
+            bottleImage.image = UIImage(named: "icBottleMain0")
+        }
     }
     private func setFollowButton() {
         followButton.setButton(text: "팔로우",

@@ -10,7 +10,7 @@ import Foundation
 // MARK: - BottleWorldUser
 struct BottleWorldUser: Codable {
     let user: User
-    let challenge: UserChallenge
+    let challenge: UserChallenge?
     let follow: Bool
 }
 
