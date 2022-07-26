@@ -93,10 +93,16 @@ class AlarmCenterVC: UIViewController {
         ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
         ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer)
     ]
+    var notificationList: [NotificationData] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        fetchNotificationList()
         if alarms.count == 0 {
             setEmptyView()
         }
@@ -115,6 +121,22 @@ class AlarmCenterVC: UIViewController {
         view.addSubview(emptyView)
         emptyView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalTo(view)
+        }
+    }
+
+    private func fetchNotificationList() {
+        guard let token = accessToken else { return }
+        AlarmCenterService.shared.requestNotificationList(token: token) { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.notificationList = data
+            case .requestErr(let errorMessage):
+                print(errorMessage)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
 
@@ -146,20 +168,21 @@ class AlarmCenterVC: UIViewController {
 
 extension AlarmCenterVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alarms.count
+        return notificationList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AlarmCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
-        cell.bindData(type: alarms[indexPath.item].1, text: alarms[indexPath.item].0)
+        let notification = notificationList[indexPath.item]
+        cell.bindData(notification: notification)
         return cell
     }
 }
 
 extension AlarmCenterVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellType = alarms[indexPath.item].1
+        let cellType = notificationList[indexPath.item].alarmType
         switch cellType {
         case .beCheered, .beCongratulated:
             guard

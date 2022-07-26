@@ -78,13 +78,25 @@ class AlarmCell: UITableViewCell {
         alarmImageView.makeRounded(cornerRadius: 36 / 2)
     }
 
-    internal func bindData(type: AlarmType = .normal, text: String) {
+    internal func bindData(notification: NotificationData) {
+        let type = notification.alarmType
+        let text = notification.notiText
+        let nickName = notification.sentUser.name
+        let nickNameFirstLetter = nickName.map {"\($0)"}.first ?? ""
+
         cellType = type
         alarmImageView.image = type.alarmImage
-        defaultProfileLabel.text = type == .normal ? "박" : ""
+        defaultProfileLabel.text = type == .normal ? nickNameFirstLetter : ""
         subActionButton.isHidden = type.subActionButtonIsHidden
         subActionButton.setTitle(type.subActionButtonTitle, for: .normal)
         alarmTextLabel.text = text
+        alarmTextLabel.setFontWith(font: .spoqaHanSansNeo(size: 14, family: .bold), in: [nickName])
+        if let timelineText = notification.updatedAt.toDate()?.getTimeLineDate() {
+            timelineLabel.text = "\(timelineText) 전"
+        } else {
+            timelineLabel.text = ""
+        }
+
     }
 
     @IBAction func subActionButtonDidTap() {

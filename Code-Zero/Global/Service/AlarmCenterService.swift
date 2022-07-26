@@ -43,4 +43,30 @@ class AlarmCenterService {
             }
         }
     }
+
+    internal func requestNotificationList(
+        token: String,
+        completion: @escaping(NetworkResult<[NotificationData]>) -> Void
+    ) {
+        let request: APITarget = .myNotification(token: token)
+        service.request(request) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<MyNotificationData>.self,
+                        from: response.data
+                    )
+                    completion(.success(body.data?.myNotifications ?? []))
+                } catch let error {
+                    debugPrint(error)
+                    completion(.requestErr(error.localizedDescription))
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
 }
