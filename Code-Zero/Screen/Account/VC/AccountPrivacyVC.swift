@@ -33,7 +33,7 @@ class AccountPrivacyVC: UIViewController {
     // MARK: - Set Propety Data
     private func setoriginData() {
         guard let originIsPrivate = originIsPrivate else { return }
-        privacySwitch.isOn = originIsPrivate
+        privacySwitch.isOn = !originIsPrivate
     }
     private func deliveryChangeNickname(state: Bool) {
         guard let changePrivateClosure = changePrivateClosure else { return }
@@ -48,7 +48,7 @@ extension AccountPrivacyVC {
         UserPrivateService.shared.toggleAccountPrivate(token: token) { [weak self] result in
             switch result {
             case .success(let data):
-                self?.privacySwitch.isOn = data.isPrivate
+                self?.privacySwitch.isOn = !data.isPrivate
                 self?.originIsPrivate = data.isPrivate
                 self?.deliveryChangeNickname(state: data.isPrivate)
             case .serverErr:
