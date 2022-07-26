@@ -66,8 +66,16 @@ class BottleWorldListCell: UICollectionViewCell {
         searchButton.setTitle("", for: .normal)
         searchResultView.backgroundColor = .white
     }
-    func setEmptyView() {
+    func setEmptyView(type: UserListTapType) {
         searchResultView.addSubview(emptyView)
+        switch type {
+        case .lookAround:
+            emptyView.viewType = .noneSearch
+        case .follower:
+            emptyView.viewType = .noneFollower
+        case .following:
+            emptyView.viewType = .noneFollowing
+        }
         emptyView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(searchResultView.snp.height)
@@ -83,10 +91,10 @@ class BottleWorldListCell: UICollectionViewCell {
             $0.width.equalTo(searchResultView.snp.width)
         }
     }
-    func presentEmptyUserView() {
+    func presentEmptyUserView(type: UserListTapType) {
         userListView.removeFromSuperview()
         emptyView.removeFromSuperview()
-        setEmptyView()
+        setEmptyView(type: type)
     }
     func presentUserListView(data: [BottleWorldUser]) {
         emptyView.removeFromSuperview()
@@ -161,8 +169,11 @@ extension BottleWorldListCell {
         }
         if keyword != "" && data.count == 0 {
             // No Search View 설정해줘야함
+            presentEmptyUserView(type: .lookAround)
+        } else {
+            data.count == 0 ? presentEmptyUserView(type: type): presentUserListView(data: data)
         }
-        data.count == 0 ? presentEmptyUserView(): presentUserListView(data: data)
+
     }
 }
 
