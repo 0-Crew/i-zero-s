@@ -47,6 +47,17 @@ extension AlarmType {
             return ""
         }
     }
+
+    func getSubActionToastText(user: User) -> String? {
+        switch self {
+        case .cheer:
+            return "\(user.name)님에게 챌린지 응원을 보냈어요!"
+        case .congrats:
+            return "\(user.name)님에게 챌린지 성공 축하를 보냈어요!"
+        default:
+            return nil
+        }
+    }
 }
 
 protocol AlarmCellDelegate: AnyObject {
@@ -57,7 +68,7 @@ class AlarmCell: UITableViewCell {
 
     private var cellType: AlarmType!
 
-    internal var offset: Int! = 0
+    internal var offset: Int!
     internal weak var delegate: AlarmCellDelegate?
 
     @IBOutlet weak var alarmImageView: UIImageView!

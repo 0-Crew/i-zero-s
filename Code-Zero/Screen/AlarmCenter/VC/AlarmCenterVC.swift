@@ -175,6 +175,7 @@ extension AlarmCenterVC: UITableViewDataSource {
         let cell: AlarmCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
         let notification = notificationList[indexPath.item]
+        cell.offset = indexPath.item
         cell.bindData(notification: notification)
         return cell
     }
@@ -202,16 +203,28 @@ extension AlarmCenterVC: UITableViewDelegate {
 
 extension AlarmCenterVC: AlarmCellDelegate {
     func subActionButtonDidTap(cellType: AlarmType, offset: Int) {
-        // TODO: AlarmCenter 서버 연결 후 다시 작업
-        switch cellType {
-        case .cheer:
-            presentToastView(text: "박수빈님에게 챌린지 응원을 보냈어요!")
-            print("cheerUp")
-        case .congrats:
-            presentToastView(text: "celebrate")
-            print("celebrate")
-        default:
-            break
+
+        guard let token = accessToken else { return }
+        let notification = notificationList[offset]
+        let user = notification.sentUser
+
+        AlarmCenterService.shared.requestNotificationButton(
+            token: token,
+            type: .cheer,
+            receiverUserId: user.id
+        ) { [weak self] result in
+            switch result {
+            case .success(let isSuccess):
+                if isSuccess {
+                    self?.presentToastView(text: cellType.getSubActionToastText(user: user) ?? "")
+                }
+            case .requestErr(let message):
+                print(message)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
 }
