@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class AccountDeleteVC: UIViewController {
 
@@ -44,10 +46,11 @@ class AccountDeleteVC: UIViewController {
     private func deleteUser(token: String) {
         UserLoginService.shared.deleteUser(token: token) { [weak self] result in
             switch result {
-            case .success:
-                UserDefaultManager.shared.removeAccessToken()
-                self?.dismiss(animated: true) {
-                    self?.changeRootViewToHome()
+            case .success(let provider):
+                if provider == "kakao" {
+                    self?.unlinkKakao()
+                } else {
+                    self?.goRootHome()
                 }
             case .requestErr:
                 print("requestErr")
@@ -56,6 +59,21 @@ class AccountDeleteVC: UIViewController {
             case .networkFail:
                 print("networkFail")
             }
+        }
+    }
+    private func unlinkKakao() {
+        UserApi.shared.unlink { (error) in
+            if let error = error {
+                print("\(error)의 문제로 카카오 계정 연결이 끊어지지 않음")
+            } else {
+                self.goRootHome()
+            }
+        }
+    }
+    private func goRootHome() {
+        UserDefaultManager.shared.removeAccessToken()
+        self.dismiss(animated: true) {
+            self.changeRootViewToHome()
         }
     }
 }

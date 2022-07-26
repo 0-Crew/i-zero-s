@@ -86,8 +86,6 @@ extension OnboardingStepFourVC: ASAuthorizationControllerDelegate {
             requestLogin(id: credential.user,
                          token: tokenString,
                          provider: "apple")
-            UserDefaults.standard.set(credential.user,
-                                      forKey: "appleId")
         }
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
