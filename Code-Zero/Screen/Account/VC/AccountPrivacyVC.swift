@@ -35,7 +35,7 @@ class AccountPrivacyVC: UIViewController {
         guard let originIsPrivate = originIsPrivate else { return }
         privacySwitch.isOn = !originIsPrivate
     }
-    private func deliveryChangeNickname(state: Bool) {
+    private func deliveryChangePrivate(state: Bool) {
         guard let changePrivateClosure = changePrivateClosure else { return }
         changePrivateClosure(state)
     }
@@ -50,7 +50,7 @@ extension AccountPrivacyVC {
             case .success(let data):
                 self?.privacySwitch.isOn = !data.isPrivate
                 self?.originIsPrivate = data.isPrivate
-                self?.deliveryChangeNickname(state: data.isPrivate)
+                self?.deliveryChangePrivate(state: data.isPrivate)
             case .serverErr:
                 // 토큰 만료(자동 로그아웃 느낌..)
                 print("serverErr")
