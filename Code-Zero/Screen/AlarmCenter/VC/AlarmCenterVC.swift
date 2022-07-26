@@ -81,21 +81,13 @@ class AlarmCenterVC: UIViewController {
         label.textColor = .white
         return label
     }()
-
-    // alarms가 빈배열일 경우 emptyView 노출
-    var alarms: [(String, AlarmType)] = [
-        ("박수빈빈빈님의 보틀을 팔로우합니다.", .normal),
-        ("박수빈빈님이 챌린지를 성공했어요!", .congrats),
-        ("가니가니가님이 내 챌린지 성공을 축하해요!", .beCongratulated),
-        ("가니가니가님이 내 챌린지를 응원해요!", .beCheered),
-        ("가니가니가님이 내 챌린지를 응원해요!", .beCheered),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer)
-    ]
     var notificationList: [NotificationData] = [] {
         didSet {
-            tableView.reloadData()
+            if notificationList.count == 0 {
+                setEmptyView()
+            } else {
+                tableView.reloadData()
+            }
         }
     }
 
@@ -103,9 +95,6 @@ class AlarmCenterVC: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         fetchNotificationList()
-        if alarms.count == 0 {
-            setEmptyView()
-        }
     }
 
     private func setNavigationBar() {
