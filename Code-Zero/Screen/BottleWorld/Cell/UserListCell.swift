@@ -64,7 +64,7 @@ extension UserListCell {
             challengeTermLabel.setLabel(text: "보틀 씻는 중",
                                         color: .gray2,
                                         font: .spoqaHanSansNeo(size: 13, family: .bold))
-            bottleImage.image = UIImage(named: "icBottleMain0")
+            bottleImage.image = UIImage(named: "icBottleMain7")
         }
     }
     private func setFollowButton() {
