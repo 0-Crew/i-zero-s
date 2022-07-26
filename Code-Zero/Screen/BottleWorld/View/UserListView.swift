@@ -94,8 +94,7 @@ extension UserListView: UITableViewDataSource {
 
 // MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
-    func didFollowButtonTap(id index: Int) {
-        // 팔로우, 팔로잉 서버 연결 코드 작성 예정
+    func didFollowButtonTap(id index: Int, follow: Bool) {
         userListTableView.reloadData()
     }
 }

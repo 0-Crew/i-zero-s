@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListCellDelegate: AnyObject {
-    func didFollowButtonTap(id index: Int)
+    func didFollowButtonTap(id index: Int, follow: Bool)
 }
 
 class UserListCell: UITableViewCell {
@@ -23,13 +23,15 @@ class UserListCell: UITableViewCell {
 
     // MARK: - @IBAction
     @IBAction func followButtonDidTap(_ sender: UIButton) {
-        guard let userId = userId else { return }
-        delegate?.didFollowButtonTap(id: userId)
+        guard let userId = userId,
+              let follow = follow else { return }
+        delegate?.didFollowButtonTap(id: userId, follow: follow)
     }
 
     // MARK: - Property
     internal var userId: Int?
     internal weak var delegate: UserListCellDelegate?
+    private var follow: Bool?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +50,7 @@ extension UserListCell {
     func fetchUserData(data: BottleWorldUser) {
         challengeLabel.textColor = .orangeMain
         data.follow ? setFollowingButton() : setFollowButton()
+        follow = data.follow
         userNameLabel.text = "\(data.user.name)의 보틀"
         userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [data.user.name])
 
