@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListCellDelegate: AnyObject {
-    func didFollowButtonTap(id index: Int, follow: Bool)
+    func didFollowButtonTap(id: Int)
 }
 
 class UserListCell: UITableViewCell {
@@ -25,7 +25,7 @@ class UserListCell: UITableViewCell {
     @IBAction func followButtonDidTap(_ sender: UIButton) {
         guard let userId = userId,
               let follow = follow else { return }
-        delegate?.didFollowButtonTap(id: userId, follow: follow)
+        delegate?.didFollowButtonTap(id: userId)
     }
 
     // MARK: - Property

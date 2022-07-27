@@ -68,6 +68,23 @@ class UserListView: UIView {
             refressh.endRefreshing()
         }
     }
+    private func requestFollow(id: Int) {
+        guard let token = UserDefaultManager.shared.accessToken else { return }
+        BottleWorldService.shared.makeBottleworldFollow(token: token, id: id) { [weak self] result in
+            switch result {
+            case .success:
+                self?.userInfoData.indices.filter { self?.userInfoData[$0].user.id == id }
+                .forEach { self?.userInfoData[$0].follow.toggle() }
+                self?.userListTableView.reloadData()
+            case .requestErr(_):
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -94,7 +111,7 @@ extension UserListView: UITableViewDataSource {
 
 // MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
-    func didFollowButtonTap(id index: Int, follow: Bool) {
-        userListTableView.reloadData()
+    func didFollowButtonTap(id: Int) {
+        requestFollow(id: id)
     }
 }
