@@ -98,4 +98,32 @@ class BottleWorldService {
             }
         }
     }
+
+    // 보틀월드 팔로우, 언팔로우 API
+    public func makeBottleworldFollow(
+        token: String,
+        id: Int,
+        completion: @escaping (NetworkResult<Bool>) -> Void
+    ) {
+        service.request(.bottleWorldFollow(token: token,
+                                           id: id)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        SimpleData.self,
+                        from: response.data
+                    )
+                    completion(.success(body.success))
+                } catch let error {
+                    debugPrint(error)
+                    completion(.requestErr(error.localizedDescription))
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
 }

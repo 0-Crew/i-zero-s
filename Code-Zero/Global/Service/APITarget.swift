@@ -19,6 +19,7 @@ enum APITarget {
     case bottleWorldBrowse(token: String, keyword: String?)
     case bottleWorldFollower(token: String, keyword: String?)
     case bottleWorldFollowing(token: String, keyword: String?)
+    case bottleWorldFollow(token: String, id: Int)
 
     // 메인 챌린지
     case myChallengeFetch(token: String)
@@ -75,6 +76,8 @@ extension APITarget: TargetType {
             return "/bottleworld/follower"
         case .bottleWorldFollowing:
             return "/bottleworld/following"
+        case .bottleWorldFollow:
+            return "/bottleworld"
         case .userInfo:
             return "/user/setting"
         case .myChallengeFetch:
@@ -97,7 +100,7 @@ extension APITarget: TargetType {
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick, .auth, .challengeOpen, .notificationButton:
+        case .userNick, .auth, .challengeOpen, .notificationButton, .bottleWorldFollow:
             return .post
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
             return .put
@@ -137,6 +140,8 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
+        case .bottleWorldFollow(_, let id):
+            return .requestParameters(parameters: ["followingUserId": id], encoding: JSONEncoding.default)
         case .challengeOpenPreview, .userInfo, .myChallengeFetch:
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
@@ -200,7 +205,8 @@ extension APITarget: TargetType {
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _),
                 .bottleWorldFollower(let token, _),
-                .bottleWorldFollowing(let token, _):
+                .bottleWorldFollowing(let token, _),
+                .bottleWorldFollow(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:
