@@ -9,6 +9,10 @@ import UIKit
 import Lottie
 import SnapKit
 
+protocol UserListViewDelegate: AnyObject {
+    func didRefresh(type: UserListTapType)
+}
+
 class UserListView: UIView {
 
     // MARK: - Property
@@ -17,8 +21,8 @@ class UserListView: UIView {
             userListTableView.reloadData()
         }
     }
-    var follower: [BottleWorldUser] = []
-    var following: [BottleWorldUser] = []
+    internal weak var delegate: UserListViewDelegate?
+    var type: UserListTapType?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
@@ -63,8 +67,9 @@ class UserListView: UIView {
         userListTableView.addSubview(refresh)
     }
     @objc private func updateTableViewData(refressh: UIRefreshControl) {
+        guard let type = type else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            self.fetchBrowserData(keyword: self.filteringText)
+            self.delegate?.didRefresh(type: type)
             refressh.endRefreshing()
         }
     }

@@ -85,6 +85,8 @@ class BottleWorldListCell: UICollectionViewCell {
     func setUserListView(data: [BottleWorldUser]) {
         searchResultView.addSubview(userListView)
         userListView.userInfoData = data
+        userListView.type = tapType
+        userListView.delegate = self
         userListView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(searchResultView.snp.height)
@@ -191,5 +193,19 @@ extension BottleWorldListCell: UITextFieldDelegate {
         }
         endEditing(true)
         return true
+    }
+}
+
+extension BottleWorldListCell: UserListViewDelegate {
+    func didRefresh(type: UserListTapType) {
+        searchTextField.text = nil
+        switch type {
+        case .lookAround:
+            fetchBrowserData(keyword: nil)
+        case .follower:
+            fetchFollowerData(keyword: nil)
+        case .following:
+            fetchFollowingData(keyword: nil)
+        }
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 struct BottleWorldUser: Codable {
     let user: User
     let challenge: UserChallenge?
-    let follow: Bool
+    var follow: Bool
 }
 
 // MARK: - User
