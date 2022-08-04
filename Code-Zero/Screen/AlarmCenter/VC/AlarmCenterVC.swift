@@ -173,6 +173,7 @@ extension AlarmCenterVC: UITableViewDataSource {
 extension AlarmCenterVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType = notificationList[indexPath.item].alarmType
+        let userName = notificationList[indexPath.item].sentUser.name
         switch cellType {
         case .beCheered, .beCongratulated:
             guard
@@ -183,6 +184,8 @@ extension AlarmCenterVC: UITableViewDelegate {
                 return
             }
             viewController.alarmType = cellType
+            viewController.reactingName = userName
+            viewController.reactingCount = 1
             present(viewController, animated: true, completion: nil)
         default:
             break
