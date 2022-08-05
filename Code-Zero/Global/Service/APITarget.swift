@@ -16,9 +16,9 @@ enum APITarget {
     case deleteAuth(token: String)
 
     // 보틀월드
-    case bottleWorldBrowse(token: String, keyword: String?)
-    case bottleWorldFollower(token: String, keyword: String?)
-    case bottleWorldFollowing(token: String, keyword: String?)
+    case bottleWorldBrowse(token: String, keyword: String?, offset: Int?)
+    case bottleWorldFollower(token: String, keyword: String?, offset: Int?)
+    case bottleWorldFollowing(token: String, keyword: String?, offset: Int?)
     case bottleWorldFollow(token: String, id: Int)
 
     // 메인 챌린지
@@ -90,10 +90,6 @@ extension APITarget: TargetType {
             return "/my-inconvenience/update"
         case .notificationButton:
             return "/notification/button"
-        case .bottleWorldFollower:
-            return "/bottleworld/follower"
-        case .bottleWorldFollowing:
-            return "/bottleworld/following"
         }
     }
 
@@ -132,13 +128,20 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default)
         case .userPrivate, .deleteAuth:
                 return .requestPlain
-        case .bottleWorldBrowse(_, let keyword),
-                .bottleWorldFollower(_, let keyword),
-                .bottleWorldFollowing(_, let keyword):
-            guard let keyword = keyword else {
-                return .requestPlain
+        case .bottleWorldBrowse(_, let keyword, let offset),
+                .bottleWorldFollower(_, let keyword, let offset),
+                .bottleWorldFollowing(_, let keyword, let offset):
+//            if keyword == nil && offset == nil {
+//                return .requestPlain
+//            }
+            var parameters = [String : Any]()
+            if let keyword = keyword {
+                parameters["keyword"] = keyword
             }
-            return .requestParameters(parameters: ["keyword": keyword],
+            if let offset = offset {
+                parameters["offset"] = offset
+            }
+            return .requestParameters(parameters: parameters,
                                       encoding: URLEncoding.queryString)
         case .bottleWorldFollow(_, let id):
             return .requestParameters(parameters: ["followingUserId": id], encoding: JSONEncoding.default)
@@ -194,9 +197,9 @@ extension APITarget: TargetType {
                 .challengeOpen(_, _, _, let token),
                 .myCalendar(_, let token),
                 .userCalendar(_, _, let token),
-                .bottleWorldBrowse(let token, _),
-                .bottleWorldFollower(let token, _),
-                .bottleWorldFollowing(let token, _),
+                .bottleWorldBrowse(let token, _, _),
+                .bottleWorldFollower(let token, _, _),
+                .bottleWorldFollowing(let token, _, _),
                 .userInfo(let token),
                 .myChallengeFetch(let token),
                 .myInconvenienceFinish(let token, _),
@@ -204,8 +207,6 @@ extension APITarget: TargetType {
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _),
-                .bottleWorldFollower(let token, _),
-                .bottleWorldFollowing(let token, _),
                 .bottleWorldFollow(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]

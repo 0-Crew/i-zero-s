@@ -19,7 +19,8 @@ class BottleWorldService {
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldBrowse(token: token,
-                                           keyword: keyword)) { result in
+                                           keyword: keyword,
+                                           offset: nil)) { result in
             switch result {
             case .success(let response):
                 do {
@@ -48,7 +49,8 @@ class BottleWorldService {
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldFollower(token: token,
-                                             keyword: keyword)) { result in
+                                             keyword: keyword,
+                                             offset: nil)) { result in
             switch result {
             case .success(let response):
                 do {
@@ -77,7 +79,8 @@ class BottleWorldService {
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldFollowing(token: token,
-                                             keyword: keyword)) { result in
+                                             keyword: keyword,
+                                              offset: nil)) { result in
             switch result {
             case .success(let response):
                 do {
