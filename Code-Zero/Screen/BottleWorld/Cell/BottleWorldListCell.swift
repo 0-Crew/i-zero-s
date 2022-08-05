@@ -83,6 +83,7 @@ class BottleWorldListCell: UICollectionViewCell {
         }
     }
     func setUserListView(data: [BottleWorldUser]) {
+        let data = data + data + data + data + data + data + data
         searchResultView.addSubview(userListView)
         userListView.userInfoData = data
         userListView.type = tapType
@@ -107,11 +108,11 @@ class BottleWorldListCell: UICollectionViewCell {
 
 // MARK: - Network Function
 extension BottleWorldListCell {
-    private func fetchBrowserData(keyword: String?) {
+    private func fetchBrowserData(keyword: String?, id: Int? = nil) {
         guard let token = UserDefaultManager.shared.accessToken else { return }
         BottleWorldService
             .shared
-            .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
+            .requestBottleWoldBrowser(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
                 case .success(let userData):
                     self?.resetTableViewData(type: .lookAround,
@@ -127,11 +128,11 @@ extension BottleWorldListCell {
             }
     }
 
-    private func fetchFollowerData(keyword: String?) {
+    private func fetchFollowerData(keyword: String?, id: Int? = nil) {
         guard let token = UserDefaultManager.shared.accessToken else { return }
         BottleWorldService
             .shared
-            .requestBottleWoldFollower(token: token, keyword: keyword) { [weak self] result in
+            .requestBottleWoldFollower(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
                 case .success(let userData):
                     self?.resetTableViewData(type: .follower,
@@ -146,11 +147,11 @@ extension BottleWorldListCell {
                 }
             }
     }
-    private func fetchFollowingData(keyword: String?) {
+    private func fetchFollowingData(keyword: String?, id: Int? = nil) {
         guard let token = UserDefaultManager.shared.accessToken else { return }
         BottleWorldService
             .shared
-            .requestBottleWoldFollowing(token: token, keyword: keyword) { [weak self] result in
+            .requestBottleWoldFollowing(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
                 case .success(let userData):
                     self?.resetTableViewData(type: .following,
@@ -197,6 +198,17 @@ extension BottleWorldListCell: UITextFieldDelegate {
 }
 
 extension BottleWorldListCell: UserListViewDelegate {
+    func paging(type: UserListTapType, id: Int) {
+        switch type {
+        case .lookAround:
+            fetchBrowserData(keyword: searchTextField.text, id: id)
+        case .follower:
+            fetchFollowerData(keyword: searchTextField.text, id: id)
+        case .following:
+            fetchFollowingData(keyword: searchTextField.text, id: id)
+        }
+    }
+
     func didRefresh(type: UserListTapType) {
         searchTextField.text = nil
         switch type {

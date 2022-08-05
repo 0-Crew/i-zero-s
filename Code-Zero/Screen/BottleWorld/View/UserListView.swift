@@ -11,6 +11,7 @@ import SnapKit
 
 protocol UserListViewDelegate: AnyObject {
     func didRefresh(type: UserListTapType)
+    func paging(type: UserListTapType, id: Int)
 }
 
 class UserListView: UIView {
@@ -18,12 +19,13 @@ class UserListView: UIView {
     // MARK: - Property
     var userInfoData: [BottleWorldUser] = [] {
         didSet {
+            pagingOnState = false
             userListTableView.reloadData()
         }
     }
     internal weak var delegate: UserListViewDelegate?
     var type: UserListTapType?
-
+    var pagingOnState: Bool = false
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
 
@@ -111,6 +113,23 @@ extension UserListView: UITableViewDataSource {
         cell.fetchUserData(data: userInfoData[indexPath.row])
         cell.userId = userInfoData[indexPath.row].user.id
         return cell
+    }
+}
+
+extension UserListView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.height
+
+        if offsetY > (contentHeight - height) && !pagingOnState {
+            let index = userInfoData.count
+            guard let type = type,
+                  index != 0 else { return }
+            pagingOnState = true
+            self.delegate?.paging(type: type, id: userInfoData[index-1].user.id)
+        }
     }
 }
 

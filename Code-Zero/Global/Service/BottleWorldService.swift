@@ -16,11 +16,12 @@ class BottleWorldService {
     public func requestBottleWoldBrowser(
         token: String,
         keyword: String?,
+        id: Int?,
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldBrowse(token: token,
                                            keyword: keyword,
-                                           offset: nil)) { result in
+                                           offset: id)) { result in
             switch result {
             case .success(let response):
                 do {
@@ -46,11 +47,12 @@ class BottleWorldService {
     public func requestBottleWoldFollower(
         token: String,
         keyword: String?,
+        id: Int?,
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldFollower(token: token,
                                              keyword: keyword,
-                                             offset: nil)) { result in
+                                             offset: id)) { result in
             switch result {
             case .success(let response):
                 do {
@@ -76,11 +78,12 @@ class BottleWorldService {
     public func requestBottleWoldFollowing(
         token: String,
         keyword: String?,
+        id: Int?,
         completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
     ) {
         service.request(.bottleWorldFollowing(token: token,
                                              keyword: keyword,
-                                              offset: nil)) { result in
+                                              offset: id)) { result in
             switch result {
             case .success(let response):
                 do {
