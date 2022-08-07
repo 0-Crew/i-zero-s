@@ -431,7 +431,10 @@ extension CalendarVC {
         }
         calendar.reloadData()
         calendar.reloadInputViews()
-        guard let selectedDate = selectedDate else { return }
+        guard let selectedDate = selectedDate else {
+            findTodayIsChallenge()
+            return
+        }
         setSelectedChallenge(date: selectedDate)
     }
     private func changeRootViewToHome() {
