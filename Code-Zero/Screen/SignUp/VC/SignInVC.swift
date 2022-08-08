@@ -127,7 +127,9 @@ extension SignInVC: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
            let identityToken = credential.identityToken,
-           let tokenString = String(data: identityToken, encoding: .utf8) {
+           let tokenString = String(data: identityToken, encoding: .utf8),
+           let code = credential.authorizationCode,
+           let codeString = String(data: code, encoding: .utf8) {
             requestLogin(id: credential.user,
                          token: tokenString,
                          provider: "apple")
