@@ -12,7 +12,11 @@ class ChallengeVC: UIViewController {
 
     // MARK: - Property
     internal var userInfo: UserInfo?
-    internal var challengeData: MainChallengeData?
+    internal var challengeData: MainChallengeData? {
+        didSet {
+            checkEmptyChallengeNeeded()
+        }
+    }
     internal var followingPeopleList: [User] = [] {
         didSet {
             setFollowingListStackView()
@@ -21,6 +25,7 @@ class ChallengeVC: UIViewController {
     internal var inconveniences: [Convenience] = [] {
         didSet {
             updateBottleImageView()
+            checkEmptyChallengeNeeded()
         }
     }
     // 다른 유저의 챌린지를 조회할 때 세팅해야할 프로퍼티
@@ -201,6 +206,22 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - Field Method
+
+    private func checkEmptyChallengeNeeded() {
+        guard isMine, let challengeData = challengeData else { return }
+
+        switch (challengeData.hasChallengeTermExpired, challengeData.allInconveniencesChecked) {
+        case (true, true):
+            print("챌린지 성공 팝업")
+        case (false, true):
+            print("챌린지 성공 팝업")
+        case (true, false):
+            print("챌린지 실패 팝업")
+        default:
+            print("챌린지 진행중")
+        }
+
+    }
 }
 
 // MARK: - UI Setting
@@ -446,6 +467,15 @@ extension ChallengeVC {
             animated: true,
             completion: nil
         )
+    }
+
+    @objc func presentCompletedChallengeFinalVC() {
+        let storyboard = UIStoryboard(name: "ChallengeFinal", bundle: nil)
+        guard let finalVC = storyboard.instantiateViewController(
+            withIdentifier: "CompletedChallengeFinalVC") as? CompletedChallengeFinalVC else {
+            return
+        }
+        self.present(finalVC, animated: true)
     }
 }
 

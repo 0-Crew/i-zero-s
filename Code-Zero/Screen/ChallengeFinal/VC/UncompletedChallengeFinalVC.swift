@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChallengeFinalVC: UIViewController {
+class UncompletedChallengeFinalVC: UIViewController {
     // MARK: - Property
     internal var challengeTextList: [String] = [
         "음식 남기지 않기1",
@@ -62,7 +62,7 @@ class ChallengeFinalVC: UIViewController {
     }
 }
 // MARK: - FinalChallengeViewDelegate
-extension ChallengeFinalVC: FinalChallengeViewDelegate {
+extension UncompletedChallengeFinalVC: FinalChallengeViewDelegate {
     func challengeTextFieldWillEdit(offset: Int) {
         let finalChallengeView = challengeViewList[offset]
         finalChallengeView.challengeTextField.becomeFirstResponder()

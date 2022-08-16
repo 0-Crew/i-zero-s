@@ -14,6 +14,18 @@ extension Date {
         return todayDate == datePickerToString(format: "yyyy-MM-dd")
     }
 
+    var isOverDate: Bool {
+        let todmorrowDate = Date().getDateIntervalBy(intervalDay: 1)
+        guard
+            let tomorrowDateString = todmorrowDate?.datePickerToString(format: "yyyy-MM-dd")
+        else {
+            return false
+        }
+        let endDate = self.datePickerToString(format: "yyyy-MM-dd")
+
+        return tomorrowDateString == endDate
+    }
+
     func datePickerToString(format: String) -> String {
         // date 타입을 string으로 바꾸기
 
