@@ -12,11 +12,7 @@ class ChallengeVC: UIViewController {
 
     // MARK: - Property
     internal var userInfo: UserInfo?
-    internal var challengeData: MainChallengeData? {
-        didSet {
-            checkEmptyChallengeNeeded()
-        }
-    }
+    internal var challengeData: MainChallengeData?
     internal var followingPeopleList: [User] = [] {
         didSet {
             setFollowingListStackView()
@@ -207,20 +203,22 @@ class ChallengeVC: UIViewController {
 
     // MARK: - Field Method
 
-    private func checkEmptyChallengeNeeded() {
+    internal func checkEmptyChallengeNeeded() {
         guard isMine, let challengeData = challengeData else { return }
 
-        switch (challengeData.hasChallengeTermExpired, challengeData.allInconveniencesChecked) {
-        case (true, true):
-            print("챌린지 성공 팝업")
-        case (false, true):
-            print("챌린지 성공 팝업")
+        let isCheckedList = inconveniences.map { $0.isFinished }
+        let allInconveniencesChecked = isCheckedList.allSatisfy {
+            guard let isFinished = $0 else { return false }
+            return isFinished
+        }
+        switch (challengeData.hasChallengeTermExpired, allInconveniencesChecked) {
+        case (_, true):
+            presentChallengeFinalVC(isCompleted: true)
         case (true, false):
-            print("챌린지 실패 팝업")
+            presentChallengeFinalVC(isCompleted: false)
         default:
             print("챌린지 진행중")
         }
-
     }
 }
 
@@ -469,13 +467,24 @@ extension ChallengeVC {
         )
     }
 
-    @objc func presentCompletedChallengeFinalVC() {
+    internal func presentChallengeFinalVC(isCompleted: Bool) {
         let storyboard = UIStoryboard(name: "ChallengeFinal", bundle: nil)
-        guard let finalVC = storyboard.instantiateViewController(
-            withIdentifier: "CompletedChallengeFinalVC") as? CompletedChallengeFinalVC else {
-            return
+        let destinationIdentifier = isCompleted ?
+        "CompletedChallengeFinalVC" : "UncompletedChallengeFinalFixableVC"
+        let finalVC = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
+
+        if isCompleted {
+            guard let completedFinalVC = finalVC as? CompletedChallengeFinalVC else { return }
+            completedFinalVC.modalPresentationStyle = .fullScreen
+            completedFinalVC.myChallenge = challengeData?.myChallenge
+            self.present(completedFinalVC, animated: true)
+        } else {
+            guard let unCompletedFinalVC = finalVC as? UncompletedChallengeFinalFixableVC else { return }
+            unCompletedFinalVC.challengeData = challengeData
+            unCompletedFinalVC.userInfo = userInfo
+            unCompletedFinalVC.inconveniences = inconveniences
+            self.present(finalVC, animated: true)
         }
-        self.present(finalVC, animated: true)
     }
 }
 

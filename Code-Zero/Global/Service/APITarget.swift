@@ -162,9 +162,9 @@ extension APITarget: TargetType {
             return .requestParameters(parameters: ["type": alarmType.rawValue,
                                                    "receiverUserId": receiverUserId],
                                       encoding: URLEncoding.queryString)
-        case .myChallengePut(_,let myChallengeId):
+        case .myChallengePut(_, let myChallengeId):
             return .requestParameters(parameters: ["myChallengeId": myChallengeId],
-                                      encoding: JSONEncoding.default)
+                                      encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {

@@ -16,14 +16,6 @@ struct MainChallengeData: Codable {
     let myInconveniences: [Convenience]
     let inconvenience: [Convenience]?
 
-    var allInconveniencesChecked: Bool {
-        let isCheckedList = myInconveniences.map { $0.isFinished }
-        return isCheckedList.allSatisfy {
-            guard let isFinished = $0 else { return false }
-            return isFinished
-        }
-    }
-
     var hasChallengeTermExpired: Bool {
         guard let startedDate = myChallenge?.startedAt.toDate() else { return false }
         return startedDate.isOverDate
