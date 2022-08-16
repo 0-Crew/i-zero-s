@@ -212,8 +212,10 @@ class ChallengeVC: UIViewController {
             return isFinished
         }
         switch (challengeData.hasChallengeTermExpired, allInconveniencesChecked) {
+            // 기간 상관 없이 모든 불편함 챌린지가 완료 된 경우 case
         case (_, true):
             presentChallengeFinalVC(isCompleted: true)
+            // 챌린지 기간이 만료되었지만, 물편함 챌린지 중 하나라도 완료하지 못한 경우 case
         case (true, false):
             presentChallengeFinalVC(isCompleted: false)
         default:
