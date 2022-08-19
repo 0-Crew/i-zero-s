@@ -17,7 +17,7 @@ class BottleWorldService {
         token: String,
         keyword: String?,
         id: Int?,
-        completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
+        completion: @escaping (NetworkResult<BottleWorld>) -> Void
     ) {
         service.request(.bottleWorldBrowse(token: token,
                                            keyword: keyword,
@@ -27,7 +27,7 @@ class BottleWorldService {
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<[BottleWorldUser]>.self,
+                        GenericResponse<BottleWorld>.self,
                         from: response.data
                     )
                     if let data = body.data {

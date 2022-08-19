@@ -114,10 +114,10 @@ extension BottleWorldListCell {
             .shared
             .requestBottleWoldBrowser(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
-                case .success(let userData):
+                case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .lookAround,
                                              keyword: keyword,
-                                             data: userData)
+                                             data: bottleWorldData.users)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
