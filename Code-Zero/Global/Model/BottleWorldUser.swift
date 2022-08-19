@@ -8,6 +8,11 @@
 import Foundation
 
 // MARK: - BottleWorldUser
+struct BottleWorld: Codable {
+    let users: [BottleWorldUser]
+    let count: Count
+}
+
 struct BottleWorldUser: Codable {
     let user: User
     let challenge: UserChallenge?
@@ -18,4 +23,9 @@ struct BottleWorldUser: Codable {
 struct User: Codable {
     let id: Int
     let name: String
+}
+
+// MARK: - Count
+struct Count: Codable {
+    let follower, following: Int
 }
