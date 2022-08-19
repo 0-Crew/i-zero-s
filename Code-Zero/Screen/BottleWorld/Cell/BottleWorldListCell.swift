@@ -83,7 +83,6 @@ class BottleWorldListCell: UICollectionViewCell {
         }
     }
     func setUserListView(data: [BottleWorldUser]) {
-        let data = data + data + data + data + data + data + data
         searchResultView.addSubview(userListView)
         userListView.userInfoData = data
         userListView.type = tapType
@@ -134,10 +133,10 @@ extension BottleWorldListCell {
             .shared
             .requestBottleWoldFollower(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
-                case .success(let userData):
+                case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .follower,
                                              keyword: keyword,
-                                             data: userData)
+                                             data: bottleWorldData.users)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -153,10 +152,10 @@ extension BottleWorldListCell {
             .shared
             .requestBottleWoldFollowing(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
-                case .success(let userData):
+                case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .following,
                                              keyword: keyword,
-                                             data: userData)
+                                             data: bottleWorldData.users)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:

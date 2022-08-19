@@ -48,7 +48,7 @@ class BottleWorldService {
         token: String,
         keyword: String?,
         id: Int?,
-        completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
+        completion: @escaping (NetworkResult<BottleWorld>) -> Void
     ) {
         service.request(.bottleWorldFollower(token: token,
                                              keyword: keyword,
@@ -58,7 +58,7 @@ class BottleWorldService {
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<[BottleWorldUser]>.self,
+                        GenericResponse<BottleWorld>.self,
                         from: response.data
                     )
                     if let data = body.data {
@@ -79,17 +79,17 @@ class BottleWorldService {
         token: String,
         keyword: String?,
         id: Int?,
-        completion: @escaping (NetworkResult<[BottleWorldUser]>) -> Void
+        completion: @escaping (NetworkResult<BottleWorld>) -> Void
     ) {
         service.request(.bottleWorldFollowing(token: token,
-                                             keyword: keyword,
+                                              keyword: keyword,
                                               offset: id)) { result in
             switch result {
             case .success(let response):
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<[BottleWorldUser]>.self,
+                        GenericResponse<BottleWorld>.self,
                         from: response.data
                     )
                     if let data = body.data {
