@@ -52,10 +52,14 @@ extension HomeVC {
 
 // MARK: - Login Function
 extension HomeVC {
-    private func requestLogin(id: String, token: String, provider: String) {
+    private func requestLogin(id: String,
+                              token: String,
+                              provider: String,
+                              code: String? = nil) {
         UserLoginService.shared.requestLogin(id: id,
                                              token: token,
-                                             provider: provider) { [weak self] result in
+                                             provider: provider,
+                                             code: code) { [weak self] result in
             switch result {
             case .success(let data):
                 UserDefaultManager.shared.saveAccessToken(accessToken: data.accesstoken)
@@ -138,7 +142,8 @@ extension HomeVC: ASAuthorizationControllerDelegate {
            let codeString = String(data: code, encoding: .utf8) {
             requestLogin(id: credential.user,
                          token: tokenString,
-                         provider: "apple")
+                         provider: "apple",
+                         code: codeString)
         }
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
