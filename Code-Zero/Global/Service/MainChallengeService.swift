@@ -16,9 +16,8 @@ struct MainChallengeData: Codable {
     let myInconveniences: [Convenience]
     let inconvenience: [Convenience]?
 
-    var hasChallengeTermExpired: Bool {
-        guard let startedDate = myChallenge?.startedAt.toDate() else { return false }
-        return startedDate.getDateIntervalBy(intervalDay: 7)?.isOverDate ?? false
+    var isChallengeTermExpired: Bool {
+        return myChallenge?.isDueDateOver ?? false
     }
 }
 

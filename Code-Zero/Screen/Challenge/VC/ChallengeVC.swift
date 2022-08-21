@@ -211,7 +211,7 @@ class ChallengeVC: UIViewController {
             guard let isFinished = $0 else { return false }
             return isFinished
         }
-        switch (challengeData.hasChallengeTermExpired, allInconveniencesChecked) {
+        switch (challengeData.isChallengeTermExpired, allInconveniencesChecked) {
         // 기간 상관 없이 모든 불편함 챌린지가 완료 된 경우 case
         case (_, true):
             presentChallengeFinalVC(isCompleted: true)

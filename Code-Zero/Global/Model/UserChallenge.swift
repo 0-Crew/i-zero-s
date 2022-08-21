@@ -33,4 +33,24 @@ struct UserChallenge: Codable {
         }
         return arrays
     }
+
+    var startedDate: Date? {
+        return startedAt.toDate() ?? nil
+    }
+
+    var endedDate: Date? {
+        return startedDate?.getDateIntervalBy(intervalDay: 7)
+    }
+
+    var isDueDateOver: Bool {
+        let tomrrowDate = Date().getDateIntervalBy(intervalDay: 1)
+        guard
+            let tomrrowDateString = tomrrowDate?.datePickerToString(format: "yyyy-MM-dd")
+        else {
+            return false
+        }
+        let endDateString = endedDate?.datePickerToString(format: "yyyy-MM-dd")
+
+        return tomrrowDateString == endDateString
+    }
 }
