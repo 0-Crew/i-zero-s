@@ -105,6 +105,7 @@ extension ChallengeVC {
         completion: @escaping (Bool, Convenience?) -> Void
     ) {
         guard let token = accessToken else { return }
+        Indicator.shared.show()
         MainChallengeService
             .shared
             .requestCompleteMyInconvenience(token: token, inconvenience: inconvenience) { result in
@@ -120,6 +121,7 @@ extension ChallengeVC {
                 case .networkFail:
                     break
                 }
+                Indicator.shared.dismiss()
             }
     }
 
@@ -129,6 +131,7 @@ extension ChallengeVC {
         completion: @escaping (Bool, Convenience?) -> Void
     ) {
         guard let token = accessToken else { return }
+        Indicator.shared.show()
         MainChallengeService
             .shared
             .requestUpdateMyInconvenienceText(
@@ -148,12 +151,13 @@ extension ChallengeVC {
                 case .networkFail:
                     break
                 }
+                Indicator.shared.dismiss()
             }
     }
 
     internal func cheerUpUser(completion: @escaping (Bool) -> Void) {
         guard let token = accessToken, let userId = fetchedUserId else { return }
-
+        Indicator.shared.show()
         AlarmCenterService
             .shared
             .requestNotificationButton(
@@ -175,6 +179,7 @@ extension ChallengeVC {
                     completion(false)
                     print("networkFail")
                 }
+                Indicator.shared.dismiss()
             }
     }
 }

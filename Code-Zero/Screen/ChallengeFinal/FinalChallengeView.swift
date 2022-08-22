@@ -104,7 +104,7 @@ class FinalChallengeView: LoadXibView {
     var offset: Int!
     var finalChallengeState: FinalChallengeViewState!
     weak var delegate: FinalChallengeViewDelegate?
-    var cachedText: String?
+    var cachedChallengeText: String?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -125,7 +125,7 @@ class FinalChallengeView: LoadXibView {
         setState(state: .challengeNotComplete)
         if let text = challengeTextField.text,
            text.isEmpty {
-            challengeTextField.text = cachedText
+            challengeTextField.text = cachedChallengeText
         }
         delegate?.challengeTextFieldDidEdit(offset: offset, inputText: challengeTextField.text)
     }
@@ -173,6 +173,16 @@ extension FinalChallengeView {
         editCompleteButton.setImage(state.editCompleteButtonImage, for: .normal)
         editCompleteButton.tintColor = state.editCompleteButtonTintColor ?? .gray4
         editButton.isHidden = state.editButtonIsHidden
+    }
+
+    internal func setChallengeDate(date: Date?) {
+        guard let date = date else { return }
+        dateLabel.text = date.datePickerToString(format: "dd")
+    }
+
+    internal func setChallengeText(text: String) {
+        challengeTextField.text = text
+        cachedChallengeText = text
     }
 }
 

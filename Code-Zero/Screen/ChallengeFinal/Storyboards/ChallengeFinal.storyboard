@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tDs-6r-aZW">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Challenge FinalVC-->
+        <!--Uncompleted Challenge Final FixableVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Y6W-OH-hqX" customClass="ChallengeFinalVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UncompletedChallengeFinalFixableVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Y6W-OH-hqX" customClass="UncompletedChallengeFinalFixableVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,6 +153,9 @@
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="보틀 비우기"/>
+                                                <connections>
+                                                    <action selector="emptyBottleButtonDidTapWithSender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YpJ-2u-6rr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -199,9 +202,193 @@
             </objects>
             <point key="canvasLocation" x="-16.800000000000001" y="33.990147783251231"/>
         </scene>
+        <!--Completed Challenge FinalVC-->
+        <scene sceneID="wpD-KA-JJg">
+            <objects>
+                <viewController storyboardIdentifier="CompletedChallengeFinalVC" id="tDs-6r-aZW" customClass="CompletedChallengeFinalVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p5M-Ku-aPv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32Z-ZP-UqE">
+                                <rect key="frame" x="0.0" y="139.33333333333331" width="375" height="533.33333333333348"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsq-rd-1je">
+                                        <rect key="frame" x="122" y="502.33333333333326" width="131" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="131" id="Lgz-Tc-Iat"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="새로운 챌린지 도전하기">
+                                            <color key="titleColor" name="orangeMain"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newChallengeButtonDidTap:" destination="tDs-6r-aZW" eventType="touchUpInside" id="nW9-X6-RFu"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxz-th-ggA">
+                                        <rect key="frame" x="23.666666666666657" y="72.333333333333314" width="328" height="400"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="challenge_congratulate"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y00-Fk-4Uj">
+                                        <rect key="frame" x="111.33333333333333" y="29" width="152.33333333333337" height="31.333333333333329"/>
+                                        <string key="text">플라스틱 빨대 사용하기 대신
+7번의 불편함을 참아냈어요</string>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="13"/>
+                                        <color key="textColor" name="gray4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보틀을 끝까지 비웠어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPj-16-nU0">
+                                        <rect key="frame" x="87" y="0.0" width="201" height="24"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
+                                        <color key="textColor" name="darkGray2"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zsq-rd-1je" secondAttribute="bottom" id="8js-yH-8Rf"/>
+                                    <constraint firstItem="zxz-th-ggA" firstAttribute="centerX" secondItem="32Z-ZP-UqE" secondAttribute="centerX" id="A09-42-q8q"/>
+                                    <constraint firstItem="Y00-Fk-4Uj" firstAttribute="centerX" secondItem="32Z-ZP-UqE" secondAttribute="centerX" id="KxR-Bu-iBw"/>
+                                    <constraint firstItem="zxz-th-ggA" firstAttribute="top" secondItem="Y00-Fk-4Uj" secondAttribute="bottom" constant="12" id="MXE-cg-0wp"/>
+                                    <constraint firstItem="zxz-th-ggA" firstAttribute="width" secondItem="32Z-ZP-UqE" secondAttribute="width" multiplier="0.8" constant="28" id="Ujj-Yx-LGo"/>
+                                    <constraint firstItem="PPj-16-nU0" firstAttribute="top" secondItem="32Z-ZP-UqE" secondAttribute="top" id="VoJ-I0-h9F"/>
+                                    <constraint firstItem="PPj-16-nU0" firstAttribute="centerX" secondItem="32Z-ZP-UqE" secondAttribute="centerX" id="cnX-Jk-fPc"/>
+                                    <constraint firstItem="Y00-Fk-4Uj" firstAttribute="top" secondItem="PPj-16-nU0" secondAttribute="bottom" constant="5" id="dGa-H2-lBU"/>
+                                    <constraint firstItem="zsq-rd-1je" firstAttribute="centerX" secondItem="32Z-ZP-UqE" secondAttribute="centerX" id="fd8-qs-RKq"/>
+                                    <constraint firstItem="zsq-rd-1je" firstAttribute="top" secondItem="zxz-th-ggA" secondAttribute="bottom" constant="30" id="hGG-l3-Pyf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="URK-Ix-hAE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zxz-th-ggA" firstAttribute="height" secondItem="p5M-Ku-aPv" secondAttribute="height" multiplier="0.492611" id="7FU-uq-4Bd"/>
+                            <constraint firstItem="zsq-rd-1je" firstAttribute="height" secondItem="p5M-Ku-aPv" secondAttribute="height" multiplier="0.0381773" id="7y1-2r-B36"/>
+                            <constraint firstItem="32Z-ZP-UqE" firstAttribute="leading" secondItem="URK-Ix-hAE" secondAttribute="leading" id="BXZ-mV-ln5"/>
+                            <constraint firstItem="URK-Ix-hAE" firstAttribute="trailing" secondItem="32Z-ZP-UqE" secondAttribute="trailing" id="Btt-V5-sAE"/>
+                            <constraint firstItem="32Z-ZP-UqE" firstAttribute="centerY" secondItem="p5M-Ku-aPv" secondAttribute="centerY" id="fiB-rS-irZ"/>
+                            <constraint firstItem="32Z-ZP-UqE" firstAttribute="centerX" secondItem="p5M-Ku-aPv" secondAttribute="centerX" id="gs9-9x-KAG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="challengeNameLabel" destination="Y00-Fk-4Uj" id="5sS-vK-pIS"/>
+                        <outlet property="challengeSuccessView" destination="zxz-th-ggA" id="eP6-Hl-N5D"/>
+                        <outlet property="newChallengeButton" destination="zsq-rd-1je" id="8LU-ZZ-6zJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OC1-Xy-vjx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824.79999999999995" y="33.990147783251231"/>
+        </scene>
+        <!--Uncompleted Challenge FinalVC-->
+        <scene sceneID="v6i-8c-pcy">
+            <objects>
+                <viewController storyboardIdentifier="UncompletedChallengeFinalVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="vGQ-4q-Awn" customClass="UncompletedChallengeFinalVC" customModule="Code_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Vf-hg-B7p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TED-mI-AJe">
+                                <rect key="frame" x="40" y="136.33333333333331" width="295" height="539.66666666666674"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQI-3Y-aDl">
+                                        <rect key="frame" x="78.666666666666686" y="50" width="138" height="48"/>
+                                        <string key="text">보틀을 비우느라 
+수고하셨어요</string>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="20"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgFinish" translatesAutoresizingMaskIntoConstraints="NO" id="aPt-dW-isQ">
+                                        <rect key="frame" x="47.666666666666686" y="163" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aPt-dW-isQ" secondAttribute="height" multiplier="1:1" id="EBW-2m-MX8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김희영룰루님," textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oz-1c-0nc">
+                                        <rect key="frame" x="101.66666666666666" y="381" width="92" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음엔 끝까지 비워봐요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh4-uK-3yn">
+                                        <rect key="frame" x="67.666666666666686" y="401.33333333333326" width="160" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="16"/>
+                                        <color key="textColor" name="white"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0l-ld-atL">
+                                        <rect key="frame" x="66.666666666666686" y="487.66666666666663" width="162" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-mU-OkR">
+                                                <rect key="frame" x="142" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="6NH-Nb-Dpp"/>
+                                                    <constraint firstAttribute="width" constant="20" id="w8B-qw-VhD"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음엔 끝까지 비워봐요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zps-9U-MII">
+                                                <rect key="frame" x="0.0" y="1.3333333333333712" width="140" height="17"/>
+                                                <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                <color key="textColor" name="white"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="H1i-mU-OkR" secondAttribute="bottom" id="KpH-p1-Ct2"/>
+                                            <constraint firstItem="zps-9U-MII" firstAttribute="leading" secondItem="d0l-ld-atL" secondAttribute="leading" id="QMn-TK-dND"/>
+                                            <constraint firstAttribute="trailing" secondItem="H1i-mU-OkR" secondAttribute="trailing" id="Uqa-Qy-f0X"/>
+                                            <constraint firstItem="H1i-mU-OkR" firstAttribute="top" secondItem="d0l-ld-atL" secondAttribute="top" id="cDZ-Gi-MD1"/>
+                                            <constraint firstItem="zps-9U-MII" firstAttribute="centerY" secondItem="d0l-ld-atL" secondAttribute="centerY" id="wO8-NC-vfb"/>
+                                            <constraint firstItem="H1i-mU-OkR" firstAttribute="leading" secondItem="zps-9U-MII" secondAttribute="trailing" constant="2" id="ylX-Rf-Xe3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="orangeMain"/>
+                                <constraints>
+                                    <constraint firstItem="zh4-uK-3yn" firstAttribute="top" secondItem="3oz-1c-0nc" secondAttribute="bottom" constant="1" id="1hE-hl-jjm"/>
+                                    <constraint firstItem="d0l-ld-atL" firstAttribute="top" secondItem="zh4-uK-3yn" secondAttribute="bottom" constant="67" id="L4g-XB-eCb"/>
+                                    <constraint firstItem="aPt-dW-isQ" firstAttribute="top" secondItem="tQI-3Y-aDl" secondAttribute="bottom" constant="65" id="Qd1-NZ-Bjf"/>
+                                    <constraint firstAttribute="bottom" secondItem="d0l-ld-atL" secondAttribute="bottom" constant="32" id="X0v-2H-uxR"/>
+                                    <constraint firstItem="zh4-uK-3yn" firstAttribute="centerX" secondItem="TED-mI-AJe" secondAttribute="centerX" id="Y45-ey-J8H"/>
+                                    <constraint firstItem="d0l-ld-atL" firstAttribute="centerX" secondItem="TED-mI-AJe" secondAttribute="centerX" id="Zn7-nc-pnk"/>
+                                    <constraint firstItem="aPt-dW-isQ" firstAttribute="centerX" secondItem="TED-mI-AJe" secondAttribute="centerX" id="aqY-0u-wZ6"/>
+                                    <constraint firstItem="3oz-1c-0nc" firstAttribute="top" secondItem="aPt-dW-isQ" secondAttribute="bottom" constant="18" id="awa-vs-hzC"/>
+                                    <constraint firstItem="tQI-3Y-aDl" firstAttribute="top" secondItem="TED-mI-AJe" secondAttribute="top" constant="50" id="gld-P1-wiM"/>
+                                    <constraint firstItem="3oz-1c-0nc" firstAttribute="centerX" secondItem="TED-mI-AJe" secondAttribute="centerX" id="iEV-ee-0IQ"/>
+                                    <constraint firstItem="tQI-3Y-aDl" firstAttribute="centerX" secondItem="TED-mI-AJe" secondAttribute="centerX" id="nRi-Bg-e30"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="93Z-37-acj"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TED-mI-AJe" firstAttribute="centerX" secondItem="3Vf-hg-B7p" secondAttribute="centerX" id="9aF-Gw-Mgk"/>
+                            <constraint firstItem="aPt-dW-isQ" firstAttribute="height" secondItem="3Vf-hg-B7p" secondAttribute="height" multiplier="0.246305" id="Ddl-Cx-uy2"/>
+                            <constraint firstItem="TED-mI-AJe" firstAttribute="width" secondItem="3Vf-hg-B7p" secondAttribute="width" multiplier="0.786667" id="Tp2-Tf-Q41"/>
+                            <constraint firstItem="TED-mI-AJe" firstAttribute="centerY" secondItem="3Vf-hg-B7p" secondAttribute="centerY" id="VHi-vw-QDm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nickNameLabel" destination="3oz-1c-0nc" id="sIc-6G-POG"/>
+                        <outlet property="takeRainCheckView" destination="d0l-ld-atL" id="kYY-sz-yHc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHC-h1-091" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880.79999999999995" y="773.64532019704438"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="icArrowRight" width="24" height="24"/>
         <image name="icChallengeFinalPopup" width="60" height="60"/>
+        <image name="imgFinish" width="200" height="200"/>
         <namedColor name="darkGray2">
             <color red="0.22400000691413879" green="0.21600000560283661" blue="0.19200000166893005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -213,6 +400,9 @@
         </namedColor>
         <namedColor name="orangeMain">
             <color red="1" green="0.50999999046325684" blue="0.054999999701976776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
