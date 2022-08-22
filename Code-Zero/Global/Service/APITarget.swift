@@ -23,7 +23,7 @@ enum APITarget {
     case myInconvenienceFinish(token: String, myInconvenienceId: Int)
     case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
     case myChallengeUser(token: String, userId: Int)
-    case myChallengePut(token: String, myChallengeId: Int)
+    case myChallengeEmpty(token: String, myChallengeId: Int)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -72,7 +72,7 @@ extension APITarget: TargetType {
             return "/bottleworld/browse"
         case .userInfo:
             return "/user/setting"
-        case .myChallengeFetch, .myChallengePut:
+        case .myChallengeFetch, .myChallengeEmpty:
             return "/my-challenge/main"
         case .myChallengeUser:
             return "/my-challenge/user"
@@ -90,7 +90,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen, .notificationButton:
             return .post
-        case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate, .myChallengePut:
+        case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate, .myChallengeEmpty:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .myCalendar, .userCalendar,
                 .userInfo, .myChallengeFetch, .myChallengeUser:
@@ -162,7 +162,7 @@ extension APITarget: TargetType {
             return .requestParameters(parameters: ["type": alarmType.rawValue,
                                                    "receiverUserId": receiverUserId],
                                       encoding: URLEncoding.queryString)
-        case .myChallengePut(_, let myChallengeId):
+        case .myChallengeEmpty(_, let myChallengeId):
             return .requestParameters(parameters: ["myChallengeId": myChallengeId],
                                       encoding: URLEncoding.queryString)
         }
@@ -189,7 +189,7 @@ extension APITarget: TargetType {
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _),
-                .myChallengePut(let token, _):
+                .myChallengeEmpty(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:

@@ -161,7 +161,7 @@ class MainChallengeService {
         myChallengeId id: Int,
         completion: @escaping (NetworkResult<Bool>) -> Void
     ) {
-        service.request(.myChallengePut(token: token, myChallengeId: id)) { result in
+        service.request(.myChallengeEmpty(token: token, myChallengeId: id)) { result in
             switch result {
             case .success(let response):
                 do {
