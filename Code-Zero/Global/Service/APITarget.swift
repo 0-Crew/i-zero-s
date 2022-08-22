@@ -12,7 +12,7 @@ enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
     case userPrivate(token: String)
-    case auth(idKey: String, token: String, provider: String)
+    case auth(idKey: String, token: String, provider: String, authorizationCode: String?)
     case deleteAuth(token: String)
 
     // 보틀월드
@@ -114,8 +114,11 @@ extension APITarget: TargetType {
 
         case .userNick(let nick, _):
             return .requestParameters(parameters: ["name": nick], encoding: JSONEncoding.default)
-        case .auth(let idKey, let token, let provider):
-            return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
+        case .auth(let idKey, let token, let provider, let authorizationCode):
+            return .requestParameters(parameters: ["idKey": idKey,
+                                                   "token": token,
+                                                   "provider": provider,
+                                                   "authorizationCode": authorizationCode],
                                       encoding: JSONEncoding.default)
         case .userPrivate, .deleteAuth:
                 return .requestPlain

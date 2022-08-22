@@ -15,11 +15,13 @@ class UserLoginService {
     public func requestLogin(id: String,
                              token: String,
                              provider: String,
+                             code: String?,
                              completion: @escaping (NetworkResult<UserLoginData>) -> Void) {
 
         service.request(APITarget.auth(idKey: id,
                                        token: token,
-                                       provider: provider)) { result in
+                                       provider: provider,
+                                       authorizationCode: code)) { result in
             switch result {
             case .success(let response):
                 do {

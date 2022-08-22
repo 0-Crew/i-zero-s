@@ -32,11 +32,12 @@ class OnboardingStepFourVC: UIViewController {
         animationView.play()
     }
 
-    private func requestLogin(id: String, token: String, provider: String) {
+    private func requestLogin(id: String, token: String, provider: String, code: String? = nil) {
         UserLoginService.shared.requestLogin(
             id: id,
             token: token,
-            provider: provider
+            provider: provider,
+            code: code
         ) { [weak self] result in
             switch result {
             case .success(let data):
@@ -82,10 +83,13 @@ extension OnboardingStepFourVC: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
            let identityToken = credential.identityToken,
-           let tokenString = String(data: identityToken, encoding: .utf8) {
+           let tokenString = String(data: identityToken, encoding: .utf8),
+           let code = credential.authorizationCode,
+           let codeString = String(data: code, encoding: .utf8) {
             requestLogin(id: credential.user,
                          token: tokenString,
-                         provider: "apple")
+                         provider: "apple",
+                         code: codeString)
         }
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
