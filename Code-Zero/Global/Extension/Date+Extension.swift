@@ -34,4 +34,28 @@ extension Date {
     func getDateIntervalBy(intervalDay: Int) -> Date? {
         return Calendar.current.date(byAdding: .day, value: intervalDay, to: self)
     }
+
+    /// 오늘 기준 시간 차를 단위 별(분, 시간, 일)로 계산하는 함수
+    func getTimeLineDate() -> String {
+        let timeGap = -self.timeIntervalSinceNow
+
+        let oneDaySecond = 86400.0
+        if timeGap > oneDaySecond {
+            let dayGap = ceil(timeGap/oneDaySecond)
+            return "\(Int(dayGap))일"
+        }
+
+        let oneHourSecond = 3600.0
+        if timeGap > oneHourSecond {
+            let dayGap = floor(timeGap/oneHourSecond)
+            return "\(Int(dayGap))시간"
+        }
+
+        if timeGap > 60 {
+            let dayGap = floor(timeGap/60.0)
+            return "\(Int(dayGap))분"
+        }
+
+        return "방금"
+    }
 }

@@ -47,6 +47,17 @@ extension AlarmType {
             return ""
         }
     }
+
+    func getSubActionToastText(user: User) -> String? {
+        switch self {
+        case .cheer:
+            return "\(user.name)님에게 챌린지 응원을 보냈어요!"
+        case .congrats:
+            return "\(user.name)님에게 챌린지 성공 축하를 보냈어요!"
+        default:
+            return nil
+        }
+    }
 }
 
 protocol AlarmCellDelegate: AnyObject {
@@ -57,7 +68,7 @@ class AlarmCell: UITableViewCell {
 
     private var cellType: AlarmType!
 
-    internal var offset: Int! = 0
+    internal var offset: Int!
     internal weak var delegate: AlarmCellDelegate?
 
     @IBOutlet weak var alarmImageView: UIImageView!
@@ -78,13 +89,25 @@ class AlarmCell: UITableViewCell {
         alarmImageView.makeRounded(cornerRadius: 36 / 2)
     }
 
-    internal func bindData(type: AlarmType = .normal, text: String) {
+    internal func bindData(notification: NotificationData) {
+        let type = notification.alarmType
+        let text = notification.notiText
+        let nickName = notification.sentUser.name
+        let nickNameFirstLetter = nickName.map {"\($0)"}.first ?? ""
+
         cellType = type
         alarmImageView.image = type.alarmImage
-        defaultProfileLabel.text = type == .normal ? "박" : ""
+        defaultProfileLabel.text = type == .normal ? nickNameFirstLetter : ""
         subActionButton.isHidden = type.subActionButtonIsHidden
         subActionButton.setTitle(type.subActionButtonTitle, for: .normal)
         alarmTextLabel.text = text
+        alarmTextLabel.setFontWith(font: .spoqaHanSansNeo(size: 14, family: .bold), in: [nickName])
+        if let timelineText = notification.updatedAt.toDate()?.getTimeLineDate() {
+            timelineLabel.text = "\(timelineText) 전"
+        } else {
+            timelineLabel.text = ""
+        }
+
     }
 
     @IBAction func subActionButtonDidTap() {

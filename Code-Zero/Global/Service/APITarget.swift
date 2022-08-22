@@ -38,6 +38,7 @@ enum APITarget {
 
     // 알람센터
     case notificationButton(token: String, alarmType: AlarmType, receiverUserId: Int)
+    case myNotification(token: String)
 
     // 설정
     case userInfo(token: String)
@@ -82,6 +83,8 @@ extension APITarget: TargetType {
             return "/my-inconvenience/update"
         case .notificationButton:
             return "/notification/button"
+        case .myNotification:
+            return "/my-notification"
         }
     }
 
@@ -93,7 +96,7 @@ extension APITarget: TargetType {
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate, .myChallengeEmpty:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .myCalendar, .userCalendar,
-                .userInfo, .myChallengeFetch, .myChallengeUser:
+                .userInfo, .myChallengeFetch, .myChallengeUser, .myNotification:
             return .get
         case .deleteAuth:
             return .delete
@@ -129,7 +132,7 @@ extension APITarget: TargetType {
             }
             return .requestParameters(parameters: ["keyword": keyword],
                                       encoding: URLEncoding.queryString)
-        case .challengeOpenPreview, .userInfo, .myChallengeFetch:
+        case .challengeOpenPreview, .userInfo, .myChallengeFetch, .myNotification:
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
             return .requestParameters(parameters: ["convenienceString": convenienceString,
@@ -192,6 +195,7 @@ extension APITarget: TargetType {
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _),
+                .myNotification(let token),
                 .myChallengeEmpty(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
