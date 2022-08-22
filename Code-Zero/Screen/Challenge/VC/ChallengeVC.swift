@@ -482,11 +482,11 @@ extension ChallengeVC {
             completedFinalVC.myChallenge = challengeData?.myChallenge
             self.present(completedFinalVC, animated: true)
         } else {
-            guard let unCompletedFinalVC = finalVC as? UncompletedChallengeFinalFixableVC else { return }
-            unCompletedFinalVC.challengeData = challengeData
-            unCompletedFinalVC.userInfo = userInfo
-            unCompletedFinalVC.inconveniences = inconveniences
-            self.present(finalVC, animated: true)
+            guard let uncompletedFinalVC = finalVC as? UncompletedChallengeFinalFixableVC else { return }
+            uncompletedFinalVC.challengeData = challengeData
+            uncompletedFinalVC.userInfo = userInfo
+            uncompletedFinalVC.inconveniences = inconveniences
+            self.present(uncompletedFinalVC, animated: true)
         }
     }
 }
