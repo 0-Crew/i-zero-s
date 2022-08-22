@@ -15,11 +15,13 @@ class UserLoginService {
     public func requestLogin(id: String,
                              token: String,
                              provider: String,
+                             code: String?,
                              completion: @escaping (NetworkResult<UserLoginData>) -> Void) {
 
         service.request(APITarget.auth(idKey: id,
                                        token: token,
-                                       provider: provider)) { result in
+                                       provider: provider,
+                                       authorizationCode: code)) { result in
             switch result {
             case .success(let response):
                 do {
@@ -44,12 +46,21 @@ class UserLoginService {
         }
     }
     public func deleteUser(token: String,
-                           completion: @escaping (NetworkResult<Bool>) -> Void) {
-        service.request(.deleteAuth(token: token)) {
-            result in
+                           completion: @escaping (NetworkResult<String>) -> Void) {
+        service.request(.deleteAuth(token: token)) { result in
             switch result {
-            case .success:
-                completion(.success(true))
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<DeleteUser>.self,
+                        from: response.data
+                    )
+                    guard let data = body.data?.user.provider else { return }
+                    completion(.success(data))
+                } catch let error {
+                    debugPrint(error)
+                }
             case .failure(let error):
                 completion(.serverErr)
                 debugPrint(error)

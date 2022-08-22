@@ -12,7 +12,7 @@ enum APITarget {
     // case 별로 api 나누기
     case userNick(nick: String, token: String) // 닉네임 세팅 및 변경
     case userPrivate(token: String)
-    case auth(idKey: String, token: String, provider: String)
+    case auth(idKey: String, token: String, provider: String, authorizationCode: String?)
     case deleteAuth(token: String)
 
     // 보틀월드
@@ -23,6 +23,7 @@ enum APITarget {
     case myInconvenienceFinish(token: String, myInconvenienceId: Int)
     case myInconvenienceUpdate(token: String, myInconvenienceId: Int, inconvenienceString: String)
     case myChallengeUser(token: String, userId: Int)
+    case myChallengeEmpty(token: String, myChallengeId: Int)
 
     // 챌린지
     case challengeOpenPreview(token: String)
@@ -72,7 +73,7 @@ extension APITarget: TargetType {
             return "/bottleworld/browse"
         case .userInfo:
             return "/user/setting"
-        case .myChallengeFetch:
+        case .myChallengeFetch, .myChallengeEmpty:
             return "/my-challenge/main"
         case .myChallengeUser:
             return "/my-challenge/user"
@@ -92,7 +93,7 @@ extension APITarget: TargetType {
         switch self {
         case .userNick, .auth, .challengeOpen, .notificationButton:
             return .post
-        case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate:
+        case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate, .myChallengeEmpty:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .myCalendar, .userCalendar,
                 .userInfo, .myChallengeFetch, .myChallengeUser, .myNotification:
@@ -117,8 +118,11 @@ extension APITarget: TargetType {
 
         case .userNick(let nick, _):
             return .requestParameters(parameters: ["name": nick], encoding: JSONEncoding.default)
-        case .auth(let idKey, let token, let provider):
-            return .requestParameters(parameters: ["idKey": idKey, "token": token, "provider": provider],
+        case .auth(let idKey, let token, let provider, let authorizationCode):
+            return .requestParameters(parameters: ["idKey": idKey,
+                                                   "token": token,
+                                                   "provider": provider,
+                                                   "authorizationCode": authorizationCode],
                                       encoding: JSONEncoding.default)
         case .userPrivate, .deleteAuth:
                 return .requestPlain
@@ -164,6 +168,9 @@ extension APITarget: TargetType {
             return .requestParameters(parameters: ["type": alarmType.rawValue,
                                                    "receiverUserId": receiverUserId],
                                       encoding: URLEncoding.queryString)
+        case .myChallengeEmpty(_, let myChallengeId):
+            return .requestParameters(parameters: ["myChallengeId": myChallengeId],
+                                      encoding: URLEncoding.queryString)
         }
     }
     var validationType: Moya.ValidationType {
@@ -188,7 +195,8 @@ extension APITarget: TargetType {
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _),
-                .myNotification(let token):
+                .myNotification(let token),
+                .myChallengeEmpty(let token, _):
             return ["Content-Type": "application/json",
                     "Authorization": token]
         default:

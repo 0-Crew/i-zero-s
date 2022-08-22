@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class SplashVC: UIViewController {
 
@@ -13,10 +15,20 @@ class SplashVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orangeMain
-        checkIsUser()
+        kakaoTokenRefresh()
     }
 
     // MARK: - Check User
+    private func kakaoTokenRefresh() {
+        if AuthApi.hasToken() {
+            UserApi.shared.accessTokenInfo { (_, error) in
+                if error != nil {
+                    UserDefaultManager.shared.removeAccessToken()
+                }
+            }
+        }
+        self.checkIsUser()
+    }
     private func checkIsUser() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             let isUser: Bool = UserDefaultManager.shared.accessToken != nil
@@ -33,5 +45,4 @@ class SplashVC: UIViewController {
             completion: nil
         )
     }
-
 }

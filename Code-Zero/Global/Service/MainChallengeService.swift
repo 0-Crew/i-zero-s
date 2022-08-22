@@ -15,6 +15,10 @@ struct MainChallengeData: Codable {
     let myChallenge: UserChallenge?
     let myInconveniences: [Convenience]
     let inconvenience: [Convenience]?
+
+    var isChallengeTermExpired: Bool {
+        return myChallenge?.isDueDateOver ?? false
+    }
 }
 
 struct MyInconvenienceFinishData: Codable {
@@ -23,6 +27,10 @@ struct MyInconvenienceFinishData: Codable {
 
 struct MyInconvenienceUpdateData: Codable {
     let myInconvenience: [Convenience]
+}
+
+struct EmptiedChallengeData: Codable {
+    let myChallenge: UserChallenge?
 }
 
 class MainChallengeService {
@@ -137,6 +145,35 @@ class MainChallengeService {
                     )
                     if let data = body.data {
                         completion(.success(data))
+                    }
+                } catch let error {
+                    debugPrint(error)
+                }
+            case .failure(let error):
+                completion(.serverErr)
+                debugPrint(error)
+            }
+        }
+    }
+
+    public func requestEmptyBottle(
+        token: String,
+        myChallengeId id: Int,
+        completion: @escaping (NetworkResult<Bool>) -> Void
+    ) {
+        service.request(.myChallengeEmpty(token: token, myChallengeId: id)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let decoder = JSONDecoder()
+                    let body = try decoder.decode(
+                        GenericResponse<EmptiedChallengeData>.self,
+                        from: response.data
+                    )
+                    if let isFinished = body.data?.myChallenge?.isFinished {
+                        completion(.success(isFinished))
+                    } else {
+                        completion(.success(false))
                     }
                 } catch let error {
                     debugPrint(error)

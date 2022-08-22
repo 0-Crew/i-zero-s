@@ -21,6 +21,7 @@ class ChallengeVC: UIViewController {
     internal var inconveniences: [Convenience] = [] {
         didSet {
             updateBottleImageView()
+            checkEmptyChallengeNeeded()
         }
     }
     // 다른 유저의 챌린지를 조회할 때 세팅해야할 프로퍼티
@@ -201,6 +202,27 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - Field Method
+
+    internal func checkEmptyChallengeNeeded() {
+        guard isMine, let challengeData = challengeData else { return }
+
+        let isCheckedList = inconveniences.map { $0.isFinished }
+        let allInconveniencesChecked = isCheckedList.allSatisfy {
+            guard let isFinished = $0 else { return false }
+            return isFinished
+        }
+        switch (challengeData.isChallengeTermExpired, allInconveniencesChecked) {
+        // 기간 상관 없이 모든 불편함 챌린지가 완료 된 경우 case
+        case (_, true):
+            presentChallengeFinalVC(isCompleted: true)
+         // 챌린지 기간이 만료되었지만, 물편함 챌린지 중 하나라도 완료하지 못한 경우 case
+        case (true, false):
+            presentChallengeFinalVC(isCompleted: false)
+        default:
+//            presentChallengeFinalVC(isCompleted: false)
+            print("챌린지 진행중")
+        }
+    }
 }
 
 // MARK: - UI Setting
@@ -446,6 +468,26 @@ extension ChallengeVC {
             animated: true,
             completion: nil
         )
+    }
+
+    internal func presentChallengeFinalVC(isCompleted: Bool) {
+        let storyboard = UIStoryboard(name: "ChallengeFinal", bundle: nil)
+        let destinationIdentifier = isCompleted ?
+        "CompletedChallengeFinalVC" : "UncompletedChallengeFinalFixableVC"
+        let finalVC = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
+
+        if isCompleted {
+            guard let completedFinalVC = finalVC as? CompletedChallengeFinalVC else { return }
+            completedFinalVC.modalPresentationStyle = .fullScreen
+            completedFinalVC.myChallenge = challengeData?.myChallenge
+            self.present(completedFinalVC, animated: true)
+        } else {
+            guard let uncompletedFinalVC = finalVC as? UncompletedChallengeFinalFixableVC else { return }
+            uncompletedFinalVC.challengeData = challengeData
+            uncompletedFinalVC.userInfo = userInfo
+            uncompletedFinalVC.inconveniences = inconveniences
+            self.present(uncompletedFinalVC, animated: true)
+        }
     }
 }
 

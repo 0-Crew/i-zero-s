@@ -47,10 +47,11 @@ extension SignInVC {
         appleLoginView.addGestureRecognizer(appleTapGesture)
         kakaoLoginView.addGestureRecognizer(kakaoTapGesture)
     }
-    func requestLogin(id: String, token: String, provider: String) {
+    func requestLogin(id: String, token: String, provider: String, code: String? = nil) {
         UserLoginService.shared.requestLogin(id: id,
                                              token: token,
-                                             provider: provider) { [weak self] result in
+                                             provider: provider,
+                                             code: code) { [weak self] result in
             switch result {
             case .success(let data):
                 data.type == "login" ? self?.moveChallengeVC() : self?.moveNickSettingVC()
@@ -102,7 +103,7 @@ extension SignInVC {
         }
     }
     func kakaoLoginSuccess(token: String) {
-        UserApi.shared.me() {(user, error) in
+        UserApi.shared.me {(user, error) in
             if let error = error {
                 print(error) }
             if let user = user {
@@ -127,12 +128,13 @@ extension SignInVC: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
            let identityToken = credential.identityToken,
-           let tokenString = String(data: identityToken, encoding: .utf8) {
+           let tokenString = String(data: identityToken, encoding: .utf8),
+           let code = credential.authorizationCode,
+           let codeString = String(data: code, encoding: .utf8) {
             requestLogin(id: credential.user,
                          token: tokenString,
-                         provider: "apple")
-            UserDefaults.standard.set(credential.user,
-                                      forKey: "appleId")
+                         provider: "apple",
+                         code: codeString)
         }
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {

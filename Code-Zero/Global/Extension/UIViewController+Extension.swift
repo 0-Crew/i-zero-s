@@ -23,7 +23,6 @@ extension UIViewController {
     var accessToken: String? {
         return UserDefaultManager.shared.accessToken
     }
-
 }
 
 extension UIViewController {
