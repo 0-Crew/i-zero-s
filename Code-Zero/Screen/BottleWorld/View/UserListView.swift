@@ -11,6 +11,7 @@ import SnapKit
 
 protocol UserListViewDelegate: AnyObject {
     func didRefresh(type: UserListTapType)
+    func didTapUser(userId: Int)
     func paging(type: UserListTapType, id: Int)
 }
 
@@ -113,6 +114,10 @@ extension UserListView: UITableViewDataSource {
         cell.fetchUserData(data: userInfoData[indexPath.row])
         cell.userId = userInfoData[indexPath.row].user.id
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didTapUser(userId: userInfoData[indexPath.row].user.id)
     }
 }
 

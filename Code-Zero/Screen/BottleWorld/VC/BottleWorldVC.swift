@@ -35,6 +35,7 @@ class BottleWorldVC: UIViewController {
         setupCustomTabBar()
         setPageCollectionViewLayout()
         title = "보틀월드"
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
@@ -65,7 +66,8 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
-        cell.delegate = self
+        cell.swipeDelegate = self
+        cell.userDelegate = self
         cell.tapType = [.lookAround, .follower, .following][indexPath.row]
         return cell
     }
@@ -119,5 +121,18 @@ extension BottleWorldVC: BottleWorldSwipeBarDelegate {
         case .following:
             customMenuBar.following = count
         }
+    }
+}
+
+extension BottleWorldVC: BottleWorldUserClickDelegate {
+    func showUserChallenge(id: Int) {
+        let storyboard = UIStoryboard(name: "Challenge", bundle: nil)
+        guard let userChallengeVC = storyboard.instantiateViewController(withIdentifier: "ChallengeVC")
+                as? ChallengeVC else { return }
+        userChallengeVC.isMine = false
+        userChallengeVC.fetchedUserId = id
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .gray4
+        navigationController?.pushViewController(userChallengeVC, animated: true)
     }
 }
