@@ -12,6 +12,10 @@ protocol BottleWorldSwipeBarDelegate: AnyObject {
     func fetchBarCount(type: UserListTapType, count: Int)
 }
 
+protocol BottleWorldUserClickDelegate: AnyObject {
+    func showUserChallenge(id: Int)
+}
+
 class BottleWorldListCell: UICollectionViewCell {
 
     // MARK: - IBOutlet
@@ -35,7 +39,8 @@ class BottleWorldListCell: UICollectionViewCell {
             }
         }
     }
-    weak var delegate: BottleWorldSwipeBarDelegate?
+    weak var swipeDelegate: BottleWorldSwipeBarDelegate?
+    weak var userDelegate: BottleWorldUserClickDelegate?
 
     @IBAction func searchButtonDidTap(_ sender: Any) {
         if let text = searchTextField.text {
@@ -136,7 +141,7 @@ extension BottleWorldListCell {
                 case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .follower,
                                              keyword: keyword,
-                                             data: bottleWorldData.users)
+                                             data: bottleWorldData.followers)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -155,7 +160,7 @@ extension BottleWorldListCell {
                 case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .following,
                                              keyword: keyword,
-                                             data: bottleWorldData.users)
+                                             data: bottleWorldData.follwings)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -167,7 +172,7 @@ extension BottleWorldListCell {
     }
     func resetTableViewData(type: UserListTapType, keyword: String?, data: [BottleWorldUser]) {
         if keyword == nil || keyword == "" {
-            delegate?.fetchBarCount(type: type, count: data.count)
+            swipeDelegate?.fetchBarCount(type: type, count: data.count)
         }
         if keyword != "" && data.count == 0 {
             // No Search View 설정해줘야함
@@ -197,6 +202,10 @@ extension BottleWorldListCell: UITextFieldDelegate {
 }
 
 extension BottleWorldListCell: UserListViewDelegate {
+    func didTapUser(userId: Int) {
+        userDelegate?.showUserChallenge(id: userId)
+    }
+
     func paging(type: UserListTapType, id: Int) {
         switch type {
         case .lookAround:

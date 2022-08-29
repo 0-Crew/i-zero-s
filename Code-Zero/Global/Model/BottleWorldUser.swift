@@ -8,8 +8,18 @@
 import Foundation
 
 // MARK: - BottleWorldUser
-struct BottleWorld: Codable {
+struct BottleWorldBrowse: Codable {
     let users: [BottleWorldUser]
+    let count: Count
+}
+
+struct BottleWorldFollower: Codable {
+    let followers: [BottleWorldUser]
+    let count: Count
+}
+
+struct BottleWorldFollowing: Codable {
+    let follwings: [BottleWorldUser]
     let count: Count
 }
 

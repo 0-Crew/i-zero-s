@@ -17,7 +17,7 @@ class BottleWorldService {
         token: String,
         keyword: String?,
         id: Int?,
-        completion: @escaping (NetworkResult<BottleWorld>) -> Void
+        completion: @escaping (NetworkResult<BottleWorldBrowse>) -> Void
     ) {
         service.request(.bottleWorldBrowse(token: token,
                                            keyword: keyword,
@@ -27,7 +27,7 @@ class BottleWorldService {
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<BottleWorld>.self,
+                        GenericResponse<BottleWorldBrowse>.self,
                         from: response.data
                     )
                     if let data = body.data {
@@ -48,7 +48,7 @@ class BottleWorldService {
         token: String,
         keyword: String?,
         id: Int?,
-        completion: @escaping (NetworkResult<BottleWorld>) -> Void
+        completion: @escaping (NetworkResult<BottleWorldFollower>) -> Void
     ) {
         service.request(.bottleWorldFollower(token: token,
                                              keyword: keyword,
@@ -58,7 +58,7 @@ class BottleWorldService {
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<BottleWorld>.self,
+                        GenericResponse<BottleWorldFollower>.self,
                         from: response.data
                     )
                     if let data = body.data {
@@ -79,7 +79,7 @@ class BottleWorldService {
         token: String,
         keyword: String?,
         id: Int?,
-        completion: @escaping (NetworkResult<BottleWorld>) -> Void
+        completion: @escaping (NetworkResult<BottleWorldFollowing>) -> Void
     ) {
         service.request(.bottleWorldFollowing(token: token,
                                               keyword: keyword,
@@ -89,7 +89,7 @@ class BottleWorldService {
                 do {
                     let decoder = JSONDecoder()
                     let body = try decoder.decode(
-                        GenericResponse<BottleWorld>.self,
+                        GenericResponse<BottleWorldFollowing>.self,
                         from: response.data
                     )
                     if let data = body.data {
