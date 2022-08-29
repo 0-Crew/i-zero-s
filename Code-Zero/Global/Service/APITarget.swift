@@ -134,7 +134,7 @@ extension APITarget: TargetType {
 //            if keyword == nil && offset == nil {
 //                return .requestPlain
 //            }
-            var parameters = [String : Any]()
+            var parameters = [String: Any]()
             if let keyword = keyword {
                 parameters["keyword"] = keyword
             }

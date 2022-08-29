@@ -206,13 +206,6 @@ class ChallengeVC: UIViewController {
 // MARK: - UI Setting
 extension ChallengeVC {
     private func setNavigationItems() {
-        if !isMine { return }
-        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        space.width = 8
-        navigationItem.setRightBarButtonItems(
-            [menuButton, space, alarmButton],
-            animated: false
-        )
         let backButtonImage = UIImage(named: "icArrow")?.withAlignmentRectInsets(
             UIEdgeInsets(top: 0.0, left: -10.0, bottom: 0.0, right: 0.0)
         )
@@ -220,6 +213,15 @@ extension ChallengeVC {
         self.navigationController?.navigationBar.backIndicatorImage = backButtonImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
         navigationItem.backBarButtonItem?.tintColor = .gray4
+
+        if isMine {
+            let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            space.width = 8
+            navigationItem.setRightBarButtonItems(
+                [menuButton, space, alarmButton],
+                animated: false
+            )
+        }
     }
     private func setFollowingListStackView() {
         if !isMine {
