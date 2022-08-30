@@ -41,13 +41,11 @@ class SwipeBarView: UIView {
     internal var follower: Int = 0 {
         didSet {
             customTabBarCollectionView.reloadData()
-            customTabBarCollectionView.selectItem(at: [0, 1], animated: false, scrollPosition: [])
         }
     }
     internal var following: Int = 0 {
         didSet {
             customTabBarCollectionView.reloadData()
-            customTabBarCollectionView.selectItem(at: [0, 2], animated: false, scrollPosition: [])
         }
     }
 
