@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol BottleWorldSwipeBarDelegate: AnyObject {
-    func fetchBarCount(type: UserListTapType, count: Int)
+    func fetchBarCount(followerCount: Int, followingCount: Int)
 }
 
 protocol BottleWorldUserClickDelegate: AnyObject {
@@ -121,7 +121,8 @@ extension BottleWorldListCell {
                 case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .lookAround,
                                              keyword: keyword,
-                                             data: bottleWorldData.users)
+                                             data: bottleWorldData.users,
+                                             count: bottleWorldData.count)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -141,7 +142,8 @@ extension BottleWorldListCell {
                 case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .follower,
                                              keyword: keyword,
-                                             data: bottleWorldData.followers)
+                                             data: bottleWorldData.followers,
+                                             count: bottleWorldData.count)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -160,7 +162,8 @@ extension BottleWorldListCell {
                 case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .following,
                                              keyword: keyword,
-                                             data: bottleWorldData.follwings)
+                                             data: bottleWorldData.follwings,
+                                             count: bottleWorldData.count)
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -170,9 +173,9 @@ extension BottleWorldListCell {
                 }
             }
     }
-    func resetTableViewData(type: UserListTapType, keyword: String?, data: [BottleWorldUser]) {
+    func resetTableViewData(type: UserListTapType, keyword: String?, data: [BottleWorldUser], count: Count) {
         if keyword == nil || keyword == "" {
-            swipeDelegate?.fetchBarCount(type: type, count: data.count)
+            swipeDelegate?.fetchBarCount(followerCount: count.follower, followingCount: count.following)
         }
         if keyword != "" && data.count == 0 {
             // No Search View 설정해줘야함

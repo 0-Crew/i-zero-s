@@ -112,15 +112,9 @@ extension BottleWorldVC: SwipeBarDelgate {
 }
 
 extension BottleWorldVC: BottleWorldSwipeBarDelegate {
-    func fetchBarCount(type: UserListTapType, count: Int) {
-        switch type {
-        case .lookAround:
-            break
-        case .follower:
-            customMenuBar.follower = count
-        case .following:
-            customMenuBar.following = count
-        }
+    func fetchBarCount(followerCount: Int, followingCount: Int) {
+        customMenuBar.follower = followerCount
+        customMenuBar.following = followingCount
     }
 }
 
