@@ -19,7 +19,7 @@ struct BottleWorldFollower: Codable {
 }
 
 struct BottleWorldFollowing: Codable {
-    let follwings: [BottleWorldUser]
+    let followings: [BottleWorldUser]
     let count: Count
 }
 

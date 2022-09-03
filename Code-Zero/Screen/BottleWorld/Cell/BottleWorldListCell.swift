@@ -162,7 +162,7 @@ extension BottleWorldListCell {
                 case .success(let bottleWorldData):
                     self?.resetTableViewData(type: .following,
                                              keyword: keyword,
-                                             data: bottleWorldData.follwings,
+                                             data: bottleWorldData.followings,
                                              count: bottleWorldData.count)
                 case .requestErr(let error):
                     print(error)
