@@ -84,6 +84,7 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let itemAt = Int(targetContentOffset.pointee.x / self.view.frame.width)
         let indexPath = IndexPath(item: itemAt, section: 0)
+        customMenuBar.selectRow = indexPath
         customMenuBar.customTabBarCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
     }
 }

@@ -41,13 +41,16 @@ class SwipeBarView: UIView {
     internal var follower: Int = 0 {
         didSet {
             customTabBarCollectionView.reloadData()
+            customTabBarCollectionView.selectItem(at: selectRow, animated: false, scrollPosition: [])
         }
     }
     internal var following: Int = 0 {
         didSet {
             customTabBarCollectionView.reloadData()
+            customTabBarCollectionView.selectItem(at: selectRow, animated: false, scrollPosition: [])
         }
     }
+    internal var selectRow: IndexPath = IndexPath(item: 0, section: 0)
 
     // MARK: Setup Views
     func setupCollectioView() {
@@ -96,6 +99,7 @@ extension SwipeBarView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.customMenuBar(scrollTo: indexPath.row)
+        selectRow = indexPath
     }
 }
 
