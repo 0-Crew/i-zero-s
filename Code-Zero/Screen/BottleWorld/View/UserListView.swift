@@ -124,11 +124,10 @@ extension UserListView: UITableViewDataSource {
 extension UserListView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let height = scrollView.frame.height
-
-        if offsetY > (contentHeight - height) && !pagingOnState {
+        let tableViewoffsetY = userListTableView.contentOffset.y
+        let tableViewHeight = userListTableView.frame.size.height
+        let tableViewContentHeight = userListTableView.contentSize.height
+        if (tableViewoffsetY + tableViewHeight) >= tableViewContentHeight && !pagingOnState {
             let index = userInfoData.count
             guard let type = type,
                   index != 0 else { return }
