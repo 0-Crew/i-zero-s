@@ -185,7 +185,11 @@ class ChallengeView: UIView {
     internal var challengeOffset: Int!
     internal var challengeState: ChallengeState = .willChallenge
     internal var isMine: Bool!
-
+    internal var isEnable: Bool = true {
+        didSet {
+            dropWaterImageView.isUserInteractionEnabled = isEnable
+        }
+    }
     // MARK: Event Property
     internal weak var delegate: ChallengeViewDelegate?
     private var cachedChallengeText: String?
@@ -204,6 +208,7 @@ class ChallengeView: UIView {
     }
 
     @objc private func didToggleChallengeStateTap() {
+        print(#function)
         toggleChallengeStateHandler?()
     }
 
