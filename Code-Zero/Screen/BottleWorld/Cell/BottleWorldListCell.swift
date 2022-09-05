@@ -119,10 +119,15 @@ extension BottleWorldListCell {
             .requestBottleWoldBrowser(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
                 case .success(let bottleWorldData):
-                    self?.resetTableViewData(type: .lookAround,
-                                             keyword: keyword,
-                                             data: bottleWorldData.users,
-                                             count: bottleWorldData.count)
+                    switch id != nil {
+                    case true:
+                        self?.pagingDataAppend(data: bottleWorldData.users)
+                    case false:
+                        self?.resetTableViewData(type: .lookAround,
+                                                 keyword: keyword,
+                                                 data: bottleWorldData.users,
+                                                 count: bottleWorldData.count)
+                    }
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -140,10 +145,15 @@ extension BottleWorldListCell {
             .requestBottleWoldFollower(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
                 case .success(let bottleWorldData):
-                    self?.resetTableViewData(type: .follower,
-                                             keyword: keyword,
-                                             data: bottleWorldData.followers,
-                                             count: bottleWorldData.count)
+                    switch id != nil {
+                    case true:
+                        self?.pagingDataAppend(data: bottleWorldData.followers)
+                    case false:
+                        self?.resetTableViewData(type: .follower,
+                                                 keyword: keyword,
+                                                 data: bottleWorldData.followers,
+                                                 count: bottleWorldData.count)
+                    }
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -160,10 +170,15 @@ extension BottleWorldListCell {
             .requestBottleWoldFollowing(token: token, keyword: keyword, id: id) { [weak self] result in
                 switch result {
                 case .success(let bottleWorldData):
-                    self?.resetTableViewData(type: .following,
-                                             keyword: keyword,
-                                             data: bottleWorldData.followings,
-                                             count: bottleWorldData.count)
+                    switch id != nil {
+                    case true:
+                        self?.pagingDataAppend(data: bottleWorldData.followings)
+                    case false:
+                        self?.resetTableViewData(type: .follower,
+                                                 keyword: keyword,
+                                                 data: bottleWorldData.followings,
+                                                 count: bottleWorldData.count)
+                    }
                 case .requestErr(let error):
                     print(error)
                 case .serverErr:
@@ -178,12 +193,14 @@ extension BottleWorldListCell {
             swipeDelegate?.fetchBarCount(followerCount: count.follower, followingCount: count.following)
         }
         if keyword != "" && data.count == 0 {
-            // No Search View 설정해줘야함
             presentEmptyUserView(type: .lookAround)
         } else {
             data.count == 0 ? presentEmptyUserView(type: type): presentUserListView(data: data)
         }
+    }
 
+    func pagingDataAppend(data: [BottleWorldUser]) {
+        userListView.userInfoData += data
     }
 }
 
