@@ -101,8 +101,8 @@ extension AlarmType {
 class AlarmReactionVC: UIViewController {
 
     internal var alarmType: AlarmType!
-    internal var reactingName: String = "이주혁"
-    internal var reactingCount: Int = 1
+    internal var reactingName: String = ""
+    internal var reactingCount: Int = 0
 
     private var animationView: AnimationView!
     @IBOutlet weak var reactionLabel: UILabel!

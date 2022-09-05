@@ -81,25 +81,20 @@ class AlarmCenterVC: UIViewController {
         label.textColor = .white
         return label
     }()
-
-    // alarms가 빈배열일 경우 emptyView 노출
-    var alarms: [(String, AlarmType)] = [
-        ("박수빈빈빈님의 보틀을 팔로우합니다.", .normal),
-        ("박수빈빈님이 챌린지를 성공했어요!", .congrats),
-        ("가니가니가님이 내 챌린지 성공을 축하해요!", .beCongratulated),
-        ("가니가니가님이 내 챌린지를 응원해요!", .beCheered),
-        ("가니가니가님이 내 챌린지를 응원해요!", .beCheered),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer),
-        ("박수빈빈빈님이 새로운 챌린지를 시작했어요!", .cheer)
-    ]
+    var notificationList: [NotificationData] = [] {
+        didSet {
+            if notificationList.count == 0 {
+                setEmptyView()
+            } else {
+                tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        if alarms.count == 0 {
-            setEmptyView()
-        }
+        fetchNotificationList()
     }
 
     private func setNavigationBar() {
@@ -115,6 +110,22 @@ class AlarmCenterVC: UIViewController {
         view.addSubview(emptyView)
         emptyView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalTo(view)
+        }
+    }
+
+    private func fetchNotificationList() {
+        guard let token = accessToken else { return }
+        AlarmCenterService.shared.requestNotificationList(token: token) { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.notificationList = data
+            case .requestErr(let errorMessage):
+                print(errorMessage)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
 
@@ -146,20 +157,23 @@ class AlarmCenterVC: UIViewController {
 
 extension AlarmCenterVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alarms.count
+        return notificationList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AlarmCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
-        cell.bindData(type: alarms[indexPath.item].1, text: alarms[indexPath.item].0)
+        let notification = notificationList[indexPath.item]
+        cell.offset = indexPath.item
+        cell.bindData(notification: notification)
         return cell
     }
 }
 
 extension AlarmCenterVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellType = alarms[indexPath.item].1
+        let cellType = notificationList[indexPath.item].alarmType
+        let userName = notificationList[indexPath.item].sentUser.name
         switch cellType {
         case .beCheered, .beCongratulated:
             guard
@@ -170,6 +184,8 @@ extension AlarmCenterVC: UITableViewDelegate {
                 return
             }
             viewController.alarmType = cellType
+            viewController.reactingName = userName
+            viewController.reactingCount = 1
             present(viewController, animated: true, completion: nil)
         default:
             break
@@ -179,16 +195,28 @@ extension AlarmCenterVC: UITableViewDelegate {
 
 extension AlarmCenterVC: AlarmCellDelegate {
     func subActionButtonDidTap(cellType: AlarmType, offset: Int) {
-        // TODO: AlarmCenter 서버 연결 후 다시 작업
-        switch cellType {
-        case .cheer:
-            presentToastView(text: "박수빈님에게 챌린지 응원을 보냈어요!")
-            print("cheerUp")
-        case .congrats:
-            presentToastView(text: "celebrate")
-            print("celebrate")
-        default:
-            break
+
+        guard let token = accessToken else { return }
+        let notification = notificationList[offset]
+        let user = notification.sentUser
+
+        AlarmCenterService.shared.requestNotificationButton(
+            token: token,
+            type: .cheer,
+            receiverUserId: user.id
+        ) { [weak self] result in
+            switch result {
+            case .success(let isSuccess):
+                if isSuccess {
+                    self?.presentToastView(text: cellType.getSubActionToastText(user: user) ?? "")
+                }
+            case .requestErr(let message):
+                print(message)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
 }

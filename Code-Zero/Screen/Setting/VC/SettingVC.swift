@@ -87,15 +87,27 @@ extension SettingVC {
     }
 
     @objc func touchUpToTOS() {
-        presentSafariWebVC(url: "https://chatter-gallium-16e.notion.site/239ddeb527df483a89cdd2d8fe40fff3")
+        let storyboard = UIStoryboard(name: "Terms", bundle: nil)
+        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC")
+                as? TermsVC else { return }
+        serviceVC.type = .termsOfService
+        navigationController?.pushViewController(serviceVC, animated: true)
     }
 
     @objc func touchUpToPrivacyPolicy() {
-        presentSafariWebVC(url: "https://chatter-gallium-16e.notion.site/da60b412544b405aaeb8d4fefa46c5cb")
+        let storyboard = UIStoryboard(name: "Terms", bundle: nil)
+        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC")
+                as? TermsVC else { return }
+        serviceVC.type = .privacyPolicy
+        navigationController?.pushViewController(serviceVC, animated: true)
     }
 
     @objc func touchUpToOpenSource() {
-        presentSafariWebVC(url: "https://instagram.com/washyourbottle?igshid=YmMyMTA2M2Y=")
+        let storyboard = UIStoryboard(name: "Terms", bundle: nil)
+        guard let serviceVC = storyboard.instantiateViewController(withIdentifier: "TermsVC")
+                as? TermsVC else { return }
+        serviceVC.type = .openSource
+        navigationController?.pushViewController(serviceVC, animated: true)
     }
 
     func setListTouchGesture() {
@@ -104,15 +116,15 @@ extension SettingVC {
         settingListView[0].addGestureRecognizer(insta)
 
         let tosList = UITapGestureRecognizer(target: self,
-                                         action: #selector(touchUpToTOS))
+                                         action: #selector(touchUpToPrivacyPolicy))
         settingListView[1].addGestureRecognizer(tosList)
 
         let privatePolicy = UITapGestureRecognizer(target: self,
-                                                   action: #selector(touchUpToPrivacyPolicy))
+                                                   action: #selector(touchUpToTOS))
         settingListView[2].addGestureRecognizer(privatePolicy)
 
         let openSource = UITapGestureRecognizer(target: self,
-                                                   action: #selector(touchUpToPrivacyPolicy))
+                                                   action: #selector(touchUpToOpenSource))
         settingListView[3].addGestureRecognizer(openSource)
     }
 }

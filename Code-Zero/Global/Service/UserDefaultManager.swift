@@ -13,6 +13,7 @@ class UserDefaultManager {
 
     private init () { }
 
+    // MARK: - Token
     internal var accessToken: String? {
         return  UserDefaults.standard.string(forKey: "accessToken")
     }
@@ -28,5 +29,4 @@ class UserDefaultManager {
             UserDefaults.standard.removeObject(forKey: "accessToken")
         }
     }
-
 }

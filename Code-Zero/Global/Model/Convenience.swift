@@ -58,4 +58,8 @@ extension Convenience {
 
         return .willChallenge
     }
+    func mapFinalChallengeViewState() -> FinalChallengeViewState? {
+        guard let isFinished = isFinished else { return nil }
+        return isFinished ? .challengeComplete : .challengeNotComplete
+    }
 }
