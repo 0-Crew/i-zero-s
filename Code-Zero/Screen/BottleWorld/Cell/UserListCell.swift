@@ -23,8 +23,7 @@ class UserListCell: UITableViewCell {
 
     // MARK: - @IBAction
     @IBAction func followButtonDidTap(_ sender: UIButton) {
-        guard let userId = userId,
-              let follow = follow else { return }
+        guard let userId = userId else { return }
         delegate?.didFollowButtonTap(id: userId)
     }
 
