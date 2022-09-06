@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2B7BDE22714214700F1DB1F"
+               BuildableName = "Code-ZeroTests.xctest"
+               BlueprintName = "Code-ZeroTests"
+               ReferencedContainer = "container:Code-Zero.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2B7BDEC2714214700F1DB1F"
+               BuildableName = "Code-ZeroUITests.xctest"
+               BlueprintName = "Code-ZeroUITests"
+               ReferencedContainer = "container:Code-Zero.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

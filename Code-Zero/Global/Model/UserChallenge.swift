@@ -33,7 +33,6 @@ struct UserChallenge: Codable {
         }
         return arrays
     }
-
     var startedDate: Date? {
         return startedAt.toDate() ?? nil
     }

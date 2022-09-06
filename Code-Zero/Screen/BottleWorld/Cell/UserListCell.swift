@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListCellDelegate: AnyObject {
-    func didFollowButtonTap(index: Int)
+    func didFollowButtonTap(id: Int)
 }
 
 class UserListCell: UITableViewCell {
@@ -23,17 +23,18 @@ class UserListCell: UITableViewCell {
 
     // MARK: - @IBAction
     @IBAction func followButtonDidTap(_ sender: UIButton) {
-        delegate?.didFollowButtonTap(index: cellIndex?.row ?? 0)
+        guard let userId = userId else { return }
+        delegate?.didFollowButtonTap(id: userId)
     }
 
     // MARK: - Property
-    internal var cellIndex: IndexPath?
+    internal var userId: Int?
     internal weak var delegate: UserListCellDelegate?
+    private var follow: Bool?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setView()
-        // Initialization code
     }
 }
 
@@ -45,33 +46,28 @@ extension UserListCell {
         followButton.setBorder(borderColor: .orangeMain, borderWidth: 1)
         selectionStyle = .none
     }
-    func setUserInfo(user: UserData) {
-        if user.term != nil {
-            challengeTermLabel.isHidden = false
-            challengeTermLabel.text = user.term
-            challengeLabel.text = user.subject
-            challengeLabel.textColor = .orangeMain
-        } else {
-            challengeTermLabel.isHidden = true
-            challengeLabel.text = "보틀 씻는 중"
-            challengeLabel.textColor = .gray2
-        }
-        bottleImage.image = UIImage(named: "icBottleMain\(user.bottleLevel)")
-        user.follow ? setFollowButton() : setFollowingButton()
-        userNameLabel.text = "\(user.name)의 보틀"
-        userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [user.name])
-    }
     func fetchUserData(data: BottleWorldUser) {
-        challengeTermLabel.isHidden = false
-        let challengeTerm = getChallengeWeek(startDate: data.challenge.startedAt)
-        challengeTermLabel.text = challengeTerm
-        challengeLabel.text = data.challenge.name
         challengeLabel.textColor = .orangeMain
-        bottleImage.image = UIImage(named: "icBottleMain\(data.challenge.count ?? "0")")
-        data.follow ? setFollowButton() : setFollowingButton()
+        data.follow ? setFollowingButton() : setFollowButton()
+        follow = data.follow
         userNameLabel.text = "\(data.user.name)의 보틀"
         userNameLabel.setFontWith(font: .futuraStd(size: 13, family: .bold), in: [data.user.name])
 
+        if let challenge = data.challenge {
+            let challengeTerm = getChallengeWeek(startDate: challenge.startedAt)
+            challengeTermLabel.setLabel(text: challengeTerm,
+                                        color: .gray4,
+                                        font: .spoqaHanSansNeo(size: 12, family: .medium))
+            challengeLabel.isHidden = false
+            challengeLabel.text = challenge.name
+            bottleImage.image = UIImage(named: "icBottleMain\(challenge.count ?? "0")")
+        } else {
+            challengeLabel.isHidden = true
+            challengeTermLabel.setLabel(text: "보틀 씻는 중",
+                                        color: .gray2,
+                                        font: .spoqaHanSansNeo(size: 13, family: .bold))
+            bottleImage.image = UIImage(named: "icBottleMain7")
+        }
     }
     private func setFollowButton() {
         followButton.setButton(text: "팔로우",

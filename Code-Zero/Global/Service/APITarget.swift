@@ -16,7 +16,10 @@ enum APITarget {
     case deleteAuth(token: String)
 
     // 보틀월드
-    case bottleWorldBrowse(token: String, keyword: String?)
+    case bottleWorldBrowse(token: String, keyword: String?, offset: Int?)
+    case bottleWorldFollower(token: String, keyword: String?, offset: Int?)
+    case bottleWorldFollowing(token: String, keyword: String?, offset: Int?)
+    case bottleWorldFollow(token: String, id: Int)
 
     // 메인 챌린지
     case myChallengeFetch(token: String)
@@ -71,6 +74,12 @@ extension APITarget: TargetType {
             return "/my-challenge/user/calendar"
         case .bottleWorldBrowse:
             return "/bottleworld/browse"
+        case .bottleWorldFollower:
+            return "/bottleworld/follower"
+        case .bottleWorldFollowing:
+            return "/bottleworld/following"
+        case .bottleWorldFollow:
+            return "/bottleworld"
         case .userInfo:
             return "/user/setting"
         case .myChallengeFetch, .myChallengeEmpty:
@@ -91,12 +100,12 @@ extension APITarget: TargetType {
     var method: Moya.Method {
         // method - 통신 method (get, post, put, delete ...)
         switch self {
-        case .userNick, .auth, .challengeOpen, .notificationButton:
+        case .userNick, .auth, .challengeOpen, .notificationButton, .bottleWorldFollow:
             return .post
         case .userPrivate, .myInconvenienceFinish, .myInconvenienceUpdate, .myChallengeEmpty:
             return .put
         case .challengeOpenPreview, .bottleWorldBrowse, .myCalendar, .userCalendar,
-                .userInfo, .myChallengeFetch, .myChallengeUser, .myNotification:
+                .userInfo, .myChallengeFetch, .myChallengeUser, .bottleWorldFollower, .bottleWorldFollowing, .myNotification:
             return .get
         case .deleteAuth:
             return .delete
@@ -126,12 +135,20 @@ extension APITarget: TargetType {
                                       encoding: JSONEncoding.default)
         case .userPrivate, .deleteAuth:
                 return .requestPlain
-        case .bottleWorldBrowse(_, let keyword):
-            guard let keyword = keyword else {
-                return .requestPlain
+        case .bottleWorldBrowse(_, let keyword, let offset),
+                .bottleWorldFollower(_, let keyword, let offset),
+                .bottleWorldFollowing(_, let keyword, let offset):
+            var parameters = [String: Any]()
+            if let keyword = keyword {
+                parameters["keyword"] = keyword
             }
-            return .requestParameters(parameters: ["keyword": keyword],
+            if let offset = offset {
+                parameters["offset"] = offset
+            }
+            return .requestParameters(parameters: parameters,
                                       encoding: URLEncoding.queryString)
+        case .bottleWorldFollow(_, let id):
+            return .requestParameters(parameters: ["followingUserId": id], encoding: JSONEncoding.default)
         case .challengeOpenPreview, .userInfo, .myChallengeFetch, .myNotification:
             return .requestPlain
         case .challengeOpen(let convenienceString, let inconvenienceString, let isFromToday, _):
@@ -187,7 +204,9 @@ extension APITarget: TargetType {
                 .challengeOpen(_, _, _, let token),
                 .myCalendar(_, let token),
                 .userCalendar(_, _, let token),
-                .bottleWorldBrowse(let token, _),
+                .bottleWorldBrowse(let token, _, _),
+                .bottleWorldFollower(let token, _, _),
+                .bottleWorldFollowing(let token, _, _),
                 .userInfo(let token),
                 .myChallengeFetch(let token),
                 .myInconvenienceFinish(let token, _),
@@ -195,6 +214,7 @@ extension APITarget: TargetType {
                 .myChallengeUser(let token, _),
                 .deleteAuth(let token),
                 .notificationButton(let token, _, _),
+                .bottleWorldFollow(let token, _),
                 .myNotification(let token),
                 .myChallengeEmpty(let token, _):
             return ["Content-Type": "application/json",

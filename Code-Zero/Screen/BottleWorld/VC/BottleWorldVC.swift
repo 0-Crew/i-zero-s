@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+enum UserListTapType {
+    case lookAround
+    case follower
+    case following
+}
+
 class BottleWorldVC: UIViewController {
 
     // MARK: - Property
@@ -29,6 +35,7 @@ class BottleWorldVC: UIViewController {
         setupCustomTabBar()
         setPageCollectionViewLayout()
         title = "보틀월드"
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
@@ -59,8 +66,9 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: BottleWorldListCell = collectionView.dequeueCell(indexPath: indexPath)
-        cell.emptyView.viewType = [.noneSearch, .noneFollower, .noneFollowing][indexPath.row] // testCode
-        cell.userListView.tapType = [.lookAround, .follower, .following][indexPath.row]
+        cell.swipeDelegate = self
+        cell.userDelegate = self
+        cell.tapType = [.lookAround, .follower, .following][indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,6 +84,7 @@ extension BottleWorldVC: UICollectionViewDelegate, UICollectionViewDataSource {
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let itemAt = Int(targetContentOffset.pointee.x / self.view.frame.width)
         let indexPath = IndexPath(item: itemAt, section: 0)
+        customMenuBar.selectRow = indexPath
         customMenuBar.customTabBarCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
     }
 }
@@ -100,5 +109,25 @@ extension BottleWorldVC: SwipeBarDelgate {
         let indexPath = IndexPath(row: index, section: 0)
         pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         view.endEditing(true)
+    }
+}
+
+extension BottleWorldVC: BottleWorldSwipeBarDelegate {
+    func fetchBarCount(followerCount: Int, followingCount: Int) {
+        customMenuBar.follower = followerCount
+        customMenuBar.following = followingCount
+    }
+}
+
+extension BottleWorldVC: BottleWorldUserClickDelegate {
+    func showUserChallenge(id: Int) {
+        let storyboard = UIStoryboard(name: "Challenge", bundle: nil)
+        guard let userChallengeVC = storyboard.instantiateViewController(withIdentifier: "ChallengeVC")
+                as? ChallengeVC else { return }
+        userChallengeVC.isMine = false
+        userChallengeVC.fetchedUserId = id
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .gray4
+        navigationController?.pushViewController(userChallengeVC, animated: true)
     }
 }

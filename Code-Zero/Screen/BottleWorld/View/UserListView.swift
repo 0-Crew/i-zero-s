@@ -9,46 +9,32 @@ import UIKit
 import Lottie
 import SnapKit
 
-struct UserData {
-    let name: String
-    let bottleLevel: Int
-    let subject: String?
-    let term: String?
-    var follow: Bool
+protocol UserListViewDelegate: AnyObject {
+    func didRefresh(type: UserListTapType)
+    func didTapUser(userId: Int)
+    func paging(type: UserListTapType, id: Int)
 }
 
 class UserListView: UIView {
 
     // MARK: - Property
-    enum UserListTapType {
-        case lookAround
-        case follower
-        case following
-    }
-    var lookAroundUser: [BottleWorldUser] = []
-    var follower: [UserData] = []
-    var following: [UserData] = []
-    var tapType: UserListTapType = .lookAround
-    var filteringText: String? { // 필터링 할 단어
+    var userInfoData: [BottleWorldUser] = [] {
         didSet {
-            guard let filter = filteringText else {
-                fetchBrowserData(keyword: nil)
-                return
-            }
-            fetchBrowserData(keyword: filter)
+            pagingOnState = false
+            userListTableView.reloadData()
         }
     }
-    weak var delegate: BottleWorldUsersDelegate?
-
+    internal weak var delegate: UserListViewDelegate?
+    var type: UserListTapType?
+    var pagingOnState: Bool = false
     // MARK: - @IBOutlet
     @IBOutlet weak var userListTableView: UITableView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
-        makeDumyData()
-        fetchBrowserData(keyword: nil)
     }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -84,9 +70,27 @@ class UserListView: UIView {
         userListTableView.addSubview(refresh)
     }
     @objc private func updateTableViewData(refressh: UIRefreshControl) {
+        guard let type = type else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.fetchBrowserData(keyword: self.filteringText)
+            self.delegate?.didRefresh(type: type)
             refressh.endRefreshing()
+        }
+    }
+    private func requestFollow(id: Int) {
+        guard let token = UserDefaultManager.shared.accessToken else { return }
+        BottleWorldService.shared.makeBottleworldFollow(token: token, id: id) { [weak self] result in
+            switch result {
+            case .success:
+                self?.userInfoData.indices.filter { self?.userInfoData[$0].user.id == id }
+                .forEach { self?.userInfoData[$0].follow.toggle() }
+                self?.userListTableView.reloadData()
+            case .requestErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
         }
     }
 }
@@ -101,91 +105,41 @@ extension UserListView: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tapType {
-        case .lookAround:
-            return lookAroundUser.count
-        case .follower:
-            return follower.count
-        case .following:
-            return following.count
-        }
+        return userInfoData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UserListCell = tableView.dequeueCell(indexPath: indexPath)
         cell.delegate = self
-        cell.cellIndex = indexPath // 나중에는 여기에 인덱스 대신에 나중에는 유저 고유 이메일 같은거가 들어가야 할 듯
-        switch tapType {
-        case .lookAround:
-            cell.fetchUserData(data: lookAroundUser[indexPath.row])
-        case .follower:
-            cell.setUserInfo(user: follower[indexPath.row])
-        case .following:
-            cell.setUserInfo(user: following[indexPath.row])
-        }
+        cell.fetchUserData(data: userInfoData[indexPath.row])
+        cell.userId = userInfoData[indexPath.row].user.id
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didTapUser(userId: userInfoData[indexPath.row].user.id)
     }
 }
 
-// MARK: - Network Function
-extension UserListView {
-    private func makeDumyData() {
-        let data1 = UserData(name: "미니미니", bottleLevel: 1, subject: "플라스틱 빨대사용하기플라스틱 빨대사용",
-                             term: "12/8-13", follow: true)
-        let data2 = UserData(name: "주혁이", bottleLevel: 0, subject: "일회용컵으로 커피 마시기",
-                             term: "12/1-8", follow: false)
-        let data3 = UserData(name: "민희", bottleLevel: 3, subject: "텀블러 가지고 다니기",
-                             term: "12/12-19", follow: false)
-        let data4 = UserData(name: "환경지키자", bottleLevel: 4, subject: "물티슈 쓰기",
-                             term: "12/11-18", follow: true)
-        let data5 = UserData(name: "삐뽀", bottleLevel: 2, subject: "로션 구매하기",
-                             term: "12/5-12", follow: true)
-        let data6 = UserData(name: "보틀월드", bottleLevel: 1, subject: "종이 컵홀더 안 쓰기종이 컵",
-                             term: "12/3-10", follow: false)
-        let data7 = UserData(name: "워유보갓", bottleLevel: 3, subject: "종이 컵홀더 안 쓰기종이 컵",
-                             term: "12/13-20", follow: true)
-        let data8 = UserData(name: "미니테스트중", bottleLevel: 7, subject: nil,
-                             term: nil, follow: true)
-        follower = [data1, data4, data5, data7, data8]
-        following = [data2, data3, data6]
-    }
-    private func fetchBrowserData(keyword: String?) {
-        guard let token = UserDefaultManager.shared.accessToken else { return }
-        BottleWorldService
-            .shared
-            .requestBottleWoldBrowser(token: token, keyword: keyword) { [weak self] result in
-                switch result {
-                case .success(let userData):
-                    self?.lookAroundUser = userData
-                    if userData.count == 0 {
-                        self?.delegate?.presentEmptyUserView()
-                        break
-                    }
-                    self?.delegate?.presentUserListView()
-                    self?.userListTableView.reloadData()
-                case .requestErr(let error):
-                    print(error)
-                case .serverErr:
-                    break
-                case .networkFail:
-                    break
-                }
-            }
+extension UserListView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard userInfoData.count > 20 else { return }
+        let tableViewoffsetY = userListTableView.contentOffset.y
+        let tableViewHeight = userListTableView.frame.size.height
+        let tableViewContentHeight = userListTableView.contentSize.height
+        if (tableViewoffsetY + tableViewHeight) >= tableViewContentHeight && !pagingOnState {
+            let index = userInfoData.count
+            guard let type = type,
+                  index != 0 else { return }
+            pagingOnState = true
+            self.delegate?.paging(type: type, id: userInfoData[index-1].user.id)
+        }
     }
 }
 
 // MARK: - UserListCellDelegate
 extension UserListView: UserListCellDelegate {
-    func didFollowButtonTap(index: Int) {
-        // 팔로우, 팔로잉 서버 연결 코드 작성 예정
-        switch tapType {
-        case .lookAround:
-            break
-        case .follower:
-            follower[index].follow = !follower[index].follow
-        case .following:
-            following[index].follow = !following[index].follow
-        }
-        userListTableView.reloadData()
+    func didFollowButtonTap(id: Int) {
+        requestFollow(id: id)
     }
 }
