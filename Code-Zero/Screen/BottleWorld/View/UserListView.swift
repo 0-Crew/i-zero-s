@@ -123,7 +123,7 @@ extension UserListView: UITableViewDataSource {
 
 extension UserListView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        guard userInfoData.count > 20 else { return }
         let tableViewoffsetY = userListTableView.contentOffset.y
         let tableViewHeight = userListTableView.frame.size.height
         let tableViewContentHeight = userListTableView.contentSize.height
