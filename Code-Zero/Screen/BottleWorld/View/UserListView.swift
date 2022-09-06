@@ -84,7 +84,7 @@ class UserListView: UIView {
                 self?.userInfoData.indices.filter { self?.userInfoData[$0].user.id == id }
                 .forEach { self?.userInfoData[$0].follow.toggle() }
                 self?.userListTableView.reloadData()
-            case .requestErr(_):
+            case .requestErr:
                 break
             case .serverErr:
                 break
