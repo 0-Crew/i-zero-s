@@ -157,7 +157,6 @@ class ChallengeVC: UIViewController {
     }
 
     // MARK: - IBAction Method
-
     @IBAction func cheerUpButtonDidTap(_ sender: Any) {
         guard let userName = userInfo?.name else { return }
         cheerUpUser { [weak self] isSuccess in
@@ -168,7 +167,15 @@ class ChallengeVC: UIViewController {
     }
 
     @IBAction func followingButtonDidTap(_ sender: Any) {
-        // TODO: 팔로잉 버튼 액션
+        toggleFollow { [weak self] isSuccess in
+            var isCurrentFollowing = self?.challengeData?.isFollowing ?? false
+            if isSuccess {
+                isCurrentFollowing.toggle()
+            }
+            DispatchQueue.main.async {
+                self?.updateFollowButton(isFollowing: isCurrentFollowing)
+            }
+        }
     }
 
     @IBAction private func moveBottleWorldButtonDidTap() {
@@ -377,6 +384,13 @@ extension ChallengeVC {
         let isChallenging = challengeData?.myChallenge != nil
         cheerUpButton.isHidden = (isChallenging == false) || isMine
         followingButton.isHidden = isMine && isFollowing
+        let isCurrentFollowing = self.challengeData?.isFollowing ?? false
+        updateFollowButton(isFollowing: isCurrentFollowing)
+    }
+    private func updateFollowButton(isFollowing: Bool) {
+        followingButton.isSelected = isFollowing
+        let backgroundColor: UIColor = isFollowing ? .white : .orangeMain
+        followingButton.backgroundColor = backgroundColor
     }
     private func updateBottleImageView() {
 

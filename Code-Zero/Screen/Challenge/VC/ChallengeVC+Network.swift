@@ -182,4 +182,23 @@ extension ChallengeVC {
                 Indicator.shared.dismiss()
             }
     }
+
+    internal func toggleFollow(completion: @escaping (Bool) -> Void) {
+        guard let userID = fetchedUserId, let token = accessToken else { return }
+
+        BottleWorldService.shared.makeBottleworldFollow(
+            token: token,
+            id: userID
+        ) { result in
+            switch result {
+            case .success(let isSuccess):
+                completion(isSuccess)
+            case .requestErr(let message):
+                print(message)
+                completion(false)
+            case .networkFail, .serverErr:
+                completion(false)
+            }
+        }
+    }
 }
