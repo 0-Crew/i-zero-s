@@ -117,6 +117,7 @@ class ChallengeVC: UIViewController {
     @IBOutlet weak var followingListStackView: UIStackView!
     @IBOutlet weak var cheerUpButton: UIButton!
     @IBOutlet weak var followingButton: UIButton!
+    @IBOutlet weak var followingButtonIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dateTermLabel: UILabel!
     @IBOutlet weak var convenienceTextLabel: UILabel!
     @IBOutlet weak var challengeBackgroundView: UIView!
@@ -143,7 +144,6 @@ class ChallengeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
         registerForKeyboardNotifications()
-
         if isMine {
             fetchUserInfoData()
             fetchMyChallenge()
@@ -167,13 +167,17 @@ class ChallengeVC: UIViewController {
     }
 
     @IBAction func followingButtonDidTap(_ sender: Any) {
+        followingButton.isEnabled = false
+        followingButtonIndicator.startAnimating()
         toggleFollow { [weak self] isSuccess in
-            var isCurrentFollowing = self?.challengeData?.isFollowing ?? false
+            self?.followingButton.isEnabled = true
+            self?.followingButtonIndicator.stopAnimating()
+
             if isSuccess {
-                isCurrentFollowing.toggle()
+                self?.challengeData = self?.challengeData?.toggleFollowing()
             }
             DispatchQueue.main.async {
-                self?.updateFollowButton(isFollowing: isCurrentFollowing)
+                self?.updateFollowButton(isFollowing: self?.challengeData?.isFollowing ?? false)
             }
         }
     }
