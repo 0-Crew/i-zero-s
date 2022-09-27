@@ -105,7 +105,6 @@ extension ChallengeVC {
         completion: @escaping (Bool, Convenience?) -> Void
     ) {
         guard let token = accessToken else { return }
-        Indicator.shared.show()
         MainChallengeService
             .shared
             .requestCompleteMyInconvenience(token: token, inconvenience: inconvenience) { result in
@@ -116,12 +115,12 @@ extension ChallengeVC {
                     }
                 case .requestErr(let message):
                     print(message)
+                    completion(false, nil)
                 case .serverErr:
-                    break
+                    completion(false, nil)
                 case .networkFail:
-                    break
+                    completion(false, nil)
                 }
-                Indicator.shared.dismiss()
             }
     }
 

@@ -47,12 +47,15 @@ extension ChallengeVC: ChallengeViewDelegate {
     // 챌린지 완료 상태 toggle 이벤트 delegate
     func didToggleChallengeStateAction(challengeOffset: Int, currentState: ChallengeState) {
         let inconvenience = inconveniences[challengeOffset]
+        let challengeView = challengeViewList[challengeOffset]
+        challengeView?.isEnable = false
         toggleInconvenienceComplete(inconvenience: inconvenience) { [weak self] (isSuccess, inconvenience) in
             if isSuccess, let inconvenience = inconvenience {
                 self?.inconveniences[challengeOffset] = inconvenience
             } else {
                 self?.setChallengeViewChangingState(offset: challengeOffset)
             }
+            challengeView?.isEnable = true
         }
     }
 }
