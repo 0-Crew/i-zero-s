@@ -19,6 +19,17 @@ struct MainChallengeData: Codable {
     var isChallengeTermExpired: Bool {
         return myChallenge?.isDueDateOver ?? false
     }
+
+    func toggleFollowing() -> MainChallengeData {
+        return MainChallengeData(
+            user: self.user,
+            myFollowings: self.myFollowings,
+            isFollowing: !(self.isFollowing ?? false),
+            myChallenge: self.myChallenge,
+            myInconveniences: self.myInconveniences,
+            inconvenience: self.inconvenience
+        )
+    }
 }
 
 struct MyInconvenienceFinishData: Codable {
