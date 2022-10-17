@@ -25,16 +25,19 @@ class UserListCell: UITableViewCell {
     @IBAction func followButtonDidTap(_ sender: UIButton) {
         guard let userId = userId else { return }
         delegate?.didFollowButtonTap(id: userId)
+        feedbackGenerator?.impactOccurred()
     }
 
     // MARK: - Property
     internal var userId: Int?
     internal weak var delegate: UserListCellDelegate?
     private var follow: Bool?
+    private var feedbackGenerator: UIImpactFeedbackGenerator?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setView()
+        setupGenerator()
     }
 }
 
@@ -92,5 +95,9 @@ extension UserListCell {
             return ""
         }
         return "\(startDay) - \(lastDay)"
+    }
+    private func setupGenerator() {
+        feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator?.prepare()
     }
 }
